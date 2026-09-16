@@ -58,9 +58,13 @@
    -------------------------------------------------------------------------- */
 
 :root {
-  /* ტიპოგრაფია */
-  --font-base: "LGV Anastasia 2025 Geo", "Noto Sans Georgian", "BPG Arial",
-               system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  /* ტიპოგრაფია
+     --font-display — მხოლოდ სათაურებისთვის (LGV Anastasia 2025 Geo)
+     --font-base    — ძირითადი ტექსტი, ღილაკები, ფორმები (ქართული sans) */
+  --font-display: "LGV Anastasia 2025 Geo", "Noto Sans Georgian", "BPG Arial",
+                  system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-base: "Noto Sans Georgian", "BPG Arial", system-ui, -apple-system,
+               "Segoe UI", Roboto, sans-serif;
 
   /* ფერები — სუფთა, ღია პალიტრა */
   --ink: #0b1220;
@@ -132,6 +136,7 @@ a:hover { color: var(--brand-dark); }
 
 h1, h2, h3, h4 {
   margin: 0 0 .5em;
+  font-family: var(--font-display);
   color: var(--ink);
   font-weight: 700;
   line-height: 1.18;
