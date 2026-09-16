@@ -46,17 +46,17 @@ const FORM_ENDPOINT = "";
 
   /* --------------------------------------- 2. მიმდინარე გვერდი ნავიგაციაში */
   function initActiveLink() {
-    let path = window.location.pathname.split("/").pop();
-    if (!path) path = "index.html";
+    // სუფთა URL-ები: /work, /services, ასევე /work.html და /
+    const norm = (v) => v.replace(/\/+$/, "").split("/").pop().replace(/\.html$/, "");
+    const path = norm(window.location.pathname);
 
     $$("#nav-links a[href]").forEach((a) => {
       const href = a.getAttribute("href");
       if (!href || href.startsWith("#") || href.startsWith("http")) return;
-      if (href === path) a.classList.add("is-active");
+      const target = norm(href);
+      if (target === path) a.classList.add("is-active");
       // სერვისის შიდა გვერდზე „სერვისები“ აქტიურად რჩება
-      if (href === "services.html" && path.startsWith("service-")) {
-        a.classList.add("is-active");
-      }
+      if (target === "services" && path.indexOf("service-") === 0) a.classList.add("is-active");
     });
   }
 
@@ -339,6 +339,153 @@ const FORM_ENDPOINT = "";
     }
   }
 
+
+  /* ------------------------------------------------------- 9. კარუსელი */
+  function initCarousels() {
+    $$("[data-carousel]").forEach((root) => {
+      const track = $("[data-carousel-track]", root);
+      const prev  = $("[data-carousel-prev]", root);
+      const next  = $("[data-carousel-next]", root);
+      const dotsBox = $("[data-carousel-dots]", root);
+      if (!track) return;
+
+      const slides = $$(".carousel__slide", track);
+      if (slides.length < 2) {
+        const controls = $(".carousel__controls", root);
+        if (controls) controls.hidden = true;
+        return;
+      }
+
+      // რამდენი სლაიდი ჩანს ერთდროულად
+      const perView = () => {
+        const w = slides[0].getBoundingClientRect().width;
+        return Math.max(1, Math.round(track.clientWidth / (w + 22)));
+      };
+
+      // წერტილები — თითო "გვერდზე", და არა თითო სლაიდზე
+      let dots = [];
+      const buildDots = () => {
+        if (!dotsBox) return;
+        const pages = Math.max(1, slides.length - perView() + 1);
+        dotsBox.innerHTML = "";
+        dots = [];
+        for (let i = 0; i < pages; i++) {
+          const b = document.createElement("button");
+          b.type = "button";
+          b.className = "carousel__dot";
+          b.setAttribute("aria-label", "სლაიდი " + (i + 1));
+          b.addEventListener("click", () => goTo(i));
+          dotsBox.appendChild(b);
+          dots.push(b);
+        }
+      };
+
+      const index = () => {
+        const w = slides[0].getBoundingClientRect().width + 22;
+        return Math.round(track.scrollLeft / w);
+      };
+
+      const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      const goTo = (i) => {
+        const w = slides[0].getBoundingClientRect().width + 22;
+        const max = Math.max(0, slides.length - perView());
+        const target = Math.min(Math.max(0, i), max);
+        track.scrollTo({ left: target * w, behavior: reduced ? "auto" : "smooth" });
+        // მდგომარეობას მაშინვე ვანახლებთ — არ ველოდებით სქროლის დასრულებას
+        paint(target);
+      };
+
+      // ღილაკებისა და წერტილების დახატვა კონკრეტული ინდექსისთვის
+      const paint = (i) => {
+        const max = Math.max(0, slides.length - perView());
+        if (prev) prev.disabled = i <= 0;
+        if (next) next.disabled = i >= max;
+        dots.forEach((d, n) => d.setAttribute("aria-current", String(n === i)));
+      };
+
+      const sync = () => paint(index());
+
+      if (prev) prev.addEventListener("click", () => goTo(Math.max(0, index() - 1)));
+      if (next) next.addEventListener("click", () => goTo(index() + 1));
+
+      // კლავიატურა
+      track.setAttribute("tabindex", "0");
+      track.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowRight") { e.preventDefault(); goTo(index() + 1); }
+        if (e.key === "ArrowLeft")  { e.preventDefault(); goTo(Math.max(0, index() - 1)); }
+      });
+
+      // სქროლზე პირდაპირ ვასინქრონებთ (rAF-ზე დამოკიდებულების გარეშე)
+      let ticking = false;
+      track.addEventListener("scroll", () => {
+        if (ticking) return;
+        ticking = true;
+        setTimeout(() => { sync(); ticking = false; }, 90);
+      }, { passive: true });
+
+      let resizeTimer;
+      window.addEventListener("resize", () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => { buildDots(); sync(); }, 150);
+      });
+
+      buildDots();
+      sync();
+    });
+  }
+
+  /* ------------------------------------------ 10. პორტფოლიოს ფილტრი */
+  function initFilters() {
+    const group = $("[data-filter-group]");
+    if (!group) return;
+
+    const buttons = $$("[data-filter]", group);
+    const items = $$("[data-category]");
+    const empty = $("[data-filter-empty]");
+    const live = $("[data-filter-status]");
+
+    const apply = (value) => {
+      let shown = 0;
+      items.forEach((el) => {
+        const match = value === "all" || el.dataset.category.split(" ").includes(value);
+        el.hidden = !match;
+        if (match) shown++;
+      });
+      buttons.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.filter === value)));
+      if (empty) empty.hidden = shown > 0;
+      if (live) live.textContent = shown + " პროექტი";
+    };
+
+    buttons.forEach((b) => b.addEventListener("click", () => apply(b.dataset.filter)));
+
+    // თითო ფილტრის რაოდენობა
+    buttons.forEach((b) => {
+      const v = b.dataset.filter;
+      const n = v === "all" ? items.length
+        : items.filter((el) => el.dataset.category.split(" ").includes(v)).length;
+      const badge = $(".filter__count", b);
+      if (badge) badge.textContent = n;
+    });
+
+    apply("all");
+  }
+
+  /* ---------------------------------------- 11. გუნდის ბარათის გაშლა */
+  function initTeamCards() {
+    $$("[data-member-toggle]").forEach((btn) => {
+      const panel = document.getElementById(btn.getAttribute("aria-controls"));
+      if (!panel) return;
+      btn.addEventListener("click", () => {
+        const open = btn.getAttribute("aria-expanded") === "true";
+        btn.setAttribute("aria-expanded", String(!open));
+        panel.setAttribute("data-open", String(!open));
+        const label = $(".member__toggle-label", btn);
+        if (label) label.textContent = open ? "მეტის ნახვა" : "დახურვა";
+      });
+    });
+  }
+
   /* ------------------------------------------------------------ bootstrap */
   document.addEventListener("DOMContentLoaded", () => {
     initNav();
@@ -349,5 +496,8 @@ const FORM_ENDPOINT = "";
     initCounters();
     initForms();
     initMisc();
+    initCarousels();
+    initFilters();
+    initTeamCards();
   });
 })();

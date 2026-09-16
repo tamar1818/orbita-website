@@ -19,12 +19,14 @@
 | `service-seo.html`             | სერვისის შიდა გვერდი — SEO               |
 | `service-marketing.html`       | სერვისის შიდა გვერდი — მარკეტინგი        |
 | `service-branding.html`        | სერვისის შიდა გვერდი — ბრენდინგი / UI-UX |
+| `work.html`                    | ნამუშევრები — ფილტრებით                  |
 | `contact.html`                 | კონტაქტი + ლიდების ფორმა                 |
+| `404.html`                     | შეცდომის გვერდი                          |
 
 ```
 assets/
 ├── css/style.css     დიზაინ-სისტემა და ყველა სტილი
-├── js/main.js        ნავიგაცია, აკორდეონი, ანიმაცია, ფორმების ვალიდაცია
+├── js/main.js        ნავიგაცია, აკორდეონი, კარუსელი, ფილტრები, ფორმები
 ├── fonts/            ← აქ განათავსეთ შრიფტი (იხ. assets/fonts/README.md)
 └── img/favicon.svg
 robots.txt · sitemap.xml
@@ -144,6 +146,33 @@ Getform, ან თქვენი საკუთარი backend. მონ�
 - **ადაპტურობა:** სამი გარდატეხის წერტილი (1040 / 880 / 620 px), მობილური მენიუ.
 - **წარმადობა:** გარე დამოკიდებულებების გარეშე, SVG-იკონები კოდშივე, `font-display: swap`.
 - **მდგრადობა:** JavaScript-ის გამორთვის შემთხვევაშიც მთელი კონტენტი ჩანს.
+
+## ინტერაქტიული კომპონენტები
+
+ყველა კომპონენტი სუფთა JavaScript-ითაა — გარე ბიბლიოთეკის გარეშე.
+
+**კარუსელი** — `scroll-snap`-ზე აგებული. მარკაპი:
+
+```html
+<div class="carousel carousel--2" data-carousel>
+  <div class="carousel__viewport" data-carousel-track>
+    <div class="carousel__slide">…</div>
+  </div>
+  <div class="carousel__controls">
+    <button data-carousel-prev>…</button>
+    <div class="carousel__dots" data-carousel-dots></div>
+    <button data-carousel-next>…</button>
+  </div>
+</div>
+```
+
+წერტილები ავტომატურად გენერირდება, ისრები ითიშება ბოლოებში, მუშაობს
+კლავიატურის ისრებით და თითით გადაფურცვლით. `carousel--2` — ორი სლაიდი ერთდროულად.
+
+**ფილტრი** — `data-filter-group` ღილაკები და `data-category` ელემენტები.
+რაოდენობები ავტომატურად ითვლება, ცვლილება ეცნობება სკრინრიდერს `aria-live`-ით.
+
+**გუნდის ბარათები** — `data-member-toggle` + `aria-expanded` გაშლადი ბიოგრაფიით.
 
 ## სუფთა URL-ები
 

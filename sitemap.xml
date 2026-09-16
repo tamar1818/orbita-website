@@ -7,13 +7,13 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://webico.io/about</loc>
+    <loc>https://webico.io/services</loc>
     <lastmod>2026-09-16</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://webico.io/services</loc>
+    <loc>https://webico.io/work</loc>
     <lastmod>2026-09-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -23,6 +23,12 @@
     <lastmod>2026-09-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://webico.io/about</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://webico.io/service-web-development</loc>
