@@ -101,7 +101,7 @@ Getform, ან თქვენი საკუთარი backend. მონ�
 | სათაურების შრიფტი         | `--font-display` (მხოლოდ h1–h4)                                  |
 | ტექსტის შრიფტი            | `--font-base` (ძირითადი ტექსტი, ღილაკები, ფორმები)               |
 | ტელეფონი, ელფოსტა, მისამართი | ყველა `.html` ფაილი (header, footer, `contact.html`) — ძებნა `+995` |
-| დომენი                    | `sitemap.xml`, `robots.txt`, `<link rel="canonical">`, `og:url`   |
+| დომენი                    | `sitemap.xml`, `robots.txt`, `canonical`, `og:url` — ამჟამად `https://webico.io` |
 | რუკა                      | `contact.html` → `<div class="map">` → ჩაანაცვლეთ Google Maps-ის iframe-ით |
 | სოციალური ქსელები         | footer და `contact.html` → `https://facebook.com` და ა.შ.        |
 
@@ -136,6 +136,34 @@ Getform, ან თქვენი საკუთარი backend. მონ�
 - **ადაპტურობა:** სამი გარდატეხის წერტილი (1040 / 880 / 620 px), მობილური მენიუ.
 - **წარმადობა:** გარე დამოკიდებულებების გარეშე, SVG-იკონები კოდშივე, `font-display: swap`.
 - **მდგრადობა:** JavaScript-ის გამორთვის შემთხვევაშიც მთელი კონტენტი ჩანს.
+
+## სუფთა URL-ები
+
+საიტი მუშაობს გაფართოების გარეშე: `/services`, `/about`, `/contact` და ა.შ.
+ამას უზრუნველყოფს `.htaccess` (Apache / LiteSpeed — Hostinger):
+
+- `/page.html` → `/page` — 301 გადამისამართება (დუბლიკატების თავიდან ასაცილებლად)
+- `/index.html` → `/`
+- ბოლო სლეშის მოცილება
+- `http` → `https` და `www` → არა-`www`
+- gzip შეკუმშვა, ქეშირება, უსაფრთხოების ჰედერები
+- `ErrorDocument 404 /404.html`
+
+> ⚠️ `.htaccess` მუშაობს Apache-სა და LiteSpeed-ზე (Hostinger-ის ჩათვლით).
+> Nginx-ზე ან GitHub Pages-ზე საჭიროა ანალოგიური წესები სერვერის კონფიგურაციაში —
+> წინააღმდეგ შემთხვევაში გაფართოებიანი ბმულები დაგჭირდებათ.
+
+## SEO
+
+- უნიკალური `<title>` და `description` თითო გვერდზე
+- `canonical` და `og:url` — აბსოლუტური მისამართებით
+- Open Graph სურათი: `assets/img/og-image.png` (1200×630)
+- Schema.org: `ProfessionalService`, `Service`, `ContactPage`,
+  `BreadcrumbList` და `FAQPage` — ბოლო ორი Google-ის რიჩ-შედეგებისთვის
+- `sitemap.xml` სუფთა URL-ებით და `lastmod`-ით
+- `robots.txt` sitemap-ის მისამართით
+- თითო გვერდზე ზუსტად ერთი `<h1>`
+- 404 გვერდი `noindex`-ით
 
 ## გამოქვეყნება
 

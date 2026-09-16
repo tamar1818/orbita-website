@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://orbita.ge/sitemap.xml
+# ტექნიკური ფაილები საძიებოსთვის საჭირო არ არის
+Disallow: /assets/fonts/
+
+Sitemap: https://webico.io/sitemap.xml
