@@ -30,7 +30,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <!-- სარეზერვო ქართული შრიფტი — მთავარი შრიფტია LGV Anastasia 2025 Geo (იხ. assets/fonts/) -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;500;600;700&display=swap">
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/style.css?v=20260917">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -213,8 +213,9 @@
             არც დრო და არც ინფორმაცია.</p>
         </div>
 
-        <div class="grid grid--2">
-          <article class="card card--link" data-reveal data-reveal-delay="0">
+        <div class="carousel carousel--2" data-carousel>
+          <div class="carousel__viewport" data-carousel-track role="group" aria-label="სერვისები">
+            <div class="carousel__slide"><article class="card card--link card--lilac" data-reveal data-reveal-delay="0">
             <span class="card__icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><line x1="13" y1="4" x2="11" y2="20"/></svg></span>
             <h3>ვებსაიტების დიზაინი და შექმნა</h3>
             <p>კორპორატიული საიტები, ონლაინ მაღაზიები და ვებ-აპლიკაციები, რომლებიც სწრაფად იტვირთება და ვიზიტორს კლიენტად აქცევს.</p>
@@ -227,8 +228,8 @@
             <a class="link-arrow" href="/service-web-development">
               დეტალურად <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg><span class="sr-only">— ვებსაიტების დიზაინი და შექმნა</span>
             </a>
-          </article>
-          <article class="card card--link" data-reveal data-reveal-delay="70">
+          </article></div>
+            <div class="carousel__slide"><article class="card card--link card--lime" data-reveal data-reveal-delay="70">
             <span class="card__icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.7" y2="16.7"/><line x1="8.5" y1="12.5" x2="8.5" y2="9.5"/><line x1="11" y1="12.5" x2="11" y2="7.5"/><line x1="13.5" y1="12.5" x2="13.5" y2="10.5"/></svg></span>
             <h3>SEO ოპტიმიზაცია</h3>
             <p>ტექნიკური აუდიტი, საკვანძო სიტყვები და კონტენტი, რომელიც თქვენს ბიზნესს Google-ის პირველ გვერდზე გაიყვანს.</p>
@@ -241,8 +242,8 @@
             <a class="link-arrow" href="/service-seo">
               დეტალურად <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg><span class="sr-only">— SEO ოპტიმიზაცია</span>
             </a>
-          </article>
-          <article class="card card--link" data-reveal data-reveal-delay="140">
+          </article></div>
+            <div class="carousel__slide"><article class="card card--link card--pink" data-reveal data-reveal-delay="140">
             <span class="card__icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></span>
             <h3>ციფრული მარკეტინგი</h3>
             <p>Google Ads, Meta და TikTok კამპანიები გაზომვადი შედეგითა და გამჭვირვალე ყოველთვიური ანგარიშგებით.</p>
@@ -255,8 +256,8 @@
             <a class="link-arrow" href="/service-marketing">
               დეტალურად <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg><span class="sr-only">— ციფრული მარკეტინგი</span>
             </a>
-          </article>
-          <article class="card card--link" data-reveal data-reveal-delay="210">
+          </article></div>
+            <div class="carousel__slide"><article class="card card--link" data-reveal data-reveal-delay="210">
             <span class="card__icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></span>
             <h3>ბრენდის ვიზუალური იდენტობა</h3>
             <p>ლოგო, ბრენდბუქი და ინტერფეისის დიზაინი, რომელიც ნდობას აჩენს და კონკურენტებისგან გამოგარჩევთ.</p>
@@ -269,7 +270,13 @@
             <a class="link-arrow" href="/service-branding">
               დეტალურად <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg><span class="sr-only">— ბრენდის ვიზუალური იდენტობა</span>
             </a>
-          </article>
+          </article></div>
+          </div>
+          <div class="carousel__controls">
+            <button class="carousel__btn" type="button" data-carousel-prev aria-label="წინა"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg></button>
+            <div class="carousel__dots" data-carousel-dots></div>
+            <button class="carousel__btn" type="button" data-carousel-next aria-label="შემდეგი"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></button>
+          </div>
         </div>
 
         <div class="btn-row btn-row--center" style="margin-top:40px" data-reveal>
@@ -598,6 +605,6 @@
     </div>
   </footer>
 
-  <script src="assets/js/main.js"></script>
+  <script src="assets/js/main.js?v=20260917"></script>
 </body>
 </html>

@@ -54,10 +54,10 @@
   --muted: #6b6963;
   --muted-light: #97948c;
 
-  --paper: #f5f2eb;       /* ძირითადი ფონი */
-  --bg: #f5f2eb;
-  --bg-card: #ffffff;     /* ბარათები თეთრია paper-ზე */
-  --bg-soft: #efeae0;
+  --paper: #ffffff;       /* ძირითადი ფონი — თეთრი */
+  --bg: #ffffff;
+  --bg-card: #ffffff;
+  --bg-soft: #f4f4f5;     /* ნეიტრალური ღია ტონი სექციების მონაცვლეობისთვის */
   --bg-dark: #181818;
 
   --lilac: #af98f5;       /* მთავარი აქცენტი */
@@ -77,6 +77,7 @@
   --radius: 24px;
   --radius-sm: 16px;
   --radius-lg: 28px;
+  --radius-xl: 40px;
   --radius-pill: 999px;
   --bw: 1px;
   --shadow-soft: 0 2px 6px rgba(24, 24, 24, .04), 0 14px 34px rgba(24, 24, 24, .07);
@@ -157,11 +158,15 @@ li { margin-bottom: .4em; }
   padding-inline: var(--gutter);
 }
 
-.section { padding-block: var(--section-y); border-top: 1px solid var(--line); }
-/* ორმაგი ხაზის თავიდან აცილება, როცა წინა ბლოკს უკვე აქვს ქვედა ჩარჩო */
-.trustbar + .section,
-.page-hero + .section,
-.cta + .section { border-top: 0; }
+.section { padding-block: var(--section-y); }
+
+/* ფერადი სექციები — მომრგვალებული ბლოკები, გვერდებიდან დაშორებით */
+.section--soft,
+.cta {
+  border-radius: var(--radius-xl);
+  margin-inline: var(--gutter);
+}
+.section--soft + .section--soft { margin-top: var(--gutter); }
 .section--soft { background: var(--bg-soft); }
 .section--tight { padding-block: clamp(40px, 5vw, 64px); }
 
@@ -279,7 +284,7 @@ li { margin-bottom: .4em; }
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(245, 242, 235, .9);
+  background: rgba(255, 255, 255, .92);
   backdrop-filter: saturate(150%) blur(10px);
   -webkit-backdrop-filter: saturate(150%) blur(10px);
   border-bottom: 1px solid var(--line);
@@ -430,6 +435,21 @@ li { margin-bottom: .4em; }
 
 .card--link:hover { transform: translateY(-4px); box-shadow: var(--shadow-lift); }
 
+/* ბრენდის ფერადი ბარათები */
+.card--lilac { background: var(--lilac); border-color: transparent; }
+.card--lime  { background: var(--lime);  border-color: transparent; }
+.card--pink  { background: var(--pink);  border-color: transparent; }
+.card--lilac p, .card--lime p, .card--pink p,
+.card--lilac .card__list li, .card--lime .card__list li, .card--pink .card__list li { color: var(--ink-soft); }
+.card--lilac .card__icon, .card--lime .card__icon, .card--pink .card__icon {
+  background: rgba(255, 255, 255, .55);
+  border-color: transparent;
+}
+.card--lilac .card__list li::before,
+.card--lime .card__list li::before,
+.card--pink .card__list li::before { background: var(--ink); }
+.card--lilac .link-arrow, .card--lime .link-arrow, .card--pink .link-arrow { border-bottom-color: var(--ink); }
+
 .card__icon {
   border-radius: var(--radius-sm);
   display: inline-flex; align-items: center; justify-content: center;
@@ -482,6 +502,7 @@ li { margin-bottom: .4em; }
    -------------------------------------------------------------------------- */
 
 .trustbar { padding-block: 34px; border-bottom: 1px solid var(--line); }
+.page-hero { border-radius: 0 0 var(--radius-xl) var(--radius-xl); }
 .trustbar__label {
   text-align: center; margin-bottom: 20px;
   font-size: .72rem; font-weight: 700;
@@ -1016,6 +1037,8 @@ li { margin-bottom: .4em; }
 
 @media (max-width: 620px) {
   body { font-size: 16px; }
+  :root { --radius-xl: 26px; }
+  .section--soft, .cta { margin-inline: 12px; }
   .grid--2, .grid--3, .grid--4 { grid-template-columns: 1fr; }
   .steps { grid-template-columns: 1fr; }
   .field-row { grid-template-columns: 1fr; }
