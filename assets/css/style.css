@@ -945,6 +945,8 @@ li { margin-bottom: .4em; }
 
 .site-footer {
   padding-block: clamp(52px, 6vw, 80px) 28px;
+  border-radius: var(--radius-xl);
+  margin: 0 var(--gutter) var(--gutter);
   background: var(--bg-dark);
   color: rgba(255, 255, 255, .72);
   font-size: .94rem;
@@ -1039,6 +1041,7 @@ li { margin-bottom: .4em; }
   body { font-size: 16px; }
   :root { --radius-xl: 26px; }
   .section--soft, .cta { margin-inline: 12px; }
+  .site-footer { margin: 0 12px 12px; }
   .grid--2, .grid--3, .grid--4 { grid-template-columns: 1fr; }
   .steps { grid-template-columns: 1fr; }
   .field-row { grid-template-columns: 1fr; }
