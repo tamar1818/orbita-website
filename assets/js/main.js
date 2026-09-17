@@ -46,17 +46,21 @@ const FORM_ENDPOINT = "";
 
   /* --------------------------------------- 2. მიმდინარე გვერდი ნავიგაციაში */
   function initActiveLink() {
-    // სუფთა URL-ები: /work, /services, ასევე /work.html და /
     const norm = (v) => v.replace(/\/+$/, "").split("/").pop().replace(/\.html$/, "");
     const path = norm(window.location.pathname);
 
     $$("#nav-links a[href]").forEach((a) => {
       const href = a.getAttribute("href");
       if (!href || href.startsWith("#") || href.startsWith("http")) return;
-      const target = norm(href);
-      if (target === path) a.classList.add("is-active");
-      // სერვისის შიდა გვერდზე „სერვისები“ აქტიურად რჩება
-      if (target === "services" && path.indexOf("service-") === 0) a.classList.add("is-active");
+      if (norm(href) === path) a.classList.add("is-active");
+    });
+
+    // mega-menu-ს ღილაკი ბმული არაა — მას data-nav-match ანიშნებს
+    $$("#nav-links [data-nav-match]").forEach((el) => {
+      const match = el.dataset.navMatch;
+      if (path === match || path.indexOf(match.replace(/s$/, "") + "-") === 0) {
+        el.classList.add("is-active");
+      }
     });
   }
 
@@ -486,6 +490,73 @@ const FORM_ENDPOINT = "";
     });
   }
 
+
+  /* ---------------------------------------------------- 12. Mega-menu */
+  function initMegaMenu() {
+    const triggers = $$("[data-mega-trigger]");
+    if (!triggers.length) return;
+
+    const isDesktop = () => window.matchMedia("(min-width: 881px)").matches;
+    const canHover = () => window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+    triggers.forEach((trigger) => {
+      const item = trigger.closest(".nav__item");
+      const panel = document.getElementById(trigger.getAttribute("aria-controls"));
+      if (!item || !panel) return;
+
+      let closeTimer;
+
+      const open = () => {
+        clearTimeout(closeTimer);
+        item.classList.add("is-open");
+        trigger.setAttribute("aria-expanded", "true");
+      };
+      const close = () => {
+        item.classList.remove("is-open");
+        trigger.setAttribute("aria-expanded", "false");
+      };
+      const toggle = () => (item.classList.contains("is-open") ? close() : open());
+
+      trigger.addEventListener("click", (e) => {
+        e.preventDefault();
+        toggle();
+      });
+
+      // დესკტოპზე — hover, მცირე დაყოვნებით, რომ კურსორმა პანელამდე მიაღწიოს
+      item.addEventListener("mouseenter", () => {
+        if (isDesktop() && canHover()) open();
+      });
+      item.addEventListener("mouseleave", () => {
+        if (!isDesktop() || !canHover()) return;
+        clearTimeout(closeTimer);
+        closeTimer = setTimeout(close, 140);
+      });
+
+      // ფოკუსი გავიდა მენიუდან — იხურება
+      item.addEventListener("focusout", (e) => {
+        if (!item.contains(e.relatedTarget)) close();
+      });
+
+      // ბმულზე დაჭერისას იხურება (მობილურის drawer-ისთვისაც)
+      panel.addEventListener("click", (e) => {
+        if (e.target.closest("a")) close();
+      });
+
+      document.addEventListener("click", (e) => {
+        if (!item.contains(e.target)) close();
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && item.classList.contains("is-open")) {
+          close();
+          trigger.focus();
+        }
+      });
+
+      window.addEventListener("resize", close);
+    });
+  }
+
   /* ------------------------------------------------------------ bootstrap */
   document.addEventListener("DOMContentLoaded", () => {
     initNav();
@@ -499,5 +570,6 @@ const FORM_ENDPOINT = "";
     initCarousels();
     initFilters();
     initTeamCards();
+    initMegaMenu();
   });
 })();

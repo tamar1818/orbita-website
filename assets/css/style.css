@@ -312,16 +312,16 @@ li { margin-bottom: .4em; }
 }
 
 .nav__links { display: flex; align-items: center; gap: 2px; list-style: none; margin: 0; padding: 0; }
-.nav__links a {
+.nav__links > li > a {
   display: block; padding: 10px 14px;
   font-size: .82rem; font-weight: 700;
   letter-spacing: .1em; text-transform: uppercase;
   color: var(--ink-soft);
   border: 1px solid transparent;
 }
-.nav__links a { border-radius: var(--radius-pill); }
-.nav__links a:hover { background: var(--bg-soft); }
-.nav__links a.is-active { background: var(--ink); color: var(--paper); border-radius: var(--radius-pill); }
+.nav__links > li > a { border-radius: var(--radius-pill); }
+.nav__links > li > a:hover { background: var(--bg-soft); }
+.nav__links > li > a.is-active { background: var(--ink); color: var(--paper); border-radius: var(--radius-pill); }
 .nav__links .btn { display: none; }
 
 .nav__cta { display: flex; align-items: center; gap: 10px; }
@@ -1023,7 +1023,7 @@ li { margin-bottom: .4em; }
     max-height: calc(100vh - var(--header-h)); overflow-y: auto;
   }
   .nav__links.is-open { display: flex; }
-  .nav__links a { padding: 15px 16px; font-size: .92rem; border-color: var(--line); }
+  .nav__links > li > a { padding: 15px 16px; font-size: .92rem; border-color: var(--line); }
   .nav__links li:last-child { margin-top: 12px; }
   .nav__links .btn { display: inline-flex; width: 100%; }
   .nav__cta .btn { display: none; }
@@ -1252,4 +1252,177 @@ li { margin-bottom: .4em; }
   .work-grid { grid-template-columns: 1fr; }
   .carousel__slide, .carousel--2 .carousel__slide { flex-basis: 100%; }
   .carousel__viewport { gap: 16px; }
+}
+
+/* --------------------------------------------------------------------------
+   27. Mega-menu — სერვისები + ტექნოლოგიები
+   -------------------------------------------------------------------------- */
+
+.nav__item { position: relative; }
+
+.nav__trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 14px;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: none;
+  font-family: var(--font-base);
+  font-size: .82rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  cursor: pointer;
+}
+.nav__trigger:hover { background: var(--bg-soft); }
+.nav__trigger.is-active { background: var(--ink); color: var(--paper); }
+.nav__trigger svg { transition: transform .2s ease; }
+.nav__trigger[aria-expanded="true"] svg { transform: rotate(180deg); }
+
+.mega {
+  position: absolute;
+  top: calc(100% + 12px);
+  left: 50%;
+  z-index: 120;
+  width: min(780px, calc(100vw - 32px));
+  transform: translateX(-50%) translateY(8px);
+  visibility: hidden;          /* a11y ხისგანაც მალავს და ფოკუსსაც კეტავს */
+  opacity: 0;
+  transition: opacity .18s ease, transform .18s ease, visibility .18s;
+}
+.nav__item.is-open .mega {
+  visibility: visible;
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.mega__inner {
+  display: grid;
+  grid-template-columns: 1.25fr .85fr;
+  overflow: hidden;
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lift);
+}
+
+.mega__col { padding: 24px; }
+.mega__col--tools { background: var(--bg-soft); border-left: 1px solid var(--line); }
+
+.mega__label {
+  margin: 0 0 14px;
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.mega__item {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 14px;
+  padding: 12px;
+  border-radius: var(--radius-sm);
+  color: var(--ink);
+  transition: background-color .14s ease;
+}
+.mega__item:hover { background: var(--bg-soft); color: var(--ink); }
+.mega__item b { display: block; font-size: .95rem; font-weight: 700; line-height: 1.25; }
+.mega__item small { display: block; margin-top: 3px; font-size: .82rem; color: var(--muted); line-height: 1.4; }
+.mega__item .mega__go { opacity: 0; transition: opacity .14s ease, transform .14s ease; color: var(--muted); }
+.mega__item:hover .mega__go { opacity: 1; transform: translateX(3px); }
+
+.mega__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px; height: 42px;
+  flex: none;
+  border-radius: 12px;
+  background: var(--bg-soft);
+  color: var(--ink);
+}
+.mega__icon--lilac { background: var(--lilac); }
+.mega__icon--lime  { background: var(--lime); }
+.mega__icon--pink  { background: var(--pink); }
+
+.tools { list-style: none; margin: 0; padding: 0; }
+.tools li { margin: 0; }
+.tools a {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 9px 10px;
+  border-radius: var(--radius-sm);
+  font-size: .9rem;
+  font-weight: 600;
+  color: var(--ink);
+  transition: background-color .14s ease;
+}
+.tools a:hover { background: var(--bg-card); color: var(--ink); }
+
+.tool__mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px; height: 30px;
+  flex: none;
+  border-radius: 9px;
+  background: var(--tint, var(--ink));
+  color: #fff;
+  font-family: var(--font-base);
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .01em;
+}
+.tool__mark--ink { background: var(--ink); }
+
+.mega__foot {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 24px;
+  border-top: 1px solid var(--line);
+  background: var(--bg-card);
+  font-size: .85rem;
+  color: var(--muted);
+}
+
+/* --- მობილური: მენიუ იშლება drawer-ის შიგნით --- */
+@media (max-width: 880px) {
+  .nav__item { position: static; }
+  .nav__trigger { width: 100%; justify-content: space-between; padding: 15px 16px; font-size: .92rem; }
+
+  .mega {
+    position: static;
+    width: auto;
+    transform: none;
+    visibility: visible;
+    opacity: 1;
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows .26s ease;
+  }
+  .nav__item.is-open .mega { grid-template-rows: 1fr; transform: none; }
+  .mega > div { overflow: hidden; }
+
+  .mega__inner {
+    grid-template-columns: 1fr;
+    border: 0;
+    border-radius: var(--radius-sm);
+    box-shadow: none;
+    background: var(--bg-soft);
+    margin: 4px 0 8px;
+  }
+  .mega__col { padding: 16px; }
+  .mega__col--tools { border-left: 0; border-top: 1px solid var(--line); background: transparent; }
+  .mega__item .mega__go { display: none; }
+  .mega__foot { padding: 14px 16px; background: transparent; }
 }

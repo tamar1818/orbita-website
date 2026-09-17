@@ -174,6 +174,25 @@ Getform, ან თქვენი საკუთარი backend. მონ�
 
 **გუნდის ბარათები** — `data-member-toggle` + `aria-expanded` გაშლადი ბიოგრაფიით.
 
+**Mega-menu** — „სერვისები“ ხსნის ორსვეტიან პანელს: მარცხნივ სერვისები
+აღწერებით, მარჯვნივ ტექნოლოგიები (WordPress, Shopify, Webflow, Lovable,
+Custom code, Next.js/React, AWS, Figma).
+
+```html
+<li class="nav__item">
+  <button data-mega-trigger aria-expanded="false" aria-controls="mega-services"
+          data-nav-match="services">სერვისები</button>
+  <div class="mega" id="mega-services"><div> … </div></div>
+</li>
+```
+
+დესკტოპზე იხსნება hover-ითა და დაჭერით, მობილურზე — იშლება მენიუს შიგნით.
+იხურება Esc-ით, გარეთ დაჭერით და ფოკუსის გასვლისას. ტექნოლოგიების ჩამონათვალი
+რომ შეცვალოთ, დაარედაქტირეთ `.tools` ბლოკი — ფერი `--tint` ცვლადით იმართება.
+
+> ⚠️ ნავიგაციის სტილები შეგნებულად `.nav__links > li > a`-ზეა მიბმული და არა
+> `.nav__links a`-ზე — თორემ მაიუსკული და letter-spacing mega-ს შიგნითაც გაჟონავდა.
+
 ## სუფთა URL-ები
 
 საიტი მუშაობს გაფართოების გარეშე: `/services`, `/about`, `/contact` და ა.შ.

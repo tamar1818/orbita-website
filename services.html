@@ -113,7 +113,56 @@
         <ul class="nav__links" id="nav-links">
           <li><a href="/">მთავარი</a></li>
           <li><a href="/about">ჩვენ შესახებ</a></li>
-          <li><a href="/services">სერვისები</a></li>
+          <li class="nav__item">
+            <button class="nav__trigger" type="button" data-mega-trigger
+                    aria-expanded="false" aria-controls="mega-services" data-nav-match="services">
+              სერვისები <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="mega" id="mega-services"><div>
+              <div class="mega__inner">
+                <div class="mega__col">
+                  <p class="mega__label">რას ვაკეთებთ</p>
+              <a class="mega__item" href="/service-web-development">
+                <span class="mega__icon mega__icon--lilac"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><line x1="13" y1="4" x2="11" y2="20"/></svg></span>
+                <span><b>ვებსაიტების დიზაინი და შექმნა</b><small>კორპორატიული საიტები, ონლაინ მაღაზიები და ვებ-აპლიკაციები</small></span>
+                <svg class="mega__go" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+              <a class="mega__item" href="/service-seo">
+                <span class="mega__icon mega__icon--lime"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.7" y2="16.7"/></svg></span>
+                <span><b>SEO ოპტიმიზაცია</b><small>ტექნიკური აუდიტი, სემანტიკა და კონტენტი ქართულ ენაზე</small></span>
+                <svg class="mega__go" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+              <a class="mega__item" href="/service-marketing">
+                <span class="mega__icon mega__icon--pink"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></span>
+                <span><b>ციფრული მარკეტინგი</b><small>Google Ads, Meta და TikTok კამპანიები გაზომვადი შედეგით</small></span>
+                <svg class="mega__go" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+              <a class="mega__item" href="/service-branding">
+                <span class="mega__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></span>
+                <span><b>ბრენდის ვიზუალური იდენტობა</b><small>ლოგო, ბრენდბუქი და UI/UX დიზაინი</small></span>
+                <svg class="mega__go" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+                </div>
+                <div class="mega__col mega__col--tools">
+                  <p class="mega__label">ტექნოლოგიები</p>
+                  <ul class="tools">
+                <li><a href="/services"><span class="tool__mark" style="--tint:#21759b">Wp</span>WordPress</a></li>
+                <li><a href="/services"><span class="tool__mark" style="--tint:#5a8f3d">Sh</span>Shopify</a></li>
+                <li><a href="/services"><span class="tool__mark" style="--tint:#4353ff">Wf</span>Webflow</a></li>
+                <li><a href="/services"><span class="tool__mark" style="--tint:#d1443c">Lo</span>Lovable</a></li>
+                <li><a href="/services"><span class="tool__mark tool__mark--ink">&lt;/&gt;</span>Custom code</a></li>
+                <li><a href="/services"><span class="tool__mark" style="--tint:#0b7285">Ne</span>Next.js / React</a></li>
+                <li><a href="/services"><span class="tool__mark" style="--tint:#b26a00">aws</span>AWS</a></li>
+                <li><a href="/services"><span class="tool__mark" style="--tint:#8b45d6">Fi</span>Figma</a></li>
+                  </ul>
+                </div>
+                <div class="mega__foot">
+                  <span>ვმუშაობთ სტანდარტულ ინსტრუმენტებზე — პროექტი არავის „დაბმული“ არ რჩება.</span>
+                  <a class="link-arrow" href="/services">ყველა სერვისი და ფასები</a>
+                </div>
+              </div>
+            </div></div>
+          </li>
           <li><a href="/work">ნამუშევრები</a></li>
           <li><a href="/contact">კონტაქტი</a></li>
           <li><a class="btn btn--primary btn--sm" href="/contact">უფასო კონსულტაცია</a></li>
