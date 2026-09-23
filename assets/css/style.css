@@ -312,23 +312,38 @@ li { margin-bottom: .4em; }
 }
 
 .nav__links { display: flex; align-items: center; gap: 2px; list-style: none; margin: 0; padding: 0; }
-.nav__links > li > a {
-  display: block; padding: 10px 14px;
-  font-size: .82rem; font-weight: 700;
-  letter-spacing: .1em; text-transform: uppercase;
-  color: var(--ink-soft);
+/* ბმულიც და mega-ღილაკიც ერთი გეომეტრიით — თორემ ბაზისური ხაზი იცვლება */
+.nav__links > li > a,
+.nav__links > li > .nav__trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 15px;
   border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+  background: none;
+  font-family: var(--font-base);
+  font-size: .93rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+  line-height: 1.2;
+  color: var(--ink-soft);
+  white-space: nowrap;
+  cursor: pointer;
 }
-.nav__links > li > a { border-radius: var(--radius-pill); }
-.nav__links > li > a:hover { background: var(--bg-soft); }
-.nav__links > li > a.is-active { background: var(--ink); color: var(--paper); border-radius: var(--radius-pill); }
+.nav__links > li > a:hover,
+.nav__links > li > .nav__trigger:hover { background: var(--bg-soft); color: var(--ink); }
+.nav__links > li > a.is-active,
+.nav__links > li > .nav__trigger.is-active { background: var(--ink); color: var(--paper); }
 .nav__links .btn { display: none; }
 
 .nav__cta { display: flex; align-items: center; gap: 10px; }
 .nav__phone {
   display: inline-flex; align-items: center; gap: 8px;
   padding: 10px 12px;
-  font-size: .85rem; font-weight: 700; color: var(--ink);
+  font-size: .9rem; font-weight: 600; color: var(--ink);
+  line-height: 1.2;
   font-variant-numeric: tabular-nums;
 }
 .nav__phone:hover { color: var(--accent); }
@@ -946,7 +961,7 @@ li { margin-bottom: .4em; }
 .site-footer {
   padding-block: clamp(52px, 6vw, 80px) 28px;
   border-radius: var(--radius-xl);
-  margin: 0 var(--gutter) var(--gutter);
+  margin: clamp(48px, 6vw, 88px) var(--gutter) var(--gutter);
   background: var(--bg-dark);
   color: rgba(255, 255, 255, .72);
   font-size: .94rem;
@@ -1041,7 +1056,7 @@ li { margin-bottom: .4em; }
   body { font-size: 16px; }
   :root { --radius-xl: 26px; }
   .section--soft, .cta { margin-inline: 12px; }
-  .site-footer { margin: 0 12px 12px; }
+  .site-footer { margin: 40px 12px 12px; }
   .grid--2, .grid--3, .grid--4 { grid-template-columns: 1fr; }
   .steps { grid-template-columns: 1fr; }
   .field-row { grid-template-columns: 1fr; }
@@ -1263,24 +1278,6 @@ li { margin-bottom: .4em; }
 
 .nav__item { position: relative; }
 
-.nav__trigger {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  padding: 10px 14px;
-  border: 0;
-  border-radius: var(--radius-pill);
-  background: none;
-  font-family: var(--font-base);
-  font-size: .82rem;
-  font-weight: 700;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-  cursor: pointer;
-}
-.nav__trigger:hover { background: var(--bg-soft); }
-.nav__trigger.is-active { background: var(--ink); color: var(--paper); }
 .nav__trigger svg { transition: transform .2s ease; }
 .nav__trigger[aria-expanded="true"] svg { transform: rotate(180deg); }
 
@@ -1700,4 +1697,64 @@ li { margin-bottom: .4em; }
   .work__actions { flex-direction: column; align-items: stretch; }
   .work__actions .btn { width: 100%; }
   .work__site { justify-content: center; }
+}
+
+/* --------------------------------------------------------------------------
+   32. კლიენტების უწყვეტი კარუსელი (marquee)
+   -------------------------------------------------------------------------- */
+
+.marquee {
+  position: relative;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+.marquee__track {
+  display: flex;
+  width: max-content;
+  animation: marquee 48s linear infinite;
+}
+.marquee:hover .marquee__track { animation-play-state: paused; }
+
+.marquee__group {
+  display: flex;
+  align-items: center;
+  gap: clamp(22px, 3vw, 48px);
+  padding-right: clamp(22px, 3vw, 48px);
+  flex: none;
+}
+
+.marquee__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  background: var(--bg-card);
+  font-family: var(--font-display);
+  font-size: clamp(.98rem, .9rem + .3vw, 1.2rem);
+  font-weight: 700;
+  letter-spacing: -.02em;
+  color: var(--ink);
+  white-space: nowrap;
+  transition: border-color .16s ease, transform .16s ease;
+}
+.marquee__item:hover { border-color: var(--ink); transform: translateY(-2px); color: var(--ink); }
+.marquee__item i {
+  width: 8px; height: 8px; flex: none;
+  border-radius: 50%;
+  background: var(--lilac);
+}
+.marquee__item:nth-child(3n+2) i { background: var(--lime); }
+.marquee__item:nth-child(3n+3) i { background: var(--pink); }
+
+@keyframes marquee {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-50%, 0, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee__track { animation: none; }
+  .marquee { overflow-x: auto; }
 }

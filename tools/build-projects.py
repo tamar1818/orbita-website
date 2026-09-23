@@ -450,6 +450,37 @@ def build_index():
     io.open(os.path.join(ROOT, "work.html"), "w", encoding="utf-8").write(html)
 
 
+
+# ------------------------------------------------- კლიენტების კარუსელი
+CLIENTS_START = "<!-- clients:start -->"
+CLIENTS_END = "<!-- clients:end -->"
+
+
+def build_clients():
+    """index.html-ის „გვენდობიან“ ბლოკს რეალური კლიენტების სიით ავსებს."""
+    path = os.path.join(ROOT, "index.html")
+    html = io.open(path, encoding="utf-8").read()
+    if CLIENTS_START not in html or CLIENTS_END not in html:
+        print("  ! index.html-ში clients მარკერები ვერ ვიპოვე — გამოტოვებულია")
+        return 0
+
+    items = "".join(
+        '<a class="marquee__item" href="/work-%s"><i aria-hidden="true"></i>%s</a>'
+        % (p["slug"], esc(p["name"])) for p in PROJECTS)
+    # ორი იდენტური ჯგუფი — უწყვეტი მარყუჟისთვის; დუბლიკატი ეკრანმკითხველს ემალება
+    track = ('<div class="marquee__track">'
+             '<div class="marquee__group">%s</div>'
+             '<div class="marquee__group" aria-hidden="true">%s</div>'
+             '</div>') % (items, items)
+
+    block = ('%s\n        <div class="marquee">\n          %s\n        </div>\n        %s'
+             % (CLIENTS_START, track, CLIENTS_END))
+    start = html.index(CLIENTS_START)
+    end = html.index(CLIENTS_END) + len(CLIENTS_END)
+    io.open(path, "w", encoding="utf-8").write(html[:start] + block + html[end:])
+    return len(PROJECTS)
+
+
 def build_sitemap():
     pages = [("/", "1.0"), ("/services", "0.9"), ("/work", "0.9"), ("/contact", "0.9"),
              ("/about", "0.8"), ("/service-web-development", "0.8"), ("/service-seo", "0.8"),
@@ -479,10 +510,12 @@ if __name__ == "__main__":
     for i, p in enumerate(PROJECTS):
         build_project(p, PROJECTS[(i - 1) % n], PROJECTS[(i + 1) % n])
     build_index()
+    clients = build_clients()
     total = build_sitemap()
     ver, changed = bump_assets()
     filled = sum(1 for p in PROJECTS if p.get("summary", "").strip())
     print("  ✓ %d პროექტის გვერდი + work.html" % n)
+    print("  ✓ კლიენტების კარუსელი — %d ჩანაწერი" % clients)
     print("  ✓ sitemap.xml — %d მისამართი" % total)
     print("  ✓ CSS/JS ვერსია: %s (%d ფაილი)" % (ver, changed))
     print("  ℹ აღწერა შევსებულია: %d / %d" % (filled, n))
