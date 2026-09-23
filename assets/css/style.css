@@ -1595,3 +1595,56 @@ li { margin-bottom: .4em; }
 @media (max-width: 520px) {
   .project-meta { grid-template-columns: 1fr; gap: 16px; }
 }
+
+/* --------------------------------------------------------------------------
+   30. პროექტის ბარათი — დახვეწილი ვარიანტი
+   -------------------------------------------------------------------------- */
+
+.work__link { display: flex; flex-direction: column; height: 100%; color: var(--ink); }
+.work__link:hover { color: var(--ink); }
+
+.work__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+}
+.work__head h3 { margin: 0; }
+
+.work__go {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px; height: 38px;
+  flex: none;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-pill);
+  color: var(--ink);
+  transition: background-color .18s ease, color .18s ease, transform .18s ease;
+}
+.work:hover .work__go { background: var(--ink); color: var(--paper); transform: translate(2px, -2px); }
+
+.work__domain {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 14px;
+  font-size: .82rem;
+  font-weight: 700;
+  letter-spacing: .02em;
+  color: var(--muted);
+}
+
+.tag--partner { background: var(--lime); border-color: transparent; }
+.tag--soft { background: var(--bg-soft); border-color: transparent; color: var(--muted); }
+
+.work__meta { align-items: center; }
+
+/* მოკაპი ბარათში — მსუბუქი მასშტაბირება hover-ზე */
+.work__cover--mock { overflow: hidden; }
+.work__cover--mock .mock-site__view { transition: transform .4s cubic-bezier(.22,.61,.36,1); }
+.work:hover .work__cover--mock .mock-site__view { transform: scale(1.03); }
+
+@media (prefers-reduced-motion: reduce) {
+  .work:hover .work__cover--mock .mock-site__view { transform: none; }
+}

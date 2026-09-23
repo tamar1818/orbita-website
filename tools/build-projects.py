@@ -24,6 +24,10 @@ with io.open(os.path.join(ROOT, "tools/projects.json"), encoding="utf-8") as fh:
 
 SHELL = os.path.join(ROOT, "about.html")   # header/footer-ის წყარო
 
+ARROW = ('<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" '
+         'stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
+         '<line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>')
+
 
 def esc(t):
     return (t.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
@@ -86,6 +90,131 @@ def shell(title, desc, canonical, body, jsonld=""):
 def bullets(items):
     return "\n".join("              <li>%s</li>" % esc(x) for x in items)
 
+
+
+# ------------------------------------------------- საერთო: ფორმა და პროცესი
+FORM_SRC = os.path.join(ROOT, "service-seo.html")
+
+
+def lead_form(slug):
+    """იგივე ფორმა, რაც სერვისების გვერდებზე — ID-ები პროექტზეა მორგებული."""
+    src = io.open(FORM_SRC, encoding="utf-8").read()
+    m = re.search(r'<form class="lead-form".*?</form>', src, re.DOTALL)
+    if not m:
+        sys.exit("ვერ ვიპოვე ლიდ-ფორმა: " + FORM_SRC)
+    f = m.group(0)
+    f = f.replace('data-lead-form="service-seo"', 'data-lead-form="project-%s"' % slug)
+    f = f.replace("srv-seo-", "pr-%s-" % slug)
+    f = f.replace('<option value="seo" selected>', '<option value="seo">')
+    f = f.replace("<h3>განაცხადის ფორმა</h3>",
+                  "<h3>მოგწონთ ეს პროექტი?</h3>")
+    f = f.replace("<p class=\"lead-form__intro\">ველები ვარსკვლავით სავალდებულოა.</p>",
+                  "<p class=\"lead-form__intro\">დაგვიტოვეთ განაცხადი და მსგავს პროექტზე "
+                  "საორიენტაციო ღირებულებასა და ვადებს ერთ სამუშაო დღეში მიიღებთ.</p>")
+    return f
+
+
+# პროცესი და ტესტირება — აღწერს Webico-ს სტანდარტულ მეთოდს,
+# და არა კონკრეტული კლიენტის შედეგებს
+PROCESS = [
+    ("გაცნობა", "ვსწავლობთ ბიზნესს, სამიზნე აუდიტორიასა და კონკურენტებს. "
+                "ვთანხმდებით, რა მოქმედება უნდა შეასრულოს ვიზიტორმა საიტზე."),
+    ("დაგეგმვა", "ვწერთ სტრუქტურას გვერდების დონეზე, ვათანხმებთ შინაარსსა "
+                 "და დიზაინის მიმართულებას."),
+    ("დიზაინი", "პროტოტიპი, შემდეგ კი მაკეტი Figma-ში — დესკტოპისა და "
+                "მობილურის ვერსიებით. კოდი მხოლოდ დამტკიცების შემდეგ იწერება."),
+    ("დეველოპმენტი", "ვაწყობთ საიტს, ვამაგრებთ კონტენტის მართვის სისტემას, "
+                     "ფორმებსა და საჭირო ინტეგრაციებს."),
+    ("ტესტირება", "ვამოწმებთ ყველა ბრაუზერსა და მოწყობილობაზე, ვზომავთ "
+                  "სისწრაფეს და ვასწორებთ ნაპოვნ ხარვეზებს."),
+    ("გაშვება", "ვამაგრებთ ანალიტიკას, ვუშვებთ საიტს და გადავცემთ "
+                "წვდომებსა და ინსტრუქციას."),
+]
+
+QA = [
+    "ბრაუზერები: Chrome, Safari, Firefox და Edge — ბოლო ვერსიები",
+    "მოწყობილობები: მობილური, ტაბლეტი და დესკტოპი, სხვადასხვა ეკრანის ზომაზე",
+    "სისწრაფე: PageSpeed Insights და Core Web Vitals",
+    "ფორმები: ვალიდაცია, შეცდომების შეტყობინებები და წერილის მიღების შემოწმება",
+    "ბმულები: ყველა შიდა და გარე ბმულის გადამოწმება, 404-ების გამორიცხვა",
+    "წვდომადობა: კლავიატურით ნავიგაცია, კონტრასტი და ალტერნატიული ტექსტები",
+    "SEO-ს საბაზისო შემოწმება: მეტა-ტეგები, სათაურების იერარქია, sitemap და robots.txt",
+    "უსაფრთხოება: SSL, სარეზერვო ასლები და განახლებები",
+]
+
+
+def process_block():
+    steps = "\n".join(
+        """          <article class="step" data-reveal data-reveal-delay="%d">
+            <h3>%s</h3>
+            <p>%s</p>
+          </article>""" % (i * 60, esc(t), esc(d))
+        for i, (t, d) in enumerate(PROCESS))
+    checks = "\n".join("              <li>%s</li>" % esc(x) for x in QA)
+    return """
+    <section class="section">
+      <div class="container">
+        <div class="section-head section-head--center" data-reveal>
+          <span class="eyebrow">პროექტის შესახებ</span>
+          <h2>როგორ მიმდინარეობდა მუშაობა</h2>
+          <p>ყველა პროექტს ერთი და იგივე ეტაპებით ვატარებთ — პირველი შეხვედრიდან
+            გაშვებამდე. ქვემოთ აღწერილია ჩვენი სტანდარტული მეთოდი.</p>
+        </div>
+        <div class="steps">
+%s
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--soft">
+      <div class="container">
+        <div class="feature-row">
+          <div class="feature-row__body" data-reveal>
+            <span class="eyebrow eyebrow--accent">ტესტირება</span>
+            <h2>რას ვამოწმებთ გაშვებამდე</h2>
+            <p>საიტი ეთერში მხოლოდ მაშინ გადის, როცა ქვემოთ ჩამოთვლილი ყველა
+              პუნქტი შემოწმებულია. ხარვეზები ფიქსირდება და ხელახლა მოწმდება.</p>
+            <ul class="checklist">
+%s
+            </ul>
+          </div>
+          <div class="feature-row__media" data-reveal data-reveal-delay="90">
+            <div class="panel">
+              <div class="mock__row"><span><b>ბრაუზერები</b><br><small>ბოლო ვერსიები</small></span><span class="mock__pill">4</span></div>
+              <div class="mock__row"><span><b>ეკრანის ზომები</b><br><small>მობილური → დესკტოპი</small></span><span class="mock__pill">3+</span></div>
+              <div class="mock__row"><span><b>ფორმების შემოწმება</b><br><small>ვალიდაცია და მიღება</small></span><span class="mock__pill mock__pill--brand">✓</span></div>
+              <div class="mock__row"><span><b>გადაცემა</b><br><small>წვდომები და ინსტრუქცია</small></span><span class="mock__pill mock__pill--brand">✓</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+""" % (steps, checks)
+
+
+def form_block(p):
+    return """
+    <section class="section" id="request">
+      <div class="container">
+        <div class="contact-grid">
+          <div data-reveal>
+            <span class="eyebrow">დაგვიკავშირდით</span>
+            <h2>გინდათ მსგავსი პროექტი?</h2>
+            <p class="lead">შეავსეთ ფორმა და ერთ სამუშაო დღეში მიიღებთ საორიენტაციო
+              ღირებულებას, ვადებსა და სამოქმედო გეგმას.</p>
+            <ul class="checklist">
+              <li>უფასო კონსულტაცია</li>
+              <li>პასუხი 24 საათის განმავლობაში</li>
+              <li>ფიქსირებული ბიუჯეტი ხელშეკრულებით</li>
+            </ul>
+          </div>
+          <div data-reveal data-reveal-delay="90">
+            %s
+          </div>
+        </div>
+      </div>
+    </section>
+""" % lead_form(p["slug"])
 
 # ---------------------------------------------------------------- შიდა გვერდი
 def build_project(p, prev_p, next_p):
@@ -160,6 +289,7 @@ def build_project(p, prev_p, next_p):
     </section>
 """ % esc(result)
 
+    tags = [tg for tg in p.get("tags", []) if tg.strip()] or ["ვებსაიტი"]
     meta = ['<div><b>კლიენტი</b><span>%s</span></div>' % esc(name)]
     if year:
         meta.append('<div><b>წელი</b><span>%s</span></div>' % esc(year))
@@ -167,6 +297,7 @@ def build_project(p, prev_p, next_p):
                 % (url, esc(domain)))
     if partner:
         meta.append('<div><b>თანამშრომლობა</b><span>%s</span></div>' % esc(partner))
+    meta.append('<div><b>კატეგორია</b><span>%s</span></div>' % esc(", ".join(tags)))
 
     intro = "<p>%s</p>" % esc(summary) if summary else ""
     badge = ('\n            <span class="partner-badge">%s-თან ერთად</span>' % esc(partner)) if partner else ""
@@ -183,6 +314,7 @@ def build_project(p, prev_p, next_p):
           <span class="eyebrow">პროექტი</span>%s
           <h1>%s</h1>
           %s
+          <div class="case__tags" style="margin-top:18px">%s</div>
           <div class="btn-row">
             <a class="btn btn--primary" href="%s" target="_blank" rel="noopener noreferrer">საიტის ნახვა ↗</a>
             <a class="btn btn--ghost" href="/work">ყველა ნამუშევარი</a>
@@ -207,6 +339,8 @@ def build_project(p, prev_p, next_p):
       </div>
     </section>
 %s
+%s
+%s
     <section class="section section--tight">
       <div class="container">
         <div class="project-nav">
@@ -215,8 +349,9 @@ def build_project(p, prev_p, next_p):
         </div>
       </div>
     </section>
-""" % (esc(name), badge, esc(name), intro, url, mock(p, big=True),
-       "\n          ".join(meta), blocks,
+""" % (esc(name), badge, esc(name), intro,
+       "".join('<span class="tag">%s</span>' % esc(tg) for tg in tags), url, mock(p, big=True),
+       "\n          ".join(meta), blocks, process_block(), form_block(p),
        prev_p["slug"], esc(prev_p["name"]), next_p["slug"], esc(next_p["name"]))
 
     desc = summary or ("%s — ვებსაიტი, შექმნილი Webico-ს მიერ. იხილეთ პროექტი: %s" % (name, domain))
@@ -240,22 +375,27 @@ def build_index():
     for i, p in enumerate(PROJECTS):
         partner = p.get("partner", "").strip()
         summary = p.get("summary", "").strip()
-        meta = '<span class="tag">%s</span>' % esc(partner + "-თან ერთად") if partner else ""
+        tags = [tg for tg in p.get("tags", []) if tg.strip()] or ["ვებსაიტი"]
+        tag_html = "".join('<span class="tag">%s</span>' % esc(tg) for tg in tags)
+        if partner:
+            tag_html += '<span class="tag tag--partner">%s</span>' % esc(partner)
         cards.append("""          <article class="work" data-category="web" data-reveal data-reveal-delay="%d">
-            <a href="/work-%s" style="display:block">
+            <a class="work__link" href="/work-%s">
               <div class="work__cover work__cover--mock">
                 %s
               </div>
-            </a>
-            <div class="work__body">
-              <h3><a href="/work-%s">%s</a></h3>%s
-              <div class="work__meta">
-                <span class="tag">%s</span>%s
+              <div class="work__body">
+                <div class="work__head">
+                  <h3>%s</h3>
+                  <span class="work__go" aria-hidden="true">%s</span>
+                </div>%s
+                <div class="work__meta">%s</div>
+                <span class="work__domain">%s</span>
               </div>
-            </div>
-          </article>""" % (min(i, 6) * 40, p["slug"], mock(p), p["slug"], esc(p["name"]),
-                           ("\n              <p>%s</p>" % esc(summary)) if summary else "",
-                           esc(p["domain"]), meta))
+            </a>
+          </article>""" % (min(i, 6) * 40, p["slug"], mock(p), esc(p["name"]), ARROW,
+                           ("\n                <p>%s</p>" % esc(summary)) if summary else "",
+                           tag_html, esc(p["domain"])))
 
     body = """
     <section class="page-hero">
@@ -310,13 +450,24 @@ def build_sitemap():
     return len(pages)
 
 
+def bump_assets():
+    """გენერირებულ გვერდებს ახალი CSS/JS ვერსია სჭირდებათ — თორემ ბრაუზერი
+    ძველ სტილს ხატავს ახალ HTML-ზე (იხ. tools/bump-assets.py)."""
+    path = os.path.join(ROOT, "tools/bump-assets.py")
+    ns = {"__name__": "bump_assets_module", "__file__": path}
+    exec(compile(io.open(path, encoding="utf-8").read(), path, "exec"), ns)
+    return ns["bump"]()
+
+
 if __name__ == "__main__":
     n = len(PROJECTS)
     for i, p in enumerate(PROJECTS):
         build_project(p, PROJECTS[(i - 1) % n], PROJECTS[(i + 1) % n])
     build_index()
     total = build_sitemap()
+    ver, changed = bump_assets()
     filled = sum(1 for p in PROJECTS if p.get("summary", "").strip())
     print("  ✓ %d პროექტის გვერდი + work.html" % n)
     print("  ✓ sitemap.xml — %d მისამართი" % total)
+    print("  ✓ CSS/JS ვერსია: %s (%d ფაილი)" % (ver, changed))
     print("  ℹ აღწერა შევსებულია: %d / %d" % (filled, n))
