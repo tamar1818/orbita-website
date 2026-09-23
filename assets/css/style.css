@@ -1429,3 +1429,169 @@ li { margin-bottom: .4em; }
   .mega__item .mega__go { display: none; }
   .mega__foot { padding: 14px 16px; background: transparent; }
 }
+
+/* --------------------------------------------------------------------------
+   28. საიტის მოკაპი — ბრაუზერის ჩარჩო
+   რეალური სქრინშოტი ჩაისმება --shot ცვლადით:
+   style="--shot:url(assets/img/work/oribu.jpg)"
+   -------------------------------------------------------------------------- */
+
+.mock-site {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: var(--bg-card);
+  box-shadow: 0 1px 0 var(--line), var(--shadow-soft);
+  transition: transform .22s ease, box-shadow .22s ease;
+}
+
+.mock-site__bar {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 11px 14px;
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--line);
+}
+.mock-site__bar i {
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  background: var(--line-strong);
+  flex: none;
+}
+.mock-site__url {
+  flex: 1;
+  margin-left: 8px;
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  background: var(--bg-soft);
+  font-size: .72rem;
+  font-weight: 600;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mock-site__view {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  max-width: 100%;
+  display: grid;
+  place-items: center;
+  padding: 26px;
+  background-color: var(--lilac);
+  background-image: var(--shot, none);
+  background-size: cover;
+  background-position: top center;
+}
+.mock-site--lime .mock-site__view { background-color: var(--lime); }
+.mock-site--pink .mock-site__view { background-color: var(--pink); }
+.mock-site--soft .mock-site__view { background-color: var(--bg-soft); }
+
+/* პლეისჰოლდერი — ქრება, როცა რეალური სქრინშოტია ჩასმული */
+.mock-site__ph {
+  display: grid;
+  gap: 12px;
+  justify-items: center;
+  width: 100%;
+  max-width: 260px;
+}
+.mock-site[style*="--shot"] .mock-site__ph { display: none; }
+
+.mock-site__logo {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 1.5rem + 2vw, 3.2rem);
+  font-weight: 700;
+  letter-spacing: -.05em;
+  line-height: 1;
+  color: var(--ink);
+}
+.mock-site__lines { display: grid; gap: 7px; width: 100%; }
+.mock-site__lines i {
+  height: 8px;
+  border-radius: var(--radius-pill);
+  background: rgba(24, 24, 24, .16);
+}
+.mock-site__lines i:nth-child(1) { width: 100%; }
+.mock-site__lines i:nth-child(2) { width: 72%; }
+.mock-site__lines i:nth-child(3) { width: 45%; }
+
+/* --------------------------------------------------------------------------
+   29. პროექტის შიდა გვერდი
+   -------------------------------------------------------------------------- */
+
+.project-shot { max-width: 1000px; margin-inline: auto; }
+
+.project-meta {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+  padding: 26px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  margin-bottom: clamp(32px, 4vw, 52px);
+}
+.project-meta div b {
+  display: block;
+  margin-bottom: 6px;
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.project-meta div span,
+.project-meta div a { font-size: 1rem; font-weight: 700; color: var(--ink); }
+.project-meta div a:hover { color: var(--muted); }
+
+.partner-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 14px;
+  border-radius: var(--radius-pill);
+  background: var(--lime);
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.project-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+}
+.project-nav a { display: inline-flex; align-items: center; gap: 9px; font-weight: 700; color: var(--ink); }
+.project-nav a:hover { color: var(--muted); }
+.project-nav small {
+  display: block;
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 3px;
+}
+
+.work__cover--mock {
+  display: block;            /* .work__cover-ის flex-ცენტრირება მოკაპს არ ავსებინებდა */
+  padding: 0;
+  background: none;
+  aspect-ratio: auto;
+}
+.work__cover--mock .mock-site { border-radius: 0; box-shadow: none; }
+.work__cover--mock .mock-site__view { border-radius: 0; }
+
+@media (max-width: 880px) {
+  .project-meta { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 520px) {
+  .project-meta { grid-template-columns: 1fr; gap: 16px; }
+}
