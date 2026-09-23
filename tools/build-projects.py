@@ -28,6 +28,11 @@ ARROW = ('<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="cu
          'stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
          '<line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>')
 
+EXT = ('<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" '
+       'stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
+       '<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>'
+       '<polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>')
+
 
 def esc(t):
     return (t.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
@@ -376,26 +381,36 @@ def build_index():
         partner = p.get("partner", "").strip()
         summary = p.get("summary", "").strip()
         tags = [tg for tg in p.get("tags", []) if tg.strip()] or ["ვებსაიტი"]
-        tag_html = "".join('<span class="tag">%s</span>' % esc(tg) for tg in tags)
+        stack = [s for s in p.get("stack", []) if s.strip()]
+        chips = "".join('<span class="tag">%s</span>' % esc(tg) for tg in tags)
         if partner:
-            tag_html += '<span class="tag tag--partner">%s</span>' % esc(partner)
+            chips += '<span class="tag tag--partner">%s</span>' % esc(partner)
+        tools_html = ""
+        if stack:
+            tools_html = ('\n                <div class="work__tools">'
+                          '<b>ინსტრუმენტები</b>%s</div>'
+                          % "".join('<span class="tag tag--tool">%s</span>' % esc(s) for s in stack))
         cards.append("""          <article class="work" data-category="web" data-reveal data-reveal-delay="%d">
-            <a class="work__link" href="/work-%s">
+            <a class="work__cover-link" href="/work-%s" tabindex="-1" aria-hidden="true">
               <div class="work__cover work__cover--mock">
                 %s
               </div>
-              <div class="work__body">
-                <div class="work__head">
-                  <h3>%s</h3>
-                  <span class="work__go" aria-hidden="true">%s</span>
-                </div>%s
-                <div class="work__meta">%s</div>
-                <span class="work__domain">%s</span>
-              </div>
             </a>
-          </article>""" % (min(i, 6) * 40, p["slug"], mock(p), esc(p["name"]), ARROW,
-                           ("\n                <p>%s</p>" % esc(summary)) if summary else "",
-                           tag_html, esc(p["domain"])))
+            <div class="work__body">
+              <div class="work__head">
+                <h3><a href="/work-%s">%s</a></h3>
+                <span class="work__go" aria-hidden="true">%s</span>
+              </div>%s
+              <div class="work__meta">%s</div>%s
+              <div class="work__actions">
+                <a class="btn btn--primary btn--sm" href="/work-%s">ნახე მეტი</a>
+                <a class="work__site" href="https://%s/" target="_blank" rel="noopener noreferrer">%s %s</a>
+              </div>
+            </div>
+          </article>""" % (min(i, 6) * 40, p["slug"], mock(p), p["slug"], esc(p["name"]), ARROW,
+                           ("\n              <p>%s</p>" % esc(summary)) if summary else "",
+                           chips, tools_html, p["slug"],
+                           esc(p["domain"]), esc(p["domain"]), EXT))
 
     body = """
     <section class="page-hero">
