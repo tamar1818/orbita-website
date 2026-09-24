@@ -40,9 +40,12 @@ input:focus,textarea:focus,select:focus{outline:none;border-color:var(--ink);box
 .check input{width:auto;margin:0}
 .actions{display:flex;align-items:center;gap:14px;margin-top:6px}
 
-.btn{display:inline-block;padding:11px 22px;border:0;border-radius:999px;background:var(--ink);
-  color:#fff;font:inherit;font-weight:700;cursor:pointer;text-decoration:none}
-.btn:hover{background:#000}
+.btn{display:inline-block;padding:11px 22px;border:1px solid var(--ink);border-radius:999px;
+  background:var(--ink);color:#fff;font:inherit;font-weight:700;cursor:pointer;text-decoration:none;
+  box-shadow:0 0 0 0 var(--ink);transition:transform .25s ease,box-shadow .25s ease,background-color .18s ease}
+.btn:hover{background:#000;transform:translate(-2px,-4px);box-shadow:2px 5px 0 0 var(--lilac)}
+.btn:active{transform:translate(1px,2px);box-shadow:0 0 0 0 var(--ink)}
+@media(prefers-reduced-motion:reduce){.btn:hover,.btn:active{transform:none}}
 .link{background:none;border:0;padding:0;font:inherit;font-weight:600;color:var(--muted);cursor:pointer;text-decoration:underline}
 .link:hover{color:var(--ink)}
 .link--danger{color:var(--danger)}

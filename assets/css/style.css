@@ -237,7 +237,7 @@ li { margin-bottom: .4em; }
   justify-content: center;
   gap: 10px;
   padding: 16px 30px;
-  border: 1px solid transparent;
+  border: 1px solid var(--ink);
   border-radius: var(--radius-pill);
   background: none;
   font-family: var(--font-base);
@@ -247,21 +247,31 @@ li { margin-bottom: .4em; }
   text-transform: uppercase;
   line-height: 1.15;
   cursor: pointer;
-  transition: transform .14s ease, box-shadow .14s ease,
-              background-color .14s ease, color .14s ease;
+  box-shadow: 0 0 0 0 var(--ink);
+  transition: transform .25s ease, box-shadow .25s ease,
+              background-color .18s ease, color .18s ease, border-color .18s ease;
 }
 
+/* ერთი საერთო ჟესტი ყველა ღილაკზე: ასწევს და მკვეთრ ჩრდილს ტოვებს */
+.btn:hover  { transform: translate(-2px, -4px); box-shadow: 2px 5px 0 0 var(--ink); }
+.btn:active { transform: translate(1px, 2px);  box-shadow: 0 0 0 0 var(--ink); }
+
+/* მთავარი — შევსებული; ჩრდილი ლილისფერია, რომ შავზე შავი არ დაიკარგოს */
 .btn--primary { background: var(--ink); color: var(--paper); }
-.btn--primary:hover { background: #000; color: var(--paper); transform: translateY(-2px); box-shadow: var(--shadow-soft); }
+.btn--primary:hover { background: #000; color: var(--paper); box-shadow: 2px 5px 0 0 var(--lilac); }
+/* ლილისფერ ფონზე ლილისფერი ჩრდილი იკარგება — იქ თეთრს ვიყენებთ */
+.hero__panel .btn--primary:hover,
+.cta .btn--primary:hover { box-shadow: 2px 5px 0 0 var(--paper); }
 
-.btn--ghost { background: transparent; color: var(--ink); border-color: var(--line-strong); }
-.btn--ghost:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+/* მეორეული — თეთრი, შავი ჩარჩოთი */
+.btn--ghost { background: var(--bg-card); color: var(--ink); }
+.btn--ghost:hover { background: var(--bg-card); color: var(--ink); }
 
-.btn--light { background: transparent; color: var(--ink); border-color: var(--ink); }
-.btn--light:hover { background: var(--ink); color: var(--paper); }
+.btn--light { background: transparent; color: var(--ink); }
+.btn--light:hover { background: transparent; color: var(--ink); }
 
 .btn--white { background: var(--bg-card); color: var(--ink); }
-.btn--white:hover { transform: translateY(-2px); box-shadow: var(--shadow-soft); }
+.btn--white:hover { background: var(--bg-card); color: var(--ink); }
 
 .btn--block { width: 100%; }
 .btn--sm { padding: 11px 18px; font-size: .8rem; }
@@ -939,7 +949,7 @@ li { margin-bottom: .4em; }
   border: 1px solid var(--line); color: var(--ink);
   transition: background-color .14s ease, color .14s ease, transform .14s ease;
 }
-.socials a:hover { background: var(--lilac); transform: translateY(-2px); }
+.socials a:hover { background: var(--lilac); border-color: var(--ink); transform: translate(-2px, -4px); box-shadow: 2px 5px 0 0 var(--ink); }
 
 /* --------------------------------------------------------------------------
    20. CTA ბლოკი
@@ -1081,6 +1091,11 @@ li { margin-bottom: .4em; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
   .js [data-reveal] { opacity: 1; transform: none; }
+  /* ჟესტი ითიშება, ჩრდილი რჩება — მდგომარეობა მაინც იკითხება */
+  .btn:hover, .btn:active,
+  .carousel__btn:hover:not(:disabled), .carousel__btn:active:not(:disabled),
+  .filter:hover, .filter:active,
+  .socials a:hover, .work:hover .work__go { transform: none; }
 }
 
 @media print {
@@ -1135,7 +1150,8 @@ li { margin-bottom: .4em; }
   transition: background-color .16s ease, color .16s ease,
               transform .16s ease, opacity .16s ease;
 }
-.carousel__btn:hover:not(:disabled) { background: var(--ink); color: var(--paper); transform: translateY(-2px); }
+.carousel__btn:hover:not(:disabled) { background: var(--ink); color: var(--paper); transform: translate(-2px, -4px); box-shadow: 2px 5px 0 0 var(--ink); }
+.carousel__btn:active:not(:disabled) { transform: translate(1px, 2px); box-shadow: 0 0 0 0 var(--ink); }
 .carousel__btn:disabled { opacity: .3; cursor: default; }
 
 .carousel__dots { display: flex; align-items: center; gap: 9px; }
@@ -1170,7 +1186,9 @@ li { margin-bottom: .4em; }
   cursor: pointer;
   transition: background-color .16s ease, color .16s ease, border-color .16s ease;
 }
-.filter:hover { background: var(--bg-soft); }
+.filter { box-shadow: 0 0 0 0 var(--ink); transition: background-color .16s ease, color .16s ease, border-color .16s ease, transform .25s ease, box-shadow .25s ease; }
+.filter:hover { background: var(--bg-card); border-color: var(--ink); transform: translate(-2px, -4px); box-shadow: 2px 5px 0 0 var(--ink); }
+.filter:active { transform: translate(1px, 2px); box-shadow: 0 0 0 0 var(--ink); }
 .filter[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
 .filter__count { opacity: .55; margin-left: 6px; font-variant-numeric: tabular-nums; }
 
@@ -1623,7 +1641,7 @@ li { margin-bottom: .4em; }
   color: var(--ink);
   transition: background-color .18s ease, color .18s ease, transform .18s ease;
 }
-.work:hover .work__go { background: var(--ink); color: var(--paper); transform: translate(2px, -2px); }
+.work:hover .work__go { background: var(--ink); color: var(--paper); transform: translate(-2px, -4px); box-shadow: 2px 5px 0 0 var(--ink); }
 
 .work__domain {
   display: inline-flex;
