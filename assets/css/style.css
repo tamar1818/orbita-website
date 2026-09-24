@@ -1817,3 +1817,101 @@ li { margin-bottom: .4em; }
   font-weight: 700;
   letter-spacing: .01em;
 }
+
+/* --------------------------------------------------------------------------
+   34. ცენტრირებული hero და პროექტების მოზაიკა
+   -------------------------------------------------------------------------- */
+
+.hero--center { padding-block: clamp(48px, 6vw, 92px) clamp(36px, 4.5vw, 56px); }
+
+.hero__center {
+  max-width: 860px;
+  margin-inline: auto;
+  text-align: center;
+}
+.hero__center h1 {
+  font-size: clamp(2.5rem, 1.5rem + 4.6vw, 5rem);
+  line-height: 1.06;
+  letter-spacing: -.045em;
+  margin-bottom: .35em;
+}
+.hero__center h1 em {
+  font-style: normal;
+  background: var(--lilac);
+  color: var(--ink);
+  border-radius: 8px;
+  padding: .04em .14em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+.hero__center > p {
+  max-width: 56ch;
+  margin-inline: auto;
+  font-size: 1.14rem;
+  color: var(--muted);
+}
+.hero__center .btn-row { justify-content: center; margin-top: 32px; }
+
+.hero__center .hero__meta {
+  justify-content: center;
+  border-top: 0;
+  margin-top: 34px;
+  padding-top: 0;
+}
+
+/* --- პროექტების მოზაიკა: ვიზუალური კედელი hero-ს ქვეშ --- */
+.mosaic {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+.mosaic a { display: block; border-radius: var(--radius); overflow: hidden; }
+.mosaic .mock-site { border-radius: var(--radius); height: 100%; }
+.mosaic .mock-site__view { aspect-ratio: 16 / 11; }
+.mosaic a { transition: transform .22s ease, box-shadow .22s ease; }
+.mosaic a:hover { transform: translateY(-4px); box-shadow: var(--shadow-lift); }
+
+.mosaic__more {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+/* --- მუქი სექცია --- */
+.section--dark {
+  background: var(--bg-dark);
+  color: rgba(255, 255, 255, .72);
+  border-radius: var(--radius-xl);
+  margin-inline: var(--gutter);
+}
+.section--dark h2,
+.section--dark h3,
+.section--dark .stat__num { color: #fff; }
+.section--dark .section-head p,
+.section--dark p { color: rgba(255, 255, 255, .66); }
+.section--dark .eyebrow {
+  background: rgba(255, 255, 255, .1);
+  color: #fff;
+}
+.section--dark .card,
+.section--dark .stat {
+  background: rgba(255, 255, 255, .05);
+  border-color: rgba(255, 255, 255, .14);
+}
+.section--dark .stat__label { color: rgba(255, 255, 255, .6); }
+.section--dark .checklist li { color: rgba(255, 255, 255, .8); }
+.section--dark .btn--ghost {
+  background: transparent;
+  color: #fff;
+  border-color: rgba(255, 255, 255, .4);
+}
+.section--dark .btn--ghost:hover { box-shadow: 2px 5px 0 0 rgba(255, 255, 255, .9); }
+
+@media (max-width: 880px) {
+  .mosaic { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 620px) {
+  .mosaic { grid-template-columns: 1fr; gap: 12px; }
+  .mosaic .mock-site__view { aspect-ratio: 16 / 10; }
+  .section--dark { margin-inline: 12px; }
+}

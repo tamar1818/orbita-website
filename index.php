@@ -32,7 +32,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <!-- სარეზერვო ქართული შრიფტი — მთავარი შრიფტია LGV Anastasia 2025 Geo (იხ. assets/fonts/) -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap">
-  <link rel="stylesheet" href="assets/css/style.css?v=0e4de5cc">
+  <link rel="stylesheet" href="assets/css/style.css?v=591f3a24">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -191,53 +191,31 @@
   <main id="main">
 
     <!-- ============================ HERO ============================ -->
-    <section class="hero">
+    <section class="hero hero--center">
       <div class="container">
-        <div class="hero__panel">
-        <div class="hero__grid">
-          <div class="hero__text" data-reveal>
-            <span class="eyebrow"><?= T("home.hero.eyebrow", "ციფრული სააგენტო თბილისში") ?></span>
-            <h1><?= T_html("home.hero.title", "შენი ბრენდის <em>შემდეგი ნაბიჯი.</em>") ?></h1>
-            <p><?= T("home.hero.text", "შენი ბიზნესის საჭიროებებზე მორგებული ვებსაიტები, ბრენდინგი და ციფრული მარკეტინგი. მკაფიო იდეები, გააზრებული დიზაინი და ძლიერი ონლაინიმიჯი.") ?></p>
-
-            <div class="btn-row">
-              <a class="btn btn--primary" href="/contact"><?= T("home.hero.cta", "დავიწყოთ შენი პროექტი") ?> <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
-              <a class="btn btn--ghost" href="/services">ჩვენი სერვისები</a>
-            </div>
-
-            <div class="hero__meta">
-              <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> 8 წელი ბაზარზე</span>
-              <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> 120+ დასრულებული პროექტი</span>
-              <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Google Partner</span>
-            </div>
-          </div>
-
-          <div data-reveal data-reveal-delay="120">
-            <form class="lead-form" data-lead-form="hero-audit" method="post" action="#">
-          <h3>მიიღეთ უფასო ვებ-აუდიტი</h3>
-          <p class="lead-form__intro">შეავსეთ სამი ველი და 24 საათში მიიღებთ თქვენი საიტის ანალიზს — სისწრაფე, SEO და კონვერსიის წერტილები.</p>
-          <div class="form-status" role="alert" aria-live="polite"></div>
-          <div class="field">
-            <label for="hero-name">სახელი <span class="req">*</span></label>
-            <input type="text" id="hero-name" name="name" autocomplete="name" placeholder="თქვენი სახელი" required>
-            <span class="field__error"></span>
-          </div>
-          <div class="field">
-            <label for="hero-email">ელფოსტა <span class="req">*</span></label>
-            <input type="email" id="hero-email" name="email" autocomplete="email" placeholder="name@company.ge" required>
-            <span class="field__error"></span>
-          </div>
-          <div class="field">
-            <label for="hero-website">ვებსაიტი ან ტელეფონი <span class="req">*</span></label>
-            <input type="text" id="hero-website" name="website" placeholder="example.ge / +995 5XX XX XX XX" required>
-            <span class="field__error"></span>
-          </div>
-          <div class="hp-field" aria-hidden="true"><label for="hero-hp">არ შეავსოთ</label><input type="text" id="hero-hp" name="company_website" tabindex="-1" autocomplete="off"></div>
-          <button class="btn btn--primary btn--block" type="submit">აუდიტის მოთხოვნა</button>
-          <p class="form-note"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><span>უფასოა და არაფრად გავალდებულებთ.</span></p>
-        </form>
+        <div class="hero__center" data-reveal>
+          <span class="eyebrow"><?= T("home.hero.eyebrow", "ციფრული სააგენტო თბილისში") ?></span>
+          <h1><?= T_html("home.hero.title", "შენი ბრენდის <em>შემდეგი ნაბიჯი.</em>") ?></h1>
+          <p><?= T("home.hero.text", "შენი ბიზნესის საჭიროებებზე მორგებული ვებსაიტები, ბრენდინგი და ციფრული მარკეტინგი. მკაფიო იდეები, გააზრებული დიზაინი და ძლიერი ონლაინიმიჯი.") ?></p>
+          <div class="btn-row btn-row--center">
+            <a class="btn btn--primary" href="/contact"><?= T("home.hero.cta", "დავიწყოთ შენი პროექტი") ?></a>
+            <a class="btn btn--ghost" href="/work">ნახეთ ნამუშევრები</a>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- ===================== პროექტების მოზაიკა ====================== -->
+    <section class="section section--tight">
+      <div class="container">
+        <?php $mos = array_slice(cms_projects(), 0, 8); ?>
+        <div class="mosaic" data-reveal>
+          <?php foreach ($mos as $m): ?>
+            <a href="/work-<?= cms_e((string) $m['slug']) ?>" aria-label="<?= cms_e((string) $m['name']) ?>"><?= cms_mock($m) ?></a>
+          <?php endforeach; ?>
+        </div>
+        <div class="mosaic__more">
+          <a class="btn btn--ghost" href="/work">ყველა ნამუშევარი</a>
         </div>
       </div>
     </section>
@@ -360,8 +338,53 @@
       </div>
     </section>
 
+
+    <!-- ======================== უფასო აუდიტი ========================= -->
+    <section class="section section--soft" id="audit">
+      <div class="container">
+        <div class="contact-grid">
+          <div data-reveal>
+            <span class="eyebrow eyebrow--accent">უფასო აუდიტი</span>
+            <h2>გინდათ ვნახოთ, სად კარგავს თქვენი საიტი კლიენტს?</h2>
+            <p class="lead">შეავსეთ სამი ველი და 24 საათში მიიღებთ თქვენი საიტის ანალიზს —
+              სისწრაფე, SEO და კონვერსიის წერტილები.</p>
+            <ul class="checklist">
+              <li>უფასოა და არაფრად გავალდებულებთ</li>
+              <li>პასუხი ერთ სამუშაო დღეში</li>
+              <li>კონკრეტული რეკომენდაციები, არა ზოგადი რჩევები</li>
+            </ul>
+          </div>
+          <div data-reveal data-reveal-delay="90">
+            <form class="lead-form" data-lead-form="hero-audit" method="post" action="#">
+          <h3>მიიღეთ უფასო ვებ-აუდიტი</h3>
+          <p class="lead-form__intro">შეავსეთ სამი ველი და 24 საათში მიიღებთ თქვენი საიტის ანალიზს — სისწრაფე, SEO და კონვერსიის წერტილები.</p>
+          <div class="form-status" role="alert" aria-live="polite"></div>
+          <div class="field">
+            <label for="hero-name">სახელი <span class="req">*</span></label>
+            <input type="text" id="hero-name" name="name" autocomplete="name" placeholder="თქვენი სახელი" required>
+            <span class="field__error"></span>
+          </div>
+          <div class="field">
+            <label for="hero-email">ელფოსტა <span class="req">*</span></label>
+            <input type="email" id="hero-email" name="email" autocomplete="email" placeholder="name@company.ge" required>
+            <span class="field__error"></span>
+          </div>
+          <div class="field">
+            <label for="hero-website">ვებსაიტი ან ტელეფონი <span class="req">*</span></label>
+            <input type="text" id="hero-website" name="website" placeholder="example.ge / +995 5XX XX XX XX" required>
+            <span class="field__error"></span>
+          </div>
+          <div class="hp-field" aria-hidden="true"><label for="hero-hp">არ შეავსოთ</label><input type="text" id="hero-hp" name="company_website" tabindex="-1" autocomplete="off"></div>
+          <button class="btn btn--primary btn--block" type="submit">აუდიტის მოთხოვნა</button>
+          <p class="form-note"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><span>უფასოა და არაფრად გავალდებულებთ.</span></p>
+        </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ========================== რატომ ჩვენ ========================= -->
-    <section class="section section--soft">
+    <section class="section section--dark">
       <div class="container">
         <div class="feature-row">
           <div class="feature-row__body" data-reveal>
@@ -680,6 +703,6 @@
     </div>
   </footer>
 
-  <script src="assets/js/main.js?v=0e4de5cc"></script>
+  <script src="assets/js/main.js?v=591f3a24"></script>
 </body>
 </html>
