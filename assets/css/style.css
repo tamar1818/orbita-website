@@ -43,8 +43,12 @@
 
 :root {
   /* ტიპოგრაფია: display — მხოლოდ სათაურები, base — ყველა დანარჩენი */
-  --font-display: "LGV Anastasia 2025 Geo", "Noto Sans Georgian", "BPG Arial",
-                  system-ui, -apple-system, "Segoe UI", sans-serif;
+  /* სათაურებში ლათინურს "Space Grotesk" ხატავს, ქართულს — LGV Anastasia.
+     ბრაუზერი შრიფტს სიმბოლოებად ირჩევს: Space Grotesk-ს ქართული არ აქვს,
+     ამიტომ ქართული ავტომატურად LGV-ზე გადადის. თუ LGV-ის საკუთარი
+     ლათინური გირჩევნიათ — უბრალოდ წაშალეთ "Space Grotesk" ამ სიიდან. */
+  --font-display: "Space Grotesk", "LGV Anastasia 2025 Geo", "Noto Sans Georgian",
+                  "BPG Arial", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-base: "Noto Sans Georgian", "BPG Arial", system-ui, -apple-system,
                "Segoe UI", Roboto, sans-serif;
 
@@ -1757,4 +1761,41 @@ li { margin-bottom: .4em; }
 @media (prefers-reduced-motion: reduce) {
   .marquee__track { animation: none; }
   .marquee { overflow-x: auto; }
+}
+
+/* --------------------------------------------------------------------------
+   33. ინსტრუმენტების კარუსელი
+   -------------------------------------------------------------------------- */
+
+.marquee--tools .marquee__track { animation-duration: 62s; animation-direction: reverse; }
+
+.tool-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  padding: 11px 20px 11px 11px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  background: var(--bg-card);
+  font-size: .95rem;
+  font-weight: 600;
+  color: var(--ink);
+  white-space: nowrap;
+  transition: border-color .16s ease, transform .16s ease;
+}
+.tool-chip:hover { border-color: var(--ink); transform: translateY(-2px); }
+
+.tool-chip__mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px; height: 34px;
+  flex: none;
+  border-radius: 10px;
+  background: var(--tint, var(--ink));
+  color: #fff;
+  font-family: var(--font-base);
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .01em;
 }

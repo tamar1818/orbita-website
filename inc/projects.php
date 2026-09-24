@@ -58,3 +58,36 @@ function cms_tags(array $p): array
 
 const CMS_ARROW = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>';
 const CMS_EXT = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>';
+
+/* --------------------------------------------------- ინსტრუმენტების სია */
+const CMS_TOOLS_DEFAULT = [
+    ['WordPress',       'Wp',  '#21759b'],
+    ['WooCommerce',     'Wc',  '#7f54b3'],
+    ['Shopify',         'Sh',  '#5a8f3d'],
+    ['Webflow',         'Wf',  '#4353ff'],
+    ['Lovable',         'Lo',  '#d1443c'],
+    ['Next.js / React', 'Ne',  '#0b7285'],
+    ['Laravel',         'La',  '#c0392b'],
+    ['PHP',             'Php', '#5b6398'],
+    ['AWS',             'aws', '#b26a00'],
+    ['Cloudflare',      'Cf',  '#c76a12'],
+    ['Figma',           'Fi',  '#8b45d6'],
+    ['Google Ads',      'Gg',  '#2f6fd0'],
+    ['Meta Ads',        'Me',  '#1666c2'],
+    ['Google Analytics','Ga',  '#c47b17'],
+];
+
+/** ინსტრუმენტები: content/site.json → tools, თუ არა — ნაგულისხმევი სია */
+function cms_tools(): array
+{
+    $custom = cms_read('site')['tools'] ?? [];
+    $out = [];
+    foreach ($custom as $t) {
+        $name = trim((string) ($t['name'] ?? ''));
+        if ($name !== '') {
+            $out[] = [$name, trim((string) ($t['mark'] ?? mb_substr($name, 0, 2))),
+                      trim((string) ($t['color'] ?? '#181818'))];
+        }
+    }
+    return $out ?: CMS_TOOLS_DEFAULT;
+}

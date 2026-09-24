@@ -31,8 +31,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <!-- სარეზერვო ქართული შრიფტი — მთავარი შრიფტია LGV Anastasia 2025 Geo (იხ. assets/fonts/) -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;500;600;700&display=swap">
-  <link rel="stylesheet" href="assets/css/style.css?v=b9a60e6c">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap">
+  <link rel="stylesheet" href="assets/css/style.css?v=4c5a2405">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -338,6 +338,24 @@
 
         <div class="btn-row btn-row--center" style="margin-top:40px" data-reveal>
           <a class="btn btn--ghost" href="/services">ყველა სერვისი და ფასები <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ======================= ინსტრუმენტები ======================== -->
+    <section class="section section--tight">
+      <div class="container">
+        <p class="trustbar__label"><?= T("home.tools.label", "ინსტრუმენტები, რომლებზეც ვმუშაობთ") ?></p>
+        <?php $tools = cms_tools(); ?>
+        <div class="marquee marquee--tools">
+          <div class="marquee__track">
+            <?php for ($g = 0; $g < 2; $g++): ?>
+              <div class="marquee__group"<?= $g ? ' aria-hidden="true"' : '' ?>>
+                <?php foreach ($tools as [$name, $mark, $color]): ?><span class="tool-chip"><span class="tool-chip__mark" style="--tint:<?= cms_e($color) ?>"><?= cms_e($mark) ?></span><?= cms_e($name) ?></span><?php endforeach; ?>
+              </div>
+            <?php endfor; ?>
+          </div>
         </div>
       </div>
     </section>
@@ -662,6 +680,6 @@
     </div>
   </footer>
 
-  <script src="assets/js/main.js?v=b9a60e6c"></script>
+  <script src="assets/js/main.js?v=4c5a2405"></script>
 </body>
 </html>
