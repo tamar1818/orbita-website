@@ -1,0 +1,14 @@
+# ატვირთულ დირექტორიაში სკრიპტი არ უნდა შესრულდეს
+php_flag engine off
+<IfModule mod_mime.c>
+  RemoveHandler .php .phtml .php3 .php4 .php5 .php7 .php8 .pht .phar
+  AddType text/plain .php .phtml .php3 .php4 .php5 .php7 .php8 .pht .phar
+</IfModule>
+<FilesMatch "\.(php|phtml|php[3-8]|pht|phar|cgi|pl|py|sh)$">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Deny from all
+  </IfModule>
+</FilesMatch>

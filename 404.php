@@ -28,7 +28,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <!-- სარეზერვო ქართული შრიფტი — მთავარი შრიფტია LGV Anastasia 2025 Geo (იხ. assets/fonts/) -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;500;600;700&display=swap">
-  <link rel="stylesheet" href="assets/css/style.css?v=00d9a50c">
+  <link rel="stylesheet" href="assets/css/style.css?v=b9a60e6c">
 </head>
 <body>
   <a class="skip-link" href="#main">გადასვლა მთავარ კონტენტზე</a>
@@ -219,6 +219,6 @@
     </div>
   </footer>
 
-  <script src="assets/js/main.js?v=00d9a50c"></script>
+  <script src="assets/js/main.js?v=b9a60e6c"></script>
 </body>
 </html>

@@ -3,7 +3,7 @@
 # ==========================================================================
 
 AddDefaultCharset UTF-8
-DirectoryIndex index.html
+DirectoryIndex index.html index.php
 Options -Indexes -MultiViews
 
 RewriteEngine On
@@ -24,18 +24,32 @@ RewriteRule ^ / [R=301,L]
 # --- 4. /page.html -> /page (301, დუბლიკატების თავიდან ასაცილებლად) ------
 RewriteCond %{THE_REQUEST} \s/+(.+?)\.html[\s?] [NC]
 RewriteRule ^ /%1 [R=301,L]
+RewriteCond %{THE_REQUEST} \s/+(.+?)\.php[\s?] [NC]
+RewriteRule ^ /%1 [R=301,L]
 
 # --- 5. ბოლო სლეშის მოცილება (რეალური დირექტორიების გარდა) --------------
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.+?)/+$ /$1 [R=301,L]
 
-# --- 6. /page -> page.html (შიდა, გადამისამართების გარეშე) ---------------
+# --- 6-. sitemap.xml -> sitemap.php (ყოველთვის აქტუალური) ---------------
+RewriteRule ^sitemap\.xml$ sitemap.php [L]
+
+# --- 6a. /work-<slug> -> project.php (CMS-ის დინამიკური პროექტები) ------
+RewriteRule ^work-([a-z0-9-]+)/?$ project.php?slug=$1 [L,QSA]
+
+# --- 6b. /page -> page.php --------------------------------------------
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{DOCUMENT_ROOT}/$1.php -f
+RewriteRule ^(.+?)/?$ $1.php [L]
+
+# --- 6c. /page -> page.html (დარჩენილი სტატიკური გვერდები) -------------
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{DOCUMENT_ROOT}/$1.html -f
 RewriteRule ^(.+?)/?$ $1.html [L]
 
-ErrorDocument 404 /404.html
+ErrorDocument 404 /404.php
 
 # --- 7. შეკუმშვა ----------------------------------------------------------
 <IfModule mod_deflate.c>

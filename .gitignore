@@ -3,3 +3,12 @@ Thumbs.db
 *.log
 .vscode/
 .idea/
+
+# CMS — საიდუმლო და პერსონალური მონაცემები git-ში არ ინახება
+content/auth.php
+content/leads.json
+content/*.tmp
+
+# ატვირთული ფოტოები სერვერზე რჩება
+assets/img/uploads/*
+!assets/img/uploads/.htaccess

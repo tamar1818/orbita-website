@@ -1,3 +1,4 @@
+<?php require_once __DIR__ . "/inc/projects.php"; ?>
 <!DOCTYPE html>
 <html lang="ka">
 <head>
@@ -30,7 +31,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <!-- სარეზერვო ქართული შრიფტი — მთავარი შრიფტია LGV Anastasia 2025 Geo (იხ. assets/fonts/) -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;500;600;700&display=swap">
-  <link rel="stylesheet" href="assets/css/style.css?v=00d9a50c">
+  <link rel="stylesheet" href="assets/css/style.css?v=b9a60e6c">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -40,7 +41,7 @@
     "description": "ციფრული სააგენტო თბილისში: ვებსაიტების დიზაინი და შექმნა, SEO ოპტიმიზაცია და ციფრული მარკეტინგი.",
     "url": "https://webico.io/",
     "telephone": "+995322000000",
-    "email": "hello@webico.io",
+    "email": "<?= cms_setting("email", "hello@webico.io") ?>",
     "priceRange": "₾₾",
     "address": {
       "@type": "PostalAddress",
@@ -177,7 +178,7 @@
         </ul>
 
         <div class="nav__cta">
-          <a class="nav__phone" href="tel:+99532200000"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg><span>+995 32 2 00 00 00</span></a>
+          <a class="nav__phone" href="tel:+99532200000"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg><span><?= cms_setting("phone", "+995 32 2 00 00 00") ?></span></a>
           <a class="btn btn--primary btn--sm" href="/contact">უფასო კონსულტაცია</a>
           <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-links"
                   aria-label="მენიუს გახსნა"><span></span></button>
@@ -194,13 +195,12 @@
         <div class="hero__panel">
         <div class="hero__grid">
           <div class="hero__text" data-reveal>
-            <span class="eyebrow">ციფრული სააგენტო თბილისში</span>
-            <h1>შენი ბრენდის <em>შემდეგი ნაბიჯი.</em></h1>
-            <p>შენი ბიზნესის საჭიროებებზე მორგებული ვებსაიტები, ბრენდინგი და ციფრული
-              მარკეტინგი. მკაფიო იდეები, გააზრებული დიზაინი და ძლიერი ონლაინიმიჯი.</p>
+            <span class="eyebrow"><?= T("home.hero.eyebrow", "ციფრული სააგენტო თბილისში") ?></span>
+            <h1><?= T_html("home.hero.title", "შენი ბრენდის <em>შემდეგი ნაბიჯი.</em>") ?></h1>
+            <p><?= T("home.hero.text", "შენი ბიზნესის საჭიროებებზე მორგებული ვებსაიტები, ბრენდინგი და ციფრული მარკეტინგი. მკაფიო იდეები, გააზრებული დიზაინი და ძლიერი ონლაინიმიჯი.") ?></p>
 
             <div class="btn-row">
-              <a class="btn btn--primary" href="/contact">დავიწყოთ შენი პროექტი <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+              <a class="btn btn--primary" href="/contact"><?= T("home.hero.cta", "დავიწყოთ შენი პროექტი") ?> <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
               <a class="btn btn--ghost" href="/services">ჩვენი სერვისები</a>
             </div>
 
@@ -244,12 +244,18 @@
     <!-- ========================== ნდობა ============================= -->
     <section class="trustbar">
       <div class="container">
-        <p class="trustbar__label">გვენდობიან</p>
-        <!-- clients:start -->
+        <p class="trustbar__label"><?= T("home.clients.label", "გვენდობიან") ?></p>
+        <?php $cl = cms_projects(); if ($cl): ?>
         <div class="marquee">
-          <div class="marquee__track"><div class="marquee__group"><a class="marquee__item" href="/work-archetypes-creatives"><i aria-hidden="true"></i>Archetypes Creatives</a><a class="marquee__item" href="/work-tamaras-collect"><i aria-hidden="true"></i>Tamara's Collect</a><a class="marquee__item" href="/work-oribu"><i aria-hidden="true"></i>Oribu</a><a class="marquee__item" href="/work-memory-casa"><i aria-hidden="true"></i>Memory Casa</a><a class="marquee__item" href="/work-mubana"><i aria-hidden="true"></i>Mubana</a><a class="marquee__item" href="/work-bekaia-fund"><i aria-hidden="true"></i>Bekaia Fund</a><a class="marquee__item" href="/work-galogrea"><i aria-hidden="true"></i>Galogrea</a><a class="marquee__item" href="/work-cx-panda"><i aria-hidden="true"></i>CX Panda</a><a class="marquee__item" href="/work-wine-station"><i aria-hidden="true"></i>Wine Station</a><a class="marquee__item" href="/work-cloud-streaming"><i aria-hidden="true"></i>Cloud Streaming Technology</a><a class="marquee__item" href="/work-the-lawlex"><i aria-hidden="true"></i>The Lawlex</a><a class="marquee__item" href="/work-tg-events"><i aria-hidden="true"></i>TG Events</a><a class="marquee__item" href="/work-vrs-studio"><i aria-hidden="true"></i>VRS Studio</a><a class="marquee__item" href="/work-realops"><i aria-hidden="true"></i>RealOps</a><a class="marquee__item" href="/work-my-creator"><i aria-hidden="true"></i>My Creator</a><a class="marquee__item" href="/work-anapea"><i aria-hidden="true"></i>Anapea</a><a class="marquee__item" href="/work-pearl-island"><i aria-hidden="true"></i>Pearl Island Bahamas</a><a class="marquee__item" href="/work-autism-ge"><i aria-hidden="true"></i>Autism.ge</a><a class="marquee__item" href="/work-phono"><i aria-hidden="true"></i>Phono</a><a class="marquee__item" href="/work-morevi"><i aria-hidden="true"></i>Morevi</a><a class="marquee__item" href="/work-smarter"><i aria-hidden="true"></i>Smarter</a><a class="marquee__item" href="/work-e-motions"><i aria-hidden="true"></i>E-Motions</a><a class="marquee__item" href="/work-office-pros"><i aria-hidden="true"></i>Office Pros</a><a class="marquee__item" href="/work-safety-hub"><i aria-hidden="true"></i>Safety Hub</a></div><div class="marquee__group" aria-hidden="true"><a class="marquee__item" href="/work-archetypes-creatives"><i aria-hidden="true"></i>Archetypes Creatives</a><a class="marquee__item" href="/work-tamaras-collect"><i aria-hidden="true"></i>Tamara's Collect</a><a class="marquee__item" href="/work-oribu"><i aria-hidden="true"></i>Oribu</a><a class="marquee__item" href="/work-memory-casa"><i aria-hidden="true"></i>Memory Casa</a><a class="marquee__item" href="/work-mubana"><i aria-hidden="true"></i>Mubana</a><a class="marquee__item" href="/work-bekaia-fund"><i aria-hidden="true"></i>Bekaia Fund</a><a class="marquee__item" href="/work-galogrea"><i aria-hidden="true"></i>Galogrea</a><a class="marquee__item" href="/work-cx-panda"><i aria-hidden="true"></i>CX Panda</a><a class="marquee__item" href="/work-wine-station"><i aria-hidden="true"></i>Wine Station</a><a class="marquee__item" href="/work-cloud-streaming"><i aria-hidden="true"></i>Cloud Streaming Technology</a><a class="marquee__item" href="/work-the-lawlex"><i aria-hidden="true"></i>The Lawlex</a><a class="marquee__item" href="/work-tg-events"><i aria-hidden="true"></i>TG Events</a><a class="marquee__item" href="/work-vrs-studio"><i aria-hidden="true"></i>VRS Studio</a><a class="marquee__item" href="/work-realops"><i aria-hidden="true"></i>RealOps</a><a class="marquee__item" href="/work-my-creator"><i aria-hidden="true"></i>My Creator</a><a class="marquee__item" href="/work-anapea"><i aria-hidden="true"></i>Anapea</a><a class="marquee__item" href="/work-pearl-island"><i aria-hidden="true"></i>Pearl Island Bahamas</a><a class="marquee__item" href="/work-autism-ge"><i aria-hidden="true"></i>Autism.ge</a><a class="marquee__item" href="/work-phono"><i aria-hidden="true"></i>Phono</a><a class="marquee__item" href="/work-morevi"><i aria-hidden="true"></i>Morevi</a><a class="marquee__item" href="/work-smarter"><i aria-hidden="true"></i>Smarter</a><a class="marquee__item" href="/work-e-motions"><i aria-hidden="true"></i>E-Motions</a><a class="marquee__item" href="/work-office-pros"><i aria-hidden="true"></i>Office Pros</a><a class="marquee__item" href="/work-safety-hub"><i aria-hidden="true"></i>Safety Hub</a></div></div>
+          <div class="marquee__track">
+            <?php for ($g = 0; $g < 2; $g++): ?>
+              <div class="marquee__group"<?= $g ? ' aria-hidden="true"' : '' ?>>
+                <?php foreach ($cl as $c): ?><a class="marquee__item" href="/work-<?= cms_e((string) $c['slug']) ?>"><i aria-hidden="true"></i><?= cms_e((string) $c['name']) ?></a><?php endforeach; ?>
+              </div>
+            <?php endfor; ?>
+          </div>
         </div>
-        <!-- clients:end -->
+        <?php endif; ?>
       </div>
     </section>
 
@@ -560,8 +566,8 @@
             <h2>მზად ხართ ზრდისთვის?</h2>
             <p>მოგვწერეთ და უფასოდ გავაანალიზებთ თქვენს საიტსა და კონკურენტებს. პირველივე შეხვედრაზე მიიღებთ კონკრეტულ რეკომენდაციებს — თანამშრომლობის ვალდებულების გარეშე.</p>
             <div class="btn-row" style="margin-top:26px">
-              <a class="btn btn--white" href="tel:+99532200000">დარეკეთ: +995 32 2 00 00 00</a>
-              <a class="btn btn--light" href="mailto:hello@webico.io">hello@webico.io</a>
+              <a class="btn btn--white" href="tel:+99532200000">დარეკეთ: <?= cms_setting("phone", "+995 32 2 00 00 00") ?></a>
+              <a class="btn btn--light" href="mailto:<?= cms_setting("email", "hello@webico.io") ?>"><?= cms_setting("email", "hello@webico.io") ?></a>
             </div>
           </div>
           <div data-reveal data-reveal-delay="90">
@@ -638,9 +644,9 @@
 
         <div class="footer__contact">
           <h4>კონტაქტი</h4>
-          <p><a href="tel:+99532200000">+995 32 2 00 00 00</a></p>
-          <p><a href="mailto:hello@webico.io">hello@webico.io</a></p>
-          <p>ჭავჭავაძის გამზირი 45, თბილისი 0179</p>
+          <p><a href="tel:+99532200000"><?= cms_setting("phone", "+995 32 2 00 00 00") ?></a></p>
+          <p><a href="mailto:<?= cms_setting("email", "hello@webico.io") ?>"><?= cms_setting("email", "hello@webico.io") ?></a></p>
+          <p><?= cms_setting("address", "ჭავჭავაძის გამზირი 45, თბილისი 0179") ?></p>
           <p>ორშ–პარ, 10:00–19:00</p>
         </div>
       </div>
@@ -655,6 +661,6 @@
     </div>
   </footer>
 
-  <script src="assets/js/main.js?v=00d9a50c"></script>
+  <script src="assets/js/main.js?v=b9a60e6c"></script>
 </body>
 </html>

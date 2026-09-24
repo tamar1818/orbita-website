@@ -23,7 +23,10 @@ def bump():
     ver = hashlib.sha1(b"".join(parts)).hexdigest()[:8]
 
     changed = 0
-    for path in sorted(glob.glob(os.path.join(ROOT, "*.html"))):
+    targets = sorted(glob.glob(os.path.join(ROOT, "*.html"))
+                     + glob.glob(os.path.join(ROOT, "*.php"))
+                     + glob.glob(os.path.join(ROOT, "inc", "*.php")))
+    for path in targets:
         html = io.open(path, encoding="utf-8").read()
         new = re.sub(r'(assets/css/style\.css)(\?v=[^"]*)?', r'\1?v=' + ver, html)
         new = re.sub(r'(assets/js/main\.js)(\?v=[^"]*)?', r'\1?v=' + ver, new)
