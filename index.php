@@ -3,6 +3,7 @@
 <html lang="ka">
 <head>
   <meta charset="utf-8">
+  <meta name="google-site-verification" content="Zl7OvqIP-1s-wqbhxwTPnmISoEdJGMlH0hoNgwNrXHk">
   <script>document.documentElement.classList.add("js");</script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Webico — ვებსაიტები, ბრენდინგი და ციფრული მარკეტინგი</title>

@@ -1,7 +1,11 @@
 User-agent: *
 Allow: /
 
-# ტექნიკური ფაილები საძიებოსთვის საჭირო არ არის
+# ტექნიკური ფაილები და მართვის პანელი საძიებოსთვის საჭირო არ არის
 Disallow: /assets/fonts/
+Disallow: /admin/
+Disallow: /api/
+Disallow: /content/
+Disallow: /inc/
 
 Sitemap: https://webico.io/sitemap.xml
