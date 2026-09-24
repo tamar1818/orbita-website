@@ -1,7 +1,7 @@
   </main>
 
 
-  <footer class="site-footer">
+  <footer class="site-footer pattern-grid pattern-grid--light">
     <div class="container">
       <div class="footer__grid">
         <div>
@@ -61,6 +61,6 @@
     </div>
   </footer>
 
-  <script src="assets/js/main.js?v=53b41a83"></script>
+  <script src="assets/js/main.js?v=fd5f44a3"></script>
 </body>
 </html>

@@ -1938,6 +1938,11 @@ li { margin-bottom: .4em; }
   border-color: rgba(255, 255, 255, .4);
 }
 .section--dark .btn--ghost:hover { box-shadow: 2px 5px 0 0 rgba(255, 255, 255, .9); }
+/* თეთრი ბარათი მუქ სექციაში — ტექსტი მემკვიდრეობით თეთრი არ უნდა გახდეს */
+.section--dark .mock { color: var(--ink); }
+/* შავი ღილაკი შავ ფონზე ქრება — აქ თეთრია */
+.section--dark .btn--primary { background: var(--paper); color: var(--ink); border-color: var(--paper); }
+.section--dark .btn--primary:hover { background: var(--paper); color: var(--ink); box-shadow: 2px 5px 0 0 var(--lilac); }
 
 @media (max-width: 880px) {
   .mosaic { grid-template-columns: repeat(2, 1fr); }
@@ -1946,4 +1951,156 @@ li { margin-bottom: .4em; }
   .mosaic { grid-template-columns: 1fr; gap: 12px; }
   .mosaic .mock-site__view { aspect-ratio: 16 / 10; }
   .section--dark { margin-inline: 12px; }
+}
+
+/* --------------------------------------------------------------------------
+   35. ბადის პატერნი (graph paper) — ფონის ტექსტურა
+   -------------------------------------------------------------------------- */
+
+/*
+   მრავალჯერადი უტილიტი: ორი conic-gradient ერთმანეთზე — მსხვილი ბადე
+   --grid-size-ზე და წვრილი ბადე მის მეხუთედზე. mask-ით კიდეებზე ქრება,
+   რომ ტექსტს არ დაუპირისპირდეს.
+*/
+.pattern-grid { position: relative; isolation: isolate; }
+.pattern-grid > * { position: relative; z-index: 1; }
+
+.pattern-grid::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  border-radius: inherit;
+
+  --grid-size: 120px;
+  --grid-line: rgba(24, 24, 24, .085);
+  --grid-fade: radial-gradient(118% 100% at 50% 0%, #000 26%, transparent 76%);
+  --_g: #0000 90deg, var(--grid-line) 0;
+
+  background:
+    conic-gradient(from 90deg at 2px 2px, var(--_g)),
+    conic-gradient(from 90deg at 1px 1px, var(--_g));
+  background-size:
+    var(--grid-size) var(--grid-size),
+    calc(var(--grid-size) / 5) calc(var(--grid-size) / 5);
+
+  -webkit-mask-image: var(--grid-fade);
+          mask-image: var(--grid-fade);
+}
+
+/* მუქ ფონზე — თეთრი ხაზები */
+.pattern-grid--light::before {
+  --grid-line: rgba(255, 255, 255, .13);
+  --grid-fade: radial-gradient(100% 78% at 50% 0%, #000 0%, transparent 74%);
+}
+
+/* ცენტრირებულ hero-ზე ბადე ცენტრიდან იშლება */
+.hero--center.pattern-grid::before {
+  --grid-size: clamp(76px, 8vw, 128px);
+  --grid-fade: radial-gradient(74% 82% at 50% 42%, #000 0%, transparent 72%);
+}
+
+/* მოკაპის მინიატურაში — წვრილი ბადე, რომ დიზაინის ტილოს ჰგავდეს */
+.mock-site__page {
+  --grid-size: 72px;
+  --_g: #0000 90deg, rgba(24, 24, 24, .045) 0;
+  background-image:
+    conic-gradient(from 90deg at 2px 2px, var(--_g)),
+    conic-gradient(from 90deg at 1px 1px, var(--_g));
+  background-size:
+    var(--grid-size) var(--grid-size),
+    calc(var(--grid-size) / 5) calc(var(--grid-size) / 5);
+}
+.mock-site--soft .mock-site__page { --_g: #0000 90deg, rgba(24, 24, 24, .04) 0; }
+
+@media print {
+  .pattern-grid::before { display: none; }
+  .mock-site__page { background-image: none; }
+}
+
+/* შიდა გვერდების სათაურის ბლოკზე ბადე მარჯვნიდან შემოდის */
+.page-hero.pattern-grid::before {
+  --grid-size: clamp(70px, 7vw, 112px);
+  --grid-fade: linear-gradient(102deg, transparent 16%, #000 88%);
+}
+/* ფუტერში ბადე ზემოდან ეშვება */
+.site-footer.pattern-grid::before {
+  --grid-size: clamp(80px, 8vw, 130px);
+  --grid-fade: linear-gradient(#000, transparent 72%);
+}
+
+/* --------------------------------------------------------------------------
+   36. სკროლის ინდიკატორი და მობილური მიმაგრებული CTA
+   -------------------------------------------------------------------------- */
+
+/* გვერდის წაკითხვის პროგრესი — თხელი ზოლი ჰედერის ზემოთ */
+.scroll-progress {
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: 3px;
+  z-index: 150;
+  pointer-events: none;
+  background: var(--lilac);
+  transform: scaleX(var(--progress, 0));
+  transform-origin: 0 50%;
+  will-change: transform;
+}
+
+/* მობილურზე მიმაგრებული ზოლი — ზარი + კონსულტაცია */
+.sticky-cta {
+  position: fixed;
+  left: 12px; right: 12px; bottom: 12px;
+  z-index: 140;
+  display: none;
+  gap: 10px;
+  align-items: center;
+  padding: 8px 8px 8px 18px;
+  border-radius: 20px;
+  border: 1px solid var(--ink);
+  background: var(--paper);
+  box-shadow: 0 10px 30px rgba(24, 24, 24, .18);
+  transform: translateY(140%);
+  opacity: 0;
+  transition: transform .32s cubic-bezier(.22,.61,.36,1), opacity .32s ease;
+}
+.sticky-cta.is-visible { transform: translateY(0); opacity: 1; }
+.sticky-cta__text {
+  flex: 1;
+  min-width: 0;
+  font-size: .86rem;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--ink);
+}
+.sticky-cta__text,
+.sticky-cta__text small { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sticky-cta__text small { display: block; font-weight: 500; color: var(--muted); font-size: .76rem; }
+.sticky-cta .btn { width: auto; padding: 11px 18px; font-size: .84rem; flex: none; }
+.sticky-cta__call {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px; height: 42px;
+  flex: none;
+  border-radius: 50%;
+  border: 1px solid var(--line-strong);
+  color: var(--ink);
+}
+.sticky-cta__call:hover { border-color: var(--ink); background: var(--bg-soft); }
+
+@media (max-width: 880px) {
+  .sticky-cta { display: flex; }
+  /* ფუტერს ვუმატებთ ადგილს, რომ ზოლმა ბმულები არ დაფაროს */
+  .site-footer { padding-bottom: 86px; }
+}
+@media (max-width: 400px) {
+  .sticky-cta__text small { display: none; }
+  .sticky-cta .btn { padding: 11px 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sticky-cta { transition: none; }
+}
+@media print {
+  .scroll-progress, .sticky-cta { display: none !important; }
 }

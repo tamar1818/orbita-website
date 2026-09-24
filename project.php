@@ -38,7 +38,7 @@ $PAGE_LD = "\n  <script type=\"application/ld+json\">\n"
 
 require __DIR__ . '/inc/head.php';
 ?>
-    <section class="page-hero">
+    <section class="page-hero pattern-grid">
       <div class="container">
         <div class="page-hero__inner">
           <ol class="breadcrumb">

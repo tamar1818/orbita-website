@@ -557,6 +557,42 @@ const FORM_ENDPOINT = "/api/lead.php";
     });
   }
 
+  /* ------------------------------- სკროლის პროგრესი და მიმაგრებული CTA */
+  function initScrollUi() {
+    const bar    = $(".scroll-progress");
+    const sticky = $(".sticky-cta");
+    if (!bar && !sticky) return;
+
+    /* ზღვარი, რომლის შემდეგაც ზოლი ჩნდება — hero-ს სიმაღლე ან ერთი ეკრანი */
+    const anchor = $(".hero, .page-hero");
+    const trigger = () => (anchor ? anchor.offsetHeight : window.innerHeight) * 0.75;
+
+    let ticking = false;
+    const paint = () => {
+      ticking = false;
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      const y   = window.scrollY;
+
+      if (bar) bar.style.setProperty("--progress", max > 0 ? Math.min(y / max, 1).toFixed(4) : 0);
+
+      if (sticky) {
+        /* ფუტერთან მიახლოებისას ვმალავთ — იქ ისედაც არის კონტაქტი */
+        const nearEnd = max > 0 && max - y < 160;
+        sticky.classList.toggle("is-visible", y > trigger() && !nearEnd);
+      }
+    };
+
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(paint);
+    };
+
+    paint();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
+  }
+
   /* ------------------------------------------------------------ bootstrap */
   document.addEventListener("DOMContentLoaded", () => {
     initNav();
@@ -571,5 +607,6 @@ const FORM_ENDPOINT = "/api/lead.php";
     initFilters();
     initTeamCards();
     initMegaMenu();
+    initScrollUi();
   });
 })();
