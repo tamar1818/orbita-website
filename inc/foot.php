@@ -5,7 +5,7 @@
     <div class="container">
       <div class="footer__grid">
         <div>
-          <a class="brand" href="/"><img class="brand__logo" src="assets/img/logo/webico-horizontal-white.svg" alt="Webico" width="152" height="38"></a>
+          <a class="brand" href="/"><img class="brand__logo" src="/assets/img/logo/webico-horizontal-white.svg" alt="Webico" width="152" height="38"></a>
           <p class="footer__about">ციფრული სააგენტო თბილისიდან. ვქმნით ვებსაიტებს, ვზრდით
             ორგანულ ტრაფიკს და ვმართავთ სარეკლამო კამპანიებს გაზომვადი შედეგისთვის.</p>
           <div class="socials">
@@ -36,6 +36,7 @@
             <li><a href="/about">ჩვენ შესახებ</a></li>
             <li><a href="/services">ყველა სერვისი</a></li>
             <li><a href="/work">ნამუშევრები</a></li>
+          <li><a href="/blog">ბლოგი</a></li>
             
             <li><a href="/#faq">კითხვები</a></li>
             <li><a href="/contact">კონტაქტი</a></li>
@@ -61,6 +62,6 @@
     </div>
   </footer>
 
-  <script src="assets/js/main.js?v=fd5f44a3"></script>
+  <script src="/assets/js/main.js?v=e2e5f431"></script>
 </body>
 </html>

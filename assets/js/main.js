@@ -69,11 +69,108 @@ const FORM_ENDPOINT = "/api/lead.php";
     const header = $(".site-header");
     if (!header) return;
 
-    const onScroll = () => {
-      header.classList.toggle("is-stuck", window.scrollY > 8);
+    /* ქვემოთ სქროლისას ჰედერი იმალება, ზემოთ სქროლისას ან გაჩერებისას ბრუნდება.
+       არ ვმალავთ, როცა მენიუ ღიაა ან ფოკუსი ჰედერშია (კლავიატურით ნავიგაცია). */
+    const busy = () =>
+      header.matches(":focus-within") ||
+      !!$(".nav__links.is-open", header) ||
+      !!$(".nav__item.is-open", header);
+
+    let lastY = window.scrollY;
+    let idle;
+    let ticking = false;
+
+    const show = () => header.classList.remove("is-hidden");
+
+    const update = () => {
+      ticking = false;
+      const y = Math.max(0, window.scrollY);
+      const dy = y - lastY;
+
+      header.classList.toggle("is-stuck", y > 8);
+
+      if (y < 140 || busy()) show();
+      else if (dy > 4) header.classList.add("is-hidden");
+      else if (dy < -4) show();
+
+      lastY = y;
+      clearTimeout(idle);
+      idle = setTimeout(show, 320);   // სქროლი გაჩერდა — ნავიგაცია ბრუნდება
     };
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
+
+    window.addEventListener("scroll", () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(update);
+    }, { passive: true });
+
+    header.addEventListener("focusin", show);
+    update();
+  }
+
+  /* ------------------------ ტექსტის „გადახვევა“ hover-ზე (ნავიგაცია, ღილაკები) */
+  function initTextRoll() {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    $$(".nav__links > li > a, a.btn, [data-roll]").forEach((el) => {
+      if (el.querySelector(".roll")) return;
+      const node = Array.from(el.childNodes).find(
+        (n) => n.nodeType === 3 && n.textContent.trim()
+      );
+      if (!node) return;
+      const text = node.textContent.trim();
+      const wrap = document.createElement("span");
+      wrap.className = "roll";
+      const a = document.createElement("span");
+      a.className = "roll__a";
+      a.textContent = text;
+      const b = document.createElement("span");
+      b.className = "roll__b";
+      b.setAttribute("aria-hidden", "true");
+      b.textContent = text;
+      wrap.append(a, b);
+      node.replaceWith(wrap);
+    });
+  }
+
+  /* ----------------------- hero-ში მბრუნავი სიტყვა (data-rotate="ა|ბ|გ") */
+  function initRotator() {
+    $$("[data-rotate]").forEach((el) => {
+      const words = el.dataset.rotate.split("|").map((w) => w.trim()).filter(Boolean);
+      if (words.length < 2) return;
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+      /* სიგანე რბილად იცვლება შემდეგი სიტყვის ზომაზე — სათაური არ „ხტება“ */
+      const word = el.querySelector(".rotator__word") || el;
+      let widths = [];
+      const measure = () => {
+        const probe = el.cloneNode(true);
+        probe.removeAttribute("data-rotate");
+        probe.style.cssText = "position:absolute;visibility:hidden;width:auto;min-width:0;white-space:nowrap;";
+        el.parentNode.appendChild(probe);
+        const pw = probe.querySelector(".rotator__word") || probe;
+        widths = words.map((w) => { pw.textContent = w; return probe.getBoundingClientRect().width; });
+        probe.remove();
+        el.style.width = Math.ceil(widths[i]) + "px";
+      };
+
+      let i = 0;
+      const tick = () => {
+        if (document.hidden) return;
+        const next = (i + 1) % words.length;
+        el.style.width = Math.ceil(widths[next]) + "px";
+        el.classList.add("is-out");
+        setTimeout(() => {
+          i = next;
+          word.textContent = words[i];
+          el.classList.remove("is-out");
+          el.classList.add("is-in");
+          requestAnimationFrame(() => requestAnimationFrame(() => el.classList.remove("is-in")));
+        }, 300);
+      };
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(measure); else measure();
+      window.addEventListener("resize", measure, { passive: true });
+      setInterval(tick, 2600);
+    });
   }
 
   /* ----------------------------------------------------- 4. FAQ აკორდეონი */
@@ -458,7 +555,7 @@ const FORM_ENDPOINT = "/api/lead.php";
       });
       buttons.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.filter === value)));
       if (empty) empty.hidden = shown > 0;
-      if (live) live.textContent = shown + " პროექტი";
+      if (live) live.textContent = shown + " " + (group.dataset.filterNoun || "პროექტი");
     };
 
     buttons.forEach((b) => b.addEventListener("click", () => apply(b.dataset.filter)));
@@ -593,6 +690,67 @@ const FORM_ENDPOINT = "/api/lead.php";
     window.addEventListener("resize", onScroll, { passive: true });
   }
 
+  /* ------------------ სექციის სათაურები: სიტყვები რიგრიგობით ამოდის */
+  function initSplit() {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    $$(".section-head h2, .faq-split__head h2, [data-split]").forEach((h) => {
+      if (h.dataset.split === "done" || !h.closest("[data-reveal]")) return;
+      h.dataset.split = "done";
+      let w = 0;
+      Array.from(h.childNodes).forEach((n) => {
+        if (n.nodeType === 3) {
+          const frag = document.createDocumentFragment();
+          n.textContent.split(/(\s+)/).forEach((part) => {
+            if (!part) return;
+            if (/^\s+$/.test(part)) { frag.append(document.createTextNode(part)); return; }
+            const sp = document.createElement("span");
+            sp.className = "split-w";
+            sp.style.setProperty("--w", w++);
+            sp.textContent = part;
+            frag.append(sp);
+          });
+          n.replaceWith(frag);
+        } else if (n.nodeType === 1 && n.tagName !== "BR") {
+          n.classList.add("split-w");
+          n.style.setProperty("--w", w++);
+        }
+      });
+    });
+  }
+
+  /* ---------------------------------------- სტატიის ბმულის კოპირება */
+  function initCopyLink() {
+    $$("[data-copy-link]").forEach((btn) => {
+      btn.addEventListener("click", async () => {
+        const out = btn.closest(".share") && $(".share__done", btn.closest(".share"));
+        try {
+          await navigator.clipboard.writeText(btn.dataset.copyLink);
+          if (out) out.textContent = "ბმული დაკოპირდა";
+        } catch (e) {
+          if (out) out.textContent = btn.dataset.copyLink;
+        }
+        if (out) setTimeout(() => { out.textContent = ""; }, 2600);
+      });
+    });
+  }
+
+  /* --------------------------- სარჩევი: მიმდინარე ქვესათაურის მონიშვნა */
+  function initToc() {
+    const links = $$(".toc a");
+    if (!links.length || !("IntersectionObserver" in window)) return;
+    const map = new Map(links.map((a) => [a.getAttribute("href").slice(1), a]));
+    const heads = Array.from(map.keys()).map((id) => document.getElementById(id)).filter(Boolean);
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        links.forEach((a) => a.classList.remove("is-current"));
+        const a = map.get(e.target.id);
+        if (a) a.classList.add("is-current");
+      });
+    }, { rootMargin: "-20% 0px -70% 0px" });
+    heads.forEach((h) => io.observe(h));
+  }
+
   /* ------------------------------------------------------------ bootstrap */
   document.addEventListener("DOMContentLoaded", () => {
     initNav();
@@ -608,5 +766,10 @@ const FORM_ENDPOINT = "/api/lead.php";
     initTeamCards();
     initMegaMenu();
     initScrollUi();
+    initTextRoll();
+    initRotator();
+    initSplit();
+    initCopyLink();
+    initToc();
   });
 })();

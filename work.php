@@ -2,7 +2,7 @@
 declare(strict_types=1);
 require_once __DIR__ . '/inc/projects.php';
 
-$list = cms_projects();
+$list = cms_projects_showcase();
 $PAGE_TITLE = 'ნამუშევრები — Webico';
 $PAGE_DESC = 'Webico-ს პორტფოლიო: ' . count($list) . ' შესრულებული ვებსაიტი.';
 $PAGE_URL = '/work';
@@ -42,7 +42,7 @@ require __DIR__ . '/inc/head.php';
 ?>
           <article class="work" data-category="web" data-reveal data-reveal-delay="<?= min($i, 6) * 40 ?>">
             <a class="work__cover-link" href="/work-<?= $slug ?>" tabindex="-1" aria-hidden="true">
-              <div class="work__cover work__cover--mock"><?= cms_mock($p) ?></div>
+              <div class="work__cover work__cover--mock"><?= cms_mock($p, "(max-width: 620px) 100vw, (max-width: 1100px) 50vw, 600px") ?></div>
             </a>
             <div class="work__body">
               <div class="work__head">

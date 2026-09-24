@@ -1,4 +1,10 @@
-<?php require_once __DIR__ . "/init.php"; ?>
+<?php
+require_once __DIR__ . "/init.php";
+// გაზიარების სურათი: გვერდს შეუძლია მისცეს $PAGE_IMAGE (მაგ. პროექტის მოკაპი)
+$OG_IMG = !empty($PAGE_IMAGE) ? "https://webico.io/" . ltrim((string) $PAGE_IMAGE, "/") : "https://webico.io/assets/img/og-image.png";
+$OG_W = !empty($PAGE_IMAGE) ? ($PAGE_IMAGE_W ?? 1536) : 1200;
+$OG_H = !empty($PAGE_IMAGE) ? ($PAGE_IMAGE_H ?? 1024) : 630;
+?>
 <!DOCTYPE html>
 <html lang="ka">
 <head>
@@ -11,28 +17,28 @@
   <meta name="theme-color" content="#0d0d0d">
   <link rel="canonical" href="https://webico.io<?= cms_e($PAGE_URL ?? "/") ?>">
 
-  <meta property="og:type" content="website">
+  <meta property="og:type" content="<?= cms_e($PAGE_OG_TYPE ?? "website") ?>">
   <meta property="og:locale" content="ka_GE">
   <meta property="og:site_name" content="ვებიკო">
   <meta property="og:title" content="<?= cms_e($PAGE_TITLE ?? "Webico") ?>">
   <meta property="og:description" content="<?= cms_e($PAGE_DESC ?? "") ?>">
   <meta property="og:url" content="https://webico.io<?= cms_e($PAGE_URL ?? "/") ?>">
   <meta name="twitter:card" content="summary_large_image">
-  <meta property="og:image" content="https://webico.io/assets/img/og-image.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="ვებიკო — ციფრული სააგენტო">
-  <meta name="twitter:image" content="https://webico.io/assets/img/og-image.png">
-  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta property="og:image" content="<?= cms_e($OG_IMG) ?>">
+  <meta property="og:image:width" content="<?= (int) $OG_W ?>">
+  <meta property="og:image:height" content="<?= (int) $OG_H ?>">
+  <meta property="og:image:alt" content="<?= cms_e($PAGE_TITLE ?? "ვებიკო — ციფრული სააგენტო") ?>">
+  <meta name="twitter:image" content="<?= cms_e($OG_IMG) ?>">
+  <meta name="robots" content="<?= cms_e($PAGE_ROBOTS ?? "index, follow, max-image-preview:large") ?>">
 
-  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
-  <link rel="alternate icon" href="favicon.ico" sizes="any">
-  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="alternate icon" href="/favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <!-- სარეზერვო ქართული შრიფტი — მთავარი შრიფტია LGV Anastasia 2025 Geo (იხ. assets/fonts/) -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap">
-  <link rel="stylesheet" href="assets/css/style.css?v=fd5f44a3">
+  <link rel="stylesheet" href="/assets/css/style.css?v=e2e5f431">
 <?= $PAGE_LD ?? "" ?>
 </head>
 <body>
@@ -50,12 +56,11 @@
     <div class="container">
       <nav class="nav" aria-label="მთავარი ნავიგაცია">
         <a class="brand" href="/">
-          <img class="brand__logo" src="assets/img/logo/webico-horizontal-ink.svg"
+          <img class="brand__logo" src="/assets/img/logo/webico-horizontal-ink.svg"
                alt="Webico" width="152" height="38">
         </a>
 
         <ul class="nav__links" id="nav-links">
-          <li><a href="/">მთავარი</a></li>
           <li><a href="/about">ჩვენ შესახებ</a></li>
           <li class="nav__item">
             <button class="nav__trigger" type="button" data-mega-trigger
@@ -108,6 +113,7 @@
             </div></div>
           </li>
           <li><a href="/work">ნამუშევრები</a></li>
+          <li><a href="/blog">ბლოგი</a></li>
           <li><a href="/contact">კონტაქტი</a></li>
           <li><a class="btn btn--primary btn--sm" href="/contact">უფასო კონსულტაცია</a></li>
         </ul>

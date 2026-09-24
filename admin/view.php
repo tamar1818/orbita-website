@@ -7,13 +7,19 @@ $texts = $site['texts'] ?? [];
 $settings = $site['settings'] ?? [];
 $projects = cms_read('projects', ['projects' => []])['projects'] ?? [];
 $leads = array_reverse(cms_read('leads', ['leads' => []])['leads'] ?? []);
+$posts = cms_posts(true);
 
 /** რედაქტირებადი ტექსტების რეესტრი: გასაღები => [ლეიბლი, ტიპი, ნაგულისხმევი] */
 $TEXT_FIELDS = [
-    'home.hero.eyebrow' => ['მთავარი — ზედა წარწერა', 'input', 'ციფრული სააგენტო თბილისში'],
-    'home.hero.title'   => ['მთავარი — სათაური', 'input', 'შენი ბრენდის <em>შემდეგი ნაბიჯი.</em>'],
-    'home.hero.text'    => ['მთავარი — ტექსტი', 'area', 'შენი ბიზნესის საჭიროებებზე მორგებული ვებსაიტები, ბრენდინგი და ციფრული მარკეტინგი.'],
-    'home.hero.cta'     => ['მთავარი — ღილაკი', 'input', 'დავიწყოთ შენი პროექტი'],
+    'home.hero.proof'   => ['მთავარი — ზედა „ჩიპი“', 'input', '24 ბრენდმა უკვე გვენდო'],
+    'home.hero.lead'    => ['მთავარი — სათაურის დასაწყისი', 'input', 'ვქმნით'],
+    'home.hero.words'   => ['მთავარი — მბრუნავი სიტყვები (გამოყავით | ნიშნით)', 'input', 'ვებსაიტებს|ბრენდებს|კამპანიებს|აპლიკაციებს'],
+    'home.hero.tail'    => ['მთავარი — სათაურის დასასრული', 'input', 'რომლებიც ყიდის.'],
+    'home.hero.text'    => ['მთავარი — ტექსტი', 'area', 'ვებსაიტები, ბრენდინგი და ციფრული მარკეტინგი ქართული ბიზნესისთვის.'],
+    'home.hero.cta'     => ['მთავარი — ღილაკი', 'input', 'დავიწყოთ პროექტი'],
+    'home.tools.label'  => ['მთავარი — ინსტრუმენტების სათაური', 'input', 'ინსტრუმენტები, რომლებზეც ვმუშაობთ'],
+    'blog.title'   => ['ბლოგი — სათაური', 'input', 'რჩევები ქართული ბიზნესისთვის'],
+    'blog.text'    => ['ბლოგი — ტექსტი', 'area', ''],
     'home.clients.label' => ['მთავარი — კლიენტების წარწერა', 'input', 'გვენდობიან'],
     'work.title'   => ['ნამუშევრები — სათაური', 'input', 'შესრულებული პროექტები'],
     'work.text'    => ['ნამუშევრები — ტექსტი', 'area', ''],
@@ -32,6 +38,20 @@ $SETTING_FIELDS = [
     'linkedin'  => ['LinkedIn', ''],
 ];
 
+$editPost = null;
+if ($page === 'post' && isset($_GET['slug'])) {
+    foreach ($posts as $p) {
+        if (($p['slug'] ?? '') === $_GET['slug']) {
+            $editPost = $p;
+            break;
+        }
+    }
+}
+// შენახვისას შეცდომა — ფორმაში შეყვანილი მონაცემები არ იკარგება
+if ($page === 'post' && $err && ($_POST['action'] ?? '') === 'save_post') {
+    $editPost = array_map(static fn($v) => is_string($v) ? $v : '', $_POST) + ['_new' => empty($_POST['orig_slug'])];
+}
+
 $edit = null;
 if ($page === 'project' && isset($_GET['slug'])) {
     foreach ($projects as $p) {
@@ -44,6 +64,7 @@ if ($page === 'project' && isset($_GET['slug'])) {
 $nav = [
     'dashboard' => 'მთავარი',
     'projects'  => 'პროექტები',
+    'posts'     => 'ბლოგი',
     'media'     => 'ფოტოები',
     'texts'     => 'ტექსტები',
     'settings'  => 'კონტაქტები',
@@ -95,7 +116,7 @@ $nav = [
       <div class="side__brand">Webico <span>CMS</span></div>
       <nav>
         <?php foreach ($nav as $k => $label): ?>
-          <a href="index.php?p=<?= $k ?>" class="<?= $page === $k || ($k === 'projects' && $page === 'project') ? 'on' : '' ?>"><?= cms_e($label) ?></a>
+          <a href="index.php?p=<?= $k ?>" class="<?= $page === $k || ($k === 'projects' && $page === 'project') || ($k === 'posts' && $page === 'post') ? 'on' : '' ?>"><?= cms_e($label) ?></a>
         <?php endforeach; ?>
       </nav>
       <div class="side__foot">
@@ -112,6 +133,7 @@ $nav = [
         <h1>მართვის პანელი</h1>
         <div class="tiles">
           <a class="tile" href="index.php?p=projects"><b><?= count($projects) ?></b><span>პროექტი</span></a>
+          <a class="tile" href="index.php?p=posts"><b><?= count($posts) ?></b><span>სტატია</span></a>
           <a class="tile" href="index.php?p=media"><b><?= count(cms_media_list()) ?></b><span>ფოტო</span></a>
           <a class="tile" href="index.php?p=leads"><b><?= count($leads) ?></b><span>განაცხადი</span></a>
         </div>
@@ -170,7 +192,7 @@ $nav = [
           <div class="row">
             <label>სქრინშოტი
               <input name="shot" placeholder="assets/img/uploads/…" value="<?= cms_e($edit['shot'] ?? '') ?>">
-              <small class="muted">მოკაპში ჩაისმება; სასურველია 16:10</small>
+              <small class="muted">მოკაპის სურათი, 3:2 (მაგ. 1536×1024)</small>
             </label>
             <label>ლოგო
               <input name="logo" placeholder="assets/img/uploads/…" value="<?= cms_e($edit['logo'] ?? '') ?>">
@@ -190,6 +212,81 @@ $nav = [
           <div class="actions">
             <button class="btn" type="submit">შენახვა</button>
             <a class="link" href="index.php?p=projects">გაუქმება</a>
+          </div>
+        </form>
+
+      <?php elseif ($page === 'posts'): ?>
+        <div class="head">
+          <h1>ბლოგი</h1>
+          <a class="btn" href="index.php?p=post">+ ახალი სტატია</a>
+        </div>
+        <table class="table">
+          <thead><tr><th>სათაური</th><th>კატეგორია</th><th>თარიღი</th><th>სტატუსი</th><th></th></tr></thead>
+          <tbody>
+          <?php foreach ($posts as $p): ?>
+            <tr>
+              <td><b><?= cms_e($p['title'] ?? '') ?></b><br><small class="muted">/blog/<?= cms_e($p['slug'] ?? '') ?></small></td>
+              <td><?= cms_e(cms_post_cat($p)) ?></td>
+              <td><?= cms_e($p['date'] ?? '') ?></td>
+              <td><?php if (!empty($p['hidden'])): ?><span class="pill pill--off">დამალული</span><?php elseif (($p['date'] ?? '') > date('Y-m-d')): ?><span class="pill pill--off">დაგეგმილი</span><?php else: ?><span class="pill">გამოქვეყნებული</span><?php endif; ?></td>
+              <td class="right">
+                <a class="link" href="../blog/<?= cms_e($p['slug'] ?? '') ?>" target="_blank" rel="noopener">ნახვა</a>
+                <a class="link" href="index.php?p=post&amp;slug=<?= urlencode($p['slug'] ?? '') ?>">რედაქტირება</a>
+                <form method="post" class="inline" onsubmit="return confirm('წავშალოთ ეს სტატია?')">
+                  <?= cms_csrf_field() ?>
+                  <input type="hidden" name="action" value="delete_post">
+                  <input type="hidden" name="slug" value="<?= cms_e($p['slug'] ?? '') ?>">
+                  <button class="link link--danger" type="submit">წაშლა</button>
+                </form>
+              </td>
+            </tr>
+          <?php endforeach; ?>
+          </tbody>
+        </table>
+
+      <?php elseif ($page === 'post'): $isNew = !$editPost || !empty($editPost['_new']); ?>
+        <h1><?= $isNew ? 'ახალი სტატია' : 'სტატიის რედაქტირება' ?></h1>
+        <form method="post" class="card form" action="index.php?p=post<?= !$isNew ? '&amp;slug=' . urlencode((string) ($editPost['slug'] ?? '')) : '' ?>">
+          <?= cms_csrf_field() ?>
+          <input type="hidden" name="action" value="save_post">
+          <input type="hidden" name="orig_slug" value="<?= $isNew ? '' : cms_e($editPost['orig_slug'] ?? $editPost['slug'] ?? '') ?>">
+          <label>სათაური<input name="title" required value="<?= cms_e($editPost['title'] ?? '') ?>"></label>
+          <div class="row">
+            <label>Slug (URL — ლათინურად)<input name="slug" required pattern="[a-z0-9-]+" placeholder="google-maps-guide" value="<?= cms_e($editPost['slug'] ?? '') ?>"></label>
+            <label>თარიღი<input type="date" name="date" required value="<?= cms_e($editPost['date'] ?? date('Y-m-d')) ?>">
+              <small class="muted">მომავალი თარიღი = დაგეგმილი გამოქვეყნება</small></label>
+          </div>
+          <div class="row">
+            <label>კატეგორია
+              <select name="category">
+                <?php foreach (CMS_BLOG_CATS as $v => $l): ?>
+                  <option value="<?= $v ?>" <?= ($editPost['category'] ?? '') === $v ? 'selected' : '' ?>><?= cms_e($l) ?></option>
+                <?php endforeach; ?>
+              </select>
+            </label>
+            <label>ყდის ფერი
+              <select name="tone">
+                <?php foreach (['lilac' => 'იისფერი', 'lime' => 'ლაიმი', 'pink' => 'ვარდისფერი', 'soft' => 'ნაცრისფერი', 'dark' => 'მუქი'] as $v => $l): ?>
+                  <option value="<?= $v ?>" <?= ($editPost['tone'] ?? 'lilac') === $v ? 'selected' : '' ?>><?= $l ?></option>
+                <?php endforeach; ?>
+              </select>
+            </label>
+          </div>
+          <label>მოკლე აღწერა (ჩანს ბარათზე და Google-ში)<textarea name="excerpt" rows="2" maxlength="300"><?= cms_e($editPost['excerpt'] ?? '') ?></textarea></label>
+          <div class="row">
+            <label>ყდის ფოტო (არასავალდებულო)<input name="cover" placeholder="assets/img/uploads/…" value="<?= cms_e($editPost['cover'] ?? '') ?>">
+              <small class="muted">თუ ცარიელია, ყდა ავტომატურად დაიხატება</small></label>
+            <label>ყდის ტექსტი (არასავალდებულო)<input name="cover_text" placeholder="მოკლე ფრაზა ყდისთვის" value="<?= cms_e($editPost['cover_text'] ?? '') ?>"></label>
+          </div>
+          <label>ავტორი<input name="author" placeholder="<?= cms_e(CMS_BLOG_AUTHOR) ?>" value="<?= cms_e($editPost['author'] ?? '') ?>"></label>
+          <label>ტექსტი
+            <textarea name="body" rows="22" class="mono"><?= cms_e($editPost['body'] ?? '') ?></textarea>
+            <small class="muted">შეგიძლიათ დაწეროთ უბრალო ტექსტი — ცარიელი ხაზი ახალ აბზაცს ნიშნავს. ან HTML: &lt;h2&gt; ქვესათაური (სარჩევში გამოჩნდება), &lt;p&gt;, &lt;ul&gt;&lt;li&gt;, &lt;strong&gt;, &lt;a href&gt;, &lt;blockquote&gt;, &lt;img src&gt;.</small>
+          </label>
+          <label class="check"><input type="checkbox" name="hidden" <?= !empty($editPost['hidden']) ? 'checked' : '' ?>> დამალული (მონახაზი)</label>
+          <div class="actions">
+            <button class="btn" type="submit">შენახვა</button>
+            <a class="link" href="index.php?p=posts">გაუქმება</a>
           </div>
         </form>
 

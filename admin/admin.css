@@ -86,3 +86,5 @@ input:focus,textarea:focus,select:focus{outline:none;border-color:var(--ink);box
   .side__foot{margin:0;flex-direction:row;gap:14px}
   .row,.upload{grid-template-columns:1fr}
 }
+
+textarea.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px;line-height:1.55}

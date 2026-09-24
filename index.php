@@ -1,4 +1,4 @@
-<?php require_once __DIR__ . "/inc/projects.php"; ?>
+<?php require_once __DIR__ . "/inc/projects.php"; require_once __DIR__ . "/inc/blog.php"; ?>
 <!DOCTYPE html>
 <html lang="ka">
 <head>
@@ -32,7 +32,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <!-- სარეზერვო ქართული შრიფტი — მთავარი შრიფტია LGV Anastasia 2025 Geo (იხ. assets/fonts/) -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap">
-  <link rel="stylesheet" href="assets/css/style.css?v=fd5f44a3">
+  <link rel="stylesheet" href="assets/css/style.css?v=e2e5f431">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -129,7 +129,6 @@
         </a>
 
         <ul class="nav__links" id="nav-links">
-          <li><a href="/">მთავარი</a></li>
           <li><a href="/about">ჩვენ შესახებ</a></li>
           <li class="nav__item">
             <button class="nav__trigger" type="button" data-mega-trigger
@@ -182,6 +181,7 @@
             </div></div>
           </li>
           <li><a href="/work">ნამუშევრები</a></li>
+          <li><a href="/blog">ბლოგი</a></li>
           <li><a href="/contact">კონტაქტი</a></li>
           <li><a class="btn btn--primary btn--sm" href="/contact">უფასო კონსულტაცია</a></li>
         </ul>
@@ -199,31 +199,34 @@
   <main id="main">
 
     <!-- ============================ HERO ============================ -->
+    <?php
+      $allp  = cms_projects();
+      $shots = array_values(array_filter(cms_projects_showcase(), static fn($x) => trim((string) ($x['shot'] ?? '')) !== ''));
+      $words = array_values(array_filter(array_map('trim', explode('|', html_entity_decode(T("home.hero.words", "ვებსაიტებს|ბრენდებს|კამპანიებს|აპლიკაციებს"), ENT_QUOTES, 'UTF-8')))));
+    ?>
     <section class="hero hero--center pattern-grid">
       <div class="container">
         <div class="hero__center" data-reveal>
-          <span class="eyebrow"><?= T("home.hero.eyebrow", "ციფრული სააგენტო თბილისში") ?></span>
-          <h1><?= T_html("home.hero.title", "შენი ბრენდის <em>შემდეგი ნაბიჯი.</em>") ?></h1>
-          <p><?= T("home.hero.text", "შენი ბიზნესის საჭიროებებზე მორგებული ვებსაიტები, ბრენდინგი და ციფრული მარკეტინგი. მკაფიო იდეები, გააზრებული დიზაინი და ძლიერი ონლაინიმიჯი.") ?></p>
+          <a class="proof-pill" href="/work">
+            <span class="proof-pill__faces" aria-hidden="true"><?php foreach (array_slice($shots, 0, 4) as $f): ?><img src="<?= cms_e(cms_url(preg_replace('~\.webp$~', '-sm.webp', (string) $f['shot']))) ?>" alt="" width="30" height="30"><?php endforeach; ?></span>
+            <span><?= T("home.hero.proof", count($allp) . " ბრენდმა უკვე გვენდო") ?></span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <h1 class="hero__title">
+            <?= T("home.hero.lead", "ვქმნით") ?>
+            <span class="rotator" data-rotate="<?= cms_e(implode('|', $words)) ?>"><span class="rotator__word"><?= cms_e($words[0] ?? '') ?></span></span>,<br>
+            <?= T("home.hero.tail", "რომლებიც ყიდის.") ?>
+          </h1>
+          <p><?= T("home.hero.text", "ვებსაიტები, ბრენდინგი და ციფრული მარკეტინგი ქართული ბიზნესისთვის — გააზრებული დიზაინით, სწრაფი კოდით და გუნდით, რომელიც შედეგზე ფიქრობს.") ?></p>
           <div class="btn-row btn-row--center">
-            <a class="btn btn--primary" href="/contact"><?= T("home.hero.cta", "დავიწყოთ შენი პროექტი") ?></a>
-            <a class="btn btn--ghost" href="/work">ნახეთ ნამუშევრები</a>
+            <a class="btn btn--primary" href="/contact"><?= T("home.hero.cta", "დავიწყოთ პროექტი") ?></a>
+            <a class="btn btn--ghost" href="/work">ნამუშევრები</a>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===================== პროექტების მოზაიკა ====================== -->
-    <section class="section section--tight">
-      <div class="container">
-        <?php $mos = array_slice(cms_projects(), 0, 8); ?>
-        <div class="mosaic" data-reveal>
-          <?php foreach ($mos as $m): ?>
-            <a href="/work-<?= cms_e((string) $m['slug']) ?>" aria-label="<?= cms_e((string) $m['name']) ?>"><?= cms_mock($m) ?></a>
-          <?php endforeach; ?>
-        </div>
-        <div class="mosaic__more">
-          <a class="btn btn--ghost" href="/work">ყველა ნამუშევარი</a>
+          <ul class="hero__perks">
+            <li>უფასო პირველი კონსულტაცია</li>
+            <li>პასუხი 24 საათში</li>
+            <li>მუშაობა ხელშეკრულებით</li>
+          </ul>
         </div>
       </div>
     </section>
@@ -237,7 +240,7 @@
           <div class="marquee__track">
             <?php for ($g = 0; $g < 2; $g++): ?>
               <div class="marquee__group"<?= $g ? ' aria-hidden="true"' : '' ?>>
-                <?php foreach ($cl as $c): $lg = trim((string) ($c['logo'] ?? '')); ?><a class="marquee__item<?= $lg ? ' marquee__item--logo' : '' ?>" href="/work-<?= cms_e((string) $c['slug']) ?>"><?php if ($lg): ?><img class="marquee__logo" src="<?= cms_e($lg) ?>" alt="<?= cms_e((string) $c['name']) ?>" loading="lazy"><?php else: ?><i aria-hidden="true"></i><?= cms_e((string) $c['name']) ?><?php endif; ?></a><?php endforeach; ?>
+                <?php foreach ($cl as $c): $lg = trim((string) ($c['logo'] ?? '')); ?><a class="marquee__item<?= $lg ? ' marquee__item--logo' : '' ?>"<?= $g ? ' tabindex="-1"' : '' ?> href="/work-<?= cms_e((string) $c['slug']) ?>"><?php if ($lg): ?><img class="marquee__logo" src="<?= cms_e($lg) ?>" alt="<?= cms_e((string) $c['name']) ?>" loading="lazy"><?php else: ?><i aria-hidden="true"></i><?= cms_e((string) $c['name']) ?><?php endif; ?></a><?php endforeach; ?>
               </div>
             <?php endfor; ?>
           </div>
@@ -246,201 +249,198 @@
       </div>
     </section>
 
+    <!-- ================== ნამუშევრების ორმაგი ლენტი ================== -->
+    <?php if ($shots): $half = (int) ceil(count($shots) / 2); ?>
+    <section class="showcase" aria-label="ნამუშევრები">
+      <?php foreach ([array_slice($shots, 0, $half), array_slice($shots, $half)] as $r => $row): if (!$row) continue; ?>
+      <div class="showcase__row<?= $r ? ' showcase__row--rev' : '' ?>">
+        <div class="showcase__track">
+          <?php for ($g = 0; $g < 2; $g++): ?>
+          <div class="showcase__group"<?= $g ? ' aria-hidden="true"' : '' ?>>
+            <?php foreach ($row as $m): ?><a class="showcase__item" href="/work-<?= cms_e((string) $m['slug']) ?>"<?= $g ? ' tabindex="-1"' : '' ?>>
+              <?= cms_mock($m, '(max-width: 620px) 72vw, 440px') ?>
+              <span class="showcase__label"><b><?= cms_e((string) $m['name']) ?></b><small><?= cms_e((string) ($m['domain'] ?? '')) ?></small><span class="showcase__go"><?= CMS_ARROW ?></span></span>
+            </a><?php endforeach; ?>
+          </div>
+          <?php endfor; ?>
+        </div>
+      </div>
+      <?php endforeach; ?>
+      <div class="container showcase__more">
+        <a class="btn btn--ghost" href="/work">ყველა ნამუშევარი (<?= count($allp) ?>)</a>
+      </div>
+    </section>
+    <?php endif; ?>
+
     <!-- ========================= სერვისები ========================== -->
     <section class="section" id="services">
       <div class="container">
         <div class="section-head section-head--center" data-reveal>
           <span class="eyebrow">რას ვაკეთებთ</span>
-          <h2>სრული ციფრული მომსახურება ერთ სივრცეში</h2>
-          <p>დიზაინიდან რეკლამამდე — ყველა ეტაპზე ერთი გუნდი მუშაობს, ამიტომ არსად იკარგება
-            არც დრო და არც ინფორმაცია.</p>
+          <h2>ოთხი მიმართულება, ერთი გუნდი</h2>
+          <p>დიზაინიდან რეკლამამდე ყველა ეტაპზე ერთი გუნდი მუშაობს — ინფორმაცია არ იკარგება და
+            პასუხისმგებლობაც ერთ ადგილასაა.</p>
         </div>
-
-        <div class="carousel carousel--2" data-carousel>
-          <div class="carousel__viewport" data-carousel-track role="group" aria-label="სერვისები">
-            <div class="carousel__slide"><article class="card card--link card--lilac" data-reveal data-reveal-delay="0">
-            <span class="card__icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><line x1="13" y1="4" x2="11" y2="20"/></svg></span>
-            <h3>ვებსაიტების დიზაინი და შექმნა</h3>
-            <p>კორპორატიული საიტები, ონლაინ მაღაზიები და ვებ-აპლიკაციები, რომლებიც სწრაფად იტვირთება და ვიზიტორს კლიენტად აქცევს.</p>
-            <ul class="card__list">
-              <li>კორპორატიული და სავიზიტო საიტები</li>
-              <li>ონლაინ მაღაზიები (E-commerce)</li>
-              <li>ვებ-აპლიკაციები და პორტალები</li>
-              <li>ტექნიკური მხარდაჭერა</li>
-            </ul>
-            <a class="link-arrow" href="/service-web-development">
-              დეტალურად <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg><span class="sr-only">— ვებსაიტების დიზაინი და შექმნა</span>
-            </a>
-          </article></div>
-            <div class="carousel__slide"><article class="card card--link card--lime" data-reveal data-reveal-delay="70">
-            <span class="card__icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.7" y2="16.7"/><line x1="8.5" y1="12.5" x2="8.5" y2="9.5"/><line x1="11" y1="12.5" x2="11" y2="7.5"/><line x1="13.5" y1="12.5" x2="13.5" y2="10.5"/></svg></span>
-            <h3>SEO ოპტიმიზაცია</h3>
-            <p>ტექნიკური აუდიტი, საკვანძო სიტყვები და კონტენტი, რომელიც თქვენს ბიზნესს Google-ის პირველ გვერდზე გაიყვანს.</p>
-            <ul class="card__list">
-              <li>ტექნიკური SEO აუდიტი</li>
-              <li>საკვანძო სიტყვების კვლევა</li>
-              <li>კონტენტ-სტრატეგია ქართულ ენაზე</li>
-              <li>ლინკების მოპოვება</li>
-            </ul>
-            <a class="link-arrow" href="/service-seo">
-              დეტალურად <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg><span class="sr-only">— SEO ოპტიმიზაცია</span>
-            </a>
-          </article></div>
-            <div class="carousel__slide"><article class="card card--link card--pink" data-reveal data-reveal-delay="140">
-            <span class="card__icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></span>
-            <h3>ციფრული მარკეტინგი</h3>
-            <p>Google Ads, Meta და TikTok კამპანიები გაზომვადი შედეგითა და გამჭვირვალე ყოველთვიური ანგარიშგებით.</p>
-            <ul class="card__list">
-              <li>Google Ads და Performance Max</li>
-              <li>Facebook და Instagram რეკლამა</li>
-              <li>სოციალური მედიის მართვა</li>
-              <li>ელფოსტის მარკეტინგი</li>
-            </ul>
-            <a class="link-arrow" href="/service-marketing">
-              დეტალურად <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg><span class="sr-only">— ციფრული მარკეტინგი</span>
-            </a>
-          </article></div>
-            <div class="carousel__slide"><article class="card card--link" data-reveal data-reveal-delay="210">
-            <span class="card__icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></span>
-            <h3>ბრენდის ვიზუალური იდენტობა</h3>
-            <p>ლოგო, ბრენდბუქი და ინტერფეისის დიზაინი, რომელიც ნდობას აჩენს და კონკურენტებისგან გამოგარჩევთ.</p>
-            <ul class="card__list">
-              <li>ლოგო და ფირმის სტილი</li>
-              <li>ბრენდბუქი და გაიდლაინები</li>
-              <li>UI/UX დიზაინი და პროტოტიპი</li>
-              <li>პრეზენტაციები და ბანერები</li>
-            </ul>
-            <a class="link-arrow" href="/service-branding">
-              დეტალურად <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg><span class="sr-only">— ბრენდის ვიზუალური იდენტობა</span>
-            </a>
-          </article></div>
-          </div>
-          <div class="carousel__controls">
-            <button class="carousel__btn" type="button" data-carousel-prev aria-label="წინა"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg></button>
-            <div class="carousel__dots" data-carousel-dots></div>
-            <button class="carousel__btn" type="button" data-carousel-next aria-label="შემდეგი"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></button>
-          </div>
-        </div>
-
-        <div class="btn-row btn-row--center" style="margin-top:40px" data-reveal>
-          <a class="btn btn--ghost" href="/services">ყველა სერვისი და ფასები <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        <div class="svc-list" data-reveal>
+          <a class="svc svc--lilac" href="/service-web-development">
+            <span class="svc__num">01</span>
+            <span class="svc__main">
+              <span class="svc__title">ვებსაიტების დიზაინი და შექმნა</span>
+              <span class="svc__desc"><span>კორპორატიული საიტები, ონლაინ მაღაზიები და ვებ-აპლიკაციები, რომლებიც სწრაფად იტვირთება და ვიზიტორს კლიენტად აქცევს.</span></span>
+            </span>
+            <span class="svc__tags"><span>ონლაინ მაღაზია</span><span>ვებ-აპლიკაცია</span><span>WordPress</span><span>Custom code</span></span>
+            <span class="svc__go"><?= CMS_ARROW ?></span>
+          </a>
+          <a class="svc svc--lime" href="/service-seo">
+            <span class="svc__num">02</span>
+            <span class="svc__main">
+              <span class="svc__title">SEO ოპტიმიზაცია</span>
+              <span class="svc__desc"><span>ტექნიკური აუდიტი, საკვანძო სიტყვების კვლევა და ქართულენოვანი კონტენტი, რომ Google-ში სწორ მომენტში გიპოვონ.</span></span>
+            </span>
+            <span class="svc__tags"><span>ტექნიკური აუდიტი</span><span>სემანტიკა</span><span>ლოკალური SEO</span></span>
+            <span class="svc__go"><?= CMS_ARROW ?></span>
+          </a>
+          <a class="svc svc--pink" href="/service-marketing">
+            <span class="svc__num">03</span>
+            <span class="svc__main">
+              <span class="svc__title">ციფრული მარკეტინგი</span>
+              <span class="svc__desc"><span>Google Ads, Meta და TikTok კამპანიები გაზომვადი შედეგითა და გამჭვირვალე ყოველთვიური ანგარიშგებით.</span></span>
+            </span>
+            <span class="svc__tags"><span>Google Ads</span><span>Facebook / Instagram</span><span>TikTok</span></span>
+            <span class="svc__go"><?= CMS_ARROW ?></span>
+          </a>
+          <a class="svc svc--soft" href="/service-branding">
+            <span class="svc__num">04</span>
+            <span class="svc__main">
+              <span class="svc__title">ბრენდის ვიზუალური იდენტობა</span>
+              <span class="svc__desc"><span>ლოგო, ბრენდბუქი და ინტერფეისის დიზაინი, რომელიც ნდობას აჩენს და კონკურენტებისგან გამოგარჩევთ.</span></span>
+            </span>
+            <span class="svc__tags"><span>ლოგო</span><span>ბრენდბუქი</span><span>UI/UX</span></span>
+            <span class="svc__go"><?= CMS_ARROW ?></span>
+          </a>
         </div>
       </div>
     </section>
 
-
-    <!-- ======================= ინსტრუმენტები ======================== -->
-    <section class="section section--tight">
+    <!-- ===================== რატომ ვებიკო — bento ===================== -->
+    <section class="section section--dark pattern-grid pattern-grid--light" id="why">
       <div class="container">
-        <p class="trustbar__label"><?= T("home.tools.label", "ინსტრუმენტები, რომლებზეც ვმუშაობთ") ?></p>
-        <?php $tools = cms_tools(); ?>
-        <div class="marquee marquee--tools">
-          <div class="marquee__track">
-            <?php for ($g = 0; $g < 2; $g++): ?>
-              <div class="marquee__group"<?= $g ? ' aria-hidden="true"' : '' ?>>
-                <?php foreach ($tools as [$name, $mark, $color]): ?><span class="tool-chip"><span class="tool-chip__mark" style="--tint:<?= cms_e($color) ?>"><?= cms_e($mark) ?></span><?= cms_e($name) ?></span><?php endforeach; ?>
-              </div>
-            <?php endfor; ?>
-          </div>
+        <div class="section-head section-head--center" data-reveal>
+          <span class="eyebrow">რატომ ვებიკო</span>
+          <h2>გამჭვირვალობა, რომელსაც ციფრებში ხედავთ</h2>
+          <p>არ გვჯერა „ლამაზი ანგარიშების“, რომლებიც არაფერს ამბობს. ყოველი პროექტის დასაწყისში
+            ვათანხმებთ კონკრეტულ მაჩვენებლებს და ყოველთვიურად გაჩვენებთ, სად ვართ.</p>
         </div>
-      </div>
-    </section>
 
-
-    <!-- ======================== უფასო აუდიტი ========================= -->
-    <section class="section section--soft" id="audit">
-      <div class="container">
-        <div class="contact-grid">
-          <div data-reveal>
-            <span class="eyebrow eyebrow--accent">უფასო აუდიტი</span>
-            <h2>გინდათ ვნახოთ, სად კარგავს თქვენი საიტი კლიენტს?</h2>
-            <p class="lead">შეავსეთ სამი ველი და 24 საათში მიიღებთ თქვენი საიტის ანალიზს —
-              სისწრაფე, SEO და კონვერსიის წერტილები.</p>
-            <ul class="checklist">
-              <li>უფასოა და არაფრად გავალდებულებთ</li>
-              <li>პასუხი ერთ სამუშაო დღეში</li>
-              <li>კონკრეტული რეკომენდაციები, არა ზოგადი რჩევები</li>
-            </ul>
-          </div>
-          <div data-reveal data-reveal-delay="90">
-            <form class="lead-form" data-lead-form="hero-audit" method="post" action="#">
-          <h3>მიიღეთ უფასო ვებ-აუდიტი</h3>
-          <p class="lead-form__intro">შეავსეთ სამი ველი და 24 საათში მიიღებთ თქვენი საიტის ანალიზს — სისწრაფე, SEO და კონვერსიის წერტილები.</p>
-          <div class="form-status" role="alert" aria-live="polite"></div>
-          <div class="field">
-            <label for="hero-name">სახელი <span class="req">*</span></label>
-            <input type="text" id="hero-name" name="name" autocomplete="name" placeholder="თქვენი სახელი" required>
-            <span class="field__error"></span>
-          </div>
-          <div class="field">
-            <label for="hero-email">ელფოსტა <span class="req">*</span></label>
-            <input type="email" id="hero-email" name="email" autocomplete="email" placeholder="name@company.ge" required>
-            <span class="field__error"></span>
-          </div>
-          <div class="field">
-            <label for="hero-website">ვებსაიტი ან ტელეფონი <span class="req">*</span></label>
-            <input type="text" id="hero-website" name="website" placeholder="example.ge / +995 5XX XX XX XX" required>
-            <span class="field__error"></span>
-          </div>
-          <div class="hp-field" aria-hidden="true"><label for="hero-hp">არ შეავსოთ</label><input type="text" id="hero-hp" name="company_website" tabindex="-1" autocomplete="off"></div>
-          <button class="btn btn--primary btn--block" type="submit">აუდიტის მოთხოვნა</button>
-          <p class="form-note"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><span>უფასოა და არაფრად გავალდებულებთ.</span></p>
-        </form>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========================== რატომ ჩვენ ========================= -->
-    <section class="section section--dark pattern-grid pattern-grid--light">
-      <div class="container">
-        <div class="feature-row">
-          <div class="feature-row__body" data-reveal>
-            <span class="eyebrow eyebrow--accent">რატომ ვებიკო</span>
-            <h2>გამჭვირვალობა, რომელსაც ციფრებში ხედავთ</h2>
-            <p>არ გვჯერა „ლამაზი ანგარიშების“, რომლებიც არაფერს ამბობს. ყოველი პროექტის
-              დასაწყისში ვათანხმებთ კონკრეტულ მაჩვენებლებს და ყოველთვიურად გაჩვენებთ, სად ვართ.</p>
-            <ul class="checklist">
-              <li>პირადი მენეჯერი და ყოველკვირეული სტატუსი</li>
-              <li>ცოცხალი დაფა — შედეგს ნებისმიერ დროს ხედავთ</li>
-              <li>საიტის სისწრაფე PageSpeed-ზე 90+ ქულა</li>
-              <li>კონტენტი ქართულ ენაზე, მანქანური თარგმანის გარეშე</li>
-              <li>კოდი და ანგარიშები რჩება თქვენს საკუთრებაში</li>
-            </ul>
-            <div class="btn-row" style="margin-top:28px">
-              <a class="btn btn--primary" href="/about">ჩვენ შესახებ <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        <div class="bento">
+          <article class="bento__tile bento__tile--report" data-reveal>
+            <div class="bento__text">
+              <h3>ცოცხალი დაფა</h3>
+              <p>შედეგს ნებისმიერ დროს ხედავთ — არა მხოლოდ თვის ბოლოს მიღებულ PDF-ში.</p>
             </div>
-          </div>
-
-          <div class="feature-row__media" data-reveal data-reveal-delay="100">
-            <div class="mock">
-              <div class="mock__bar"><i></i><i></i><i></i><span>ანგარიში — სექტემბერი</span></div>
-              <div class="mock__row"><span><b>ორგანული ვიზიტები</b><br><small>წინა თვესთან შედარებით</small></span><span class="mock__pill">+38%</span></div>
-              <div class="mock__row"><span><b>საკვანძო სიტყვები TOP-10-ში</b><br><small>142 სიტყვიდან</small></span><span class="mock__pill">64</span></div>
-              <div class="mock__row"><span><b>ლიდის ღირებულება</b><br><small>Google Ads</small></span><span class="mock__pill">−44%</span></div>
-              <div class="mock__row"><span><b>კონვერსიის მაჩვენებელი</b><br><small>ყველა არხი</small></span><span class="mock__pill mock__pill--brand">4.8%</span></div>
-              <div class="mock__chart" aria-hidden="true">
+            <div class="mock mock--bento" aria-hidden="true">
+              <div class="mock__bar"><i></i><i></i><i></i><span>ანგარიშის მაგალითი</span></div>
+              <div class="mock__row"><span><b>ორგანული ვიზიტები</b><br><small>წინა თვესთან შედარებით</small></span><span class="mock__pill">↑</span></div>
+              <div class="mock__row"><span><b>საკვანძო სიტყვები TOP-10-ში</b><br><small>პოზიციების დინამიკა</small></span><span class="mock__pill">↑</span></div>
+              <div class="mock__row"><span><b>ლიდის ღირებულება</b><br><small>Google Ads · Meta</small></span><span class="mock__pill">↓</span></div>
+              <div class="mock__chart">
                 <i style="height:38%"></i><i style="height:52%"></i><i style="height:46%"></i>
                 <i style="height:64%"></i><i style="height:72%"></i><i style="height:88%"></i>
                 <i style="height:100%"></i>
               </div>
             </div>
-          </div>
+          </article>
+
+          <article class="bento__tile bento__tile--speed" data-reveal data-reveal-delay="60">
+            <svg class="gauge" viewBox="0 0 120 120" aria-hidden="true">
+              <circle cx="60" cy="60" r="50" pathLength="100" class="gauge__track"/>
+              <circle cx="60" cy="60" r="50" pathLength="100" class="gauge__bar"/>
+              <text x="60" y="68" text-anchor="middle">90+</text>
+            </svg>
+            <h3>სისწრაფე PageSpeed-ზე</h3>
+            <p>სწრაფი საიტი მობილურზე ნაკლებ ვიზიტორს კარგავს.</p>
+          </article>
+
+          <article class="bento__tile bento__tile--manager" data-reveal data-reveal-delay="120">
+            <span class="bento__icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
+            <h3>პირადი მენეჯერი</h3>
+            <p>ერთი ადამიანი, რომელიც პროექტს იცნობს, და ყოველკვირეული სტატუსი.</p>
+          </article>
+
+          <article class="bento__tile bento__tile--ka" data-reveal data-reveal-delay="60">
+            <span class="bento__glyph" aria-hidden="true">ა</span>
+            <h3>ქართულად, ბუნებრივად</h3>
+            <p>კონტენტს ვწერთ ქართულად — მანქანური თარგმანის გარეშე.</p>
+          </article>
+
+          <article class="bento__tile bento__tile--own" data-reveal data-reveal-delay="120">
+            <span class="bento__icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="7.5" cy="15.5" r="4.5"/><path d="M10.7 12.3 21 2"/><path d="m16 7 3 3"/><path d="m18 5 3 3"/></svg></span>
+            <h3>ყველაფერი თქვენია</h3>
+            <p>კოდი, დომენი, ანალიტიკა და სარეკლამო ანგარიშები თქვენს საკუთრებაში რჩება.</p>
+          </article>
+
+          <article class="bento__tile bento__tile--tools" data-reveal>
+            <h3><?= T("home.tools.label", "ინსტრუმენტები, რომლებზეც ვმუშაობთ") ?></h3>
+            <?php $tools = cms_tools(); ?>
+            <div class="marquee marquee--tools">
+              <div class="marquee__track">
+                <?php for ($g = 0; $g < 2; $g++): ?>
+                  <div class="marquee__group"<?= $g ? ' aria-hidden="true"' : '' ?>>
+                    <?php foreach ($tools as [$name, $mark, $color]): ?><span class="tool-chip"><span class="tool-chip__mark" style="--tint:<?= cms_e($color) ?>"><?= cms_e($mark) ?></span><?= cms_e($name) ?></span><?php endforeach; ?>
+                  </div>
+                <?php endfor; ?>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="btn-row btn-row--center" style="margin-top:34px">
+          <a class="btn btn--primary" href="/about">გაიცანით გუნდი</a>
         </div>
       </div>
     </section>
 
-    <!-- =========================== ციფრები ========================== -->
-    <section class="section section--tight">
+    <!-- ======================= ბოლო პროექტები ======================== -->
+    <?php
+      $want  = ['oribu', 'pearl-island', 'e-motions', 'vrs-studio'];
+      $cases = array_values(array_filter(array_map(static fn($s) => cms_project($s), $want)));
+      $cases = array_values(array_filter($cases, static fn($c) => trim((string) ($c['shot'] ?? '')) !== ''));
+      if (count($cases) < 2) { $cases = array_slice($shots, 0, 4); }
+    ?>
+    <?php if ($cases): ?>
+    <section class="section" id="cases">
       <div class="container">
-        <div class="stats" data-reveal>
-          <div class="stat"><span class="stat__num" data-count="120" data-suffix="+">120+</span><span class="stat__label">დასრულებული პროექტი</span></div>
-          <div class="stat"><span class="stat__num" data-count="8" data-suffix=" წელი">8 წელი</span><span class="stat__label">ბაზარზე მუშაობის გამოცდილება</span></div>
-          <div class="stat"><span class="stat__num" data-count="3.4" data-suffix="x">3.4x</span><span class="stat__label">საშუალო ROI-ის ზრდა</span></div>
-          <div class="stat"><span class="stat__num" data-count="96" data-suffix="%">96%</span><span class="stat__label">კლიენტი რჩება ჩვენთან</span></div>
+        <div class="section-head section-head--center" data-reveal>
+          <span class="eyebrow">ქეისები</span>
+          <h2>ბოლო პროექტები</h2>
+          <p>რამდენიმე ვებსაიტი, რომელიც ბოლო პერიოდში ავაწყვეთ. დეტალები თითოეული პროექტის გვერდზეა.</p>
+        </div>
+        <div class="case-stack">
+          <?php foreach ($cases as $i => $c):
+            $cs = cms_e((string) $c['slug']);
+            $cd = (string) ($c['domain'] ?? '');
+          ?>
+          <article class="case-card" style="--i:<?= $i ?>">
+            <a class="case-card__media" href="/work-<?= $cs ?>" tabindex="-1" aria-hidden="true"><?= cms_mock($c, '(max-width: 880px) 100vw, 780px') ?></a>
+            <div class="case-card__panel">
+              <p class="case-card__count"><?= sprintf('%02d', $i + 1) ?> <span>/ <?= sprintf('%02d', count($cases)) ?></span></p>
+              <h3><a href="/work-<?= $cs ?>"><?= cms_e((string) $c['name']) ?></a></h3>
+              <?php if (!empty($c['summary'])): ?><p><?= cms_e((string) $c['summary']) ?></p><?php endif; ?>
+              <dl class="case-card__meta">
+                <div><dt>კლიენტი</dt><dd><?= cms_e((string) $c['name']) ?></dd></div>
+                <?php if ($cd !== ''): ?><div><dt>ვებსაიტი</dt><dd><a href="https://<?= cms_e($cd) ?>/" target="_blank" rel="noopener noreferrer"><?= cms_e($cd) ?> <?= CMS_EXT ?></a></dd></div><?php endif; ?>
+                <div><dt>მიმართულება</dt><dd><?= cms_e(implode(', ', cms_tags($c))) ?></dd></div>
+                <?php if (!empty($c['partner'])): ?><div><dt>პარტნიორი</dt><dd><?= cms_e((string) $c['partner']) ?></dd></div><?php endif; ?>
+                <?php if (!empty($c['year'])): ?><div><dt>წელი</dt><dd><?= cms_e((string) $c['year']) ?></dd></div><?php endif; ?>
+              </dl>
+              <a class="btn btn--primary btn--sm" href="/work-<?= $cs ?>">ნახე პროექტი</a>
+            </div>
+          </article>
+          <?php endforeach; ?>
         </div>
       </div>
     </section>
+    <?php endif; ?>
 
     <!-- ========================== პროცესი =========================== -->
     <section class="section section--soft" id="process">
@@ -471,45 +471,14 @@
       </div>
     </section>
 
-    <!-- ========================== პროექტები ========================= -->
-    <section class="section" id="cases">
+    <!-- =========================== ციფრები ========================== -->
+    <section class="section section--tight">
       <div class="container">
-        <div class="section-head section-head--center" data-reveal>
-          <span class="eyebrow eyebrow--accent">შედეგები</span>
-          <h2>პროექტები, რომლებითაც ვამაყობთ</h2>
-          <p>ქვემოთ მოცემული მაჩვენებლები კლიენტების ანალიტიკის სისტემებიდანაა აღებული.</p>
-        </div>
-        <div class="grid grid--3">
-          <article class="case" data-reveal data-reveal-delay="0">
-            <div class="case__top">
-              <span class="case__metric">+212%<small>ორგანული ტრაფიკის ზრდა</small></span>
-            </div>
-            <div class="case__body">
-              <h3>ალტა ჰოუმი — ონლაინ მაღაზია</h3>
-              <p>ახალი ონლაინ მაღაზია და 6-თვიანი SEO კამპანია: 340 პროდუქტის გვერდი გადავწერეთ და საიტის სისწრაფე 2.4-ჯერ გავზარდეთ.</p>
-              <div class="case__tags"><span class="tag">ვებსაიტების დიზაინი და შექმნა</span><span class="tag">SEO</span><span class="tag">E-commerce</span></div>
-            </div>
-          </article>
-          <article class="case" data-reveal data-reveal-delay="80">
-            <div class="case__top">
-              <span class="case__metric">+3.1x<small>ონლაინ ჯავშნების ზრდა</small></span>
-            </div>
-            <div class="case__body">
-              <h3>მედიქ კლინიკა — ვებსაიტი და SEO</h3>
-              <p>ჯავშნის ფორმა ოთხი ნაბიჯიდან ერთამდე შევამცირეთ და ლოკალური SEO დავნერგეთ თბილისის ოთხი ფილიალისთვის.</p>
-              <div class="case__tags"><span class="tag">UI/UX</span><span class="tag">ვებსაიტების დიზაინი და შექმნა</span><span class="tag">ლოკალური SEO</span></div>
-            </div>
-          </article>
-          <article class="case" data-reveal data-reveal-delay="160">
-            <div class="case__top">
-              <span class="case__metric">+44%<small>ლიდის ღირებულების კლება</small></span>
-            </div>
-            <div class="case__body">
-              <h3>ფინექსი — Google Ads</h3>
-              <p>სარეკლამო ანგარიშის სრული რესტრუქტურიზაცია, უარყოფითი საკვანძო სიტყვები და ახალი სადესანტო გვერდები.</p>
-              <div class="case__tags"><span class="tag">Google Ads</span><span class="tag">CRO</span><span class="tag">ანალიტიკა</span></div>
-            </div>
-          </article>
+        <div class="stats" data-reveal>
+          <div class="stat"><span class="stat__num" data-count="120" data-suffix="+">120+</span><span class="stat__label">დასრულებული პროექტი</span></div>
+          <div class="stat"><span class="stat__num" data-count="8" data-suffix=" წელი">8 წელი</span><span class="stat__label">ბაზარზე მუშაობის გამოცდილება</span></div>
+          <div class="stat"><span class="stat__num" data-count="3.4" data-suffix="x">3.4x</span><span class="stat__label">საშუალო ROI-ის ზრდა</span></div>
+          <div class="stat"><span class="stat__num" data-count="96" data-suffix="%">96%</span><span class="stat__label">კლიენტი რჩება ჩვენთან</span></div>
         </div>
       </div>
     </section>
@@ -557,14 +526,35 @@
       </div>
     </section>
 
-    <!-- ============================ FAQ ============================= -->
-    <section class="section" id="faq">
+    <!-- ============================ ბლოგი ============================ -->
+    <?php $posts = array_slice(cms_posts(), 0, 3); if ($posts): ?>
+    <section class="section" id="blog">
       <div class="container">
-        <div class="section-head section-head--center" data-reveal>
-          <span class="eyebrow">კითხვები</span>
-          <h2>ხშირად დასმული კითხვები</h2>
+        <div class="section-head section-head--split" data-reveal>
+          <div>
+            <span class="eyebrow">ბლოგი</span>
+            <h2>რჩევები ქართული ბიზნესისთვის</h2>
+          </div>
+          <a class="btn btn--ghost" href="/blog">ყველა სტატია</a>
         </div>
-        <div class="faq">
+        <div class="post-grid" data-reveal>
+          <?php foreach ($posts as $bp) { echo cms_post_card($bp); } ?>
+        </div>
+      </div>
+    </section>
+    <?php endif; ?>
+
+    <!-- ============================ FAQ ============================= -->
+    <section class="section section--soft" id="faq">
+      <div class="container">
+        <div class="faq-split">
+          <div class="faq-split__head" data-reveal>
+            <span class="eyebrow">კითხვები</span>
+            <h2>ხშირად დასმული კითხვები</h2>
+            <p>ვერ იპოვეთ პასუხი? მოგვწერეთ და ერთ სამუშაო დღეში გიპასუხებთ.</p>
+            <a class="btn btn--primary" href="/contact">დაგვიკავშირდით</a>
+          </div>
+          <div class="faq">
           <div class="faq__item">
             <h3 style="margin:0">
               <button class="faq__q" type="button" aria-expanded="false" aria-controls="home-a1">
@@ -605,6 +595,7 @@
             </h3>
             <div class="faq__a" id="home-a5" data-open="false"><div><p>დიახ, ყველა პროექტი ფორმდება ხელშეკრულებით, სადაც გაწერილია სამუშაოს მოცულობა, ვადები, ღირებულება და ორივე მხარის ვალდებულებები. გადახდა ეტაპობრივია.</p></div></div>
           </div>
+        </div>
         </div>
       </div>
     </section>
@@ -686,7 +677,7 @@
             <li><a href="/about">ჩვენ შესახებ</a></li>
             <li><a href="/services">ყველა სერვისი</a></li>
             <li><a href="/work">ნამუშევრები</a></li>
-            
+            <li><a href="/blog">ბლოგი</a></li>
             <li><a href="/#faq">კითხვები</a></li>
             <li><a href="/contact">კონტაქტი</a></li>
           </ul>
@@ -711,6 +702,6 @@
     </div>
   </footer>
 
-  <script src="assets/js/main.js?v=fd5f44a3"></script>
+  <script src="assets/js/main.js?v=e2e5f431"></script>
 </body>
 </html>

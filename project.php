@@ -29,6 +29,10 @@ $scope  = array_values(array_filter(array_map('trim', $p['scope'] ?? [])));
 $PAGE_TITLE = $name . ' — ნამუშევრები | Webico';
 $PAGE_DESC  = $p['summary'] ?? ($name . ' — ვებსაიტი, შექმნილი Webico-ს მიერ.');
 $PAGE_URL   = '/work-' . $slug;
+$PAGE_IMAGE = is_file(__DIR__ . '/assets/img/work/' . $slug . '-og.jpg')
+    ? 'assets/img/work/' . $slug . '-og.jpg' : null;
+$PAGE_IMAGE_W = 1200;
+$PAGE_IMAGE_H = 800;
 $PAGE_LD = "\n  <script type=\"application/ld+json\">\n"
     . json_encode([
         '@context' => 'https://schema.org', '@type' => 'CreativeWork',
@@ -62,7 +66,7 @@ require __DIR__ . '/inc/head.php';
     </section>
 
     <section class="section section--tight">
-      <div class="container"><div class="project-shot" data-reveal><?= cms_mock($p) ?></div></div>
+      <div class="container"><div class="project-shot" data-reveal><?= cms_mock($p, "(max-width: 1280px) 100vw, 1232px", true) ?></div></div>
     </section>
 
     <section class="section section--tight">

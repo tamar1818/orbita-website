@@ -1,152 +1,173 @@
 {
-  "projects": [
-    {
-      "slug": "archetypes-creatives",
-      "name": "Archetypes Creatives",
-      "domain": "archetypescreatives.com",
-      "tone": "lilac"
-    },
-    {
-      "slug": "tamaras-collect",
-      "name": "Tamara's Collect",
-      "domain": "tamarascollect.com",
-      "tone": "lime"
-    },
-    {
-      "slug": "oribu",
-      "name": "Oribu",
-      "domain": "oribu.ge",
-      "tone": "pink"
-    },
-    {
-      "slug": "memory-casa",
-      "name": "Memory Casa",
-      "domain": "memorycasa.ge",
-      "tone": "soft"
-    },
-    {
-      "slug": "mubana",
-      "name": "Mubana",
-      "domain": "mubana.ge",
-      "tone": "lilac"
-    },
-    {
-      "slug": "bekaia-fund",
-      "name": "Bekaia Fund",
-      "domain": "bekaiafund.org",
-      "tone": "lime"
-    },
-    {
-      "slug": "galogrea",
-      "name": "Galogrea",
-      "domain": "galogrea.ge",
-      "tone": "pink"
-    },
-    {
-      "slug": "cx-panda",
-      "name": "CX Panda",
-      "domain": "cx-panda.com",
-      "tone": "soft"
-    },
-    {
-      "slug": "wine-station",
-      "name": "Wine Station",
-      "domain": "winestation.ge",
-      "tone": "lilac"
-    },
-    {
-      "slug": "cloud-streaming",
-      "name": "Cloud Streaming Technology",
-      "domain": "cloudstreamingtechnology.com",
-      "tone": "lime"
-    },
-    {
-      "slug": "the-lawlex",
-      "name": "The Lawlex",
-      "domain": "thelawlex.com",
-      "tone": "pink"
-    },
-    {
-      "slug": "tg-events",
-      "name": "TG Events",
-      "domain": "tgevents.ge",
-      "tone": "soft"
-    },
-    {
-      "slug": "vrs-studio",
-      "name": "VRS Studio",
-      "domain": "vrs-studio.ge",
-      "tone": "lilac"
-    },
-    {
-      "slug": "realops",
-      "name": "RealOps",
-      "domain": "realops.tech",
-      "tone": "lime"
-    },
-    {
-      "slug": "my-creator",
-      "name": "My Creator",
-      "domain": "mycreator.ge",
-      "tone": "pink"
-    },
-    {
-      "slug": "anapea",
-      "name": "Anapea",
-      "domain": "anapea.ge",
-      "tone": "soft"
-    },
-    {
-      "slug": "pearl-island",
-      "name": "Pearl Island Bahamas",
-      "domain": "pearlislandbahamas.com",
-      "tone": "lilac"
-    },
-    {
-      "slug": "autism-ge",
-      "name": "Autism.ge",
-      "domain": "autism.ge",
-      "tone": "lime"
-    },
-    {
-      "slug": "phono",
-      "name": "Phono",
-      "domain": "phono.uk",
-      "tone": "pink"
-    },
-    {
-      "slug": "morevi",
-      "name": "Morevi",
-      "domain": "morevi.ge",
-      "tone": "soft"
-    },
-    {
-      "slug": "smarter",
-      "name": "Smarter",
-      "domain": "smarter.ge",
-      "tone": "lilac",
-      "partner": "Timeless Agency"
-    },
-    {
-      "slug": "e-motions",
-      "name": "E-Motions",
-      "domain": "e-motions.ge",
-      "tone": "lime",
-      "partner": "Timeless Agency"
-    },
-    {
-      "slug": "office-pros",
-      "name": "Office Pros",
-      "domain": "officepros.ge",
-      "tone": "pink",
-      "partner": "Timeless Agency"
-    },
-    {
-      "slug": "safety-hub",
-      "name": "Safety Hub",
-      "domain": "safetyhub.ge",
-      "tone": "soft",
-      "partner": "Timeless Agency"
-    }
-  ]
+    "projects": [
+        {
+            "slug": "archetypes-creatives",
+            "name": "Archetypes Creatives",
+            "domain": "archetypescreatives.com",
+            "tone": "lilac",
+            "shot": "assets/img/work/archetypes-creatives.webp"
+        },
+        {
+            "slug": "tamaras-collect",
+            "name": "Tamara's Collect",
+            "domain": "tamarascollect.com",
+            "tone": "lime",
+            "shot": "assets/img/work/tamaras-collect.webp"
+        },
+        {
+            "slug": "oribu",
+            "name": "Oribu",
+            "domain": "oribu.ge",
+            "tone": "pink",
+            "shot": "assets/img/work/oribu.webp"
+        },
+        {
+            "slug": "memory-casa",
+            "name": "Memory Casa",
+            "domain": "memorycasa.ge",
+            "tone": "soft",
+            "shot": "assets/img/work/memory-casa.webp"
+        },
+        {
+            "slug": "mubana",
+            "name": "Mubana",
+            "domain": "mubana.ge",
+            "tone": "lilac",
+            "shot": "assets/img/work/mubana.webp"
+        },
+        {
+            "slug": "bekaia-fund",
+            "name": "Bekaia Fund",
+            "domain": "bekaiafund.org",
+            "tone": "lime",
+            "shot": "assets/img/work/bekaia-fund.webp"
+        },
+        {
+            "slug": "galogrea",
+            "name": "Galogrea",
+            "domain": "galogrea.ge",
+            "tone": "pink",
+            "shot": "assets/img/work/galogrea.webp"
+        },
+        {
+            "slug": "cx-panda",
+            "name": "CX Panda",
+            "domain": "cx-panda.com",
+            "tone": "soft"
+        },
+        {
+            "slug": "wine-station",
+            "name": "Wine Station",
+            "domain": "winestation.ge",
+            "tone": "lilac",
+            "shot": "assets/img/work/wine-station.webp"
+        },
+        {
+            "slug": "cloud-streaming",
+            "name": "Cloud Streaming Technology",
+            "domain": "cloudstreamingtechnology.com",
+            "tone": "lime"
+        },
+        {
+            "slug": "the-lawlex",
+            "name": "The Lawlex",
+            "domain": "thelawlex.com",
+            "tone": "pink",
+            "shot": "assets/img/work/the-lawlex.webp"
+        },
+        {
+            "slug": "tg-events",
+            "name": "TG Events",
+            "domain": "tgevents.ge",
+            "tone": "soft",
+            "shot": "assets/img/work/tg-events.webp"
+        },
+        {
+            "slug": "vrs-studio",
+            "name": "VRS Studio",
+            "domain": "vrs-studio.ge",
+            "tone": "lilac",
+            "shot": "assets/img/work/vrs-studio.webp"
+        },
+        {
+            "slug": "realops",
+            "name": "RealOps",
+            "domain": "realops.tech",
+            "tone": "lime",
+            "shot": "assets/img/work/realops.webp"
+        },
+        {
+            "slug": "my-creator",
+            "name": "My Creator",
+            "domain": "mycreator.ge",
+            "tone": "pink",
+            "shot": "assets/img/work/my-creator.webp"
+        },
+        {
+            "slug": "anapea",
+            "name": "Anapea",
+            "domain": "anapea.ge",
+            "tone": "soft",
+            "shot": "assets/img/work/anapea.webp"
+        },
+        {
+            "slug": "pearl-island",
+            "name": "Pearl Island Bahamas",
+            "domain": "pearlislandbahamas.com",
+            "tone": "lilac",
+            "shot": "assets/img/work/pearl-island.webp"
+        },
+        {
+            "slug": "autism-ge",
+            "name": "Autism.ge",
+            "domain": "autism.ge",
+            "tone": "lime",
+            "shot": "assets/img/work/autism-ge.webp"
+        },
+        {
+            "slug": "phono",
+            "name": "Phono",
+            "domain": "phono.uk",
+            "tone": "pink",
+            "shot": "assets/img/work/phono.webp"
+        },
+        {
+            "slug": "morevi",
+            "name": "Morevi",
+            "domain": "morevi.ge",
+            "tone": "soft"
+        },
+        {
+            "slug": "smarter",
+            "name": "Smarter",
+            "domain": "smarter.ge",
+            "tone": "lilac",
+            "partner": "Timeless Agency",
+            "shot": "assets/img/work/smarter.webp"
+        },
+        {
+            "slug": "e-motions",
+            "name": "E-Motions",
+            "domain": "e-motions.ge",
+            "tone": "lime",
+            "partner": "Timeless Agency",
+            "shot": "assets/img/work/e-motions.webp"
+        },
+        {
+            "slug": "office-pros",
+            "name": "Office Pros",
+            "domain": "officepros.ge",
+            "tone": "pink",
+            "partner": "Timeless Agency",
+            "shot": "assets/img/work/office-pros.webp"
+        },
+        {
+            "slug": "safety-hub",
+            "name": "Safety Hub",
+            "domain": "safetyhub.ge",
+            "tone": "soft",
+            "partner": "Timeless Agency",
+            "shot": "assets/img/work/safety-hub.webp"
+        }
+    ]
 }

@@ -37,6 +37,9 @@ RewriteRule ^sitemap\.xml$ sitemap.php [L]
 # --- 6a. /work-<slug> -> project.php (CMS-ის დინამიკური პროექტები) ------
 RewriteRule ^work-([a-z0-9-]+)/?$ project.php?slug=$1 [L,QSA]
 
+# --- 6a2. /blog/<slug> -> post.php (ბლოგის სტატიები) -------------------
+RewriteRule ^blog/([a-z0-9-]+)/?$ post.php?slug=$1 [L,QSA]
+
 # --- 6b. /page -> page.php --------------------------------------------
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d

@@ -2,6 +2,7 @@
 declare(strict_types=1);
 require_once dirname(__DIR__) . '/inc/auth.php';
 require_once dirname(__DIR__) . '/inc/media.php';
+require_once dirname(__DIR__) . '/inc/blog.php';
 
 $page = $_GET['p'] ?? 'dashboard';
 $msg = '';
@@ -139,6 +140,77 @@ if (cms_user() !== null && $_SERVER['REQUEST_METHOD'] === 'POST') {
             }
             $all['projects'] = array_merge($sorted, array_values($byslug));
             $msg = cms_write('projects', $all) ? 'რიგი განახლდა' : 'ვერ განახლდა';
+        }
+
+        if ($action === 'save_post') {
+            $all = cms_read('posts', ['posts' => []]);
+            $list = $all['posts'] ?? [];
+            $slug = cms_slug((string) ($_POST['slug'] ?? ''));
+            $date = (string) ($_POST['date'] ?? '');
+            if ($slug === '') {
+                $err = 'slug სავალდებულოა (ლათინური ასოები, ციფრები და ტირე)';
+            } elseif (trim((string) ($_POST['title'] ?? '')) === '') {
+                $err = 'სათაური სავალდებულოა';
+            } elseif (!preg_match('~^\d{4}-\d{2}-\d{2}$~', $date)) {
+                $err = 'თარიღი არასწორია';
+            } else {
+                $item = [
+                    'slug'     => $slug,
+                    'title'    => trim((string) ($_POST['title'] ?? '')),
+                    'excerpt'  => trim((string) ($_POST['excerpt'] ?? '')),
+                    'category' => array_key_exists($_POST['category'] ?? '', CMS_BLOG_CATS) ? $_POST['category'] : 'business',
+                    'tone'     => in_array($_POST['tone'] ?? '', CMS_BLOG_TONES, true) ? $_POST['tone'] : 'lilac',
+                    'date'     => $date,
+                    'updated'  => date('Y-m-d'),
+                    'author'   => trim((string) ($_POST['author'] ?? '')),
+                    'cover'    => trim((string) ($_POST['cover'] ?? '')),
+                    'cover_text' => trim((string) ($_POST['cover_text'] ?? '')),
+                    'body'     => (string) ($_POST['body'] ?? ''),
+                    'hidden'   => !empty($_POST['hidden']),
+                ];
+                if ($item['cover_text'] === '') {
+                    unset($item['cover_text']);
+                }
+                $orig = cms_slug((string) ($_POST['orig_slug'] ?? ''));
+                $found = false;
+                foreach ($list as $i => $p) {
+                    if (($p['slug'] ?? '') === ($orig !== '' ? $orig : $slug)) {
+                        $list[$i] = $item;
+                        $found = true;
+                        break;
+                    }
+                }
+                if (!$found) {
+                    foreach ($list as $p) {
+                        if (($p['slug'] ?? '') === $slug) {
+                            $err = 'ასეთი slug უკვე არსებობს';
+                            break;
+                        }
+                    }
+                    if (!$err) {
+                        $list[] = $item;
+                    }
+                }
+                if (!$err) {
+                    $all['posts'] = array_values($list);
+                    if (cms_write('posts', $all)) {
+                        $msg = 'სტატია შენახულია';
+                        $page = 'posts';
+                    } else {
+                        $err = 'შენახვა ვერ მოხერხდა';
+                    }
+                }
+            }
+        }
+
+        if ($action === 'delete_post') {
+            $all = cms_read('posts', ['posts' => []]);
+            $slug = cms_slug((string) ($_POST['slug'] ?? ''));
+            $all['posts'] = array_values(array_filter(
+                $all['posts'] ?? [],
+                static fn($p) => ($p['slug'] ?? '') !== $slug
+            ));
+            $msg = cms_write('posts', $all) ? 'სტატია წაიშალა' : 'წაშლა ვერ მოხერხდა';
         }
 
         if ($action === 'upload') {

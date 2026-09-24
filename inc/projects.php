@@ -35,14 +35,48 @@ function cms_initials(string $name): string
     return mb_strtoupper(mb_substr($parts[0], 0, 1) . mb_substr($parts[1], 0, 1));
 }
 
-function cms_mock(array $p): string
+/** შედარებითი მისამართი → ძირიდან (/blog/… და მსგავს გვერდებზე შედარებითი გზა ტყდება) */
+if (!function_exists('cms_url')) {
+    function cms_url(string $path): string
+    {
+        $path = trim($path);
+        if ($path === '' || preg_match('~^(https?:)?//~i', $path) || str_starts_with($path, '/')) {
+            return $path;
+        }
+        return '/' . ltrim($path, './');
+    }
+}
+
+/** პროექტის მოკაპის <img> — srcset-ით, თუ პატარა ვერსია (-sm.webp) არსებობს */
+function cms_shot_img(array $p, string $sizes = '(max-width: 620px) 100vw, 50vw', bool $eager = false): string
+{
+    $shot = trim((string) ($p['shot'] ?? ''));
+    if ($shot === '') {
+        return '';
+    }
+    $src = cms_url($shot);
+    $srcset = '';
+    if (preg_match('~^(.+)\.webp$~', $shot, $m) && is_file(CMS_ROOT . '/' . ltrim($m[1], '/') . '-sm.webp')) {
+        $srcset = ' srcset="' . cms_e(cms_url($m[1] . '-sm.webp')) . ' 768w, ' . cms_e($src) . ' 1536w"'
+                . ' sizes="' . cms_e($sizes) . '"';
+    }
+    return '<img src="' . cms_e($src) . '"' . $srcset
+         . ' alt="' . cms_e(($p['name'] ?? '') . ' — ვებსაიტის მოკაპი') . '"'
+         . ' width="1536" height="1024" decoding="async"' . ($eager ? '' : ' loading="lazy"') . '>';
+}
+
+function cms_mock(array $p, string $sizes = '(max-width: 620px) 100vw, 50vw', bool $eager = false): string
 {
     $tone = $p['tone'] ?? 'lilac';
-    $cls = $tone === 'lilac' ? '' : ' mock-site--' . cms_e($tone);
-    $shot = trim((string) ($p['shot'] ?? ''));
-    $style = $shot !== '' ? ' style="--shot:url(' . cms_e($shot) . ')"' : '';
 
-    // პლეისჰოლდერი საიტის მინიატურას ჰგავს; რეალური სქრინშოტისას იმალება
+    // რეალური მოკაპი — სუფთა ფოტო-ბარათი, ბრაუზერის ჩარჩოს გარეშე
+    if (trim((string) ($p['shot'] ?? '')) !== '') {
+        return '<figure class="shot">' . cms_shot_img($p, $sizes, $eager) . '</figure>';
+    }
+
+    $cls = $tone === 'lilac' ? '' : ' mock-site--' . cms_e($tone);
+
+    // პლეისჰოლდერი საიტის მინიატურას ჰგავს
     $page = '<div class="mock-site__page">'
           . '<div class="mock-site__nav">'
           . '<span class="mock-site__brand">' . cms_e(cms_initials((string) ($p['name'] ?? ''))) . '</span>'
@@ -54,10 +88,19 @@ function cms_mock(array $p): string
           . '<div class="mock-site__cols"><i></i><i></i><i></i></div>'
           . '</div>';
 
-    return '<div class="mock-site' . $cls . '"' . $style . '>'
+    return '<div class="mock-site' . $cls . '">'
          . '<div class="mock-site__bar"><i></i><i></i><i></i>'
          . '<span class="mock-site__url">' . cms_e($p['domain'] ?? '') . '</span></div>'
          . '<div class="mock-site__view">' . $page . '</div></div>';
+}
+
+/** პროექტები, რომლებსაც რეალური მოკაპი აქვს, წინ */
+function cms_projects_showcase(): array
+{
+    $list = cms_projects();
+    usort($list, static fn($a, $b) =>
+        (int) (trim((string) ($b['shot'] ?? '')) !== '') <=> (int) (trim((string) ($a['shot'] ?? '')) !== ''));
+    return $list;
 }
 
 function cms_tags(array $p): array

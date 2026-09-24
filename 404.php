@@ -22,14 +22,14 @@
   <meta name="twitter:image" content="https://webico.io/assets/img/og-image.png">
   <meta name="robots" content="noindex, follow">
 
-  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
-  <link rel="alternate icon" href="favicon.ico" sizes="any">
-  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="alternate icon" href="/favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <!-- სარეზერვო ქართული შრიფტი — მთავარი შრიფტია LGV Anastasia 2025 Geo (იხ. assets/fonts/) -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap">
-  <link rel="stylesheet" href="assets/css/style.css?v=fd5f44a3">
+  <link rel="stylesheet" href="/assets/css/style.css?v=e2e5f431">
 </head>
 <body>
   <a class="skip-link" href="#main">გადასვლა მთავარ კონტენტზე</a>
@@ -46,12 +46,11 @@
     <div class="container">
       <nav class="nav" aria-label="მთავარი ნავიგაცია">
         <a class="brand" href="/">
-          <img class="brand__logo" src="assets/img/logo/webico-horizontal-ink.svg"
+          <img class="brand__logo" src="/assets/img/logo/webico-horizontal-ink.svg"
                alt="Webico" width="152" height="38">
         </a>
 
         <ul class="nav__links" id="nav-links">
-          <li><a href="/">მთავარი</a></li>
           <li><a href="/about">ჩვენ შესახებ</a></li>
           <li class="nav__item">
             <button class="nav__trigger" type="button" data-mega-trigger
@@ -104,6 +103,7 @@
             </div></div>
           </li>
           <li><a href="/work">ნამუშევრები</a></li>
+          <li><a href="/blog">ბლოგი</a></li>
           <li><a href="/contact">კონტაქტი</a></li>
           <li><a class="btn btn--primary btn--sm" href="/contact">უფასო კონსულტაცია</a></li>
         </ul>
@@ -172,7 +172,7 @@
     <div class="container">
       <div class="footer__grid">
         <div>
-          <a class="brand" href="/"><img class="brand__logo" src="assets/img/logo/webico-horizontal-white.svg" alt="Webico" width="152" height="38"></a>
+          <a class="brand" href="/"><img class="brand__logo" src="/assets/img/logo/webico-horizontal-white.svg" alt="Webico" width="152" height="38"></a>
           <p class="footer__about">ციფრული სააგენტო თბილისიდან. ვქმნით ვებსაიტებს, ვზრდით
             ორგანულ ტრაფიკს და ვმართავთ სარეკლამო კამპანიებს გაზომვადი შედეგისთვის.</p>
           <div class="socials">
@@ -203,7 +203,7 @@
             <li><a href="/about">ჩვენ შესახებ</a></li>
             <li><a href="/services">ყველა სერვისი</a></li>
             <li><a href="/work">ნამუშევრები</a></li>
-            
+            <li><a href="/blog">ბლოგი</a></li>
             <li><a href="/#faq">კითხვები</a></li>
             <li><a href="/contact">კონტაქტი</a></li>
           </ul>
@@ -228,6 +228,6 @@
     </div>
   </footer>
 
-  <script src="assets/js/main.js?v=fd5f44a3"></script>
+  <script src="/assets/js/main.js?v=e2e5f431"></script>
 </body>
 </html>
