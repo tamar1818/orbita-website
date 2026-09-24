@@ -87,6 +87,7 @@ if (cms_user() !== null && $_SERVER['REQUEST_METHOD'] === 'POST') {
                     'solution'  => trim((string) ($_POST['solution'] ?? '')),
                     'result'    => trim((string) ($_POST['result'] ?? '')),
                     'shot'      => trim((string) ($_POST['shot'] ?? '')),
+                    'logo'      => trim((string) ($_POST['logo'] ?? '')),
                     'hidden'    => !empty($_POST['hidden']),
                     'tags'  => array_values(array_filter(array_map('trim',
                                 explode(',', (string) ($_POST['tags'] ?? ''))))),

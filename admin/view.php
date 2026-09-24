@@ -167,10 +167,16 @@ $nav = [
             </label>
             <label>თანამშრომლობა<input name="partner" value="<?= cms_e($edit['partner'] ?? '') ?>"></label>
           </div>
-          <label>სქრინშოტი
-            <input name="shot" placeholder="assets/img/uploads/…" value="<?= cms_e($edit['shot'] ?? '') ?>">
-            <small class="muted">ატვირთეთ „ფოტოები“ განყოფილებაში და ჩასვით მისამართი</small>
-          </label>
+          <div class="row">
+            <label>სქრინშოტი
+              <input name="shot" placeholder="assets/img/uploads/…" value="<?= cms_e($edit['shot'] ?? '') ?>">
+              <small class="muted">მოკაპში ჩაისმება; სასურველია 16:10</small>
+            </label>
+            <label>ლოგო
+              <input name="logo" placeholder="assets/img/uploads/…" value="<?= cms_e($edit['logo'] ?? '') ?>">
+              <small class="muted">კლიენტების კარუსელში; PNG/SVG გამჭვირვალე ფონით</small>
+            </label>
+          </div>
           <label>მოკლე აღწერა<textarea name="summary" rows="2"><?= cms_e($edit['summary'] ?? '') ?></textarea></label>
           <label>გამოწვევა<textarea name="challenge" rows="3"><?= cms_e($edit['challenge'] ?? '') ?></textarea></label>
           <label>რა გავაკეთეთ<textarea name="solution" rows="3"><?= cms_e($edit['solution'] ?? '') ?></textarea></label>

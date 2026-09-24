@@ -41,13 +41,23 @@ function cms_mock(array $p): string
     $cls = $tone === 'lilac' ? '' : ' mock-site--' . cms_e($tone);
     $shot = trim((string) ($p['shot'] ?? ''));
     $style = $shot !== '' ? ' style="--shot:url(' . cms_e($shot) . ')"' : '';
+
+    // პლეისჰოლდერი საიტის მინიატურას ჰგავს; რეალური სქრინშოტისას იმალება
+    $page = '<div class="mock-site__page">'
+          . '<div class="mock-site__nav">'
+          . '<span class="mock-site__brand">' . cms_e(cms_initials((string) ($p['name'] ?? ''))) . '</span>'
+          . '<i></i><i></i><i></i></div>'
+          . '<div class="mock-site__hero">'
+          . '<span class="mock-site__h"></span>'
+          . '<span class="mock-site__h mock-site__h--sm"></span>'
+          . '<span class="mock-site__cta"></span></div>'
+          . '<div class="mock-site__cols"><i></i><i></i><i></i></div>'
+          . '</div>';
+
     return '<div class="mock-site' . $cls . '"' . $style . '>'
          . '<div class="mock-site__bar"><i></i><i></i><i></i>'
          . '<span class="mock-site__url">' . cms_e($p['domain'] ?? '') . '</span></div>'
-         . '<div class="mock-site__view"><div class="mock-site__ph">'
-         . '<span class="mock-site__logo">' . cms_e(cms_initials((string) ($p['name'] ?? ''))) . '</span>'
-         . '<div class="mock-site__lines"><i></i><i></i><i></i></div>'
-         . '</div></div></div>';
+         . '<div class="mock-site__view">' . $page . '</div></div>';
 }
 
 function cms_tags(array $p): array

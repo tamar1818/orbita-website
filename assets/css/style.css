@@ -89,7 +89,7 @@
 
   --container: 1280px;
   --gutter: 24px;
-  --section-y: clamp(60px, 7vw, 108px);
+  --section-y: clamp(44px, 4.6vw, 76px);
   --header-h: 82px;
 }
 
@@ -172,9 +172,9 @@ li { margin-bottom: .4em; }
 }
 .section--soft + .section--soft { margin-top: var(--gutter); }
 .section--soft { background: var(--bg-soft); }
-.section--tight { padding-block: clamp(40px, 5vw, 64px); }
+.section--tight { padding-block: clamp(30px, 3.4vw, 48px); }
 
-.section-head { max-width: 900px; margin-bottom: clamp(36px, 4.5vw, 64px); }
+.section-head { max-width: 900px; margin-bottom: clamp(26px, 3vw, 42px); }
 .section-head--center { margin-inline: auto; text-align: center; }
 .section-head p { color: var(--muted); font-size: 1.05rem; margin-bottom: 0; max-width: 62ch; }
 .section-head--center p { margin-inline: auto; }
@@ -422,7 +422,7 @@ li { margin-bottom: .4em; }
 .hero__meta svg { flex: none; color: var(--ink); }
 
 .page-hero {
-  padding-block: clamp(44px, 5.5vw, 80px) clamp(40px, 5vw, 68px);
+  padding-block: clamp(34px, 4vw, 58px) clamp(28px, 3.4vw, 46px);
   background: var(--bg-soft);
   border-bottom: 1px solid var(--line);
 }
@@ -530,7 +530,7 @@ li { margin-bottom: .4em; }
    10. ნდობის ზოლი
    -------------------------------------------------------------------------- */
 
-.trustbar { padding-block: 34px; border-bottom: 1px solid var(--line); }
+.trustbar { padding-block: 26px; border-bottom: 1px solid var(--line); }
 .page-hero { border-radius: 0 0 var(--radius-xl) var(--radius-xl); }
 .trustbar__label {
   text-align: center; margin-bottom: 20px;
@@ -571,7 +571,7 @@ li { margin-bottom: .4em; }
   display: grid; grid-template-columns: 1fr 1fr;
   gap: clamp(28px, 5vw, 64px);
   align-items: center;
-  padding-block: clamp(36px, 4.5vw, 64px);
+  padding-block: clamp(28px, 3.2vw, 46px);
   border-bottom: 1px solid var(--line);
 }
 .feature-row:last-child { border-bottom: 0; }
@@ -956,7 +956,7 @@ li { margin-bottom: .4em; }
    -------------------------------------------------------------------------- */
 
 .cta {
-  padding-block: clamp(56px, 7vw, 100px);
+  padding-block: clamp(42px, 5vw, 72px);
   background: var(--lilac);
   color: var(--ink);
 }
@@ -973,9 +973,9 @@ li { margin-bottom: .4em; }
    -------------------------------------------------------------------------- */
 
 .site-footer {
-  padding-block: clamp(52px, 6vw, 80px) 28px;
+  padding-block: clamp(40px, 4.6vw, 62px) 26px;
   border-radius: var(--radius-xl);
-  margin: clamp(48px, 6vw, 88px) var(--gutter) var(--gutter);
+  margin: clamp(34px, 4vw, 56px) var(--gutter) var(--gutter);
   background: var(--bg-dark);
   color: rgba(255, 255, 255, .72);
   font-size: .94rem;
@@ -1134,7 +1134,7 @@ li { margin-bottom: .4em; }
   align-items: center;
   justify-content: center;
   gap: 18px;
-  margin-top: 30px;
+  margin-top: 22px;
 }
 
 .carousel__btn {
@@ -1508,33 +1508,56 @@ li { margin-bottom: .4em; }
 .mock-site--pink .mock-site__view { background-color: var(--pink); }
 .mock-site--soft .mock-site__view { background-color: var(--bg-soft); }
 
-/* პლეისჰოლდერი — ქრება, როცა რეალური სქრინშოტია ჩასმული */
-.mock-site__ph {
-  display: grid;
-  gap: 12px;
-  justify-items: center;
-  width: 100%;
-  max-width: 260px;
-}
-.mock-site[style*="--shot"] .mock-site__ph { display: none; }
+/* პლეისჰოლდერი — საიტის მინიატურა; რეალური სქრინშოტისას იმალება */
+.mock-site__view { padding: 0; place-items: stretch; }
+.mock-site[style*="--shot"] .mock-site__page { display: none; }
 
-.mock-site__logo {
+.mock-site__page {
+  display: flex;
+  flex-direction: column;
+  gap: 7%;
+  width: 100%;
+  height: 100%;
+  padding: 7% 8%;
+}
+.mock-site__nav { display: flex; align-items: center; gap: 6px; }
+.mock-site__brand {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 1.5rem + 2vw, 3.2rem);
+  font-size: clamp(.7rem, .55rem + .5vw, 1rem);
   font-weight: 700;
-  letter-spacing: -.05em;
+  letter-spacing: -.03em;
   line-height: 1;
   color: var(--ink);
+  margin-right: auto;
 }
-.mock-site__lines { display: grid; gap: 7px; width: 100%; }
-.mock-site__lines i {
-  height: 8px;
+.mock-site__nav i {
+  width: 14%; height: 5px;
   border-radius: var(--radius-pill);
-  background: rgba(24, 24, 24, .16);
+  background: rgba(24, 24, 24, .22);
 }
-.mock-site__lines i:nth-child(1) { width: 100%; }
-.mock-site__lines i:nth-child(2) { width: 72%; }
-.mock-site__lines i:nth-child(3) { width: 45%; }
+.mock-site__hero { display: flex; flex-direction: column; gap: 6px; margin-top: auto; }
+.mock-site__h {
+  height: 11px;
+  width: 78%;
+  border-radius: 4px;
+  background: rgba(24, 24, 24, .5);
+}
+.mock-site__h--sm { width: 52%; height: 8px; background: rgba(24, 24, 24, .28); }
+.mock-site__cta {
+  margin-top: 5px;
+  width: 30%;
+  height: 13px;
+  border-radius: var(--radius-pill);
+  background: rgba(24, 24, 24, .75);
+}
+.mock-site__cols { display: flex; gap: 6px; margin-top: auto; }
+.mock-site__cols i {
+  flex: 1;
+  height: 22px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, .5);
+}
+.mock-site--soft .mock-site__cols i { background: rgba(24, 24, 24, .08); }
 
 /* --------------------------------------------------------------------------
    29. პროექტის შიდა გვერდი
@@ -1768,6 +1791,15 @@ li { margin-bottom: .4em; }
   border-radius: 50%;
   background: var(--lilac);
 }
+/* რეალური ლოგო — თუ პროექტს logo ველი აქვს */
+.marquee__logo {
+  height: 26px;
+  width: auto;
+  max-width: 130px;
+  object-fit: contain;
+  display: block;
+}
+.marquee__item--logo { padding: 10px 22px; }
 .marquee__item:nth-child(3n+2) i { background: var(--lime); }
 .marquee__item:nth-child(3n+3) i { background: var(--pink); }
 
@@ -1822,7 +1854,7 @@ li { margin-bottom: .4em; }
    34. ცენტრირებული hero და პროექტების მოზაიკა
    -------------------------------------------------------------------------- */
 
-.hero--center { padding-block: clamp(48px, 6vw, 92px) clamp(36px, 4.5vw, 56px); }
+.hero--center { padding-block: clamp(34px, 4vw, 62px) clamp(24px, 2.8vw, 38px); }
 
 .hero__center {
   max-width: 860px;
@@ -1850,7 +1882,7 @@ li { margin-bottom: .4em; }
   font-size: 1.14rem;
   color: var(--muted);
 }
-.hero__center .btn-row { justify-content: center; margin-top: 32px; }
+.hero__center .btn-row { justify-content: center; margin-top: 26px; }
 
 .hero__center .hero__meta {
   justify-content: center;
@@ -1874,7 +1906,7 @@ li { margin-bottom: .4em; }
 .mosaic__more {
   display: flex;
   justify-content: center;
-  margin-top: 30px;
+  margin-top: 22px;
 }
 
 /* --- მუქი სექცია --- */

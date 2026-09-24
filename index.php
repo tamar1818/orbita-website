@@ -32,7 +32,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <!-- სარეზერვო ქართული შრიფტი — მთავარი შრიფტია LGV Anastasia 2025 Geo (იხ. assets/fonts/) -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap">
-  <link rel="stylesheet" href="assets/css/style.css?v=591f3a24">
+  <link rel="stylesheet" href="assets/css/style.css?v=53b41a83">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -229,7 +229,7 @@
           <div class="marquee__track">
             <?php for ($g = 0; $g < 2; $g++): ?>
               <div class="marquee__group"<?= $g ? ' aria-hidden="true"' : '' ?>>
-                <?php foreach ($cl as $c): ?><a class="marquee__item" href="/work-<?= cms_e((string) $c['slug']) ?>"><i aria-hidden="true"></i><?= cms_e((string) $c['name']) ?></a><?php endforeach; ?>
+                <?php foreach ($cl as $c): $lg = trim((string) ($c['logo'] ?? '')); ?><a class="marquee__item<?= $lg ? ' marquee__item--logo' : '' ?>" href="/work-<?= cms_e((string) $c['slug']) ?>"><?php if ($lg): ?><img class="marquee__logo" src="<?= cms_e($lg) ?>" alt="<?= cms_e((string) $c['name']) ?>" loading="lazy"><?php else: ?><i aria-hidden="true"></i><?= cms_e((string) $c['name']) ?><?php endif; ?></a><?php endforeach; ?>
               </div>
             <?php endfor; ?>
           </div>
@@ -703,6 +703,6 @@
     </div>
   </footer>
 
-  <script src="assets/js/main.js?v=591f3a24"></script>
+  <script src="assets/js/main.js?v=53b41a83"></script>
 </body>
 </html>
