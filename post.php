@@ -126,7 +126,7 @@ require __DIR__ . '/inc/head.php';
               <p class="article-cta__eyebrow">ვებიკო</p>
               <h2>გინდათ, ეს თქვენს ბიზნესზე ერთად შევხედოთ?</h2>
               <p>უფასო კონსულტაციაზე ვნახავთ თქვენს საიტს და ერთ სამუშაო დღეში გეტყვით, საიდან ღირს დაწყება.</p>
-              <a class="btn btn--primary" href="/contact">უფასო კონსულტაცია</a>
+              <a class="btn btn--primary" href="/contact#booking">უფასო კონსულტაცია</a>
             </aside>
           </div>
         </div>

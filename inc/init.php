@@ -5,6 +5,8 @@
  */
 declare(strict_types=1);
 
+date_default_timezone_set('Asia/Tbilisi');
+
 define('CMS_ROOT', dirname(__DIR__));
 define('CMS_CONTENT', CMS_ROOT . '/content');
 define('CMS_UPLOADS', CMS_ROOT . '/assets/img/uploads');

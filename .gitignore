@@ -7,6 +7,8 @@ Thumbs.db
 # CMS — საიდუმლო და პერსონალური მონაცემები git-ში არ ინახება
 content/auth.php
 content/leads.json
+content/bookings.json
+content/.bookings.lock
 content/*.tmp
 
 # ატვირთული ფოტოები სერვერზე რჩება

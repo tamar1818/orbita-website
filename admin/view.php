@@ -8,6 +8,12 @@ $settings = $site['settings'] ?? [];
 $projects = cms_read('projects', ['projects' => []])['projects'] ?? [];
 $leads = array_reverse(cms_read('leads', ['leads' => []])['leads'] ?? []);
 $posts = cms_posts(true);
+$bookings = cms_bookings();
+usort($bookings, static fn($a, $b) => strcmp(($a['date'] ?? '') . ($a['time'] ?? ''), ($b['date'] ?? '') . ($b['time'] ?? '')));
+$today = date('Y-m-d');
+$upcoming = array_values(array_filter($bookings, static fn($b) => ($b['date'] ?? '') >= $today && ($b['status'] ?? 'new') !== 'cancelled'));
+$pastBookings = array_reverse(array_values(array_filter($bookings, static fn($b) => !(($b['date'] ?? '') >= $today && ($b['status'] ?? 'new') !== 'cancelled'))));
+$bcfg = cms_booking_config();
 
 /** რედაქტირებადი ტექსტების რეესტრი: გასაღები => [ლეიბლი, ტიპი, ნაგულისხმევი] */
 $TEXT_FIELDS = [
@@ -67,6 +73,7 @@ $nav = [
     'posts'     => 'ბლოგი',
     'media'     => 'ფოტოები',
     'texts'     => 'ტექსტები',
+    'bookings'  => 'შეხვედრები',
     'settings'  => 'კონტაქტები',
     'leads'     => 'განაცხადები',
 ];
@@ -135,6 +142,7 @@ $nav = [
           <a class="tile" href="index.php?p=projects"><b><?= count($projects) ?></b><span>პროექტი</span></a>
           <a class="tile" href="index.php?p=posts"><b><?= count($posts) ?></b><span>სტატია</span></a>
           <a class="tile" href="index.php?p=media"><b><?= count(cms_media_list()) ?></b><span>ფოტო</span></a>
+          <a class="tile" href="index.php?p=bookings"><b><?= count($upcoming) ?></b><span>მომავალი შეხვედრა</span></a>
           <a class="tile" href="index.php?p=leads"><b><?= count($leads) ?></b><span>განაცხადი</span></a>
         </div>
         <p class="muted" style="margin-top:22px">ცვლილებები საიტზე მაშინვე აისახება — გადაშენება არ სჭირდება.</p>
@@ -348,6 +356,66 @@ $nav = [
           <div class="actions"><button class="btn" type="submit">შენახვა</button></div>
         </form>
 
+      <?php elseif ($page === 'bookings'): ?>
+        <h1>შეხვედრები</h1>
+        <p class="muted">საიტიდან დაჯავშნილი კონსულტაციები (თბილისის დროით). გაუქმებისას დრო ისევ თავისუფლდება. კლიენტს გაუქმების შესახებ თავად აცნობეთ.</p>
+        <?php
+          $renderB = static function (array $list, bool $actions): void {
+            if (!$list) { echo '<p class="muted">არაფერია.</p>'; return; }
+            echo '<table class="table"><thead><tr><th>დრო</th><th>კლიენტი</th><th>თემა</th><th>სტატუსი</th><th></th></tr></thead><tbody>';
+            foreach ($list as $b) {
+              $st = $b['status'] ?? 'new';
+              echo '<tr><td><b>' . cms_e(cms_booking_label((string) $b['date'], (string) $b['time'])) . '</b></td>'
+                 . '<td><b>' . cms_e($b['name'] ?? '') . '</b>' . (!empty($b['company']) ? ' · ' . cms_e($b['company']) : '')
+                 . '<br><small><a href="mailto:' . cms_e($b['email'] ?? '') . '">' . cms_e($b['email'] ?? '') . '</a> · <a href="tel:' . cms_e($b['phone'] ?? '') . '">' . cms_e($b['phone'] ?? '') . '</a></small>'
+                 . (!empty($b['message']) ? '<br><small class="muted">' . cms_e($b['message']) . '</small>' : '') . '</td>'
+                 . '<td>' . cms_e($b['topic'] ?? '') . (!empty($b['format']) ? '<br><small class="muted">' . cms_e($b['format']) . '</small>' : '') . '</td>'
+                 . '<td>' . ['new' => '<span class="pill">ახალი</span>', 'done' => '<span class="pill">ჩატარდა</span>', 'cancelled' => '<span class="pill pill--off">გაუქმდა</span>'][$st] . '</td><td class="right">';
+              if ($actions) {
+                foreach (['done' => 'ჩატარდა', 'cancelled' => 'გაუქმება'] as $k => $lbl) {
+                  if ($k === $st) continue;
+                  echo '<form method="post" class="inline"' . ($k === 'cancelled' ? ' onsubmit="return confirm(\'გავაუქმოთ შეხვედრა?\')"' : '') . '>' . cms_csrf_field()
+                     . '<input type="hidden" name="action" value="booking_status"><input type="hidden" name="id" value="' . cms_e($b['id'] ?? '') . '">'
+                     . '<input type="hidden" name="status" value="' . $k . '"><button class="link' . ($k === 'cancelled' ? ' link--danger' : '') . '" type="submit">' . $lbl . '</button></form> ';
+                }
+              }
+              echo '</td></tr>';
+            }
+            echo '</tbody></table>';
+          };
+        ?>
+        <h2>მომავალი (<?= count($upcoming) ?>)</h2>
+        <?php $renderB($upcoming, true); ?>
+
+        <h2 style="margin-top:34px">განრიგი</h2>
+        <form method="post" class="card form">
+          <?= cms_csrf_field() ?>
+          <input type="hidden" name="action" value="save_booking_settings">
+          <label>სამუშაო დღეები</label>
+          <div class="row" style="flex-wrap:wrap;gap:14px">
+            <?php foreach (CMS_WEEKDAYS_FULL as $n => $l): ?>
+              <label class="check"><input type="checkbox" name="days[]" value="<?= $n ?>" <?= in_array($n, $bcfg['days'], true) ? 'checked' : '' ?>> <?= $l ?></label>
+            <?php endforeach; ?>
+          </div>
+          <div class="row">
+            <label>დაწყება<input type="time" name="start" value="<?= cms_e($bcfg['start']) ?>"></label>
+            <label>დასრულება<input type="time" name="end" value="<?= cms_e($bcfg['end']) ?>"></label>
+            <label>ხანგრძლივობა (წთ)
+              <select name="slot"><?php foreach ([15, 20, 30, 45, 60] as $m): ?><option <?= $bcfg['slot'] === $m ? 'selected' : '' ?>><?= $m ?></option><?php endforeach; ?></select></label>
+          </div>
+          <div class="row">
+            <label>მინიმუმ რამდენი საათით ადრე<input type="number" min="0" max="72" name="notice" value="<?= (int) $bcfg['notice'] ?>"></label>
+            <label>რამდენი დღით წინ შეიძლება დაჯავშნა<input type="number" min="1" max="90" name="ahead" value="<?= (int) $bcfg['ahead'] ?>"></label>
+          </div>
+          <label>დაკეტილი დღეები (დღესასწაულები, შვებულება)
+            <textarea name="blocked" rows="2" placeholder="2026-10-14, 2026-11-23"><?= cms_e(implode(', ', $bcfg['blocked'])) ?></textarea>
+            <small class="muted">ფორმატი: წელი-თვე-დღე, მძიმით გამოყოფილი</small></label>
+          <div class="actions"><button class="btn" type="submit">შენახვა</button></div>
+        </form>
+
+        <h2 style="margin-top:34px">წარსული და გაუქმებული</h2>
+        <?php $renderB(array_slice($pastBookings, 0, 50), false); ?>
+
       <?php elseif ($page === 'leads'): ?>
         <h1>განაცხადები <small class="muted">(<?= count($leads) ?>)</small></h1>
         <?php if (!$leads): ?>
@@ -363,6 +431,9 @@ $nav = [
               <a href="mailto:<?= cms_e($l['email'] ?? '') ?>"><?= cms_e($l['email'] ?? '') ?></a>
               <?php if (!empty($l['phone'])): ?> · <a href="tel:<?= cms_e($l['phone']) ?>"><?= cms_e($l['phone']) ?></a><?php endif; ?>
               <?php if (!empty($l['service'])): ?> · <?= cms_e($l['service']) ?><?php endif; ?>
+              <?php if (!empty($l['budget'])): ?> · ბიუჯეტი: <?= cms_e($l['budget']) ?><?php endif; ?>
+              <?php if (!empty($l['timeline'])): ?> · ვადა: <?= cms_e($l['timeline']) ?><?php endif; ?>
+              <?php if (!empty($l['website'])): ?> · <?= cms_e($l['website']) ?><?php endif; ?>
               <?php if (!empty($l['source'])): ?> · <?= cms_e($l['source']) ?><?php endif; ?>
             </p>
             <?php if (!empty($l['message'])): ?><p><?= nl2br(cms_e($l['message'])) ?></p><?php endif; ?>

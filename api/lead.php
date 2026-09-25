@@ -1,7 +1,7 @@
 <?php
 /** ლიდების მიმღები — ინახავს content/leads.json-ში და აგზავნის შეტყობინებას */
 declare(strict_types=1);
-require_once dirname(__DIR__) . '/inc/init.php';
+require_once dirname(__DIR__) . '/inc/mail.php';
 
 header('Content-Type: application/json; charset=utf-8');
 
@@ -70,6 +70,8 @@ $leads[] = [
     'company' => $get('company', 160),
     'service' => $get('service', 60),
     'budget'  => $get('budget', 60),
+    'timeline' => $get('timeline', 60),
+    'website' => $get('website', 200),
     'message' => $message,
     'source'  => $get('source', 80),
     'page'    => $get('page', 200),
@@ -86,15 +88,19 @@ if (!cms_write('leads', $store)) {
     exit;
 }
 
-/* შეტყობინება ელფოსტაზე — წარუმატებლობა განაცხადს არ აუქმებს */
-$to = (string) (cms_read('site')['settings']['email'] ?? '');
-if ($to !== '' && filter_var($to, FILTER_VALIDATE_EMAIL)) {
-    $body = "ახალი განაცხადი webico.io-დან\n\n"
-          . "სახელი: $name\nელფოსტა: $email\nტელეფონი: $phone\n"
-          . "სერვისი: " . $get('service', 60) . "\n\n$message\n";
-    @mail($to, '=?UTF-8?B?' . base64_encode('ახალი განაცხადი — Webico') . '?=', $body,
-          "From: webico <no-reply@webico.io>\r\nReply-To: $email\r\n"
-          . "Content-Type: text/plain; charset=UTF-8\r\n");
-}
+/* შეტყობინება ელფოსტაზე — წარუმატებლობა განაცხადს არ აუქმებს.
+   მიმღები: ადმინის „კონტაქტები → ელფოსტა“, ან hello@webico.io */
+$src = $get('source', 80);
+cms_mail(cms_team_email(),
+    ($src === 'chatbot' ? 'ახალი ლიდი ჩატბოტიდან — ' : 'ახალი განაცხადი — ') . $name,
+    "ახალი განაცხადი webico.io-დან\n\n"
+    . cms_mail_lines([
+        'სახელი' => $name, 'ელფოსტა' => $email, 'ტელეფონი' => $phone,
+        'კომპანია' => $get('company', 160), 'ვებსაიტი' => $get('website', 200),
+        'სერვისი' => $get('service', 60), 'ბიუჯეტი' => $get('budget', 60), 'ვადა' => $get('timeline', 60),
+        'წყარო' => $src, 'გვერდი' => $get('page', 200),
+    ])
+    . ($message !== '' ? "\n$message\n" : ''),
+    $email);
 
 echo json_encode(['ok' => true], JSON_UNESCAPED_UNICODE);

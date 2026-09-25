@@ -2949,3 +2949,340 @@ a:hover .shot img,
 .section--soft + .section--dark,
 .section--dark + .section--soft { margin-top: 14px; }
 .page-hero h1 { font-size: clamp(2.4rem, 1.4rem + 4vw, 4.8rem); line-height: 1.06; }
+
+/* --------------------------------------------------------------------------
+   41. შეხვედრის დაჯავშნა
+   -------------------------------------------------------------------------- */
+
+.booking {
+  display: grid;
+  grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr);
+  gap: clamp(24px, 4vw, 64px);
+  align-items: start;
+}
+.booking__intro { position: sticky; top: 110px; }
+.booking__intro h2 { font-size: clamp(1.9rem, 1.3rem + 2.2vw, 3rem); }
+.booking__intro p { color: var(--muted); font-size: 1.05rem; }
+.booking__panel {
+  padding: clamp(18px, 2.4vw, 30px);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--paper);
+  box-shadow: var(--shadow-soft);
+}
+.booking__label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 12px;
+  font-weight: 700;
+  color: var(--ink);
+}
+.booking__label span {
+  display: grid; place-items: center;
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  background: var(--lime);
+  font-size: .8rem;
+}
+.booking__label small { margin-left: auto; font-weight: 500; color: var(--muted); font-size: .82rem; }
+.booking__days-wrap { display: flex; align-items: center; gap: 8px; min-width: 0; margin-bottom: 26px; }
+.booking__panel, .booking__intro { min-width: 0; }
+.booking__days {
+  display: flex;
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  padding: 4px 2px;
+}
+.booking__days::-webkit-scrollbar { display: none; }
+.booking__nav {
+  display: grid; place-items: center;
+  width: 38px; height: 38px;
+  flex: none;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--paper);
+  cursor: pointer;
+}
+.booking__nav:hover { border-color: var(--ink); }
+.booking__day {
+  display: grid;
+  justify-items: center;
+  gap: 2px;
+  min-width: 68px;
+  padding: 10px 6px;
+  flex: none;
+  scroll-snap-align: start;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--paper);
+  color: var(--ink);
+  font: inherit;
+  cursor: pointer;
+  transition: border-color .15s ease, background-color .15s ease, transform .15s ease;
+}
+.booking__day small { font-size: .74rem; color: var(--muted); }
+.booking__day b { font-family: var(--font-display); font-size: 1.35rem; line-height: 1.1; }
+.booking__day:hover:not(:disabled) { border-color: var(--ink); transform: translateY(-2px); }
+.booking__day[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: #fff; }
+.booking__day[aria-pressed="true"] small { color: rgba(255, 255, 255, .7); }
+.booking__day:disabled { opacity: .38; cursor: not-allowed; background: var(--bg-soft); }
+.booking__times {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(84px, 1fr));
+  gap: 8px;
+  min-height: 48px;
+}
+.booking__time {
+  padding: 11px 6px;
+  border: 1px solid var(--line-strong);
+  border-radius: 12px;
+  background: var(--paper);
+  font: inherit;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+  cursor: pointer;
+  transition: background-color .15s ease, border-color .15s ease;
+}
+.booking__time:hover { border-color: var(--ink); background: var(--lime); }
+.booking__time[aria-pressed="true"] { background: var(--ink); color: #fff; border-color: var(--ink); }
+.booking__empty, .booking__loading { grid-column: 1 / -1; margin: 0; color: var(--muted); font-size: .95rem; }
+.booking__chosen {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 22px;
+  padding: 12px 14px;
+  border-radius: 16px;
+  background: var(--bg-soft);
+}
+.booking__chosen small { display: block; color: var(--muted); font-size: .78rem; }
+.booking__chosen b { color: var(--ink); }
+.booking__chosen .link-arrow { margin-left: auto; background: none; border: 0; cursor: pointer; font: inherit; font-weight: 700; }
+.booking__chosen-icon {
+  display: grid; place-items: center;
+  width: 42px; height: 42px;
+  border-radius: 12px;
+  background: var(--lilac);
+  flex: none;
+}
+.field__legend { display: block; margin-bottom: 8px; font-size: .88rem; font-weight: 600; color: var(--ink); }
+.seg { display: flex; gap: 4px; padding: 4px; border: 1px solid var(--line); border-radius: 14px; background: var(--bg-soft); }
+.seg label { flex: 1; margin: 0; }
+.seg input { position: absolute; opacity: 0; pointer-events: none; }
+.seg span {
+  display: block;
+  padding: 9px 10px;
+  border-radius: 10px;
+  text-align: center;
+  font-weight: 600;
+  font-size: .92rem;
+  cursor: pointer;
+}
+.seg input:checked + span { background: var(--paper); box-shadow: 0 1px 3px rgba(24, 24, 24, .12); }
+.seg input:focus-visible + span { outline: 2px solid var(--ink); outline-offset: 2px; }
+.booking__done { text-align: center; padding: 20px 6px; outline: none; }
+.booking__done .btn-row { justify-content: center; margin-top: 20px; }
+.booking__when { font-size: 1.15rem; font-weight: 700; color: var(--ink); }
+.booking__check {
+  display: inline-grid; place-items: center;
+  width: 64px; height: 64px;
+  margin-bottom: 14px;
+  border-radius: 50%;
+  background: var(--lime);
+}
+@media (max-width: 880px) {
+  .booking { grid-template-columns: minmax(0, 1fr); }
+  .booking__intro { position: static; }
+}
+@media (max-width: 620px) {
+  .booking__nav { display: none; }
+  .booking__day { min-width: 60px; }
+}
+
+/* --------------------------------------------------------------------------
+   42. ჩატბოტი
+   -------------------------------------------------------------------------- */
+
+.chat { position: fixed; right: 20px; bottom: 20px; z-index: 160; display: flex; flex-direction: column; align-items: flex-end; gap: 12px; }
+.chat__launcher {
+  position: relative;
+  display: grid; place-items: center;
+  width: 60px; height: 60px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--ink);
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(24, 24, 24, .28);
+  transition: transform .25s cubic-bezier(.22,.61,.36,1), background-color .2s ease;
+}
+.chat__launcher:hover { transform: scale(1.06); background: #000; }
+.chat:not(.is-open) .chat__launcher::after {
+  content: "";
+  position: absolute;
+  right: 2px; top: 2px;
+  width: 14px; height: 14px;
+  border: 3px solid var(--paper);
+  border-radius: 50%;
+  background: var(--lime);
+}
+.chat__nudge {
+  position: relative;
+  max-width: 250px;
+  margin: 0;
+  padding: 14px 34px 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 18px 18px 4px 18px;
+  background: var(--paper);
+  box-shadow: var(--shadow-lift);
+  font-size: .9rem;
+  font-weight: 600;
+  color: var(--ink);
+  cursor: pointer;
+  animation: chat-pop .4s cubic-bezier(.22,.61,.36,1);
+}
+.chat__nudge[hidden] { display: none; }
+.chat__nudge-close {
+  position: absolute; right: 6px; top: 6px;
+  display: grid; place-items: center;
+  width: 26px; height: 26px;
+  border: 0; border-radius: 50%;
+  background: none; color: var(--muted); cursor: pointer;
+}
+.chat__nudge-close svg { width: 14px; height: 14px; }
+.chat__panel {
+  display: flex;
+  flex-direction: column;
+  width: min(380px, calc(100vw - 32px));
+  height: min(560px, calc(100dvh - 150px));
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: var(--paper);
+  box-shadow: 0 24px 60px rgba(24, 24, 24, .22);
+  animation: chat-pop .3s cubic-bezier(.22,.61,.36,1);
+}
+.chat__panel[hidden] { display: none; }
+.chat__head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 14px 14px 16px;
+  background: var(--ink);
+  color: #fff;
+}
+.chat__head b { display: block; font-size: .98rem; }
+.chat__head small { display: block; font-size: .78rem; color: rgba(255, 255, 255, .65); }
+.chat__avatar {
+  position: relative;
+  display: grid; place-items: center;
+  width: 40px; height: 40px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--lime);
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-weight: 700;
+}
+.chat__avatar::after {
+  content: "";
+  position: absolute; right: 0; bottom: 0;
+  width: 11px; height: 11px;
+  border: 2px solid var(--ink);
+  border-radius: 50%;
+  background: #3ecf72;
+}
+.chat__close {
+  display: grid; place-items: center;
+  width: 36px; height: 36px;
+  margin-left: auto;
+  border: 0; border-radius: 50%;
+  background: rgba(255, 255, 255, .1);
+  color: #fff;
+  cursor: pointer;
+}
+.chat__close:hover { background: rgba(255, 255, 255, .2); }
+.chat__log {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background: var(--bg-soft);
+}
+.chat__msg {
+  max-width: 85%;
+  margin: 0;
+  padding: 10px 14px;
+  border-radius: 18px;
+  font-size: .93rem;
+  line-height: 1.5;
+  animation: chat-pop .25s ease;
+  overflow-wrap: anywhere;
+}
+.chat__msg--bot { align-self: flex-start; background: var(--paper); color: var(--ink); border-bottom-left-radius: 6px; box-shadow: 0 1px 2px rgba(24, 24, 24, .06); }
+.chat__msg--me { align-self: flex-end; background: var(--ink); color: #fff; border-bottom-right-radius: 6px; }
+.chat__typing { display: inline-flex; gap: 4px; padding: 14px; }
+.chat__typing i { width: 7px; height: 7px; border-radius: 50%; background: var(--muted-light); animation: chat-dot 1s infinite ease-in-out; }
+.chat__typing i:nth-child(2) { animation-delay: .15s; }
+.chat__typing i:nth-child(3) { animation-delay: .3s; }
+.chat__chips { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 16px; background: var(--bg-soft); }
+.chat__chips:not(:empty) { padding-bottom: 14px; }
+.chat__chip {
+  padding: 8px 13px;
+  border: 1px solid var(--ink);
+  border-radius: var(--radius-pill);
+  background: var(--paper);
+  color: var(--ink);
+  font: inherit;
+  font-size: .86rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color .15s ease, color .15s ease;
+}
+.chat__chip:hover, .chat__chip:focus-visible { background: var(--ink); color: #fff; }
+.chat__form { display: flex; gap: 8px; padding: 12px; border-top: 1px solid var(--line); background: var(--paper); }
+.chat__form[hidden] { display: none; }
+.chat__input {
+  flex: 1;
+  min-width: 0;
+  padding: 11px 14px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-pill);
+  font: inherit;
+  font-size: 16px;               /* iOS-ზე zoom-ი რომ არ მოხდეს */
+}
+.chat__input:focus { outline: none; border-color: var(--ink); box-shadow: 0 0 0 3px rgba(175, 152, 245, .35); }
+.chat__send {
+  display: grid; place-items: center;
+  width: 44px; height: 44px;
+  flex: none;
+  border: 0; border-radius: 50%;
+  background: var(--ink); color: #fff;
+  cursor: pointer;
+}
+.chat__send:hover { background: var(--lilac); color: var(--ink); }
+.chat__hint { margin: 0; padding: 0 16px 10px; background: var(--paper); color: var(--danger); font-size: .82rem; }
+.chat__hint[hidden] { display: none; }
+@keyframes chat-pop { from { opacity: 0; transform: translateY(8px) scale(.98); } }
+@keyframes chat-dot { 0%, 80%, 100% { opacity: .3; transform: translateY(0); } 40% { opacity: 1; transform: translateY(-3px); } }
+@media (max-width: 880px) {
+  .chat { right: 12px; bottom: 90px; }          /* მობილურის CTA ზოლის ზემოთ */
+  .chat.is-open { bottom: 12px; left: 12px; }
+  .chat.is-open .chat__launcher { display: none; }
+  .chat__panel { width: 100%; height: calc(100dvh - 24px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .chat__panel, .chat__msg, .chat__nudge { animation: none; }
+  .chat__typing i { animation: none; opacity: .6; }
+}
+@media print { .chat { display: none !important; } }
+.chat__launcher { order: 3; }

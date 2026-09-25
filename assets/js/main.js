@@ -751,6 +751,399 @@ const FORM_ENDPOINT = "/api/lead.php";
     heads.forEach((h) => io.observe(h));
   }
 
+  /* ------------------------------------------ შეხვედრის დაჯავშნა (/contact) */
+  function initBooking() {
+    const root = $("[data-booking]");
+    if (!root) return;
+
+    const daysBox = $("[data-booking-days]", root);
+    const timesBox = $("[data-booking-times]", root);
+    const pick = $("[data-booking-pick]", root);
+    const form = $("[data-booking-form]", root);
+    const done = $("[data-booking-done]", root);
+    const label = $("[data-booking-label]", root);
+    let days = [];
+    let sel = { date: "", time: "" };
+
+    const fmtDay = (d) => d.dow + ", " + d.day + " " + d.month;
+
+    const renderTimes = () => {
+      const day = days.find((d) => d.date === sel.date);
+      timesBox.innerHTML = "";
+      if (!day || !day.slots.length) {
+        const p = document.createElement("p");
+        p.className = "booking__empty";
+        p.textContent = "ამ დღეს თავისუფალი დრო აღარ არის — აირჩიეთ სხვა დღე.";
+        timesBox.append(p);
+        return;
+      }
+      day.slots.forEach((t) => {
+        const b = document.createElement("button");
+        b.type = "button";
+        b.className = "booking__time";
+        b.textContent = t;
+        b.setAttribute("aria-pressed", String(sel.time === t));
+        b.addEventListener("click", () => {
+          sel.time = t;
+          label.textContent = fmtDay(day) + " · " + t;
+          $$(".booking__time", timesBox).forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+          pick.hidden = true;
+          form.hidden = false;
+          $("input[name=name]", form).focus({ preventScroll: true });
+          root.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+        timesBox.append(b);
+      });
+    };
+
+    const renderDays = () => {
+      daysBox.innerHTML = "";
+      days.forEach((d) => {
+        const b = document.createElement("button");
+        b.type = "button";
+        b.className = "booking__day";
+        b.disabled = !d.slots.length;
+        b.setAttribute("aria-pressed", String(sel.date === d.date));
+        b.setAttribute("aria-label", fmtDay(d) + (d.slots.length ? ", " + d.slots.length + " თავისუფალი დრო" : ", დაკავებულია"));
+        b.innerHTML = "<small></small><b></b><small></small>";
+        b.children[0].textContent = d.dow;
+        b.children[1].textContent = d.day;
+        b.children[2].textContent = d.month;
+        b.addEventListener("click", () => {
+          sel = { date: d.date, time: "" };
+          $$(".booking__day", daysBox).forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+          renderTimes();
+        });
+        daysBox.append(b);
+      });
+      const active = $(".booking__day[aria-pressed=true]", daysBox);
+      if (active) daysBox.scrollLeft = active.offsetLeft - daysBox.offsetLeft - 8;
+    };
+
+    const load = async (keepDate) => {
+      try {
+        const res = await fetch("/api/slots.php", { headers: { Accept: "application/json" } });
+        const data = await res.json();
+        days = data.days || [];
+        $$("[data-booking-mins]").forEach((el) => { el.textContent = data.slot || 30; });
+        const first = days.find((d) => d.slots.length);
+        if (!keepDate || !days.some((d) => d.date === sel.date && d.slots.length)) {
+          sel = { date: first ? first.date : "", time: "" };
+        }
+        renderDays();
+        renderTimes();
+      } catch (e) {
+        daysBox.innerHTML = "";
+        const p = document.createElement("p");
+        p.className = "booking__empty";
+        p.textContent = "კალენდარი ვერ ჩაიტვირთა. დაგვირეკეთ ან შეავსეთ ფორმა ქვემოთ.";
+        daysBox.append(p);
+      }
+    };
+
+    const scrollDays = (dir) => daysBox.scrollBy({ left: dir * daysBox.clientWidth * 0.8, behavior: "smooth" });
+    $("[data-booking-prev]", root).addEventListener("click", () => scrollDays(-1));
+    $("[data-booking-next]", root).addEventListener("click", () => scrollDays(1));
+
+    $("[data-booking-change]", root).addEventListener("click", () => {
+      form.hidden = true;
+      pick.hidden = false;
+      sel.time = "";
+      renderTimes();
+    });
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      if (!validateForm(form)) return;
+      const btn = $("button[type=submit]", form);
+      const text = btn.textContent;
+      btn.disabled = true;
+      btn.textContent = "იჯავშნება…";
+      const payload = Object.fromEntries(new FormData(form).entries());
+      payload.date = sel.date;
+      payload.time = sel.time;
+      try {
+        const res = await fetch("/api/book.php", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify(payload),
+        });
+        const data = await res.json().catch(() => ({}));
+        if (res.status === 409) {
+          showStatus(form, "error", "ეს დრო ახლახან დაიკავეს — აირჩიეთ სხვა.");
+          await load(true);
+          form.hidden = true;
+          pick.hidden = false;
+          return;
+        }
+        if (!res.ok || !data.ok) throw new Error(data.error || "error");
+        form.hidden = true;
+        done.hidden = false;
+        done.innerHTML =
+          '<span class="booking__check" aria-hidden="true"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>' +
+          "<h3></h3><p class=\"booking__when\"></p><p>დადასტურება გამოგიგზავნეთ ელფოსტაზე. ჩვენი გუნდის წევრი დათქმულ დროს დაგიკავშირდებათ.</p>" +
+          '<div class="btn-row"><a class="btn btn--primary" target="_blank" rel="noopener">კალენდარში დამატება</a><a class="btn btn--ghost" href="/work">ნამუშევრების ნახვა</a></div>';
+        $("h3", done).textContent = "მადლობა, " + payload.name + "! შეხვედრა დაჯავშნილია.";
+        $(".booking__when", done).textContent = data.label + " (თბილისის დროით)";
+        const cal = $("a.btn--primary", done);
+        if (data.gcal) cal.href = data.gcal; else cal.remove();
+        done.focus();
+      } catch (err) {
+        showStatus(form, "error", "ჯავშანი ვერ გაიგზავნა. სცადეთ თავიდან ან დაგვირეკეთ.");
+      } finally {
+        btn.disabled = false;
+        btn.textContent = text;
+      }
+    });
+
+    load(false);
+  }
+
+  /* ---------------------------------------------- ჩატბოტი — ლიდის შეგროვება */
+  function initChatbot() {
+    if (document.body.dataset.noChat !== undefined) return;
+    const store = {
+      get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
+      set(k, v) { try { localStorage.setItem(k, v); } catch (e) { /* private mode */ } },
+      sget(k) { try { return sessionStorage.getItem(k); } catch (e) { return null; } },
+      sset(k, v) { try { sessionStorage.setItem(k, v); } catch (e) { /* private mode */ } },
+    };
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const ICON_CHAT = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>';
+    const ICON_X = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>';
+    const ICON_SEND = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>';
+
+    const wrap = document.createElement("div");
+    wrap.className = "chat";
+    wrap.innerHTML =
+      '<p class="chat__nudge" hidden><button type="button" class="chat__nudge-close" aria-label="დახურვა">' + ICON_X + '</button><span>გაქვთ პროექტი? 👋 ორ წუთში გავარკვიოთ, რა გჭირდებათ.</span></p>' +
+      '<button class="chat__launcher" type="button" aria-expanded="false" aria-controls="chat-panel" aria-label="ჩატის გახსნა">' + ICON_CHAT + '</button>' +
+      '<section class="chat__panel" id="chat-panel" role="dialog" aria-label="ვებიკოს ასისტენტი" hidden>' +
+        '<header class="chat__head"><span class="chat__avatar" aria-hidden="true">W</span>' +
+        '<span><b>ვებიკოს ასისტენტი</b><small>გუნდი გპასუხობთ 1 სამუშაო დღეში</small></span>' +
+        '<button class="chat__close" type="button" aria-label="ჩატის დახურვა">' + ICON_X + '</button></header>' +
+        '<div class="chat__log" role="log" aria-live="polite"></div>' +
+        '<div class="chat__chips"></div>' +
+        '<form class="chat__form" hidden novalidate><label class="sr-only" for="chat-input">პასუხი</label>' +
+        '<input id="chat-input" class="chat__input" autocomplete="off">' +
+        '<button class="chat__send" type="submit" aria-label="გაგზავნა">' + ICON_SEND + '</button></form>' +
+        '<p class="chat__hint" hidden></p>' +
+      '</section>';
+    document.body.append(wrap);
+
+    const launcher = $(".chat__launcher", wrap);
+    const panel = $(".chat__panel", wrap);
+    const log = $(".chat__log", wrap);
+    const chips = $(".chat__chips", wrap);
+    const form = $(".chat__form", wrap);
+    const input = $(".chat__input", wrap);
+    const hint = $(".chat__hint", wrap);
+    const nudge = $(".chat__nudge", wrap);
+
+    const answers = {};
+    let step = -1;
+    let started = false;
+    let busy = false;
+
+    const STEPS = [
+      { key: "service",
+        ask: () => ["გამარჯობა! 👋 მე ვებიკოს ასისტენტი ვარ.",
+                    "რამდენიმე მოკლე კითხვით გავიგებ, რა გჭირდებათ, და ჩვენი გუნდი დაგიკავშირდებათ. რით შეგვიძლია დაგეხმაროთ?"],
+        chips: ["ახალი ვებსაიტი", "ონლაინ მაღაზია", "SEO", "ციფრული მარკეტინგი", "ბრენდინგი", "სხვა"] },
+      { key: "website",
+        ask: () => ["კარგი! უკვე გაქვთ ვებსაიტი? თუ კი, ჩაწერეთ მისამართი."],
+        input: { type: "text", placeholder: "example.ge", inputmode: "url" },
+        chips: ["ჯერ არ მაქვს"] },
+      { key: "budget",
+        ask: () => ["დაახლოებით რა ბიუჯეტზე ფიქრობთ?"],
+        chips: ["1 500 ₾-მდე", "1 500 – 5 000 ₾", "5 000 – 15 000 ₾", "15 000 ₾-ზე მეტი", "ჯერ არ ვიცი"] },
+      { key: "timeline",
+        ask: () => ["როდის გსურთ დაწყება?"],
+        chips: ["რაც შეიძლება მალე", "1–3 თვეში", "ჯერ ვარკვევ"] },
+      { key: "name",
+        ask: () => ["გმადლობთ! როგორ მოგმართოთ?"],
+        input: { type: "text", placeholder: "თქვენი სახელი", autocomplete: "name" },
+        check: (v) => (v.length >= 2 ? "" : "გთხოვთ, ჩაწეროთ სახელი") },
+      { key: "email",
+        ask: (a) => ["სასიამოვნოა, " + a.name + "! რომელ ელფოსტაზე მოგწეროთ?"],
+        input: { type: "email", placeholder: "name@company.ge", autocomplete: "email", inputmode: "email" },
+        check: (v) => (EMAIL_RE.test(v) ? "" : "ელფოსტა არასწორია — შეამოწმეთ, გთხოვთ") },
+      { key: "phone",
+        ask: () => ["ტელეფონსაც თუ დაგვიტოვებთ, უფრო სწრაფად დაგიკავშირდებით. (არასავალდებულო)"],
+        input: { type: "tel", placeholder: "+995 5XX XX XX XX", autocomplete: "tel", inputmode: "tel" },
+        chips: ["გამოტოვება"],
+        check: (v) => (PHONE_RE.test(v) ? "" : "ნომერი არასწორია — ან დააჭირეთ „გამოტოვებას“") },
+      { key: "message",
+        ask: () => ["ბოლო კითხვა: კიდევ რამე ხომ არ გვინდა ვიცოდეთ?"],
+        input: { type: "text", placeholder: "მოკლედ აღწერეთ ამოცანა…" },
+        chips: ["არა, სულ ესაა"] },
+    ];
+    const SKIP = { website: "ჯერ არ მაქვს", phone: "გამოტოვება", message: "არა, სულ ესაა" };
+
+    const scroll = () => { log.scrollTop = log.scrollHeight; };
+    const wait = (ms) => new Promise((r) => setTimeout(r, reduce ? 0 : ms));
+
+    const bubble = (text, who) => {
+      const p = document.createElement("p");
+      p.className = "chat__msg chat__msg--" + who;
+      p.textContent = text;
+      log.append(p);
+      scroll();
+      return p;
+    };
+
+    const say = async (lines) => {
+      for (const line of lines) {
+        const typing = document.createElement("p");
+        typing.className = "chat__msg chat__msg--bot chat__typing";
+        typing.setAttribute("aria-label", "იწერება");
+        typing.innerHTML = "<i></i><i></i><i></i>";
+        log.append(typing);
+        scroll();
+        await wait(Math.min(1100, 350 + line.length * 9));
+        typing.remove();
+        bubble(line, "bot");
+      }
+    };
+
+    const setChips = (list, onPick) => {
+      chips.innerHTML = "";
+      (list || []).forEach((c) => {
+        const b = document.createElement("button");
+        b.type = "button";
+        b.className = "chat__chip";
+        b.textContent = c;
+        b.addEventListener("click", () => onPick(c));
+        chips.append(b);
+      });
+    };
+
+    const setInput = (cfg) => {
+      hint.hidden = true;
+      if (!cfg) { form.hidden = true; return; }
+      form.hidden = false;
+      input.value = "";
+      input.type = cfg.type === "email" ? "email" : cfg.type === "tel" ? "tel" : "text";
+      input.placeholder = cfg.placeholder || "";
+      input.setAttribute("autocomplete", cfg.autocomplete || "off");
+      if (cfg.inputmode) input.setAttribute("inputmode", cfg.inputmode); else input.removeAttribute("inputmode");
+      if (!panel.hidden) input.focus({ preventScroll: true });
+    };
+
+    const ask = async (i) => {
+      step = i;
+      const s = STEPS[i];
+      setChips([]);
+      setInput(null);
+      busy = true;
+      await say(s.ask(answers));
+      busy = false;
+      setChips(s.chips, (c) => answer(c));
+      setInput(s.input);
+      if (!s.input && chips.firstChild) chips.firstChild.focus({ preventScroll: true });
+    };
+
+    const answer = async (raw) => {
+      if (busy || step < 0) return;
+      const s = STEPS[step];
+      const value = raw.trim();
+      const skipped = SKIP[s.key] === value;
+      if (!value) return;
+      if (s.check && !skipped) {
+        const err = s.check(value);
+        if (err) { hint.textContent = err; hint.hidden = false; input.focus(); return; }
+      }
+      bubble(value, "me");
+      answers[s.key] = skipped ? "" : value;
+      if (step + 1 < STEPS.length) ask(step + 1);
+      else submit();
+    };
+
+    const submit = async () => {
+      setChips([]);
+      setInput(null);
+      busy = true;
+      await say(["ვაგზავნი…"]);
+      const a = answers;
+      const payload = {
+        name: a.name, email: a.email, phone: a.phone || "",
+        service: a.service, budget: a.budget, timeline: a.timeline, website: a.website || "",
+        message: a.message || "", source: "chatbot", page: location.pathname,
+      };
+      try {
+        const res = await fetch(FORM_ENDPOINT, {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify(payload),
+        });
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok || !data.ok) throw new Error("send");
+        store.set("webico_chat_done", a.name);
+        await say(["მადლობა, " + a.name + "! 🎉 თქვენი მოთხოვნა მივიღეთ.",
+                   "ჩვენი გუნდი ერთ სამუშაო დღეში მოგწერთ " + a.email + "-ზე. თუ გინდათ, ზარის დრო ახლავე დაჯავშნეთ."]);
+        busy = false;
+        setChips(["📅 ზარის დაჯავშნა", "ნამუშევრების ნახვა"], (c) => {
+          location.href = c.indexOf("ზარის") > -1 ? "/contact#booking" : "/work";
+        });
+      } catch (e) {
+        await say(["სამწუხაროდ, შეტყობინება ვერ გაიგზავნა. სცადეთ თავიდან ან მოგვწერეთ პირდაპირ: hello@webico.io"]);
+        busy = false;
+        setChips(["თავიდან ცდა"], () => submit());
+      }
+    };
+
+    const start = async () => {
+      if (started) return;
+      started = true;
+      const prev = store.get("webico_chat_done");
+      if (prev) {
+        busy = true;
+        await say(["კიდევ ერთხელ გამარჯობა, " + prev + "! 👋 თქვენი მოთხოვნა უკვე მივიღეთ და მალე დაგიკავშირდებით."]);
+        busy = false;
+        setChips(["ახალი მოთხოვნა", "📅 ზარის დაჯავშნა"], (c) => {
+          if (c === "ახალი მოთხოვნა") ask(0); else location.href = "/contact#booking";
+        });
+        return;
+      }
+      ask(0);
+    };
+
+    const open = () => {
+      panel.hidden = false;
+      wrap.classList.add("is-open");
+      launcher.setAttribute("aria-expanded", "true");
+      launcher.setAttribute("aria-label", "ჩატის დახურვა");
+      launcher.innerHTML = ICON_X;
+      nudge.hidden = true;
+      store.sset("webico_nudge", "1");
+      start();
+      setTimeout(() => (form.hidden ? (chips.firstChild || $(".chat__close", wrap)) : input).focus({ preventScroll: true }), 50);
+    };
+    const close = () => {
+      panel.hidden = true;
+      wrap.classList.remove("is-open");
+      launcher.setAttribute("aria-expanded", "false");
+      launcher.setAttribute("aria-label", "ჩატის გახსნა");
+      launcher.innerHTML = ICON_CHAT;
+      launcher.focus({ preventScroll: true });
+    };
+
+    launcher.addEventListener("click", () => (panel.hidden ? open() : close()));
+    $(".chat__close", wrap).addEventListener("click", close);
+    wrap.addEventListener("keydown", (e) => { if (e.key === "Escape" && !panel.hidden) close(); });
+    form.addEventListener("submit", (e) => { e.preventDefault(); answer(input.value); });
+    nudge.addEventListener("click", (e) => {
+      if (e.target.closest(".chat__nudge-close")) { nudge.hidden = true; store.sset("webico_nudge", "1"); return; }
+      open();
+    });
+    $$('a[href="#chat"], [data-open-chat]').forEach((a) => a.addEventListener("click", (e) => { e.preventDefault(); open(); }));
+
+    // ერთხელ სესიაში, მცირე დაყოვნებით — არა კონტაქტის გვერდზე და არა იმათთვის, ვინც უკვე მოგვწერა
+    if (!store.sget("webico_nudge") && !store.get("webico_chat_done") && !/\/contact/.test(location.pathname)) {
+      setTimeout(() => { if (panel.hidden) nudge.hidden = false; }, 15000);
+    }
+  }
+
   /* ------------------------------------------------------------ bootstrap */
   document.addEventListener("DOMContentLoaded", () => {
     initNav();
@@ -771,5 +1164,7 @@ const FORM_ENDPOINT = "/api/lead.php";
     initSplit();
     initCopyLink();
     initToc();
+    initBooking();
+    initChatbot();
   });
 })();

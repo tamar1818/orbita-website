@@ -3,6 +3,7 @@ declare(strict_types=1);
 require_once dirname(__DIR__) . '/inc/auth.php';
 require_once dirname(__DIR__) . '/inc/media.php';
 require_once dirname(__DIR__) . '/inc/blog.php';
+require_once dirname(__DIR__) . '/inc/booking.php';
 
 $page = $_GET['p'] ?? 'dashboard';
 $msg = '';
@@ -225,6 +226,38 @@ if (cms_user() !== null && $_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($action === 'delete_media') {
             $msg = cms_media_delete((string) ($_POST['name'] ?? ''))
                 ? 'ფაილი წაიშალა' : 'წაშლა ვერ მოხერხდა';
+        }
+
+        if ($action === 'booking_status') {
+            $store = cms_read('bookings', ['bookings' => []]);
+            $id = (string) ($_POST['id'] ?? '');
+            $st = in_array($_POST['status'] ?? '', ['new', 'done', 'cancelled'], true) ? $_POST['status'] : 'new';
+            foreach ($store['bookings'] as &$b) {
+                if (($b['id'] ?? '') === $id) {
+                    $b['status'] = $st;
+                }
+            }
+            unset($b);
+            $msg = cms_write('bookings', $store)
+                ? ($st === 'cancelled' ? 'შეხვედრა გაუქმდა — დრო ისევ თავისუფალია' : 'სტატუსი განახლდა')
+                : 'შენახვა ვერ მოხერხდა';
+        }
+
+        if ($action === 'save_booking_settings') {
+            $site = cms_read('site');
+            $blocked = array_values(array_filter(array_map('trim',
+                preg_split('~[\s,]+~', (string) ($_POST['blocked'] ?? '')) ?: []),
+                static fn($d) => (bool) preg_match('~^\d{4}-\d{2}-\d{2}$~', $d)));
+            $site['booking'] = [
+                'days'    => array_values(array_map('intval', (array) ($_POST['days'] ?? []))),
+                'start'   => (string) ($_POST['start'] ?? '10:00'),
+                'end'     => (string) ($_POST['end'] ?? '18:00'),
+                'slot'    => (int) ($_POST['slot'] ?? 30),
+                'notice'  => (int) ($_POST['notice'] ?? 3),
+                'ahead'   => (int) ($_POST['ahead'] ?? 21),
+                'blocked' => $blocked,
+            ];
+            $msg = cms_write('site', $site) ? 'განრიგი შენახულია' : 'შენახვა ვერ მოხერხდა';
         }
 
         if ($action === 'delete_lead') {
