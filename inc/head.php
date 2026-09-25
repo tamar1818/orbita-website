@@ -38,7 +38,7 @@ $OG_H = !empty($PAGE_IMAGE) ? ($PAGE_IMAGE_H ?? 1024) : 630;
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <!-- სარეზერვო ქართული შრიფტი — მთავარი შრიფტია LGV Anastasia 2025 Geo (იხ. assets/fonts/) -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap">
-  <link rel="stylesheet" href="/assets/css/style.css?v=e2e5f431">
+  <link rel="stylesheet" href="/assets/css/style.css?v=4ed21582">
 <?= $PAGE_LD ?? "" ?>
 </head>
 <body>

@@ -32,7 +32,7 @@ $PAGE_URL   = '/work-' . $slug;
 $PAGE_IMAGE = is_file(__DIR__ . '/assets/img/work/' . $slug . '-og.jpg')
     ? 'assets/img/work/' . $slug . '-og.jpg' : null;
 $PAGE_IMAGE_W = 1200;
-$PAGE_IMAGE_H = 800;
+$PAGE_IMAGE_H = $PAGE_IMAGE ? (getimagesize(__DIR__ . '/' . $PAGE_IMAGE)[1] ?? 770) : 630;
 $PAGE_LD = "\n  <script type=\"application/ld+json\">\n"
     . json_encode([
         '@context' => 'https://schema.org', '@type' => 'CreativeWork',

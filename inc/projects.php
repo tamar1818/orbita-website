@@ -57,12 +57,12 @@ function cms_shot_img(array $p, string $sizes = '(max-width: 620px) 100vw, 50vw'
     $src = cms_url($shot);
     $srcset = '';
     if (preg_match('~^(.+)\.webp$~', $shot, $m) && is_file(CMS_ROOT . '/' . ltrim($m[1], '/') . '-sm.webp')) {
-        $srcset = ' srcset="' . cms_e(cms_url($m[1] . '-sm.webp')) . ' 768w, ' . cms_e($src) . ' 1536w"'
+        $srcset = ' srcset="' . cms_e(cms_url($m[1] . '-sm.webp')) . ' 720w, ' . cms_e($src) . ' 1400w"'
                 . ' sizes="' . cms_e($sizes) . '"';
     }
     return '<img src="' . cms_e($src) . '"' . $srcset
          . ' alt="' . cms_e(($p['name'] ?? '') . ' — ვებსაიტის მოკაპი') . '"'
-         . ' width="1536" height="1024" decoding="async"' . ($eager ? '' : ' loading="lazy"') . '>';
+         . ' width="1400" height="900" decoding="async"' . ($eager ? '' : ' loading="lazy"') . '>';
 }
 
 function cms_mock(array $p, string $sizes = '(max-width: 620px) 100vw, 50vw', bool $eager = false): string

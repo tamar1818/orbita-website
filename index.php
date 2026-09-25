@@ -32,7 +32,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <!-- სარეზერვო ქართული შრიფტი — მთავარი შრიფტია LGV Anastasia 2025 Geo (იხ. assets/fonts/) -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap">
-  <link rel="stylesheet" href="assets/css/style.css?v=e2e5f431">
+  <link rel="stylesheet" href="assets/css/style.css?v=4ed21582">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -400,48 +400,6 @@
       </div>
     </section>
 
-    <!-- ======================= ბოლო პროექტები ======================== -->
-    <?php
-      $want  = ['oribu', 'pearl-island', 'e-motions', 'vrs-studio'];
-      $cases = array_values(array_filter(array_map(static fn($s) => cms_project($s), $want)));
-      $cases = array_values(array_filter($cases, static fn($c) => trim((string) ($c['shot'] ?? '')) !== ''));
-      if (count($cases) < 2) { $cases = array_slice($shots, 0, 4); }
-    ?>
-    <?php if ($cases): ?>
-    <section class="section" id="cases">
-      <div class="container">
-        <div class="section-head section-head--center" data-reveal>
-          <span class="eyebrow">ქეისები</span>
-          <h2>ბოლო პროექტები</h2>
-          <p>რამდენიმე ვებსაიტი, რომელიც ბოლო პერიოდში ავაწყვეთ. დეტალები თითოეული პროექტის გვერდზეა.</p>
-        </div>
-        <div class="case-stack">
-          <?php foreach ($cases as $i => $c):
-            $cs = cms_e((string) $c['slug']);
-            $cd = (string) ($c['domain'] ?? '');
-          ?>
-          <article class="case-card" style="--i:<?= $i ?>">
-            <a class="case-card__media" href="/work-<?= $cs ?>" tabindex="-1" aria-hidden="true"><?= cms_mock($c, '(max-width: 880px) 100vw, 780px') ?></a>
-            <div class="case-card__panel">
-              <p class="case-card__count"><?= sprintf('%02d', $i + 1) ?> <span>/ <?= sprintf('%02d', count($cases)) ?></span></p>
-              <h3><a href="/work-<?= $cs ?>"><?= cms_e((string) $c['name']) ?></a></h3>
-              <?php if (!empty($c['summary'])): ?><p><?= cms_e((string) $c['summary']) ?></p><?php endif; ?>
-              <dl class="case-card__meta">
-                <div><dt>კლიენტი</dt><dd><?= cms_e((string) $c['name']) ?></dd></div>
-                <?php if ($cd !== ''): ?><div><dt>ვებსაიტი</dt><dd><a href="https://<?= cms_e($cd) ?>/" target="_blank" rel="noopener noreferrer"><?= cms_e($cd) ?> <?= CMS_EXT ?></a></dd></div><?php endif; ?>
-                <div><dt>მიმართულება</dt><dd><?= cms_e(implode(', ', cms_tags($c))) ?></dd></div>
-                <?php if (!empty($c['partner'])): ?><div><dt>პარტნიორი</dt><dd><?= cms_e((string) $c['partner']) ?></dd></div><?php endif; ?>
-                <?php if (!empty($c['year'])): ?><div><dt>წელი</dt><dd><?= cms_e((string) $c['year']) ?></dd></div><?php endif; ?>
-              </dl>
-              <a class="btn btn--primary btn--sm" href="/work-<?= $cs ?>">ნახე პროექტი</a>
-            </div>
-          </article>
-          <?php endforeach; ?>
-        </div>
-      </div>
-    </section>
-    <?php endif; ?>
-
     <!-- ========================== პროცესი =========================== -->
     <section class="section section--soft" id="process">
       <div class="container">
@@ -642,7 +600,7 @@
 
   </main>
 
-  <footer class="site-footer pattern-grid pattern-grid--light">
+  <footer class="site-footer">
     <div class="container">
       <div class="footer__grid">
         <div>
@@ -702,6 +660,6 @@
     </div>
   </footer>
 
-  <script src="assets/js/main.js?v=e2e5f431"></script>
+  <script src="assets/js/main.js?v=4ed21582"></script>
 </body>
 </html>
