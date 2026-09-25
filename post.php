@@ -74,6 +74,16 @@ foreach ($ld as $block) {
 }
 
 $share = rawurlencode($url);
+
+// შიდა ბმული: სტატია → შესაბამისი სერვისის გვერდი
+$SERVICE_FOR = [
+    'seo'       => ['/service-seo', 'SEO ოპტიმიზაცია'],
+    'marketing' => ['/service-marketing', 'ციფრული მარკეტინგი'],
+    'web'       => ['/service-web-development', 'ვებსაიტის დამზადება'],
+    'business'  => ['/service-ecommerce', 'ონლაინ მაღაზიის შექმნა'],
+    'branding'  => ['/service-branding', 'UI/UX დიზაინი და ბრენდინგი'],
+];
+$svcLink = $SERVICE_FOR[$post['category'] ?? ''] ?? ['/services', 'ჩვენი სერვისები'];
 require __DIR__ . '/inc/head.php';
 ?>
     <article class="article">
@@ -126,7 +136,10 @@ require __DIR__ . '/inc/head.php';
               <p class="article-cta__eyebrow">ვებიკო</p>
               <h2>გინდათ, ეს თქვენს ბიზნესზე ერთად შევხედოთ?</h2>
               <p>უფასო კონსულტაციაზე ვნახავთ თქვენს საიტს და ერთ სამუშაო დღეში გეტყვით, საიდან ღირს დაწყება.</p>
-              <a class="btn btn--primary" href="/contact#booking">უფასო კონსულტაცია</a>
+              <div class="btn-row">
+                <a class="btn btn--primary" href="/contact#booking">უფასო კონსულტაცია</a>
+                <a class="btn btn--ghost-light" href="<?= cms_e($svcLink[0]) ?>"><?= cms_e($svcLink[1]) ?> →</a>
+              </div>
             </aside>
           </div>
         </div>

@@ -3286,3 +3286,66 @@ a:hover .shot img,
 }
 @media print { .chat { display: none !important; } }
 .chat__launcher { order: 3; }
+
+/* --------------------------------------------------------------------------
+   43. SEO-ს ბლოკები: hero-ს აღწერა, ჩატის ბმული, სერვისის შესავალი
+   -------------------------------------------------------------------------- */
+.svc__title { margin: 0; }
+.hero__entity {
+  max-width: 62ch;
+  margin: 0 auto .6em;
+  font-size: .95rem !important;
+  font-weight: 600;
+  color: var(--ink-soft) !important;
+}
+.hero__chat {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 18px;
+  padding: 8px 14px;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: none;
+  font: inherit;
+  font-size: .92rem;
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--lilac);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+  cursor: pointer;
+}
+.hero__chat:hover { text-decoration-color: var(--ink); background: var(--bg-soft); }
+.hero__chat-dot {
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  background: #3ecf72;
+  box-shadow: 0 0 0 4px rgba(62, 207, 114, .2);
+}
+.svc-intro {
+  max-width: 760px;
+  margin-inline: auto;
+  font-size: clamp(1.05rem, 1rem + .25vw, 1.18rem);
+  line-height: 1.8;
+  color: var(--ink-soft);
+}
+.svc-intro p + p { margin-top: 1em; }
+.svc-intro p:first-child::first-line { font-weight: 600; color: var(--ink); }
+.btn--ghost-light { background: transparent; color: #fff; border-color: rgba(255, 255, 255, .45); }
+.btn--ghost-light:hover { border-color: #fff; box-shadow: 2px 5px 0 0 var(--lime); }
+/* 7 სერვისი — მენიუში ორ სვეტად */
+@media (min-width: 881px) {
+  .nav__item { position: static; }                 /* მენიუ ნავიგაციის ზოლის შუაში */
+  .mega { width: min(1000px, calc(100vw - 32px)); top: calc(100% + 8px); }
+  .mega__inner { grid-template-columns: minmax(0, 1.75fr) minmax(0, .75fr); }
+  .mega__col:not(.mega__col--tools) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 6px;
+    align-content: start;
+  }
+  .mega__col:not(.mega__col--tools) .mega__label { grid-column: 1 / -1; }
+  .mega__col:not(.mega__col--tools) .mega__go { display: none; }
+}

@@ -1,6 +1,7 @@
 <?php
 /** შეხვედრის დაჯავშნა — ორმაგი ჯავშნისგან დაცული (flock) */
 declare(strict_types=1);
+ini_set('display_errors', '0');   // PHP-ის გაფრთხილებამ JSON პასუხი არ უნდა გააფუჭოს
 require_once dirname(__DIR__) . '/inc/booking.php';
 require_once dirname(__DIR__) . '/inc/mail.php';
 

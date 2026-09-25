@@ -61,7 +61,7 @@ function cms_shot_img(array $p, string $sizes = '(max-width: 620px) 100vw, 50vw'
                 . ' sizes="' . cms_e($sizes) . '"';
     }
     return '<img src="' . cms_e($src) . '"' . $srcset
-         . ' alt="' . cms_e(($p['name'] ?? '') . ' — ვებსაიტის მოკაპი') . '"'
+         . ' alt="' . cms_e(($p['name'] ?? '') . ' — ვებსაიტი, შექმნილი Webico-ს მიერ') . '"'
          . ' width="1400" height="900" decoding="async"' . ($eager ? '' : ' loading="lazy"') . '>';
 }
 

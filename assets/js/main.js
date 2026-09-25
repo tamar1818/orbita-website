@@ -1140,7 +1140,7 @@ const FORM_ENDPOINT = "/api/lead.php";
 
     // ერთხელ სესიაში, მცირე დაყოვნებით — არა კონტაქტის გვერდზე და არა იმათთვის, ვინც უკვე მოგვწერა
     if (!store.sget("webico_nudge") && !store.get("webico_chat_done") && !/\/contact/.test(location.pathname)) {
-      setTimeout(() => { if (panel.hidden) nudge.hidden = false; }, 15000);
+      setTimeout(() => { if (panel.hidden) nudge.hidden = false; }, location.pathname === "/" ? 6000 : 15000);
     }
   }
 

@@ -5,49 +5,49 @@
             "name": "Archetypes Creatives",
             "domain": "archetypescreatives.com",
             "tone": "lilac",
-            "shot": "assets/img/work/archetypes-creatives.webp"
+            "shot": "assets/img/work/archetypes-creatives-website.webp"
         },
         {
             "slug": "tamaras-collect",
             "name": "Tamara's Collect",
             "domain": "tamarascollect.com",
             "tone": "lime",
-            "shot": "assets/img/work/tamaras-collect.webp"
+            "shot": "assets/img/work/tamaras-collect-website.webp"
         },
         {
             "slug": "oribu",
             "name": "Oribu",
             "domain": "oribu.ge",
             "tone": "pink",
-            "shot": "assets/img/work/oribu.webp"
+            "shot": "assets/img/work/oribu-website.webp"
         },
         {
             "slug": "memory-casa",
             "name": "Memory Casa",
             "domain": "memorycasa.ge",
             "tone": "soft",
-            "shot": "assets/img/work/memory-casa.webp"
+            "shot": "assets/img/work/memory-casa-website.webp"
         },
         {
             "slug": "mubana",
             "name": "Mubana",
             "domain": "mubana.ge",
             "tone": "lilac",
-            "shot": "assets/img/work/mubana.webp"
+            "shot": "assets/img/work/mubana-website.webp"
         },
         {
             "slug": "bekaia-fund",
             "name": "Bekaia Fund",
             "domain": "bekaiafund.org",
             "tone": "lime",
-            "shot": "assets/img/work/bekaia-fund.webp"
+            "shot": "assets/img/work/bekaia-fund-website.webp"
         },
         {
             "slug": "galogrea",
             "name": "Galogrea",
             "domain": "galogrea.ge",
             "tone": "pink",
-            "shot": "assets/img/work/galogrea.webp"
+            "shot": "assets/img/work/galogrea-website.webp"
         },
         {
             "slug": "cx-panda",
@@ -60,7 +60,7 @@
             "name": "Wine Station",
             "domain": "winestation.ge",
             "tone": "lilac",
-            "shot": "assets/img/work/wine-station.webp"
+            "shot": "assets/img/work/wine-station-website.webp"
         },
         {
             "slug": "cloud-streaming",
@@ -73,63 +73,63 @@
             "name": "The Lawlex",
             "domain": "thelawlex.com",
             "tone": "pink",
-            "shot": "assets/img/work/the-lawlex.webp"
+            "shot": "assets/img/work/the-lawlex-website.webp"
         },
         {
             "slug": "tg-events",
             "name": "TG Events",
             "domain": "tgevents.ge",
             "tone": "soft",
-            "shot": "assets/img/work/tg-events.webp"
+            "shot": "assets/img/work/tg-events-website.webp"
         },
         {
             "slug": "vrs-studio",
             "name": "VRS Studio",
             "domain": "vrs-studio.ge",
             "tone": "lilac",
-            "shot": "assets/img/work/vrs-studio.webp"
+            "shot": "assets/img/work/vrs-studio-website.webp"
         },
         {
             "slug": "realops",
             "name": "RealOps",
             "domain": "realops.tech",
             "tone": "lime",
-            "shot": "assets/img/work/realops.webp"
+            "shot": "assets/img/work/realops-website.webp"
         },
         {
             "slug": "my-creator",
             "name": "My Creator",
             "domain": "mycreator.ge",
             "tone": "pink",
-            "shot": "assets/img/work/my-creator.webp"
+            "shot": "assets/img/work/my-creator-website.webp"
         },
         {
             "slug": "anapea",
             "name": "Anapea",
             "domain": "anapea.ge",
             "tone": "soft",
-            "shot": "assets/img/work/anapea.webp"
+            "shot": "assets/img/work/anapea-website.webp"
         },
         {
             "slug": "pearl-island",
             "name": "Pearl Island Bahamas",
             "domain": "pearlislandbahamas.com",
             "tone": "lilac",
-            "shot": "assets/img/work/pearl-island.webp"
+            "shot": "assets/img/work/pearl-island-website.webp"
         },
         {
             "slug": "autism-ge",
             "name": "Autism.ge",
             "domain": "autism.ge",
             "tone": "lime",
-            "shot": "assets/img/work/autism-ge.webp"
+            "shot": "assets/img/work/autism-ge-website.webp"
         },
         {
             "slug": "phono",
             "name": "Phono",
             "domain": "phono.uk",
             "tone": "pink",
-            "shot": "assets/img/work/phono.webp"
+            "shot": "assets/img/work/phono-website.webp"
         },
         {
             "slug": "morevi",
@@ -143,7 +143,7 @@
             "domain": "smarter.ge",
             "tone": "lilac",
             "partner": "Timeless Agency",
-            "shot": "assets/img/work/smarter.webp"
+            "shot": "assets/img/work/smarter-website.webp"
         },
         {
             "slug": "e-motions",
@@ -151,7 +151,7 @@
             "domain": "e-motions.ge",
             "tone": "lime",
             "partner": "Timeless Agency",
-            "shot": "assets/img/work/e-motions.webp"
+            "shot": "assets/img/work/e-motions-website.webp"
         },
         {
             "slug": "office-pros",
@@ -159,7 +159,7 @@
             "domain": "officepros.ge",
             "tone": "pink",
             "partner": "Timeless Agency",
-            "shot": "assets/img/work/office-pros.webp"
+            "shot": "assets/img/work/office-pros-website.webp"
         },
         {
             "slug": "safety-hub",
@@ -167,7 +167,7 @@
             "domain": "safetyhub.ge",
             "tone": "soft",
             "partner": "Timeless Agency",
-            "shot": "assets/img/work/safety-hub.webp"
+            "shot": "assets/img/work/safety-hub-website.webp"
         }
     ]
 }

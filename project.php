@@ -26,11 +26,11 @@ $url    = $domain !== '' ? 'https://' . $domain . '/' : '';
 $stack  = array_values(array_filter(array_map('trim', $p['stack'] ?? [])));
 $scope  = array_values(array_filter(array_map('trim', $p['scope'] ?? [])));
 
-$PAGE_TITLE = $name . ' — ნამუშევრები | Webico';
-$PAGE_DESC  = $p['summary'] ?? ($name . ' — ვებსაიტი, შექმნილი Webico-ს მიერ.');
+$PAGE_TITLE = $name . ' — ვებსაიტის შექმნა | Webico';
+$PAGE_DESC  = !empty($p['summary']) ? (string) $p['summary'] : ($name . ($domain !== '' ? ' (' . $domain . ')' : '') . ' — ვებსაიტი, რომელიც შექმნა Webico-მ, ვებ დეველოპმენტის სააგენტომ თბილისში. ნახეთ პროექტის დეტალები.');
 $PAGE_URL   = '/work-' . $slug;
-$PAGE_IMAGE = is_file(__DIR__ . '/assets/img/work/' . $slug . '-og.jpg')
-    ? 'assets/img/work/' . $slug . '-og.jpg' : null;
+$PAGE_IMAGE = is_file(__DIR__ . '/assets/img/work/' . $slug . '-website-og.jpg')
+    ? 'assets/img/work/' . $slug . '-website-og.jpg' : null;
 $PAGE_IMAGE_W = 1200;
 $PAGE_IMAGE_H = $PAGE_IMAGE ? (getimagesize(__DIR__ . '/' . $PAGE_IMAGE)[1] ?? 770) : 630;
 $PAGE_LD = "\n  <script type=\"application/ld+json\">\n"

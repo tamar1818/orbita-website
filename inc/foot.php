@@ -24,7 +24,10 @@
           <h4>სერვისები</h4>
           <ul class="footer__list">
             <li><a href="/service-web-development">ვებსაიტების დიზაინი და შექმნა</a></li>
+            <li><a href="/service-wordpress">WordPress დეველოპმენტი</a></li>
+            <li><a href="/service-ecommerce">ონლაინ მაღაზიის შექმნა</a></li>
             <li><a href="/service-seo">SEO ოპტიმიზაცია</a></li>
+            <li><a href="/service-maintenance">ტექნიკური მხარდაჭერა</a></li>
             <li><a href="/service-marketing">ციფრული მარკეტინგი</a></li>
             <li><a href="/service-branding">ბრენდის ვიზუალური იდენტობა</a></li>
           </ul>
@@ -62,6 +65,6 @@
     </div>
   </footer>
 
-  <script src="/assets/js/main.js?v=60010b3b"></script>
+  <script src="/assets/js/main.js?v=b424da60"></script>
 </body>
 </html>

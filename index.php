@@ -1,4 +1,48 @@
-<?php require_once __DIR__ . "/inc/projects.php"; require_once __DIR__ . "/inc/blog.php"; ?>
+<?php require_once __DIR__ . "/inc/projects.php"; require_once __DIR__ . "/inc/blog.php";
+$HOME_FAQ = [
+    ["რა ღირს საიტის დამზადება?", "ღირებულება დამოკიდებულია გვერდების რაოდენობაზე, დიზაინის სირთულეზე, ენებზე და ინტეგრაციებზე. უფასო კონსულტაციის შემდეგ ერთ სამუშაო დღეში გიგზავნით ზუსტ შეთავაზებას ფიქსირებული ფასით."],
+    ["რამდენ ხანში მზადდება ვებსაიტი?", "სავიზიტო საიტი საშუალოდ 2–3 კვირაში, კორპორატიული საიტი 4–6 კვირაში, ონლაინ მაღაზია კი 6–10 კვირაში მზადდება. ზუსტ ვადას პირველივე შეხვედრის შემდეგ, ტექნიკურ დავალებასთან ერთად გაცნობებთ."],
+    ["აკეთებთ WordPress საიტებს?", "დიახ. ვქმნით WordPress საიტებს ინდივიდუალური თემებით, Elementor-ით, WooCommerce-ით, ACF-ით და საკუთარი პლაგინებით — ისე, რომ ტექსტებსა და ფოტოებს თავად ცვლიდეთ."],
+    ["ქმნით ონლაინ მაღაზიებს?", "დიახ — WooCommerce-ზე, Shopify-ზე ან ინდივიდუალურ კოდზე, ქართული ბანკების ონლაინ გადახდით, მიწოდების პირობებითა და მობილურზე მოსახერხებელი კალათით."],
+    ["შეგიძლიათ არსებული საიტის გადაკეთება?", "დიახ. ვიწყებთ უფასო აუდიტით: ვამოწმებთ სისწრაფეს, ტექნიკურ SEO-ს, ანალიტიკასა და კონვერსიის გზას, შემდეგ კი ვთავაზობთ ეტაპობრივ გეგმას — სრული გადაკეთების გარეშე, თუ ამის საჭიროება არ არის."],
+    ["გთავაზობთ საიტის ტექნიკურ მხარდაჭერას?", "დიახ. ყოველთვიური მომსახურება მოიცავს განახლებებს, უსაფრთხოებას, სარეზერვო ასლებს, სისწრაფის კონტროლსა და მცირე ცვლილებებს."],
+    ["აკეთებთ მრავალენოვან საიტებს?", "დიახ. ქართულს, ინგლისურს, რუსულსა და სხვა ენებს ვაწყობთ ცალკე მისამართებით და სწორი hreflang ტეგებით, რომ Google-მა თითოეული ენა სწორ აუდიტორიას აჩვენოს."],
+    ["როდის გამოჩნდება SEO-ს შედეგი?", "ტექნიკური გასწორებების ეფექტი 4–8 კვირაში იგრძნობა, მდგრადი ორგანული ზრდა კი 3–6 თვის სისტემურ მუშაობას მოითხოვს. ყოველთვიურად იღებთ ანგარიშს პოზიციებისა და ტრაფიკის დინამიკით."],
+    ["ხელშეკრულებას აფორმებთ?", "დიახ, ყველა პროექტი ფორმდება ხელშეკრულებით, სადაც გაწერილია სამუშაოს მოცულობა, ვადები, ღირებულება და ორივე მხარის ვალდებულებები. გადახდა ეტაპობრივია."],
+];
+$HOME_LD = "\n  <script type=\"application/ld+json\">\n" . json_encode([
+    '@context' => 'https://schema.org',
+    '@graph' => [
+        [
+            '@type' => 'Organization', '@id' => 'https://webico.io/#org',
+            'name' => 'Webico', 'alternateName' => 'ვებიკო', 'url' => 'https://webico.io/',
+            'logo' => 'https://webico.io/assets/img/apple-touch-icon.png',
+            'email' => html_entity_decode(cms_setting('email', 'hello@webico.io')),
+        ],
+        [
+            '@type' => 'WebSite', '@id' => 'https://webico.io/#website',
+            'url' => 'https://webico.io/', 'name' => 'Webico', 'inLanguage' => 'ka',
+            'publisher' => ['@id' => 'https://webico.io/#org'],
+        ],
+        [
+            '@type' => 'ProfessionalService', '@id' => 'https://webico.io/#service',
+            'name' => 'Webico', 'url' => 'https://webico.io/',
+            'description' => 'Webico — ვებ დეველოპმენტის სააგენტო თბილისში: საიტის დამზადება, WordPress და WooCommerce დეველოპმენტი, ონლაინ მაღაზიები, UI/UX დიზაინი, SEO და ტექნიკური მხარდაჭერა.',
+            'image' => 'https://webico.io/assets/img/og-image.png',
+            'email' => html_entity_decode(cms_setting('email', 'hello@webico.io')),
+            'address' => ['@type' => 'PostalAddress', 'addressLocality' => 'თბილისი', 'addressCountry' => 'GE'],
+            'areaServed' => ['@type' => 'Country', 'name' => 'Georgia'],
+            'parentOrganization' => ['@id' => 'https://webico.io/#org'],
+            'knowsAbout' => ['ვებ დეველოპმენტი', 'WordPress', 'WooCommerce', 'UI/UX დიზაინი', 'SEO', 'ონლაინ მაღაზია'],
+        ],
+        [
+            '@type' => 'FAQPage',
+            'mainEntity' => array_map(static fn($f) => ['@type' => 'Question', 'name' => $f[0],
+                'acceptedAnswer' => ['@type' => 'Answer', 'text' => $f[1]]], $HOME_FAQ),
+        ],
+    ],
+], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) . "\n  </script>";
+?>
 <!DOCTYPE html>
 <html lang="ka">
 <head>
@@ -6,16 +50,16 @@
   <meta name="google-site-verification" content="Zl7OvqIP-1s-wqbhxwTPnmISoEdJGMlH0hoNgwNrXHk">
   <script>document.documentElement.classList.add("js");</script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Webico — ვებსაიტები, ბრენდინგი და ციფრული მარკეტინგი</title>
-  <meta name="description" content="ვებიკო ქმნის ვებსაიტებსა და ბრენდის ვიზუალურ იდენტობას და გთავაზობს ციფრულ მარკეტინგს. გაეცანი ჩვენს სერვისებს და დაიწყე შენი პროექტი.">
+  <title>Webico — ვებ დეველოპმენტის სააგენტო თბილისში | საიტის დამზადება, WordPress, SEO</title>
+  <meta name="description" content="Webico — ვებ დეველოპმენტის სააგენტო თბილისში. ვქმნით საიტებს, WordPress და WooCommerce პროექტებს, ონლაინ მაღაზიებს, UI/UX დიზაინს და ვაკეთებთ SEO-ს. ნახეთ ნამუშევრები და დაჯავშნეთ უფასო კონსულტაცია.">
   <meta name="theme-color" content="#0d0d0d">
   <link rel="canonical" href="https://webico.io/">
 
   <meta property="og:type" content="website">
   <meta property="og:locale" content="ka_GE">
   <meta property="og:site_name" content="ვებიკო">
-  <meta property="og:title" content="Webico — ვებსაიტები, ბრენდინგი და ციფრული მარკეტინგი">
-  <meta property="og:description" content="ციფრული სააგენტო თბილისში. ვქმნით სწრაფ ვებსაიტებს, ვზრდით Google-ის ორგანულ პოზიციებს და ვმართავთ სარეკლამო კამპანიებს გაზომვადი შედეგით. მიიღეთ უფასო აუდიტი.">
+  <meta property="og:title" content="Webico — ვებ დეველოპმენტის სააგენტო თბილისში">
+  <meta property="og:description" content="Webico — ვებ დეველოპმენტის სააგენტო თბილისში. ვქმნით საიტებს, WordPress და WooCommerce პროექტებს, ონლაინ მაღაზიებს, UI/UX დიზაინს და ვაკეთებთ SEO-ს. ნახეთ ნამუშევრები და დაჯავშნეთ უფასო კონსულტაცია.">
   <meta property="og:url" content="https://webico.io/">
   <meta name="twitter:card" content="summary_large_image">
   <meta property="og:image" content="https://webico.io/assets/img/og-image.png">
@@ -32,82 +76,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <!-- სარეზერვო ქართული შრიფტი — მთავარი შრიფტია LGV Anastasia 2025 Geo (იხ. assets/fonts/) -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap">
-  <link rel="stylesheet" href="assets/css/style.css?v=60010b3b">
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    "name": "ვებიკო",
-    "alternateName": "Webico",
-    "description": "ციფრული სააგენტო თბილისში: ვებსაიტების დიზაინი და შექმნა, SEO ოპტიმიზაცია და ციფრული მარკეტინგი.",
-    "url": "https://webico.io/",
-    "telephone": "+995322000000",
-    "email": "<?= cms_setting("email", "hello@webico.io") ?>",
-    "priceRange": "₾₾",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "ჭავჭავაძის გამზირი 45",
-      "addressLocality": "თბილისი",
-      "postalCode": "0179",
-      "addressCountry": "GE"
-    },
-    "areaServed": "GE",
-    "openingHours": "Mo-Fr 10:00-19:00",
-    "sameAs": [
-      "https://facebook.com",
-      "https://instagram.com",
-      "https://linkedin.com"
-    ]
-  }
-  </script>
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "რამდენ ხანში მზადდება ვებსაიტი?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "სავიზიტო საიტი საშუალოდ 2–3 კვირაში, კორპორატიული საიტი 4–6 კვირაში, ონლაინ მაღაზია კი 6–10 კვირაში მზადდება. ზუსტ ვადას პირველივე შეხვედრის შემდეგ, ტექნიკურ დავალებასთან ერთად გაცნობებთ."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "როდის გამოჩნდება SEO-ს შედეგი?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "ტექნიკური გასწორებების ეფექტი 4–8 კვირაში იგრძნობა, მდგრადი ორგანული ზრდა კი 3–6 თვის სისტემურ მუშაობას მოითხოვს. ყოველთვიურად იღებთ ანგარიშს პოზიციებისა და ტრაფიკის დინამიკით."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "მუშაობთ უკვე არსებულ ვებსაიტზე?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "დიახ. ვიწყებთ უფასო აუდიტით: ვამოწმებთ სისწრაფეს, ტექნიკურ SEO-ს, ანალიტიკასა და კონვერსიის გზას, შემდეგ კი ვთავაზობთ ეტაპობრივ გეგმას — სრული გადაკეთების გარეშე, თუ ამის საჭიროება არ არის."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "როგორ ხდება ანგარიშგება?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "ყოველი თვის დასაწყისში იღებთ ანგარიშს შესრულებული სამუშაოებით, KPI-ების დინამიკითა და შემდეგი თვის გეგმით. დამატებით ხელმისაწვდომია ცოცხალი დაფა, სადაც შედეგებს ნებისმიერ დროს ხედავთ."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "ხელშეკრულებას აფორმებთ?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "დიახ, ყველა პროექტი ფორმდება ხელშეკრულებით, სადაც გაწერილია სამუშაოს მოცულობა, ვადები, ღირებულება და ორივე მხარის ვალდებულებები. გადახდა ეტაპობრივია."
-      }
-    }
-  ]
-}
-  </script>
+  <link rel="stylesheet" href="assets/css/style.css?v=b424da60">
+<?= $HOME_LD ?>
+
 </head>
 <body>
   <a class="skip-link" href="#main">გადასვლა მთავარ კონტენტზე</a>
@@ -144,9 +115,24 @@
                 <span><b>ვებსაიტების დიზაინი და შექმნა</b><small>კორპორატიული საიტები, ონლაინ მაღაზიები და ვებ-აპლიკაციები</small></span>
                 <svg class="mega__go" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
               </a>
+              <a class="mega__item" href="/service-wordpress">
+                <span class="mega__icon mega__icon--lilac"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3.5 9h17M3.5 15h17"/><path d="M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></span>
+                <span><b>WordPress დეველოპმენტი</b><small>თემები, პლაგინები, WooCommerce და მრავალენოვანი საიტები</small></span>
+                <svg class="mega__go" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+              <a class="mega__item" href="/service-ecommerce">
+                <span class="mega__icon mega__icon--lime"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg></span>
+                <span><b>ონლაინ მაღაზიის შექმნა</b><small>ქართული გადახდები, მიწოდება და მოსახერხებელი კალათა</small></span>
+                <svg class="mega__go" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
               <a class="mega__item" href="/service-seo">
                 <span class="mega__icon mega__icon--lime"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.7" y2="16.7"/></svg></span>
                 <span><b>SEO ოპტიმიზაცია</b><small>ტექნიკური აუდიტი, სემანტიკა და კონტენტი ქართულ ენაზე</small></span>
+                <svg class="mega__go" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+              <a class="mega__item" href="/service-maintenance">
+                <span class="mega__icon mega__icon--pink"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.8-3.8a6 6 0 0 1-7.9 7.9l-6.9 6.9a2.1 2.1 0 0 1-3-3l6.9-6.9a6 6 0 0 1 7.9-7.9z"/></svg></span>
+                <span><b>ტექნიკური მხარდაჭერა</b><small>განახლებები, უსაფრთხოება და სარეზერვო ასლები</small></span>
                 <svg class="mega__go" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
               </a>
               <a class="mega__item" href="/service-marketing">
@@ -217,11 +203,15 @@
             <span class="rotator" data-rotate="<?= cms_e(implode('|', $words)) ?>"><span class="rotator__word"><?= cms_e($words[0] ?? '') ?></span></span>,<br>
             <?= T("home.hero.tail", "რომლებიც ყიდის.") ?>
           </h1>
+          <p class="hero__entity"><?= T("home.hero.entity", "Webico — ვებ დეველოპმენტის სააგენტო თბილისში: საიტის დამზადება, WordPress, ონლაინ მაღაზიები, UI/UX დიზაინი და SEO.") ?></p>
           <p><?= T("home.hero.text", "ვებსაიტები, ბრენდინგი და ციფრული მარკეტინგი ქართული ბიზნესისთვის — გააზრებული დიზაინით, სწრაფი კოდით და გუნდით, რომელიც შედეგზე ფიქრობს.") ?></p>
           <div class="btn-row btn-row--center">
             <a class="btn btn--primary" href="/contact"><?= T("home.hero.cta", "დავიწყოთ პროექტი") ?></a>
             <a class="btn btn--ghost" href="/work">ნამუშევრები</a>
           </div>
+          <button class="hero__chat" type="button" data-open-chat>
+            <span class="hero__chat-dot" aria-hidden="true"></span>გაქვთ კითხვა? ჰკითხეთ ჩვენს ასისტენტს — 2 წუთი
+          </button>
           <ul class="hero__perks">
             <li>უფასო პირველი კონსულტაცია</li>
             <li>პასუხი 24 საათში</li>
@@ -277,45 +267,72 @@
       <div class="container">
         <div class="section-head section-head--center" data-reveal>
           <span class="eyebrow">რას ვაკეთებთ</span>
-          <h2>ოთხი მიმართულება, ერთი გუნდი</h2>
+          <h2>ვებ დიზაინისა და დეველოპმენტის სერვისები</h2>
           <p>დიზაინიდან რეკლამამდე ყველა ეტაპზე ერთი გუნდი მუშაობს — ინფორმაცია არ იკარგება და
             პასუხისმგებლობაც ერთ ადგილასაა.</p>
         </div>
         <div class="svc-list" data-reveal>
           <a class="svc svc--lilac" href="/service-web-development">
             <span class="svc__num">01</span>
-            <span class="svc__main">
-              <span class="svc__title">ვებსაიტების დიზაინი და შექმნა</span>
-              <span class="svc__desc"><span>კორპორატიული საიტები, ონლაინ მაღაზიები და ვებ-აპლიკაციები, რომლებიც სწრაფად იტვირთება და ვიზიტორს კლიენტად აქცევს.</span></span>
-            </span>
-            <span class="svc__tags"><span>ონლაინ მაღაზია</span><span>ვებ-აპლიკაცია</span><span>WordPress</span><span>Custom code</span></span>
+            <div class="svc__main">
+              <h3 class="svc__title">ვებსაიტის დამზადება</h3>
+              <span class="svc__desc"><span>კორპორატიული საიტები, ლენდინგები და ვებ-აპლიკაციები, რომლებიც სწრაფად იტვირთება და ვიზიტორს კლიენტად აქცევს.</span></span>
+            </div>
+            <span class="svc__tags"><span>კორპორატიული</span><span>ლენდინგი</span><span>ვებ-აპლიკაცია</span></span>
             <span class="svc__go"><?= CMS_ARROW ?></span>
           </a>
-          <a class="svc svc--lime" href="/service-seo">
+          <a class="svc svc--lime" href="/service-wordpress">
             <span class="svc__num">02</span>
-            <span class="svc__main">
-              <span class="svc__title">SEO ოპტიმიზაცია</span>
-              <span class="svc__desc"><span>ტექნიკური აუდიტი, საკვანძო სიტყვების კვლევა და ქართულენოვანი კონტენტი, რომ Google-ში სწორ მომენტში გიპოვონ.</span></span>
-            </span>
-            <span class="svc__tags"><span>ტექნიკური აუდიტი</span><span>სემანტიკა</span><span>ლოკალური SEO</span></span>
+            <div class="svc__main">
+              <h3 class="svc__title">WordPress დეველოპმენტი</h3>
+              <span class="svc__desc"><span>ინდივიდუალური თემები, Elementor, ACF და საკუთარი პლაგინები — საიტი, რომელსაც თავად მართავთ.</span></span>
+            </div>
+            <span class="svc__tags"><span>WordPress</span><span>Elementor</span><span>ACF</span></span>
             <span class="svc__go"><?= CMS_ARROW ?></span>
           </a>
-          <a class="svc svc--pink" href="/service-marketing">
+          <a class="svc svc--pink" href="/service-ecommerce">
             <span class="svc__num">03</span>
-            <span class="svc__main">
-              <span class="svc__title">ციფრული მარკეტინგი</span>
-              <span class="svc__desc"><span>Google Ads, Meta და TikTok კამპანიები გაზომვადი შედეგითა და გამჭვირვალე ყოველთვიური ანგარიშგებით.</span></span>
-            </span>
-            <span class="svc__tags"><span>Google Ads</span><span>Facebook / Instagram</span><span>TikTok</span></span>
+            <div class="svc__main">
+              <h3 class="svc__title">ონლაინ მაღაზიის შექმნა</h3>
+              <span class="svc__desc"><span>WooCommerce და Shopify მაღაზიები ქართული ბანკების გადახდით, მიწოდებით და მოსახერხებელი კალათით.</span></span>
+            </div>
+            <span class="svc__tags"><span>WooCommerce</span><span>Shopify</span><span>გადახდები</span></span>
             <span class="svc__go"><?= CMS_ARROW ?></span>
           </a>
           <a class="svc svc--soft" href="/service-branding">
             <span class="svc__num">04</span>
-            <span class="svc__main">
-              <span class="svc__title">ბრენდის ვიზუალური იდენტობა</span>
-              <span class="svc__desc"><span>ლოგო, ბრენდბუქი და ინტერფეისის დიზაინი, რომელიც ნდობას აჩენს და კონკურენტებისგან გამოგარჩევთ.</span></span>
-            </span>
-            <span class="svc__tags"><span>ლოგო</span><span>ბრენდბუქი</span><span>UI/UX</span></span>
+            <div class="svc__main">
+              <h3 class="svc__title">UI/UX დიზაინი და ბრენდინგი</h3>
+              <span class="svc__desc"><span>ინტერფეისი Figma-ში, ლოგო და ბრენდბუქი — დიზაინი, რომელიც ნდობას აჩენს.</span></span>
+            </div>
+            <span class="svc__tags"><span>UI/UX</span><span>Figma</span><span>ბრენდბუქი</span></span>
+            <span class="svc__go"><?= CMS_ARROW ?></span>
+          </a>
+          <a class="svc svc--lilac" href="/service-seo">
+            <span class="svc__num">05</span>
+            <div class="svc__main">
+              <h3 class="svc__title">SEO ოპტიმიზაცია</h3>
+              <span class="svc__desc"><span>ტექნიკური SEO, საკვანძო სიტყვების კვლევა და ქართულენოვანი კონტენტი, რომ Google-ში გიპოვონ.</span></span>
+            </div>
+            <span class="svc__tags"><span>ტექნიკური SEO</span><span>სემანტიკა</span><span>ლოკალური SEO</span></span>
+            <span class="svc__go"><?= CMS_ARROW ?></span>
+          </a>
+          <a class="svc svc--lime" href="/service-maintenance">
+            <span class="svc__num">06</span>
+            <div class="svc__main">
+              <h3 class="svc__title">საიტის ტექნიკური მხარდაჭერა</h3>
+              <span class="svc__desc"><span>განახლებები, უსაფრთხოება, სარეზერვო ასლები და მცირე ცვლილებები ყოველთვიური მომსახურებით.</span></span>
+            </div>
+            <span class="svc__tags"><span>განახლებები</span><span>უსაფრთხოება</span><span>ასლები</span></span>
+            <span class="svc__go"><?= CMS_ARROW ?></span>
+          </a>
+          <a class="svc svc--pink" href="/service-marketing">
+            <span class="svc__num">07</span>
+            <div class="svc__main">
+              <h3 class="svc__title">ციფრული მარკეტინგი</h3>
+              <span class="svc__desc"><span>Google Ads, Meta და TikTok კამპანიები გაზომვადი შედეგითა და გამჭვირვალე ანგარიშგებით.</span></span>
+            </div>
+            <span class="svc__tags"><span>Google Ads</span><span>Meta</span><span>TikTok</span></span>
             <span class="svc__go"><?= CMS_ARROW ?></span>
           </a>
         </div>
@@ -508,52 +525,22 @@
         <div class="faq-split">
           <div class="faq-split__head" data-reveal>
             <span class="eyebrow">კითხვები</span>
-            <h2>ხშირად დასმული კითხვები</h2>
+            <h2>ხშირი კითხვები საიტის დამზადებაზე</h2>
             <p>ვერ იპოვეთ პასუხი? მოგვწერეთ და ერთ სამუშაო დღეში გიპასუხებთ.</p>
             <a class="btn btn--primary" href="/contact">დაგვიკავშირდით</a>
           </div>
           <div class="faq">
-          <div class="faq__item">
-            <h3 style="margin:0">
-              <button class="faq__q" type="button" aria-expanded="false" aria-controls="home-a1">
-                <span>რამდენ ხანში მზადდება ვებსაიტი?</span><span class="faq__icon" aria-hidden="true"></span>
-              </button>
-            </h3>
-            <div class="faq__a" id="home-a1" data-open="false"><div><p>სავიზიტო საიტი საშუალოდ 2–3 კვირაში, კორპორატიული საიტი 4–6 კვირაში, ონლაინ მაღაზია კი 6–10 კვირაში მზადდება. ზუსტ ვადას პირველივე შეხვედრის შემდეგ, ტექნიკურ დავალებასთან ერთად გაცნობებთ.</p></div></div>
+            <?php foreach ($HOME_FAQ as $i => [$q, $a]): $fid = 'home-a' . ($i + 1); ?>
+            <div class="faq__item">
+              <h3 style="margin:0">
+                <button class="faq__q" type="button" aria-expanded="false" aria-controls="<?= $fid ?>">
+                  <span><?= cms_e($q) ?></span><span class="faq__icon" aria-hidden="true"></span>
+                </button>
+              </h3>
+              <div class="faq__a" id="<?= $fid ?>" data-open="false"><div><p><?= cms_e($a) ?></p></div></div>
+            </div>
+            <?php endforeach; ?>
           </div>
-          <div class="faq__item">
-            <h3 style="margin:0">
-              <button class="faq__q" type="button" aria-expanded="false" aria-controls="home-a2">
-                <span>როდის გამოჩნდება SEO-ს შედეგი?</span><span class="faq__icon" aria-hidden="true"></span>
-              </button>
-            </h3>
-            <div class="faq__a" id="home-a2" data-open="false"><div><p>ტექნიკური გასწორებების ეფექტი 4–8 კვირაში იგრძნობა, მდგრადი ორგანული ზრდა კი 3–6 თვის სისტემურ მუშაობას მოითხოვს. ყოველთვიურად იღებთ ანგარიშს პოზიციებისა და ტრაფიკის დინამიკით.</p></div></div>
-          </div>
-          <div class="faq__item">
-            <h3 style="margin:0">
-              <button class="faq__q" type="button" aria-expanded="false" aria-controls="home-a3">
-                <span>მუშაობთ უკვე არსებულ ვებსაიტზე?</span><span class="faq__icon" aria-hidden="true"></span>
-              </button>
-            </h3>
-            <div class="faq__a" id="home-a3" data-open="false"><div><p>დიახ. ვიწყებთ უფასო აუდიტით: ვამოწმებთ სისწრაფეს, ტექნიკურ SEO-ს, ანალიტიკასა და კონვერსიის გზას, შემდეგ კი ვთავაზობთ ეტაპობრივ გეგმას — სრული გადაკეთების გარეშე, თუ ამის საჭიროება არ არის.</p></div></div>
-          </div>
-          <div class="faq__item">
-            <h3 style="margin:0">
-              <button class="faq__q" type="button" aria-expanded="false" aria-controls="home-a4">
-                <span>როგორ ხდება ანგარიშგება?</span><span class="faq__icon" aria-hidden="true"></span>
-              </button>
-            </h3>
-            <div class="faq__a" id="home-a4" data-open="false"><div><p>ყოველი თვის დასაწყისში იღებთ ანგარიშს შესრულებული სამუშაოებით, KPI-ების დინამიკითა და შემდეგი თვის გეგმით. დამატებით ხელმისაწვდომია ცოცხალი დაფა, სადაც შედეგებს ნებისმიერ დროს ხედავთ.</p></div></div>
-          </div>
-          <div class="faq__item">
-            <h3 style="margin:0">
-              <button class="faq__q" type="button" aria-expanded="false" aria-controls="home-a5">
-                <span>ხელშეკრულებას აფორმებთ?</span><span class="faq__icon" aria-hidden="true"></span>
-              </button>
-            </h3>
-            <div class="faq__a" id="home-a5" data-open="false"><div><p>დიახ, ყველა პროექტი ფორმდება ხელშეკრულებით, სადაც გაწერილია სამუშაოს მოცულობა, ვადები, ღირებულება და ორივე მხარის ვალდებულებები. გადახდა ეტაპობრივია.</p></div></div>
-          </div>
-        </div>
         </div>
       </div>
     </section>
@@ -623,7 +610,10 @@
           <h4>სერვისები</h4>
           <ul class="footer__list">
             <li><a href="/service-web-development">ვებსაიტების დიზაინი და შექმნა</a></li>
+            <li><a href="/service-wordpress">WordPress დეველოპმენტი</a></li>
+            <li><a href="/service-ecommerce">ონლაინ მაღაზიის შექმნა</a></li>
             <li><a href="/service-seo">SEO ოპტიმიზაცია</a></li>
+            <li><a href="/service-maintenance">ტექნიკური მხარდაჭერა</a></li>
             <li><a href="/service-marketing">ციფრული მარკეტინგი</a></li>
             <li><a href="/service-branding">ბრენდის ვიზუალური იდენტობა</a></li>
           </ul>
@@ -660,6 +650,6 @@
     </div>
   </footer>
 
-  <script src="assets/js/main.js?v=60010b3b"></script>
+  <script src="assets/js/main.js?v=b424da60"></script>
 </body>
 </html>

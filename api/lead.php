@@ -1,6 +1,7 @@
 <?php
 /** ლიდების მიმღები — ინახავს content/leads.json-ში და აგზავნის შეტყობინებას */
 declare(strict_types=1);
+ini_set('display_errors', '0');   // PHP-ის გაფრთხილებამ JSON პასუხი არ უნდა გააფუჭოს
 require_once dirname(__DIR__) . '/inc/mail.php';
 
 header('Content-Type: application/json; charset=utf-8');
