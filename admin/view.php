@@ -292,6 +292,13 @@ $nav = [
             <textarea name="body" rows="22" class="mono"><?= cms_e($editPost['body'] ?? '') ?></textarea>
             <small class="muted">შეგიძლიათ დაწეროთ უბრალო ტექსტი — ცარიელი ხაზი ახალ აბზაცს ნიშნავს. ან HTML: &lt;h2&gt; ქვესათაური (სარჩევში გამოჩნდება), &lt;p&gt;, &lt;ul&gt;&lt;li&gt;, &lt;strong&gt;, &lt;a href&gt;, &lt;blockquote&gt;, &lt;img src&gt;.</small>
           </label>
+          <label>ხშირი კითხვები (არასავალდებულო)
+            <textarea name="faq" rows="8" class="mono" placeholder="რა ღირს საიტის დამზადება?&#10;პასუხი ერთ ან რამდენიმე ხაზად.&#10;&#10;შემდეგი კითხვა?&#10;პასუხი."><?php
+              $fq = $editPost['faq'] ?? [];
+              echo cms_e(is_array($fq) ? implode("\n\n", array_map(static fn($f) => ($f[0] ?? '') . "\n" . ($f[1] ?? ''), $fq)) : (string) $fq);
+            ?></textarea>
+            <small class="muted">ყოველი კითხვა — ახალ ხაზზე, პასუხი — მის ქვემოთ; კითხვებს შორის ცარიელი ხაზი. გამოჩნდება სტატიის ბოლოს და Google-ს FAQ სქემად მიეწოდება.</small>
+          </label>
           <label class="check"><input type="checkbox" name="hidden" <?= !empty($editPost['hidden']) ? 'checked' : '' ?>> დამალული (მონახაზი)</label>
           <div class="actions">
             <button class="btn" type="submit">შენახვა</button>

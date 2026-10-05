@@ -25,7 +25,7 @@ usort($others, static fn($a, $b) =>
     (int) (($b['category'] ?? '') === ($post['category'] ?? '')) <=> (int) (($a['category'] ?? '') === ($post['category'] ?? '')));
 $related = array_slice($others, 0, 3);
 
-$PAGE_TITLE   = $title . ' | ვებიკოს ბლოგი';
+$PAGE_TITLE   = $title . ' | Webico';
 $PAGE_DESC    = $excerpt;
 $PAGE_URL     = '/blog/' . $slug;
 $PAGE_OG_TYPE = 'article';
@@ -67,6 +67,15 @@ if (!empty($post['cover'])) {
     $ld[0]['image'] = 'https://webico.io' . cms_url((string) $post['cover']);
 }
 $PAGE_LD = '';
+$faq = cms_post_faq($post);
+if ($faq) {
+    $ld[] = [
+        '@context' => 'https://schema.org',
+        '@type' => 'FAQPage',
+        'mainEntity' => array_map(static fn($f) => ['@type' => 'Question', 'name' => $f[0],
+            'acceptedAnswer' => ['@type' => 'Answer', 'text' => $f[1]]], $faq),
+    ];
+}
 foreach ($ld as $block) {
     $PAGE_LD .= "\n  <script type=\"application/ld+json\">\n"
         . json_encode($block, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT)
@@ -131,6 +140,24 @@ require __DIR__ . '/inc/head.php';
 
           <div class="prose" data-reveal>
             <?= $body ?>
+
+            <?php if ($faq): ?>
+            <section class="article-faq" aria-labelledby="faq-title">
+              <h2 id="faq-title">ხშირად დასმული კითხვები</h2>
+              <div class="faq">
+                <?php foreach ($faq as $i => [$q, $a]): $fid = 'pf-' . ($i + 1); ?>
+                <div class="faq__item">
+                  <h3 style="margin:0">
+                    <button class="faq__q" type="button" aria-expanded="false" aria-controls="<?= $fid ?>">
+                      <span><?= cms_e($q) ?></span><span class="faq__icon" aria-hidden="true"></span>
+                    </button>
+                  </h3>
+                  <div class="faq__a" id="<?= $fid ?>" data-open="false"><div><p><?= cms_e($a) ?></p></div></div>
+                </div>
+                <?php endforeach; ?>
+              </div>
+            </section>
+            <?php endif; ?>
 
             <aside class="article-cta">
               <p class="article-cta__eyebrow">ვებიკო</p>

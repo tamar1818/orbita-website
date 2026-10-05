@@ -3349,3 +3349,15 @@ a:hover .shot img,
   .mega__col:not(.mega__col--tools) .mega__label { grid-column: 1 / -1; }
   .mega__col:not(.mega__col--tools) .mega__go { display: none; }
 }
+.article-faq { margin-top: 2.4em !important; }
+.article-faq h2 { margin-top: 0; }
+.article-faq .faq { max-width: none; }
+.article-faq .faq__q { font-size: clamp(1.05rem, 1rem + .4vw, 1.25rem); padding: 20px 2px; }
+.read-more { max-width: 860px; margin-inline: auto; padding: clamp(22px, 3vw, 34px); border: 1px solid var(--line); border-radius: var(--radius-lg); }
+.read-more h2 { font-size: clamp(1.3rem, 1.1rem + .8vw, 1.8rem); margin-bottom: .6em; }
+.read-more ul { list-style: none; margin: 0; padding: 0; }
+.read-more li + li { border-top: 1px solid var(--line); }
+.read-more a { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 14px 2px; font-weight: 600; color: var(--ink); }
+.read-more a:hover { color: var(--accent); }
+.read-more a svg { flex: none; transition: transform .2s ease; }
+.read-more a:hover svg { transform: translateX(4px); }

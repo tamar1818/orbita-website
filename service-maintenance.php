@@ -58,6 +58,7 @@ cms_service_page([
         ['მხოლოდ WordPress საიტებს ემსახურებით?', 'ძირითადად WordPress-სა და WooCommerce-ს, თუმცა ვმუშაობთ სხვა პლატფორმებსა და ინდივიდუალურ საიტებზეც. აუდიტის შემდეგ გეტყვით, შეგვიძლია თუ არა თქვენი საიტის მომსახურება.'],
         ['ვალდებული ვარ გრძელვადიანი ხელშეკრულების?', 'არა. მომსახურება ყოველთვიურია და ნებისმიერ დროს შეგიძლიათ შეწყვეტა — წვდომები და სარეზერვო ასლები თქვენთან რჩება.'],
     ],
+    'posts' => ['saiti-mobilurze', 'wordpress-tu-individualuri-saiti', 'rogor-avirchiot-veb-saagento'],
     'related' => ['/service-wordpress', '/service-seo', '/service-web-development'],
     'cta_title' => 'გინდათ, საიტზე სხვა იზრუნოს?',
 ]);

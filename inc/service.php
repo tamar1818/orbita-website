@@ -5,6 +5,7 @@
  */
 declare(strict_types=1);
 require_once __DIR__ . '/init.php';
+require_once __DIR__ . '/blog.php';
 
 const CMS_SVG_ARROW = '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>';
 
@@ -172,6 +173,20 @@ function cms_service_page(array $S): void
         </div>
       </div>
     </section>
+
+    <?php $arts = array_values(array_filter(array_map('cms_post', $S['posts'] ?? []))); if ($arts): ?>
+    <section class="section">
+      <div class="container">
+        <div class="section-head section-head--split" data-reveal>
+          <div><span class="eyebrow">ბლოგიდან</span><h2>სასარგებლო სტატიები</h2></div>
+          <a class="btn btn--ghost" href="/blog">ყველა სტატია</a>
+        </div>
+        <div class="post-grid" data-reveal>
+          <?php foreach (array_slice($arts, 0, 3) as $a) { echo cms_post_card($a); } ?>
+        </div>
+      </div>
+    </section>
+    <?php endif; ?>
 
     <section class="section section--soft">
       <div class="container">

@@ -166,6 +166,7 @@ if (cms_user() !== null && $_SERVER['REQUEST_METHOD'] === 'POST') {
                     'author'   => trim((string) ($_POST['author'] ?? '')),
                     'cover'    => trim((string) ($_POST['cover'] ?? '')),
                     'cover_text' => trim((string) ($_POST['cover_text'] ?? '')),
+                    'faq'      => cms_parse_faq((string) ($_POST['faq'] ?? '')),
                     'body'     => (string) ($_POST['body'] ?? ''),
                     'hidden'   => !empty($_POST['hidden']),
                 ];

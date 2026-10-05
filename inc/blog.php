@@ -173,6 +173,35 @@ function cms_post_body(string $html): array
     return [$out, $toc];
 }
 
+/** სტატიის FAQ: [[კითხვა, პასუხი], …] — ცარიელები გამოტოვებულია */
+function cms_post_faq(array $p): array
+{
+    $out = [];
+    foreach ((array) ($p['faq'] ?? []) as $f) {
+        $q = trim((string) ($f[0] ?? ''));
+        $a = trim((string) ($f[1] ?? ''));
+        if ($q !== '' && $a !== '') {
+            $out[] = [$q, $a];
+        }
+    }
+    return $out;
+}
+
+/** ადმინის ტექსტი → FAQ: ბლოკები ცარიელი ხაზით, პირველი ხაზი კითხვაა, დანარჩენი — პასუხი */
+function cms_parse_faq(string $raw): array
+{
+    $out = [];
+    foreach (preg_split('~\R\s*\R~u', trim($raw)) ?: [] as $block) {
+        $lines = preg_split('~\R~u', trim($block)) ?: [];
+        $q = trim((string) array_shift($lines));
+        $a = trim(implode(' ', array_map('trim', $lines)));
+        if ($q !== '' && $a !== '') {
+            $out[] = [$q, $a];
+        }
+    }
+    return $out;
+}
+
 /** ქავერი: ატვირთული ფოტო ან გენერირებული „რედაქციული“ ყდა */
 function cms_post_cover(array $p, string $size = ''): string
 {
