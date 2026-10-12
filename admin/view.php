@@ -208,6 +208,10 @@ $nav = [
               <small class="muted">კლიენტების კარუსელში; PNG/SVG გამჭვირვალე ფონით</small>
             </label>
           </div>
+          <label>სრული გვერდის სურათი (არასავალდებულო)
+            <input name="full" placeholder="assets/img/uploads/…" value="<?= cms_e($edit['full'] ?? '') ?>">
+            <small class="muted">გრძელი სქრინშოტი — პროექტის გვერდზე სრულად გამოჩნდება</small>
+          </label>
           <label>მოკლე აღწერა<textarea name="summary" rows="2"><?= cms_e($edit['summary'] ?? '') ?></textarea></label>
           <label>გამოწვევა<textarea name="challenge" rows="3"><?= cms_e($edit['challenge'] ?? '') ?></textarea></label>
           <label>რა გავაკეთეთ<textarea name="solution" rows="3"><?= cms_e($edit['solution'] ?? '') ?></textarea></label>

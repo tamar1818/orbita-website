@@ -65,9 +65,22 @@ require __DIR__ . '/inc/head.php';
       </div>
     </section>
 
+    <?php if (trim((string) ($p['full'] ?? '')) === ''): ?>
     <section class="section section--tight">
       <div class="container"><div class="project-shot" data-reveal><?= cms_mock($p, "(max-width: 1280px) 100vw, 1232px", true) ?></div></div>
     </section>
+    <?php endif; ?>
+
+    <?php $full = trim((string) ($p['full'] ?? '')); if ($full !== ''): ?>
+    <section class="section section--tight">
+      <div class="container">
+        <figure class="project-full" data-reveal>
+          <img src="<?= cms_e(cms_url($full)) ?>" alt="<?= cms_e($name) ?> — ვებსაიტის სრული დიზაინი" loading="lazy" decoding="async">
+          <figcaption>სრული გვერდის დიზაინი</figcaption>
+        </figure>
+      </div>
+    </section>
+    <?php endif; ?>
 
     <section class="section section--tight">
       <div class="container">

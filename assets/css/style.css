@@ -3361,3 +3361,6 @@ a:hover .shot img,
 .read-more a:hover { color: var(--accent); }
 .read-more a svg { flex: none; transition: transform .2s ease; }
 .read-more a:hover svg { transform: translateX(4px); }
+.project-full { max-width: 760px; margin: 0 auto; padding: 14px; border: 1px solid var(--line); border-radius: var(--radius-lg); background: var(--bg-soft); }
+.project-full img { display: block; width: 100%; height: auto; border-radius: 14px; box-shadow: var(--shadow-soft); }
+.project-full figcaption { margin-top: 12px; text-align: center; font-size: .88rem; color: var(--muted); }
