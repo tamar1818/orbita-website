@@ -1,6 +1,27 @@
 {
     "projects": [
         {
+            "slug": "outsourcify",
+            "name": "Outsourcify",
+            "domain": "outsourcify.ge",
+            "tone": "soft",
+            "summary": "ბუღალტრული აუთსორსინგის კომპანიის ვებსაიტი: UI/UX დიზაინი, ქართულენოვანი სერვისების სტრუქტურა, მომსახურების ფასები და ჩატბოტი, რომელიც რამდენიმე კითხვით კონსულტაციის დაჯავშნაში ეხმარება.",
+            "tags": [
+                "UI/UX დიზაინი",
+                "ვებსაიტის დამზადება",
+                "ჩატბოტი"
+            ],
+            "scope": [
+                "UI/UX დიზაინი",
+                "ადაპტირებული ვებ-დეველოპმენტი",
+                "ორენოვანი საიტი (KA/EN)",
+                "კონსულტაციის დაჯავშნის ჩატბოტი"
+            ],
+            "shot": "assets/img/work/outsourcify-website.webp",
+            "full": "assets/img/work/outsourcify-chatbot.webp",
+            "full_caption": "კონსულტაციის დაჯავშნის ჩატბოტი"
+        },
+        {
             "slug": "linden-spa",
             "name": "Linden Spa",
             "domain": "",
@@ -17,7 +38,8 @@
                 "ზარის მოთხოვნის ფორმა"
             ],
             "shot": "assets/img/work/linden-spa-website.webp",
-            "full": "assets/img/work/linden-spa-website-full.webp"
+            "full": "assets/img/work/linden-spa-website-full.webp",
+            "hide_shot": true
         },
         {
             "slug": "archetypes-creatives",

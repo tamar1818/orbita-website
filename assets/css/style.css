@@ -3364,3 +3364,5 @@ a:hover .shot img,
 .project-full { max-width: 760px; margin: 0 auto; padding: 14px; border: 1px solid var(--line); border-radius: var(--radius-lg); background: var(--bg-soft); }
 .project-full img { display: block; width: 100%; height: auto; border-radius: 14px; box-shadow: var(--shadow-soft); }
 .project-full figcaption { margin-top: 12px; text-align: center; font-size: .88rem; color: var(--muted); }
+.project-full { width: fit-content; max-width: min(760px, 100%); }
+.project-full img { width: auto; max-width: 100%; margin-inline: auto; }

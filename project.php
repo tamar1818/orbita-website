@@ -65,7 +65,7 @@ require __DIR__ . '/inc/head.php';
       </div>
     </section>
 
-    <?php if (trim((string) ($p['full'] ?? '')) === ''): ?>
+    <?php if (empty($p['hide_shot'])): ?>
     <section class="section section--tight">
       <div class="container"><div class="project-shot" data-reveal><?= cms_mock($p, "(max-width: 1280px) 100vw, 1232px", true) ?></div></div>
     </section>
@@ -75,8 +75,8 @@ require __DIR__ . '/inc/head.php';
     <section class="section section--tight">
       <div class="container">
         <figure class="project-full" data-reveal>
-          <img src="<?= cms_e(cms_url($full)) ?>" alt="<?= cms_e($name) ?> — ვებსაიტის სრული დიზაინი" loading="lazy" decoding="async">
-          <figcaption>სრული გვერდის დიზაინი</figcaption>
+          <img src="<?= cms_e(cms_url($full)) ?>" alt="<?= cms_e($name . ' — ' . (trim((string) ($p['full_caption'] ?? '')) ?: 'ვებსაიტის სრული დიზაინი')) ?>" loading="lazy" decoding="async">
+          <figcaption><?= cms_e(trim((string) ($p['full_caption'] ?? '')) ?: 'სრული გვერდის დიზაინი') ?></figcaption>
         </figure>
       </div>
     </section>

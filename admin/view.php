@@ -210,8 +210,10 @@ $nav = [
           </div>
           <label>სრული გვერდის სურათი (არასავალდებულო)
             <input name="full" placeholder="assets/img/uploads/…" value="<?= cms_e($edit['full'] ?? '') ?>">
-            <small class="muted">გრძელი სქრინშოტი — პროექტის გვერდზე სრულად გამოჩნდება</small>
+            <small class="muted">გრძელი სქრინშოტი ან დამატებითი ეკრანი — პროექტის გვერდზე სრულად გამოჩნდება</small>
           </label>
+          <label>დამატებითი სურათის წარწერა<input name="full_caption" placeholder="სრული გვერდის დიზაინი" value="<?= cms_e($edit['full_caption'] ?? '') ?>"></label>
+          <label class="check"><input type="checkbox" name="hide_shot" <?= !empty($edit['hide_shot']) ? 'checked' : '' ?>> პროექტის გვერდზე მთავარი მოკაპი არ გამოჩნდეს (დაბალი გარჩევადობისას)</label>
           <label>მოკლე აღწერა<textarea name="summary" rows="2"><?= cms_e($edit['summary'] ?? '') ?></textarea></label>
           <label>გამოწვევა<textarea name="challenge" rows="3"><?= cms_e($edit['challenge'] ?? '') ?></textarea></label>
           <label>რა გავაკეთეთ<textarea name="solution" rows="3"><?= cms_e($edit['solution'] ?? '') ?></textarea></label>
