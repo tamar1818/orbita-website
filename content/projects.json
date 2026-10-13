@@ -1,6 +1,28 @@
 {
     "projects": [
         {
+            "slug": "bitefit",
+            "name": "BiteFit",
+            "domain": "",
+            "tone": "pink",
+            "summary": "კალორიების დათვლის აპლიკაცია BiteFit: საკვების სკანირება ხელოვნური ინტელექტით, კალორიების აღრიცხვა და პირადი მიზნები — მარტივ, თანამედროვე ინტერფეისში, ღია და მუქი თემით.",
+            "tags": [
+                "UI/UX დიზაინი",
+                "ვებ-აპლიკაცია"
+            ],
+            "services": [
+                "branding",
+                "web-development"
+            ],
+            "scope": [
+                "UI/UX დიზაინი",
+                "საკვების AI სკანირების ნაკადი",
+                "კალორიებისა და მიზნების აღრიცხვა",
+                "ღია/მუქი თემა და ენის არჩევა"
+            ],
+            "shot": "assets/img/work/bitefit-website.webp"
+        },
+        {
             "slug": "marketing-agency",
             "name": "Marketing Agency",
             "domain": "",

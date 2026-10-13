@@ -27,8 +27,10 @@ $stack  = array_values(array_filter(array_map('trim', $p['stack'] ?? [])));
 $scope  = array_values(array_filter(array_map('trim', $p['scope'] ?? [])));
 
 $svcs = cms_project_services($p);
-$PAGE_TITLE = $name . (in_array('web-development', $svcs, true) || !in_array('branding', $svcs, true)
-    ? ' — ვებსაიტის შექმნა' : ' — ვებსაიტის UI/UX დიზაინი') . ' | Webico';
+$isApp = str_contains(mb_strtolower(implode(' ', (array) ($p['tags'] ?? []))), 'აპლიკაცი');
+$PAGE_TITLE = $name . ($isApp ? ' — აპლიკაციის დიზაინი და დეველოპმენტი'
+    : (in_array('web-development', $svcs, true) || !in_array('branding', $svcs, true)
+        ? ' — ვებსაიტის შექმნა' : ' — ვებსაიტის UI/UX დიზაინი')) . ' | Webico';
 $PAGE_DESC  = !empty($p['summary']) ? (string) $p['summary'] : ($name . ($domain !== '' ? ' (' . $domain . ')' : '') . ' — ვებსაიტი, რომელიც შექმნა Webico-მ, ვებ დეველოპმენტის სააგენტომ თბილისში. ნახეთ პროექტის დეტალები.');
 $PAGE_URL   = '/work-' . $slug;
 $PAGE_IMAGE = is_file(__DIR__ . '/assets/img/work/' . $slug . '-website-og.jpg')
