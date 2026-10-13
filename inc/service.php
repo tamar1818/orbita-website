@@ -6,6 +6,7 @@
 declare(strict_types=1);
 require_once __DIR__ . '/init.php';
 require_once __DIR__ . '/blog.php';
+require_once __DIR__ . '/projects.php';
 
 const CMS_SVG_ARROW = '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>';
 
@@ -131,6 +132,8 @@ function cms_service_page(array $S): void
       </div>
     </section>
     <?php endif; ?>
+
+    <?php cms_service_work_section(substr($S['path'], strlen('/service-'))); ?>
 
     <section class="section section--soft">
       <div class="container">

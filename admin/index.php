@@ -4,6 +4,7 @@ require_once dirname(__DIR__) . '/inc/auth.php';
 require_once dirname(__DIR__) . '/inc/media.php';
 require_once dirname(__DIR__) . '/inc/blog.php';
 require_once dirname(__DIR__) . '/inc/booking.php';
+require_once dirname(__DIR__) . '/inc/projects.php';
 
 $page = $_GET['p'] ?? 'dashboard';
 $msg = '';
@@ -100,6 +101,8 @@ if (cms_user() !== null && $_SERVER['REQUEST_METHOD'] === 'POST') {
                                 explode(',', (string) ($_POST['stack'] ?? ''))))),
                     'scope' => array_values(array_filter(array_map('trim',
                                 explode("\n", (string) ($_POST['scope'] ?? ''))))),
+                    'services' => array_values(array_intersect(array_keys(CMS_SERVICE_KEYS),
+                                (array) ($_POST['services'] ?? []))),
                 ];
                 $found = false;
                 foreach ($list as $i => $p) {

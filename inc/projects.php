@@ -144,3 +144,103 @@ function cms_tools(): array
     }
     return $out ?: CMS_TOOLS_DEFAULT;
 }
+
+/* ------------------------------------------- პროექტები სერვისების მიხედვით */
+const CMS_SERVICE_KEYS = [
+    'web-development' => 'ვებსაიტის დამზადება',
+    'wordpress'       => 'WordPress დეველოპმენტი',
+    'ecommerce'       => 'ონლაინ მაღაზია',
+    'branding'        => 'ბრენდინგი და UI/UX დიზაინი',
+    'seo'             => 'SEO ოპტიმიზაცია',
+    'marketing'       => 'ციფრული მარკეტინგი',
+    'maintenance'     => 'ტექნიკური მხარდაჭერა',
+];
+
+/**
+ * რომელ სერვისებს ეკუთვნის პროექტი.
+ * ადმინში მონიშნული `services` უპირატესია; თუ არ არის მონიშნული,
+ * გამოიყვანება თეგებიდან და ინსტრუმენტებიდან. თეგების გარეშე ძველი
+ * პროექტები ვებსაიტებია, ამიტომ ისინი „ვებსაიტის დამზადებას“ ეკუთვნის.
+ */
+function cms_project_services(array $p): array
+{
+    $set = array_values(array_intersect(array_keys(CMS_SERVICE_KEYS), (array) ($p['services'] ?? [])));
+    if ($set) {
+        return $set;
+    }
+    $tags = array_map('trim', (array) ($p['tags'] ?? []));
+    if (!$tags) {
+        $set[] = 'web-development';
+    }
+    $hay = mb_strtolower(implode(' | ', array_merge($tags, (array) ($p['stack'] ?? []))));
+    $rules = [
+        'web-development' => ['ვებსაიტის დამზადება', 'ვებ-დეველოპმენტი', 'ვებსაიტი'],
+        'wordpress'       => ['wordpress', 'woocommerce'],
+        'ecommerce'       => ['მაღაზი', 'e-commerce', 'woocommerce', 'shopify'],
+        'branding'        => ['ui/ux', 'ბრენდ', 'ლოგო'],
+        'seo'             => ['seo'],
+        'marketing'       => ['მარკეტინგ', 'რეკლამ', 'google ads', 'meta ads'],
+        'maintenance'     => ['მხარდაჭერ'],
+    ];
+    foreach ($rules as $key => $needles) {
+        foreach ($needles as $n) {
+            if (str_contains($hay, $n)) {
+                $set[] = $key;
+                break;
+            }
+        }
+    }
+    return array_values(array_unique($set));
+}
+
+/**
+ * სერვისის გვერდის პროექტები: [სია, ემთხვევა თუ არა სერვისს].
+ * თუ სერვისზე ჯერ არცერთი პროექტი არ არის მონიშნული, ბრუნდება ბოლო
+ * ნამუშევრები (false) — გვერდი მაშინ მათ ამ სერვისის პროექტებად არ აცხადებს.
+ */
+function cms_service_projects(string $key, int $limit = 6): array
+{
+    $all = array_values(array_filter(cms_projects(),
+        static fn($p) => trim((string) ($p['shot'] ?? '')) !== '' || trim((string) ($p['full'] ?? '')) !== ''));
+    $hit = array_values(array_filter($all, static fn($p) => in_array($key, cms_project_services($p), true)));
+    return $hit ? [array_slice($hit, 0, $limit), true] : [array_slice($all, 0, $limit), false];
+}
+
+function cms_service_work_section(string $key): void
+{
+    [$list, $match] = cms_service_projects($key);
+    if (!$list) {
+        return;
+    }
+    $eyebrow = $match ? (CMS_SERVICE_KEYS[$key] ?? 'ნამუშევრები') : 'ნამუშევრები';
+    $title   = $match ? 'შესრულებული პროექტები' : 'ჩვენი ბოლო ნამუშევრები';
+    $total = count(cms_projects());
+    ?>
+    <section class="section svc-work" id="projects">
+      <div class="container">
+        <div class="section-head section-head--split" data-reveal>
+          <div>
+            <span class="eyebrow"><?= cms_e($eyebrow) ?></span>
+            <h2><?= cms_e($title) ?></h2>
+          </div>
+          <a class="btn btn--ghost" href="/work">ყველა ნამუშევარი (<?= $total ?>)</a>
+        </div>
+        <div class="svc-work__grid">
+          <?php foreach ($list as $i => $p):
+              $slug = cms_e((string) $p['slug']);
+              $shown = $p;
+              if (trim((string) ($p['shot'] ?? '')) === '') { $shown['shot'] = $p['full']; } ?>
+          <a class="svc-work__item" href="/work-<?= $slug ?>" data-reveal data-reveal-delay="<?= min($i, 5) * 50 ?>">
+            <?= cms_mock($shown, '(max-width: 620px) 100vw, (max-width: 1000px) 50vw, 400px') ?>
+            <span class="svc-work__body">
+              <b><?= cms_e((string) $p['name']) ?></b>
+              <small><?= cms_e(implode(' · ', array_slice(cms_tags($p), 0, 2))) ?></small>
+              <span class="svc-work__go" aria-hidden="true"><?= CMS_ARROW ?></span>
+            </span>
+          </a>
+          <?php endforeach; ?>
+        </div>
+      </div>
+    </section>
+<?php
+}

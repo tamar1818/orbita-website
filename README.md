@@ -15,10 +15,10 @@
 | `index.html`                   | მთავარი                                  |
 | `about.html`                   | ჩვენ შესახებ                             |
 | `services.html`                | სერვისები და ფასები                      |
-| `service-web-development.html` | სერვისის შიდა გვერდი — ვებ-დეველოპმენტი  |
-| `service-seo.html`             | სერვისის შიდა გვერდი — SEO               |
-| `service-marketing.html`       | სერვისის შიდა გვერდი — მარკეტინგი        |
-| `service-branding.html`        | სერვისის შიდა გვერდი — ბრენდინგი / UI-UX |
+| `service-web-development.php`   | სერვისის შიდა გვერდი — ვებ-დეველოპმენტი  |
+| `service-seo.php`               | სერვისის შიდა გვერდი — SEO               |
+| `service-marketing.php`         | სერვისის შიდა გვერდი — მარკეტინგი        |
+| `service-branding.php`          | სერვისის შიდა გვერდი — ბრენდინგი / UI-UX |
 | `work.html`                    | ნამუშევრები — 24 პროექტი                 |
 | `work-<slug>.html`             | პროექტის შიდა გვერდი (24 ცალი)           |
 | `contact.html`                 | კონტაქტი + ლიდების ფორმა                 |

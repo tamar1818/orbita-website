@@ -1,3 +1,4 @@
+<?php require_once __DIR__ . '/inc/projects.php'; ?>
 <!DOCTYPE html>
 <html lang="ka">
 <head>
@@ -5,17 +6,17 @@
   <meta name="google-site-verification" content="Zl7OvqIP-1s-wqbhxwTPnmISoEdJGMlH0hoNgwNrXHk">
   <script>document.documentElement.classList.add("js");</script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>UI/UX დიზაინი და ბრენდინგი თბილისში | Webico</title>
-  <meta name="description" content="UI/UX და ვებ დიზაინი Figma-ში, ლოგო და ბრენდბუქი. Webico ქმნის ინტერფეისებს, რომლებიც მარტივი გამოსაყენებელია და ბრენდს ნდობას მატებს.">
+  <title>ციფრული მარკეტინგი — Google Ads და Facebook რეკლამა | Webico</title>
+  <meta name="description" content="ვმართავთ სარეკლამო კამპანიებს Google-ში, Meta-სა და TikTok-ზე. ვზომავთ ყოველ ლარს და ვამუშავებთ ბიუჯეტს იქ, სადაც ის რეალურ განაცხადებს იძლევა.">
   <meta name="theme-color" content="#0d0d0d">
-  <link rel="canonical" href="https://webico.io/service-branding">
+  <link rel="canonical" href="https://webico.io/service-marketing">
 
   <meta property="og:type" content="website">
   <meta property="og:locale" content="ka_GE">
   <meta property="og:site_name" content="ვებიკო">
-  <meta property="og:title" content="UI/UX დიზაინი და ბრენდინგი თბილისში | Webico">
-  <meta property="og:description" content="UI/UX და ვებ დიზაინი Figma-ში, ლოგო და ბრენდბუქი. Webico ქმნის ინტერფეისებს, რომლებიც მარტივი გამოსაყენებელია და ბრენდს ნდობას მატებს.">
-  <meta property="og:url" content="https://webico.io/service-branding">
+  <meta property="og:title" content="ციფრული მარკეტინგი — Google Ads და Facebook რეკლამა | Webico">
+  <meta property="og:description" content="ვმართავთ სარეკლამო კამპანიებს Google-ში, Meta-სა და TikTok-ზე. ვზომავთ ყოველ ლარს და ვამუშავებთ ბიუჯეტს იქ, სადაც ის რეალურ განაცხადებს იძლევა.">
+  <meta property="og:url" content="https://webico.io/service-marketing">
   <meta name="twitter:card" content="summary_large_image">
   <meta property="og:image" content="https://webico.io/assets/img/og-image.png">
   <meta property="og:image:width" content="1200">
@@ -31,21 +32,21 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <!-- სარეზერვო ქართული შრიფტი — მთავარი შრიფტია LGV Anastasia 2025 Geo (იხ. assets/fonts/) -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap">
-  <link rel="stylesheet" href="assets/css/style.css?v=63b096eb">
+  <link rel="stylesheet" href="assets/css/style.css?v=c9bcc796">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Service",
-    "name": "ბრენდის ვიზუალური იდენტობა",
-    "serviceType": "ბრენდის ვიზუალური იდენტობა",
-    "description": "ლოგო, ბრენდბუქი და ინტერფეისის დიზაინი, რომელიც ნდობას აჩენს და კონკურენტებისგან გამოგარჩევთ.",
+    "name": "ციფრული მარკეტინგი",
+    "serviceType": "ციფრული მარკეტინგი",
+    "description": "Google Ads, Meta და TikTok კამპანიები გაზომვადი შედეგითა და გამჭვირვალე ყოველთვიური ანგარიშგებით.",
     "areaServed": "GE",
     "provider": {
       "@type": "Organization",
       "name": "ვებიკო",
       "url": "https://webico.io/"
     },
-    "url": "https://webico.io/service-branding.html"
+    "url": "https://webico.io/service-marketing"
   }
   </script>
   <script type="application/ld+json">
@@ -68,7 +69,7 @@
     {
       "@type": "ListItem",
       "position": 3,
-      "name": "ბრენდის ვიზუალური იდენტობა"
+      "name": "ციფრული მარკეტინგი"
     }
   ]
 }
@@ -80,34 +81,34 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "რამდენ ვარიანტს შემოგვთავაზებთ?",
+      "name": "რა მინიმალური ბიუჯეტია საჭირო?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "საბაზისო პაკეტში ლოგოს 3 კონცეფციაა. არჩეულ ვარიანტზე შეზღუდვის გარეშე ვმუშაობთ, სანამ საბოლოო შედეგს არ დავამტკიცებთ."
+        "text": "სარეკლამო ბიუჯეტი 1 000 ₾-დან იწყება თვეში — ნაკლები თანხით მონაცემები ოპტიმიზაციისთვის არ გროვდება. მართვის საფასური ცალკე განისაზღვრება, პაკეტის მიხედვით."
       }
     },
     {
       "@type": "Question",
-      "name": "შემიძლია მხოლოდ დიზაინის შეკვეთა?",
+      "name": "ბიუჯეტს თქვენ გიხდით?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "დიახ. ბევრი კლიენტი მაკეტებს ჩვენთან აკეთებს, კოდს კი საკუთარი გუნდი წერს. Figma-ს ფაილს სრული დოკუმენტაციით გადმოგცემთ."
+        "text": "არა. სარეკლამო ბიუჯეტს პირდაპირ Google-სა და Meta-ს უხდით თქვენივე ანგარიშიდან. ასე სრულ კონტროლს ინარჩუნებთ ხარჯებზე."
       }
     },
     {
       "@type": "Question",
-      "name": "როგორ იცავთ უნიკალურობას?",
+      "name": "რამდენ ხანში გაეშვება კამპანია?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "ყოველ პროექტამდე ვამოწმებთ ბაზარსა და საერთაშორისო რეესტრებს, რომ ლოგო არსებულს არ ჰგავდეს. სტოკ-გრაფიკას არასდროს ვიყენებთ ლოგოში."
+        "text": "წვდომების მიღებიდან ჩვეულებრივ 7–14 დღეში. ამ პერიოდში ვაწყობთ ანალიტიკას, ვწერთ ტექსტებს და ვამზადებთ კრეატივებს."
       }
     },
     {
       "@type": "Question",
-      "name": "რებრენდინგი ძველი მასალების გადაკეთებას ნიშნავს?",
+      "name": "თუ რეკლამა არ იმუშავებს?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "აუცილებლად არა. ხშირად საკმარისია არსებული ვიზუალის დახვეწა და წესების დალაგება — ამას ბრენდის აუდიტის შემდეგ გადავწყვეტთ ერთად."
+        "text": "პირველი თვე სატესტოა — ვაგროვებთ მონაცემებს. თუ არჩეული არხი შედეგს არ იძლევა, ვცვლით სტრატეგიას ან ბიუჯეტს სხვა არხზე გადავიტანთ და ამას ღიად გეუბნებით."
       }
     }
   ]
@@ -224,11 +225,11 @@
           <ol class="breadcrumb">
             <li><a href="/">მთავარი</a></li>
             <li><a href="/services">სერვისები</a></li>
-            <li><span aria-current="page">ბრენდის ვიზუალური იდენტობა</span></li>
+            <li><span aria-current="page">ციფრული მარკეტინგი</span></li>
           </ol>
-          <span class="eyebrow">ბრენდის ვიზუალური იდენტობა</span>
-          <h1>ბრენდის ვიზუალური იდენტობა დიზაინი</h1>
-          <p>ვქმნით ვიზუალურ ენას, რომელიც თქვენს ბიზნესს დასამახსოვრებელს ხდის — ლოგოდან ინტერფეისის უკანასკნელ ღილაკამდე.</p>
+          <span class="eyebrow">ციფრული მარკეტინგი</span>
+          <h1>ციფრული მარკეტინგი, რომელიც ლიდებს მოგიტანთ</h1>
+          <p>ვმართავთ სარეკლამო კამპანიებს Google-ში, Meta-სა და TikTok-ზე. ვზომავთ ყოველ ლარს და ვამუშავებთ ბიუჯეტს იქ, სადაც ის რეალურ განაცხადებს იძლევა.</p>
           <div class="btn-row">
             <a class="btn btn--primary" href="#request">განაცხადის გაგზავნა <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
             <a class="btn btn--ghost" href="tel:+99532200000">დარეკვა: +995 32 2 00 00 00</a>
@@ -240,8 +241,8 @@
     <section class="section section--tight">
       <div class="container">
         <div class="stats" data-reveal>
-          <div class="stat"><span class="stat__num" style="font-size:1.35rem">2–5 კვირა</span><span class="stat__label">საშუალო ვადა</span></div>
-          <div class="stat"><span class="stat__num" style="font-size:1.35rem">2 400 ₾</span><span class="stat__label">ფასი იწყება</span></div>
+          <div class="stat"><span class="stat__num" style="font-size:1.35rem">2 კვირა გაშვებამდე</span><span class="stat__label">საშუალო ვადა</span></div>
+          <div class="stat"><span class="stat__num" style="font-size:1.35rem">1 200 ₾/თვე</span><span class="stat__label">ფასი იწყება</span></div>
           <div class="stat"><span class="stat__num" style="font-size:1.35rem">24 სთ</span><span class="stat__label">პასუხის დრო</span></div>
           <div class="stat"><span class="stat__num" style="font-size:1.35rem">უფასო</span><span class="stat__label">პირველი კონსულტაცია</span></div>
         </div>
@@ -257,28 +258,28 @@
         </div>
         <div class="grid grid--3">
           <article class="card" data-reveal data-reveal-delay="0">
-            <h3>ლოგო და ფირმის სტილი</h3>
-            <p>ლოგოს რამდენიმე კონცეფცია, ფერები, შრიფტები და გამოყენების წესები.</p>
+            <h3>Google Ads</h3>
+            <p>საძიებო, Display, YouTube და Performance Max კამპანიები სრული სტრუქტურით.</p>
           </article>
           <article class="card" data-reveal data-reveal-delay="60">
-            <h3>ბრენდბუქი</h3>
-            <p>დოკუმენტი, რომელიც ბრენდის ერთგვაროვნებას ყველა არხზე უზრუნველყოფს.</p>
+            <h3>Meta და TikTok</h3>
+            <p>Facebook, Instagram და TikTok რეკლამა — კრეატივებით და აუდიტორიის ტესტირებით.</p>
           </article>
           <article class="card" data-reveal data-reveal-delay="120">
-            <h3>UI/UX დიზაინი</h3>
-            <p>ვიზიტორის გზის დაგეგმვა, პროტოტიპი და ინტერფეისის დეტალური მაკეტი.</p>
+            <h3>სოციალური მედიის მართვა</h3>
+            <p>კონტენტ-გეგმა, ვიზუალი, ტექსტები და კომენტარებზე პასუხი.</p>
           </article>
           <article class="card" data-reveal data-reveal-delay="180">
-            <h3>დიზაინ-სისტემა</h3>
-            <p>კომპონენტების ბიბლიოთეკა, რომელიც დეველოპმენტს აჩქარებს.</p>
+            <h3>რემარკეტინგი</h3>
+            <p>ვაბრუნებთ ვიზიტორს, რომელმაც საიტი შეკვეთის გარეშე დატოვა.</p>
           </article>
           <article class="card" data-reveal data-reveal-delay="240">
-            <h3>სარეკლამო მასალები</h3>
-            <p>ბანერები, სოციალური ქსელის შაბლონები და პრეზენტაციები.</p>
+            <h3>ელფოსტის მარკეტინგი</h3>
+            <p>ავტომატური სერიები, სიახლეები და მიტოვებული კალათის შეხსენება.</p>
           </article>
           <article class="card" data-reveal data-reveal-delay="300">
-            <h3>ბეჭდვითი პროდუქცია</h3>
-            <p>სავიზიტო ბარათები, შეფუთვა, ვიტრინა და საოფისე მასალები.</p>
+            <h3>ანალიტიკა და CRO</h3>
+            <p>მოვლენების აწყობა, კონვერსიის თვალყური და სადესანტო გვერდების ტესტირება.</p>
           </article>
         </div>
       </div>
@@ -292,20 +293,20 @@
         </div>
         <div class="steps">
           <article class="step" data-reveal data-reveal-delay="0">
-            <h3>კვლევა</h3>
-            <p>ვსწავლობთ ბაზარს, კონკურენტების ვიზუალსა და თქვენს აუდიტორიას.</p>
+            <h3>აუდიტი და მიზნები</h3>
+            <p>ვამოწმებთ არსებულ ანგარიშებს, ვთანხმდებით ლიდის სამიზნე ფასზე.</p>
           </article>
           <article class="step" data-reveal data-reveal-delay="70">
-            <h3>კონცეფცია</h3>
-            <p>ვთავაზობთ ვიზუალურ მიმართულებებს და ერთად ვირჩევთ საბოლოოს.</p>
+            <h3>სტრუქტურა და კრეატივი</h3>
+            <p>ვაწყობთ კამპანიებს, ვწერთ ტექსტებს და ვამზადებთ ბანერებს.</p>
           </article>
           <article class="step" data-reveal data-reveal-delay="140">
-            <h3>დახვეწა</h3>
-            <p>ვამუშავებთ დეტალებს — ფერი, ტიპოგრაფია, კომპოზიცია, მიკრო-ინტერაქციები.</p>
+            <h3>გაშვება და ტესტირება</h3>
+            <p>ვუშვებთ, ვტესტავთ აუდიტორიებსა და განცხადებებს, ვაგროვებთ მონაცემებს.</p>
           </article>
           <article class="step" data-reveal data-reveal-delay="210">
-            <h3>გადაცემა</h3>
-            <p>იღებთ ყველა საჭირო ფორმატს, წყარო-ფაილებსა და გამოყენების ინსტრუქციას.</p>
+            <h3>ოპტიმიზაცია</h3>
+            <p>ვთიშავთ წამგებიან კამპანიებს და ბიუჯეტს ვამისამართებთ მომგებიანზე.</p>
           </article>
         </div>
       </div>
@@ -320,12 +321,12 @@
             <p>ყველა მასალა და წვდომა თქვენს საკუთრებაში რჩება — ნებისმიერ დროს შეგიძლიათ
               სხვა გუნდს გადასცეთ.</p>
             <ul class="checklist">
-              <li>ლოგო ყველა ფორმატში (SVG, PNG, PDF, EPS)</li>
-              <li>ფერთა და ტიპოგრაფიის სისტემა</li>
-              <li>ბრენდბუქი PDF-ფორმატში</li>
-              <li>UI-მაკეტები Figma-ში</li>
-              <li>დიზაინ-სისტემა კომპონენტებით</li>
-              <li>წყარო-ფაილები სრულ საკუთრებაში</li>
+              <li>სარეკლამო ანგარიშები თქვენს სახელზე</li>
+              <li>კამპანიების სრული სტრუქტურა</li>
+              <li>სარეკლამო ტექსტები და ბანერები</li>
+              <li>კონვერსიების აწყობილი თვალყური</li>
+              <li>ყოველკვირეული ოპტიმიზაცია</li>
+              <li>ყოველთვიური ანგარიში ROI-ის ანალიზით</li>
             </ul>
           </div>
           <div class="feature-row__media" data-reveal data-reveal-delay="90">
@@ -333,7 +334,7 @@
               <h3>ინსტრუმენტები</h3>
               <p class="muted" style="font-size:.95rem">ვმუშაობთ სტანდარტულ, ფართოდ გავრცელებულ
                 ინსტრუმენტებზე — რომ პროექტი არავის „დაბმული“ არ იყოს.</p>
-              <div class="case__tags"><span class="tag">Figma</span><span class="tag">Adobe Illustrator</span><span class="tag">Photoshop</span><span class="tag">After Effects</span><span class="tag">Framer</span></div>
+              <div class="case__tags"><span class="tag">Google Ads</span><span class="tag">Meta Ads Manager</span><span class="tag">TikTok Ads</span><span class="tag">Google Tag Manager</span><span class="tag">Looker Studio</span><span class="tag">Mailchimp</span></div>
             </div>
           </div>
         </div>
@@ -341,12 +342,14 @@
     </section>
 
     <!-- ===================== განაცხადის ფორმა ======================= -->
+    <?php cms_service_work_section('marketing'); ?>
+
     <section class="section section--soft" id="request">
       <div class="container">
         <div class="contact-grid">
           <div data-reveal>
             <span class="eyebrow">დაგვიკავშირდით</span>
-            <h2>მიიღეთ შეთავაზება „ბრენდის ვიზუალური იდენტობა“-ზე</h2>
+            <h2>მიიღეთ შეთავაზება „ციფრული მარკეტინგი“-ზე</h2>
             <p class="lead">შეავსეთ ფორმა და ერთ სამუშაო დღეში მიიღებთ საორიენტაციო ღირებულებას,
               ვადებსა და სამოქმედო გეგმას.</p>
             <ul class="checklist">
@@ -365,52 +368,52 @@
           </div>
 
           <div data-reveal data-reveal-delay="90">
-            <form class="lead-form" data-lead-form="service-branding" method="post" action="#">
+            <form class="lead-form" data-lead-form="service-marketing" method="post" action="#">
           <h3>განაცხადის ფორმა</h3>
           <p class="lead-form__intro">ველები ვარსკვლავით სავალდებულოა.</p>
           <div class="form-status" role="alert" aria-live="polite"></div>
           <div class="field-row">
             <div class="field">
-              <label for="srv-branding-name">სახელი და გვარი <span class="req">*</span></label>
-              <input type="text" id="srv-branding-name" name="name" autocomplete="name" placeholder="ნინო ბერიძე" required>
+              <label for="srv-marketing-name">სახელი და გვარი <span class="req">*</span></label>
+              <input type="text" id="srv-marketing-name" name="name" autocomplete="name" placeholder="ნინო ბერიძე" required>
               <span class="field__error"></span>
             </div>
             <div class="field">
-              <label for="srv-branding-company">კომპანია</label>
-              <input type="text" id="srv-branding-company" name="company" autocomplete="organization" placeholder="შპს „მაგალითი“">
-              <span class="field__error"></span>
-            </div>
-          </div>
-
-          <div class="field-row">
-            <div class="field">
-              <label for="srv-branding-email">ელფოსტა <span class="req">*</span></label>
-              <input type="email" id="srv-branding-email" name="email" autocomplete="email" placeholder="name@company.ge" required>
-              <span class="field__error"></span>
-            </div>
-            <div class="field">
-              <label for="srv-branding-phone">ტელეფონი <span class="req">*</span></label>
-              <input type="tel" id="srv-branding-phone" name="phone" autocomplete="tel" placeholder="+995 5XX XX XX XX" required>
+              <label for="srv-marketing-company">კომპანია</label>
+              <input type="text" id="srv-marketing-company" name="company" autocomplete="organization" placeholder="შპს „მაგალითი“">
               <span class="field__error"></span>
             </div>
           </div>
 
           <div class="field-row">
             <div class="field">
-              <label for="srv-branding-service">რომელი სერვისი გაინტერესებთ? <span class="req">*</span></label>
-              <select id="srv-branding-service" name="service" required>
+              <label for="srv-marketing-email">ელფოსტა <span class="req">*</span></label>
+              <input type="email" id="srv-marketing-email" name="email" autocomplete="email" placeholder="name@company.ge" required>
+              <span class="field__error"></span>
+            </div>
+            <div class="field">
+              <label for="srv-marketing-phone">ტელეფონი <span class="req">*</span></label>
+              <input type="tel" id="srv-marketing-phone" name="phone" autocomplete="tel" placeholder="+995 5XX XX XX XX" required>
+              <span class="field__error"></span>
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="srv-marketing-service">რომელი სერვისი გაინტერესებთ? <span class="req">*</span></label>
+              <select id="srv-marketing-service" name="service" required>
                 <option value="">აირჩიეთ სერვისი</option>
             <option value="web">ვებსაიტების დიზაინი და შექმნა</option>
             <option value="seo">SEO ოპტიმიზაცია</option>
-            <option value="marketing">ციფრული მარკეტინგი</option>
-            <option value="branding" selected>ბრენდის ვიზუალური იდენტობა</option>
+            <option value="marketing" selected>ციფრული მარკეტინგი</option>
+            <option value="branding">ბრენდის ვიზუალური იდენტობა</option>
             <option value="other">სხვა / ჯერ არ ვიცი</option>
               </select>
               <span class="field__error"></span>
             </div>
             <div class="field">
-              <label for="srv-branding-budget">სავარაუდო ბიუჯეტი</label>
-              <select id="srv-branding-budget" name="budget">
+              <label for="srv-marketing-budget">სავარაუდო ბიუჯეტი</label>
+              <select id="srv-marketing-budget" name="budget">
                 <option value="">აირჩიეთ დიაპაზონი</option>
                 <option value="under-2000">2 000 ₾-მდე</option>
                 <option value="2000-5000">2 000 – 5 000 ₾</option>
@@ -423,8 +426,8 @@
           </div>
 
           <div class="field">
-            <label for="srv-branding-message">მოგვიყევით პროექტის შესახებ <span class="req">*</span></label>
-            <textarea id="srv-branding-message" name="message" required
+            <label for="srv-marketing-message">მოგვიყევით პროექტის შესახებ <span class="req">*</span></label>
+            <textarea id="srv-marketing-message" name="message" required
               placeholder="მოკლედ აღწერეთ თქვენი ბიზნესი, მიზნები და სასურველი ვადები…"></textarea>
             <span class="field__error"></span>
           </div>
@@ -434,7 +437,7 @@
             <span>თანახმა ვარ, რომ ჩემი მონაცემები დამუშავდეს განაცხადზე პასუხის გასაცემად.</span>
           </label>
 
-          <div class="hp-field" aria-hidden="true"><label for="srv-branding-hp">არ შეავსოთ</label><input type="text" id="srv-branding-hp" name="company_website" tabindex="-1" autocomplete="off"></div>
+          <div class="hp-field" aria-hidden="true"><label for="srv-marketing-hp">არ შეავსოთ</label><input type="text" id="srv-marketing-hp" name="company_website" tabindex="-1" autocomplete="off"></div>
           <button class="btn btn--primary btn--block" type="submit">განაცხადის გაგზავნა</button>
           <p class="form-note"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><span>თქვენი მონაცემები დაცულია და მესამე პირს არ გადაეცემა.</span></p>
         </form>
@@ -452,36 +455,49 @@
         <div class="faq">
           <div class="faq__item">
             <h3 style="margin:0">
-              <button class="faq__q" type="button" aria-expanded="false" aria-controls="branding-a1">
-                <span>რამდენ ვარიანტს შემოგვთავაზებთ?</span><span class="faq__icon" aria-hidden="true"></span>
+              <button class="faq__q" type="button" aria-expanded="false" aria-controls="marketing-a1">
+                <span>რა მინიმალური ბიუჯეტია საჭირო?</span><span class="faq__icon" aria-hidden="true"></span>
               </button>
             </h3>
-            <div class="faq__a" id="branding-a1" data-open="false"><div><p>საბაზისო პაკეტში ლოგოს 3 კონცეფციაა. არჩეულ ვარიანტზე შეზღუდვის გარეშე ვმუშაობთ, სანამ საბოლოო შედეგს არ დავამტკიცებთ.</p></div></div>
+            <div class="faq__a" id="marketing-a1" data-open="false"><div><p>სარეკლამო ბიუჯეტი 1 000 ₾-დან იწყება თვეში — ნაკლები თანხით მონაცემები ოპტიმიზაციისთვის არ გროვდება. მართვის საფასური ცალკე განისაზღვრება, პაკეტის მიხედვით.</p></div></div>
           </div>
           <div class="faq__item">
             <h3 style="margin:0">
-              <button class="faq__q" type="button" aria-expanded="false" aria-controls="branding-a2">
-                <span>შემიძლია მხოლოდ დიზაინის შეკვეთა?</span><span class="faq__icon" aria-hidden="true"></span>
+              <button class="faq__q" type="button" aria-expanded="false" aria-controls="marketing-a2">
+                <span>ბიუჯეტს თქვენ გიხდით?</span><span class="faq__icon" aria-hidden="true"></span>
               </button>
             </h3>
-            <div class="faq__a" id="branding-a2" data-open="false"><div><p>დიახ. ბევრი კლიენტი მაკეტებს ჩვენთან აკეთებს, კოდს კი საკუთარი გუნდი წერს. Figma-ს ფაილს სრული დოკუმენტაციით გადმოგცემთ.</p></div></div>
+            <div class="faq__a" id="marketing-a2" data-open="false"><div><p>არა. სარეკლამო ბიუჯეტს პირდაპირ Google-სა და Meta-ს უხდით თქვენივე ანგარიშიდან. ასე სრულ კონტროლს ინარჩუნებთ ხარჯებზე.</p></div></div>
           </div>
           <div class="faq__item">
             <h3 style="margin:0">
-              <button class="faq__q" type="button" aria-expanded="false" aria-controls="branding-a3">
-                <span>როგორ იცავთ უნიკალურობას?</span><span class="faq__icon" aria-hidden="true"></span>
+              <button class="faq__q" type="button" aria-expanded="false" aria-controls="marketing-a3">
+                <span>რამდენ ხანში გაეშვება კამპანია?</span><span class="faq__icon" aria-hidden="true"></span>
               </button>
             </h3>
-            <div class="faq__a" id="branding-a3" data-open="false"><div><p>ყოველ პროექტამდე ვამოწმებთ ბაზარსა და საერთაშორისო რეესტრებს, რომ ლოგო არსებულს არ ჰგავდეს. სტოკ-გრაფიკას არასდროს ვიყენებთ ლოგოში.</p></div></div>
+            <div class="faq__a" id="marketing-a3" data-open="false"><div><p>წვდომების მიღებიდან ჩვეულებრივ 7–14 დღეში. ამ პერიოდში ვაწყობთ ანალიტიკას, ვწერთ ტექსტებს და ვამზადებთ კრეატივებს.</p></div></div>
           </div>
           <div class="faq__item">
             <h3 style="margin:0">
-              <button class="faq__q" type="button" aria-expanded="false" aria-controls="branding-a4">
-                <span>რებრენდინგი ძველი მასალების გადაკეთებას ნიშნავს?</span><span class="faq__icon" aria-hidden="true"></span>
+              <button class="faq__q" type="button" aria-expanded="false" aria-controls="marketing-a4">
+                <span>თუ რეკლამა არ იმუშავებს?</span><span class="faq__icon" aria-hidden="true"></span>
               </button>
             </h3>
-            <div class="faq__a" id="branding-a4" data-open="false"><div><p>აუცილებლად არა. ხშირად საკმარისია არსებული ვიზუალის დახვეწა და წესების დალაგება — ამას ბრენდის აუდიტის შემდეგ გადავწყვეტთ ერთად.</p></div></div>
+            <div class="faq__a" id="marketing-a4" data-open="false"><div><p>პირველი თვე სატესტოა — ვაგროვებთ მონაცემებს. თუ არჩეული არხი შედეგს არ იძლევა, ვცვლით სტრატეგიას ან ბიუჯეტს სხვა არხზე გადავიტანთ და ამას ღიად გეუბნებით.</p></div></div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--tight">
+      <div class="container">
+        <div class="read-more" data-reveal>
+          <h2>სასარგებლო სტატიები</h2>
+          <ul>
+            <li><a href="/blog/marketinguli-saagento">მარკეტინგული სააგენტო: როდის გჭირდებათ და როგორ აირჩიოთ <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a></li>
+            <li><a href="/blog/facebook-reklamis-shecdomebi">Facebook-ის რეკლამა: 7 შეცდომა, რომელიც ბიუჯეტს ჭამს <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a></li>
+            <li><a href="/blog/saiti-mobilurze">რატომ ტოვებენ თქვენს საიტს მობილურზე <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a></li>
+          </ul>
         </div>
       </div>
     </section>
@@ -506,10 +522,10 @@
             <a class="link-arrow" href="/service-seo">დეტალურად <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
           </article>
           <article class="card card--link" data-reveal data-reveal-delay="140">
-            <span class="card__icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></span>
-            <h3>ციფრული მარკეტინგი</h3>
-            <p>Google Ads, Meta და TikTok კამპანიები გაზომვადი შედეგითა და გამჭვირვალე ყოველთვიური ანგარიშგებით.</p>
-            <a class="link-arrow" href="/service-marketing">დეტალურად <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+            <span class="card__icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></span>
+            <h3>ბრენდის ვიზუალური იდენტობა</h3>
+            <p>ლოგო, ბრენდბუქი და ინტერფეისის დიზაინი, რომელიც ნდობას აჩენს და კონკურენტებისგან გამოგარჩევთ.</p>
+            <a class="link-arrow" href="/service-branding">დეტალურად <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
           </article>
         </div>
       </div>
@@ -527,26 +543,26 @@
             </div>
           </div>
           <div data-reveal data-reveal-delay="90">
-            <form class="lead-form" data-lead-form="service-branding-cta" method="post" action="#">
+            <form class="lead-form" data-lead-form="service-marketing-cta" method="post" action="#">
           <h3>მიიღეთ უფასო კონსულტაცია</h3>
           <p class="lead-form__intro">შეავსეთ ფორმა და 24 საათში დაგიკავშირდებით.</p>
           <div class="form-status" role="alert" aria-live="polite"></div>
           <div class="field">
-            <label for="cta-branding-name">სახელი <span class="req">*</span></label>
-            <input type="text" id="cta-branding-name" name="name" autocomplete="name" placeholder="თქვენი სახელი" required>
+            <label for="cta-marketing-name">სახელი <span class="req">*</span></label>
+            <input type="text" id="cta-marketing-name" name="name" autocomplete="name" placeholder="თქვენი სახელი" required>
             <span class="field__error"></span>
           </div>
           <div class="field">
-            <label for="cta-branding-email">ელფოსტა <span class="req">*</span></label>
-            <input type="email" id="cta-branding-email" name="email" autocomplete="email" placeholder="name@company.ge" required>
+            <label for="cta-marketing-email">ელფოსტა <span class="req">*</span></label>
+            <input type="email" id="cta-marketing-email" name="email" autocomplete="email" placeholder="name@company.ge" required>
             <span class="field__error"></span>
           </div>
           <div class="field">
-            <label for="cta-branding-website">ვებსაიტი ან ტელეფონი <span class="req">*</span></label>
-            <input type="text" id="cta-branding-website" name="website" placeholder="example.ge / +995 5XX XX XX XX" required>
+            <label for="cta-marketing-website">ვებსაიტი ან ტელეფონი <span class="req">*</span></label>
+            <input type="text" id="cta-marketing-website" name="website" placeholder="example.ge / +995 5XX XX XX XX" required>
             <span class="field__error"></span>
           </div>
-          <div class="hp-field" aria-hidden="true"><label for="cta-branding-hp">არ შეავსოთ</label><input type="text" id="cta-branding-hp" name="company_website" tabindex="-1" autocomplete="off"></div>
+          <div class="hp-field" aria-hidden="true"><label for="cta-marketing-hp">არ შეავსოთ</label><input type="text" id="cta-marketing-hp" name="company_website" tabindex="-1" autocomplete="off"></div>
           <button class="btn btn--primary btn--block" type="submit">გაგზავნა</button>
           <p class="form-note"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><span>უფასოა და არაფრად გავალდებულებთ.</span></p>
         </form>
@@ -620,6 +636,6 @@
     </div>
   </footer>
 
-  <script src="assets/js/main.js?v=63b096eb"></script>
+  <script src="assets/js/main.js?v=c9bcc796"></script>
 </body>
 </html>

@@ -3372,3 +3372,44 @@ a:hover .shot img,
 .project-full figcaption { margin-top: 12px; text-align: center; font-size: .88rem; color: var(--muted); }
 .project-full { width: fit-content; max-width: min(760px, 100%); }
 .project-full img { width: auto; max-width: 100%; margin-inline: auto; }
+
+/* --- სერვისის გვერდი: შესრულებული პროექტები --- */
+.svc-work .section-head .btn { white-space: nowrap; flex: none; }
+.svc-work__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+.svc-work__item {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 0;
+  color: inherit;
+  text-decoration: none;
+  outline-offset: 4px;
+  border-radius: var(--radius);
+}
+.svc-work__item .shot { border-radius: var(--radius); box-shadow: 0 0 0 1px var(--line); }
+.svc-work__item:hover .shot img { transform: scale(1.045); }
+.svc-work__body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  column-gap: 12px;
+  padding-inline: 4px;
+}
+.svc-work__body b { font-size: 1.08rem; color: var(--ink); }
+.svc-work__body small { grid-column: 1; color: var(--muted); font-size: .9rem; }
+.svc-work__go {
+  grid-column: 2; grid-row: 1 / span 2;
+  display: grid; place-items: center;
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  color: var(--ink);
+  transition: background .25s ease, color .25s ease, transform .25s ease;
+}
+.svc-work__item:hover .svc-work__go { background: var(--ink); color: var(--paper); transform: rotate(45deg); }
+@media (max-width: 1000px) { .svc-work__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) { .svc-work__grid { grid-template-columns: minmax(0, 1fr); gap: 26px; } }

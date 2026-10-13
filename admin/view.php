@@ -222,6 +222,13 @@ $nav = [
             <label>თეგები (მძიმით)<input name="tags" value="<?= cms_e(implode(', ', $edit['tags'] ?? [])) ?>"></label>
             <label>ინსტრუმენტები (მძიმით)<input name="stack" value="<?= cms_e(implode(', ', $edit['stack'] ?? [])) ?>"></label>
           </div>
+          <fieldset class="checks">
+            <legend>სერვისები — პროექტი ამ სერვისების გვერდებზე გამოჩნდება</legend>
+            <?php $svcOn = !empty($edit['slug']) ? cms_project_services($edit) : [];
+            foreach (CMS_SERVICE_KEYS as $sk => $sl): ?>
+            <label class="check"><input type="checkbox" name="services[]" value="<?= cms_e($sk) ?>" <?= in_array($sk, $svcOn, true) ? 'checked' : '' ?>> <?= cms_e($sl) ?></label>
+            <?php endforeach; ?>
+          </fieldset>
           <label>სამუშაოს მოცულობა (თითო ხაზზე)<textarea name="scope" rows="4"><?= cms_e(implode("\n", $edit['scope'] ?? [])) ?></textarea></label>
           <label class="check"><input type="checkbox" name="hidden" <?= !empty($edit['hidden']) ? 'checked' : '' ?>> დამალული (საიტზე არ გამოჩნდება)</label>
           <div class="actions">

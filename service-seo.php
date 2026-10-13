@@ -1,3 +1,4 @@
+<?php require_once __DIR__ . '/inc/projects.php'; ?>
 <!DOCTYPE html>
 <html lang="ka">
 <head>
@@ -5,17 +6,17 @@
   <meta name="google-site-verification" content="Zl7OvqIP-1s-wqbhxwTPnmISoEdJGMlH0hoNgwNrXHk">
   <script>document.documentElement.classList.add("js");</script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ვებსაიტის დამზადება თბილისში — საიტის შექმნა და დიზაინი | Webico</title>
-  <meta name="description" content="საიტის დამზადება თბილისში: კორპორატიული საიტები, ლენდინგები და ვებ-აპლიკაციები. Webico ქმნის სწრაფ, ადაპტირებულ და SEO-ზე მორგებულ ვებსაიტებს თქვენი ბიზნესისთვის.">
+  <title>SEO ოპტიმიზაცია საქართველოში — ტექნიკური SEO | Webico</title>
+  <meta name="description" content="საიტის SEO ოპტიმიზაცია: ტექნიკური აუდიტი, საკვანძო სიტყვების კვლევა, ინდექსაცია, სტრუქტურირებული მონაცემები, Core Web Vitals და ქართულენოვანი კონტენტი. Webico, თბილისი.">
   <meta name="theme-color" content="#0d0d0d">
-  <link rel="canonical" href="https://webico.io/service-web-development">
+  <link rel="canonical" href="https://webico.io/service-seo">
 
   <meta property="og:type" content="website">
   <meta property="og:locale" content="ka_GE">
   <meta property="og:site_name" content="ვებიკო">
-  <meta property="og:title" content="ვებსაიტის დამზადება თბილისში — საიტის შექმნა და დიზაინი | Webico">
-  <meta property="og:description" content="საიტის დამზადება თბილისში: კორპორატიული საიტები, ლენდინგები და ვებ-აპლიკაციები. Webico ქმნის სწრაფ, ადაპტირებულ და SEO-ზე მორგებულ ვებსაიტებს თქვენი ბიზნესისთვის.">
-  <meta property="og:url" content="https://webico.io/service-web-development">
+  <meta property="og:title" content="SEO ოპტიმიზაცია საქართველოში — ტექნიკური SEO | Webico">
+  <meta property="og:description" content="საიტის SEO ოპტიმიზაცია: ტექნიკური აუდიტი, საკვანძო სიტყვების კვლევა, ინდექსაცია, სტრუქტურირებული მონაცემები, Core Web Vitals და ქართულენოვანი კონტენტი. Webico, თბილისი.">
+  <meta property="og:url" content="https://webico.io/service-seo">
   <meta name="twitter:card" content="summary_large_image">
   <meta property="og:image" content="https://webico.io/assets/img/og-image.png">
   <meta property="og:image:width" content="1200">
@@ -31,21 +32,21 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <!-- სარეზერვო ქართული შრიფტი — მთავარი შრიფტია LGV Anastasia 2025 Geo (იხ. assets/fonts/) -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap">
-  <link rel="stylesheet" href="assets/css/style.css?v=63b096eb">
+  <link rel="stylesheet" href="assets/css/style.css?v=c9bcc796">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Service",
-    "name": "ვებსაიტების დიზაინი და შექმნა",
-    "serviceType": "ვებსაიტების დიზაინი და შექმნა",
-    "description": "კორპორატიული საიტები, ონლაინ მაღაზიები და ვებ-აპლიკაციები, რომლებიც სწრაფად იტვირთება და ვიზიტორს კლიენტად აქცევს.",
+    "name": "SEO ოპტიმიზაცია",
+    "serviceType": "SEO ოპტიმიზაცია",
+    "description": "ტექნიკური აუდიტი, საკვანძო სიტყვები და კონტენტი, რომელიც თქვენს ბიზნესს Google-ის პირველ გვერდზე გაიყვანს.",
     "areaServed": "GE",
     "provider": {
       "@type": "Organization",
       "name": "ვებიკო",
       "url": "https://webico.io/"
     },
-    "url": "https://webico.io/service-web-development.html"
+    "url": "https://webico.io/service-seo"
   }
   </script>
   <script type="application/ld+json">
@@ -68,7 +69,7 @@
     {
       "@type": "ListItem",
       "position": 3,
-      "name": "ვებსაიტების დიზაინი და შექმნა"
+      "name": "SEO ოპტიმიზაცია"
     }
   ]
 }
@@ -80,34 +81,34 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "რომელ პლატფორმაზე აწყობთ საიტს?",
+      "name": "როდის ვნახავ პირველ შედეგს?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "ვირჩევთ ამოცანის მიხედვით: კონტენტზე ორიენტირებული საიტებისთვის WordPress, ონლაინ მაღაზიისთვის WooCommerce, რთული ლოგიკისთვის კი Next.js-ზე დაფუძნებული ინდივიდუალური გადაწყვეტა."
+        "text": "ტექნიკური გასწორებების ეფექტი 4–8 კვირაში ჩანს. საშუალო სიხშირის მოთხოვნებზე პოზიციები 2–4 თვეში იზრდება, მაღალკონკურენტულ ნიშაში კი 6 თვე და მეტია საჭირო."
       }
     },
     {
       "@type": "Question",
-      "name": "შემიძლია კონტენტის დამოუკიდებლად რედაქტირება?",
+      "name": "გარანტიას იძლევით პირველ ადგილზე?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "დიახ. ყველა საიტი მოყვება ადმინ-პანელს, სადაც ტექსტს, ფოტოებსა და გვერდებს პროგრამირების ცოდნის გარეშე მართავთ. გადაცემისას გიტარებთ ვიდეო-ინსტრუქციას."
+        "text": "არა — და არც ერთი კეთილსინდისიერი სააგენტო არ მოგცემთ ასეთ გარანტიას, რადგან Google-ის ალგორითმს ვერავინ აკონტროლებს. ჩვენ ვიღებთ ვალდებულებას სამუშაოს მოცულობასა და გამჭვირვალე ანგარიშგებაზე."
       }
     },
     {
       "@type": "Question",
-      "name": "კონტენტი ვინ უნდა მოამზადოს?",
+      "name": "რა ხდება, თუ SEO-ს შევაჩერებ?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "შეგვიძლია ჩვენ დავწეროთ — ტექსტებს ქართულ ენაზე ვწერთ SEO-ს გათვალისწინებით. თუ მზა მასალა გაქვთ, უბრალოდ დავამუშავებთ და განვათავსებთ."
+        "text": "მიღწეული პოზიციები მაშინვე არ ქრება, მაგრამ დროთა განმავლობაში კონკურენტები გასწრებენ. ოპტიმალურია მინიმუმ 6-თვიანი უწყვეტი მუშაობა."
       }
     },
     {
       "@type": "Question",
-      "name": "რა ხდება, თუ საიტი გაფუჭდება?",
+      "name": "სჭირდება თუ არა საიტს გადაკეთება?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "მხარდაჭერის პერიოდში ტექნიკურ ხარვეზს უფასოდ ვასწორებთ. ყოველდღიური სარეზერვო ასლების წყალობით საიტს ნებისმიერი დღის მდგომარეობაზე ვაბრუნებთ."
+        "text": "ყოველთვის არა. აუდიტის შემდეგ გეტყვით, საკმარისია თუ არა არსებული საიტის გაუმჯობესება. გადაკეთებას მხოლოდ მაშინ ვთავაზობთ, როცა ტექნიკური ბაზა ზრდას ზღუდავს."
       }
     }
   ]
@@ -224,11 +225,11 @@
           <ol class="breadcrumb">
             <li><a href="/">მთავარი</a></li>
             <li><a href="/services">სერვისები</a></li>
-            <li><span aria-current="page">ვებსაიტების დიზაინი და შექმნა</span></li>
+            <li><span aria-current="page">SEO ოპტიმიზაცია</span></li>
           </ol>
-          <span class="eyebrow">ვებსაიტების დიზაინი და შექმნა</span>
-          <h1>ვებსაიტების დამზადება, რომლებიც ყიდის</h1>
-          <p>ვქმნით საიტებს ნულიდან — სტრატეგიით, დიზაინით და სუფთა კოდით. ყოველი პროექტი იწყება კითხვით: რა მოქმედება უნდა შეასრულოს ვიზიტორმა და რა უშლის მას ხელს?</p>
+          <span class="eyebrow">SEO ოპტიმიზაცია</span>
+          <h1>SEO ოპტიმიზაცია ქართული ბაზრისთვის</h1>
+          <p>ვმუშაობთ იმაზე, რომ თქვენი პოტენციური კლიენტი Google-ში სწორედ თქვენ გიპოვოთ — ფასიანი რეკლამის გარეშე. ტექნიკიდან კონტენტამდე, ყოველი ნაბიჯი მონაცემებით მტკიცდება.</p>
           <div class="btn-row">
             <a class="btn btn--primary" href="#request">განაცხადის გაგზავნა <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
             <a class="btn btn--ghost" href="tel:+99532200000">დარეკვა: +995 32 2 00 00 00</a>
@@ -240,8 +241,8 @@
     <section class="section section--tight">
       <div class="container">
         <div class="stats" data-reveal>
-          <div class="stat"><span class="stat__num" style="font-size:1.35rem">3–8 კვირა</span><span class="stat__label">საშუალო ვადა</span></div>
-          <div class="stat"><span class="stat__num" style="font-size:1.35rem">1 900 ₾</span><span class="stat__label">ფასი იწყება</span></div>
+          <div class="stat"><span class="stat__num" style="font-size:1.35rem">3–6 თვე</span><span class="stat__label">საშუალო ვადა</span></div>
+          <div class="stat"><span class="stat__num" style="font-size:1.35rem">1 500 ₾/თვე</span><span class="stat__label">ფასი იწყება</span></div>
           <div class="stat"><span class="stat__num" style="font-size:1.35rem">24 სთ</span><span class="stat__label">პასუხის დრო</span></div>
           <div class="stat"><span class="stat__num" style="font-size:1.35rem">უფასო</span><span class="stat__label">პირველი კონსულტაცია</span></div>
         </div>
@@ -257,28 +258,28 @@
         </div>
         <div class="grid grid--3">
           <article class="card" data-reveal data-reveal-delay="0">
-            <h3>კორპორატიული საიტები</h3>
-            <p>მრავალგვერდიანი საიტები კომპანიებისთვის — სერვისების, გუნდისა და ქეისების პრეზენტაციით.</p>
+            <h3>ტექნიკური აუდიტი</h3>
+            <p>200-ზე მეტი პარამეტრის შემოწმება: ინდექსაცია, სისწრაფე, სტრუქტურა, დუბლიკატები.</p>
           </article>
           <article class="card" data-reveal data-reveal-delay="60">
-            <h3>ონლაინ მაღაზიები</h3>
-            <p>სრულფასოვანი E-commerce: კალათა, ონლაინ გადახდა, მიწოდება და საწყობის მართვა.</p>
+            <h3>საკვანძო სიტყვები</h3>
+            <p>სემანტიკური ბირთვი ქართულ და ინგლისურ ენებზე, ძიების განზრახვის მიხედვით დაჯგუფებული.</p>
           </article>
           <article class="card" data-reveal data-reveal-delay="120">
-            <h3>სადესანტო გვერდები</h3>
-            <p>ერთგვერდიანი Landing Page კამპანიებისთვის, A/B ტესტირების შესაძლებლობით.</p>
+            <h3>კონტენტ-დაგეგმვა</h3>
+            <p>სტატიები და სერვისის გვერდები, რომლებსაც ადამიანიც კითხულობს და Google-იც აფასებს.</p>
           </article>
           <article class="card" data-reveal data-reveal-delay="180">
-            <h3>ვებ-აპლიკაციები</h3>
-            <p>პორტალები, პირადი კაბინეტები და შიდა სისტემები ბიზნეს-პროცესებისთვის.</p>
+            <h3>ლოკალური SEO</h3>
+            <p>Google Business Profile, რუკები და ადგილობრივი კატალოგები — ფილიალების მიხედვით.</p>
           </article>
           <article class="card" data-reveal data-reveal-delay="240">
-            <h3>ინტეგრაციები</h3>
-            <p>CRM, ერთიანი ბუღალტერია, გადახდის სისტემები (TBC, BOG), SMS და ელფოსტის სერვისები.</p>
+            <h3>ლინკების მოპოვება</h3>
+            <p>ხარისხიანი ბმულები ქართული და საერთაშორისო რესურსებიდან, სპამის გარეშე.</p>
           </article>
           <article class="card" data-reveal data-reveal-delay="300">
-            <h3>სისწრაფე და უსაფრთხოება</h3>
-            <p>PageSpeed 90+ ქულა, SSL, სარეზერვო ასლები და დაცვა შეტევებისგან.</p>
+            <h3>ანალიტიკა და ანგარიში</h3>
+            <p>პოზიციების ყოველკვირეული მონიტორინგი და ყოველთვიური ანგარიში ცოცხალი დაფით.</p>
           </article>
         </div>
       </div>
@@ -292,20 +293,20 @@
         </div>
         <div class="steps">
           <article class="step" data-reveal data-reveal-delay="0">
-            <h3>ტექნიკური დავალება</h3>
-            <p>ვაანალიზებთ ბიზნესს, კონკურენტებს და ვწერთ სტრუქტურას გვერდების დონეზე.</p>
+            <h3>აუდიტი</h3>
+            <p>ვპოულობთ ტექნიკურ ხარვეზებს და ვაფასებთ, რა გიშლით ხელს ზრდაში.</p>
           </article>
           <article class="step" data-reveal data-reveal-delay="70">
-            <h3>დიზაინი</h3>
-            <p>პროტოტიპი, შემდეგ კი მაკეტი Figma-ში. ამტკიცებთ, სანამ კოდი დაიწერება.</p>
+            <h3>სემანტიკა და გეგმა</h3>
+            <p>ვაგროვებთ საკვანძო სიტყვებს, ვსწავლობთ კონკურენტებს და ვწერთ 6-თვიან გეგმას.</p>
           </article>
           <article class="step" data-reveal data-reveal-delay="140">
-            <h3>დეველოპმენტი</h3>
-            <p>ვაწყობთ საიტს, ვავსებთ კონტენტით და ვაკეთებთ ინტეგრაციებს.</p>
+            <h3>დანერგვა</h3>
+            <p>ვასწორებთ ტექნიკას, ვწერთ და ვაუმჯობესებთ კონტენტს, ვაშენებთ შიდა ბმულებს.</p>
           </article>
           <article class="step" data-reveal data-reveal-delay="210">
-            <h3>ტესტირება და გაშვება</h3>
-            <p>ვამოწმებთ ყველა ბრაუზერსა და მოწყობილობაზე, ვამაგრებთ ანალიტიკას და ვუშვებთ.</p>
+            <h3>ზრდა და მონიტორინგი</h3>
+            <p>ყოველთვიურად ვზომავთ შედეგს და გეგმას მონაცემების მიხედვით ვასწორებთ.</p>
           </article>
         </div>
       </div>
@@ -320,12 +321,12 @@
             <p>ყველა მასალა და წვდომა თქვენს საკუთრებაში რჩება — ნებისმიერ დროს შეგიძლიათ
               სხვა გუნდს გადასცეთ.</p>
             <ul class="checklist">
-              <li>ადაპტირებული საიტი კონტენტის მართვის სისტემით</li>
-              <li>დომენისა და ჰოსტინგის კონფიგურაცია</li>
-              <li>Google Analytics 4 და Search Console</li>
-              <li>ვიდეო-ინსტრუქცია ადმინისტრირებაზე</li>
-              <li>სრული კოდი და წვდომები თქვენს საკუთრებაში</li>
-              <li>3–6 თვე უფასო ტექნიკური მხარდაჭერა</li>
+              <li>სრული ტექნიკური აუდიტი რეკომენდაციებით</li>
+              <li>სემანტიკური ბირთვი და გვერდების რუკა</li>
+              <li>ყოველთვიური კონტენტ-გეგმა</li>
+              <li>ოპტიმიზებული ტექსტები და მეტა-მონაცემები</li>
+              <li>პოზიციების ცოცხალი დაფა</li>
+              <li>ყოველთვიური ანგარიში და სამუშაო შეხვედრა</li>
             </ul>
           </div>
           <div class="feature-row__media" data-reveal data-reveal-delay="90">
@@ -333,7 +334,7 @@
               <h3>ინსტრუმენტები</h3>
               <p class="muted" style="font-size:.95rem">ვმუშაობთ სტანდარტულ, ფართოდ გავრცელებულ
                 ინსტრუმენტებზე — რომ პროექტი არავის „დაბმული“ არ იყოს.</p>
-              <div class="case__tags"><span class="tag">WordPress</span><span class="tag">WooCommerce</span><span class="tag">Next.js</span><span class="tag">React</span><span class="tag">Figma</span><span class="tag">PHP</span><span class="tag">Node.js</span><span class="tag">Cloudflare</span></div>
+              <div class="case__tags"><span class="tag">Google Search Console</span><span class="tag">Google Analytics 4</span><span class="tag">Ahrefs</span><span class="tag">Screaming Frog</span><span class="tag">Looker Studio</span><span class="tag">Google Business Profile</span></div>
             </div>
           </div>
         </div>
@@ -341,12 +342,14 @@
     </section>
 
     <!-- ===================== განაცხადის ფორმა ======================= -->
+    <?php cms_service_work_section('seo'); ?>
+
     <section class="section section--soft" id="request">
       <div class="container">
         <div class="contact-grid">
           <div data-reveal>
             <span class="eyebrow">დაგვიკავშირდით</span>
-            <h2>მიიღეთ შეთავაზება „ვებსაიტების დიზაინი და შექმნა“-ზე</h2>
+            <h2>მიიღეთ შეთავაზება „SEO ოპტიმიზაცია“-ზე</h2>
             <p class="lead">შეავსეთ ფორმა და ერთ სამუშაო დღეში მიიღებთ საორიენტაციო ღირებულებას,
               ვადებსა და სამოქმედო გეგმას.</p>
             <ul class="checklist">
@@ -365,43 +368,43 @@
           </div>
 
           <div data-reveal data-reveal-delay="90">
-            <form class="lead-form" data-lead-form="service-web-development" method="post" action="#">
+            <form class="lead-form" data-lead-form="service-seo" method="post" action="#">
           <h3>განაცხადის ფორმა</h3>
           <p class="lead-form__intro">ველები ვარსკვლავით სავალდებულოა.</p>
           <div class="form-status" role="alert" aria-live="polite"></div>
           <div class="field-row">
             <div class="field">
-              <label for="srv-web-development-name">სახელი და გვარი <span class="req">*</span></label>
-              <input type="text" id="srv-web-development-name" name="name" autocomplete="name" placeholder="ნინო ბერიძე" required>
+              <label for="srv-seo-name">სახელი და გვარი <span class="req">*</span></label>
+              <input type="text" id="srv-seo-name" name="name" autocomplete="name" placeholder="ნინო ბერიძე" required>
               <span class="field__error"></span>
             </div>
             <div class="field">
-              <label for="srv-web-development-company">კომპანია</label>
-              <input type="text" id="srv-web-development-company" name="company" autocomplete="organization" placeholder="შპს „მაგალითი“">
-              <span class="field__error"></span>
-            </div>
-          </div>
-
-          <div class="field-row">
-            <div class="field">
-              <label for="srv-web-development-email">ელფოსტა <span class="req">*</span></label>
-              <input type="email" id="srv-web-development-email" name="email" autocomplete="email" placeholder="name@company.ge" required>
-              <span class="field__error"></span>
-            </div>
-            <div class="field">
-              <label for="srv-web-development-phone">ტელეფონი <span class="req">*</span></label>
-              <input type="tel" id="srv-web-development-phone" name="phone" autocomplete="tel" placeholder="+995 5XX XX XX XX" required>
+              <label for="srv-seo-company">კომპანია</label>
+              <input type="text" id="srv-seo-company" name="company" autocomplete="organization" placeholder="შპს „მაგალითი“">
               <span class="field__error"></span>
             </div>
           </div>
 
           <div class="field-row">
             <div class="field">
-              <label for="srv-web-development-service">რომელი სერვისი გაინტერესებთ? <span class="req">*</span></label>
-              <select id="srv-web-development-service" name="service" required>
+              <label for="srv-seo-email">ელფოსტა <span class="req">*</span></label>
+              <input type="email" id="srv-seo-email" name="email" autocomplete="email" placeholder="name@company.ge" required>
+              <span class="field__error"></span>
+            </div>
+            <div class="field">
+              <label for="srv-seo-phone">ტელეფონი <span class="req">*</span></label>
+              <input type="tel" id="srv-seo-phone" name="phone" autocomplete="tel" placeholder="+995 5XX XX XX XX" required>
+              <span class="field__error"></span>
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="srv-seo-service">რომელი სერვისი გაინტერესებთ? <span class="req">*</span></label>
+              <select id="srv-seo-service" name="service" required>
                 <option value="">აირჩიეთ სერვისი</option>
-            <option value="web" selected>ვებსაიტების დიზაინი და შექმნა</option>
-            <option value="seo">SEO ოპტიმიზაცია</option>
+            <option value="web">ვებსაიტების დიზაინი და შექმნა</option>
+            <option value="seo" selected>SEO ოპტიმიზაცია</option>
             <option value="marketing">ციფრული მარკეტინგი</option>
             <option value="branding">ბრენდის ვიზუალური იდენტობა</option>
             <option value="other">სხვა / ჯერ არ ვიცი</option>
@@ -409,8 +412,8 @@
               <span class="field__error"></span>
             </div>
             <div class="field">
-              <label for="srv-web-development-budget">სავარაუდო ბიუჯეტი</label>
-              <select id="srv-web-development-budget" name="budget">
+              <label for="srv-seo-budget">სავარაუდო ბიუჯეტი</label>
+              <select id="srv-seo-budget" name="budget">
                 <option value="">აირჩიეთ დიაპაზონი</option>
                 <option value="under-2000">2 000 ₾-მდე</option>
                 <option value="2000-5000">2 000 – 5 000 ₾</option>
@@ -423,8 +426,8 @@
           </div>
 
           <div class="field">
-            <label for="srv-web-development-message">მოგვიყევით პროექტის შესახებ <span class="req">*</span></label>
-            <textarea id="srv-web-development-message" name="message" required
+            <label for="srv-seo-message">მოგვიყევით პროექტის შესახებ <span class="req">*</span></label>
+            <textarea id="srv-seo-message" name="message" required
               placeholder="მოკლედ აღწერეთ თქვენი ბიზნესი, მიზნები და სასურველი ვადები…"></textarea>
             <span class="field__error"></span>
           </div>
@@ -434,7 +437,7 @@
             <span>თანახმა ვარ, რომ ჩემი მონაცემები დამუშავდეს განაცხადზე პასუხის გასაცემად.</span>
           </label>
 
-          <div class="hp-field" aria-hidden="true"><label for="srv-web-development-hp">არ შეავსოთ</label><input type="text" id="srv-web-development-hp" name="company_website" tabindex="-1" autocomplete="off"></div>
+          <div class="hp-field" aria-hidden="true"><label for="srv-seo-hp">არ შეავსოთ</label><input type="text" id="srv-seo-hp" name="company_website" tabindex="-1" autocomplete="off"></div>
           <button class="btn btn--primary btn--block" type="submit">განაცხადის გაგზავნა</button>
           <p class="form-note"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><span>თქვენი მონაცემები დაცულია და მესამე პირს არ გადაეცემა.</span></p>
         </form>
@@ -452,35 +455,35 @@
         <div class="faq">
           <div class="faq__item">
             <h3 style="margin:0">
-              <button class="faq__q" type="button" aria-expanded="false" aria-controls="web-development-a1">
-                <span>რომელ პლატფორმაზე აწყობთ საიტს?</span><span class="faq__icon" aria-hidden="true"></span>
+              <button class="faq__q" type="button" aria-expanded="false" aria-controls="seo-a1">
+                <span>როდის ვნახავ პირველ შედეგს?</span><span class="faq__icon" aria-hidden="true"></span>
               </button>
             </h3>
-            <div class="faq__a" id="web-development-a1" data-open="false"><div><p>ვირჩევთ ამოცანის მიხედვით: კონტენტზე ორიენტირებული საიტებისთვის WordPress, ონლაინ მაღაზიისთვის WooCommerce, რთული ლოგიკისთვის კი Next.js-ზე დაფუძნებული ინდივიდუალური გადაწყვეტა.</p></div></div>
+            <div class="faq__a" id="seo-a1" data-open="false"><div><p>ტექნიკური გასწორებების ეფექტი 4–8 კვირაში ჩანს. საშუალო სიხშირის მოთხოვნებზე პოზიციები 2–4 თვეში იზრდება, მაღალკონკურენტულ ნიშაში კი 6 თვე და მეტია საჭირო.</p></div></div>
           </div>
           <div class="faq__item">
             <h3 style="margin:0">
-              <button class="faq__q" type="button" aria-expanded="false" aria-controls="web-development-a2">
-                <span>შემიძლია კონტენტის დამოუკიდებლად რედაქტირება?</span><span class="faq__icon" aria-hidden="true"></span>
+              <button class="faq__q" type="button" aria-expanded="false" aria-controls="seo-a2">
+                <span>გარანტიას იძლევით პირველ ადგილზე?</span><span class="faq__icon" aria-hidden="true"></span>
               </button>
             </h3>
-            <div class="faq__a" id="web-development-a2" data-open="false"><div><p>დიახ. ყველა საიტი მოყვება ადმინ-პანელს, სადაც ტექსტს, ფოტოებსა და გვერდებს პროგრამირების ცოდნის გარეშე მართავთ. გადაცემისას გიტარებთ ვიდეო-ინსტრუქციას.</p></div></div>
+            <div class="faq__a" id="seo-a2" data-open="false"><div><p>არა — და არც ერთი კეთილსინდისიერი სააგენტო არ მოგცემთ ასეთ გარანტიას, რადგან Google-ის ალგორითმს ვერავინ აკონტროლებს. ჩვენ ვიღებთ ვალდებულებას სამუშაოს მოცულობასა და გამჭვირვალე ანგარიშგებაზე.</p></div></div>
           </div>
           <div class="faq__item">
             <h3 style="margin:0">
-              <button class="faq__q" type="button" aria-expanded="false" aria-controls="web-development-a3">
-                <span>კონტენტი ვინ უნდა მოამზადოს?</span><span class="faq__icon" aria-hidden="true"></span>
+              <button class="faq__q" type="button" aria-expanded="false" aria-controls="seo-a3">
+                <span>რა ხდება, თუ SEO-ს შევაჩერებ?</span><span class="faq__icon" aria-hidden="true"></span>
               </button>
             </h3>
-            <div class="faq__a" id="web-development-a3" data-open="false"><div><p>შეგვიძლია ჩვენ დავწეროთ — ტექსტებს ქართულ ენაზე ვწერთ SEO-ს გათვალისწინებით. თუ მზა მასალა გაქვთ, უბრალოდ დავამუშავებთ და განვათავსებთ.</p></div></div>
+            <div class="faq__a" id="seo-a3" data-open="false"><div><p>მიღწეული პოზიციები მაშინვე არ ქრება, მაგრამ დროთა განმავლობაში კონკურენტები გასწრებენ. ოპტიმალურია მინიმუმ 6-თვიანი უწყვეტი მუშაობა.</p></div></div>
           </div>
           <div class="faq__item">
             <h3 style="margin:0">
-              <button class="faq__q" type="button" aria-expanded="false" aria-controls="web-development-a4">
-                <span>რა ხდება, თუ საიტი გაფუჭდება?</span><span class="faq__icon" aria-hidden="true"></span>
+              <button class="faq__q" type="button" aria-expanded="false" aria-controls="seo-a4">
+                <span>სჭირდება თუ არა საიტს გადაკეთება?</span><span class="faq__icon" aria-hidden="true"></span>
               </button>
             </h3>
-            <div class="faq__a" id="web-development-a4" data-open="false"><div><p>მხარდაჭერის პერიოდში ტექნიკურ ხარვეზს უფასოდ ვასწორებთ. ყოველდღიური სარეზერვო ასლების წყალობით საიტს ნებისმიერი დღის მდგომარეობაზე ვაბრუნებთ.</p></div></div>
+            <div class="faq__a" id="seo-a4" data-open="false"><div><p>ყოველთვის არა. აუდიტის შემდეგ გეტყვით, საკმარისია თუ არა არსებული საიტის გაუმჯობესება. გადაკეთებას მხოლოდ მაშინ ვთავაზობთ, როცა ტექნიკური ბაზა ზრდას ზღუდავს.</p></div></div>
           </div>
         </div>
       </div>
@@ -491,9 +494,9 @@
         <div class="read-more" data-reveal>
           <h2>სასარგებლო სტატიები</h2>
           <ul>
-            <li><a href="/blog/vebsaitis-damzadeba-gzamkvlevi">ვებსაიტის დამზადება ნაბიჯ-ნაბიჯ: რა უნდა იცოდეთ დაწყებამდე <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a></li>
-            <li><a href="/blog/saitis-fasi">რა ღირს საიტის დამზადება? 9 ფაქტორი, რომელიც ფასს განსაზღვრავს <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a></li>
-            <li><a href="/blog/rogor-avirchiot-veb-saagento">როგორ ავირჩიოთ ვებ სააგენტო: 12 კითხვა ხელშეკრულებამდე <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a></li>
+            <li><a href="/blog/seo-saagento">SEO სააგენტო: რას აკეთებს და როდის ჩანს შედეგი <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a></li>
+            <li><a href="/blog/qartulad-tu-latinurad">ქართულად თუ ლათინურად? როგორ ეძებენ ქართველები Google-ში <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a></li>
+            <li><a href="/blog/google-maps-business-profile">როგორ გამოჩნდეთ Google Maps-ზე: Google Business Profile <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a></li>
           </ul>
         </div>
       </div>
@@ -507,10 +510,10 @@
         </div>
         <div class="grid grid--3">
           <article class="card card--link" data-reveal data-reveal-delay="0">
-            <span class="card__icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.7" y2="16.7"/><line x1="8.5" y1="12.5" x2="8.5" y2="9.5"/><line x1="11" y1="12.5" x2="11" y2="7.5"/><line x1="13.5" y1="12.5" x2="13.5" y2="10.5"/></svg></span>
-            <h3>SEO ოპტიმიზაცია</h3>
-            <p>ტექნიკური აუდიტი, საკვანძო სიტყვები და კონტენტი, რომელიც თქვენს ბიზნესს Google-ის პირველ გვერდზე გაიყვანს.</p>
-            <a class="link-arrow" href="/service-seo">დეტალურად <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+            <span class="card__icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><line x1="13" y1="4" x2="11" y2="20"/></svg></span>
+            <h3>ვებსაიტების დიზაინი და შექმნა</h3>
+            <p>კორპორატიული საიტები, ონლაინ მაღაზიები და ვებ-აპლიკაციები, რომლებიც სწრაფად იტვირთება და ვიზიტორს კლიენტად აქცევს.</p>
+            <a class="link-arrow" href="/service-web-development">დეტალურად <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
           </article>
           <article class="card card--link" data-reveal data-reveal-delay="70">
             <span class="card__icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></span>
@@ -540,26 +543,26 @@
             </div>
           </div>
           <div data-reveal data-reveal-delay="90">
-            <form class="lead-form" data-lead-form="service-web-development-cta" method="post" action="#">
+            <form class="lead-form" data-lead-form="service-seo-cta" method="post" action="#">
           <h3>მიიღეთ უფასო კონსულტაცია</h3>
           <p class="lead-form__intro">შეავსეთ ფორმა და 24 საათში დაგიკავშირდებით.</p>
           <div class="form-status" role="alert" aria-live="polite"></div>
           <div class="field">
-            <label for="cta-web-development-name">სახელი <span class="req">*</span></label>
-            <input type="text" id="cta-web-development-name" name="name" autocomplete="name" placeholder="თქვენი სახელი" required>
+            <label for="cta-seo-name">სახელი <span class="req">*</span></label>
+            <input type="text" id="cta-seo-name" name="name" autocomplete="name" placeholder="თქვენი სახელი" required>
             <span class="field__error"></span>
           </div>
           <div class="field">
-            <label for="cta-web-development-email">ელფოსტა <span class="req">*</span></label>
-            <input type="email" id="cta-web-development-email" name="email" autocomplete="email" placeholder="name@company.ge" required>
+            <label for="cta-seo-email">ელფოსტა <span class="req">*</span></label>
+            <input type="email" id="cta-seo-email" name="email" autocomplete="email" placeholder="name@company.ge" required>
             <span class="field__error"></span>
           </div>
           <div class="field">
-            <label for="cta-web-development-website">ვებსაიტი ან ტელეფონი <span class="req">*</span></label>
-            <input type="text" id="cta-web-development-website" name="website" placeholder="example.ge / +995 5XX XX XX XX" required>
+            <label for="cta-seo-website">ვებსაიტი ან ტელეფონი <span class="req">*</span></label>
+            <input type="text" id="cta-seo-website" name="website" placeholder="example.ge / +995 5XX XX XX XX" required>
             <span class="field__error"></span>
           </div>
-          <div class="hp-field" aria-hidden="true"><label for="cta-web-development-hp">არ შეავსოთ</label><input type="text" id="cta-web-development-hp" name="company_website" tabindex="-1" autocomplete="off"></div>
+          <div class="hp-field" aria-hidden="true"><label for="cta-seo-hp">არ შეავსოთ</label><input type="text" id="cta-seo-hp" name="company_website" tabindex="-1" autocomplete="off"></div>
           <button class="btn btn--primary btn--block" type="submit">გაგზავნა</button>
           <p class="form-note"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><span>უფასოა და არაფრად გავალდებულებთ.</span></p>
         </form>
@@ -633,6 +636,6 @@
     </div>
   </footer>
 
-  <script src="assets/js/main.js?v=63b096eb"></script>
+  <script src="assets/js/main.js?v=c9bcc796"></script>
 </body>
 </html>
