@@ -1,6 +1,24 @@
 {
     "projects": [
         {
+            "slug": "arlo-funding",
+            "name": "Arlo Funding",
+            "domain": "arlofunding.com",
+            "tone": "lime",
+            "summary": "ამერიკული კომერციული უძრავი ქონების დაფინანსების კომპანიის ვებსაიტი: UI/UX დიზაინი და დეველოპმენტი — სესხის ტიპები ქონების მიხედვით, უფასო ინსტრუმენტები და განაცხადის ფორმა.",
+            "tags": [
+                "UI/UX დიზაინი",
+                "ვებსაიტის დამზადება"
+            ],
+            "scope": [
+                "UI/UX დიზაინი",
+                "ადაპტირებული ვებ-დეველოპმენტი",
+                "ინგლისურენოვანი საიტი",
+                "განაცხადის ფორმა"
+            ],
+            "shot": "assets/img/work/arlo-funding-website.webp"
+        },
+        {
             "slug": "gcci-germany",
             "name": "GCCI Germany",
             "domain": "gcci-germany.com",
