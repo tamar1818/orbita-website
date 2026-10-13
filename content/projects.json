@@ -1,6 +1,25 @@
 {
     "projects": [
         {
+            "slug": "marketing-agency",
+            "name": "Marketing Agency",
+            "domain": "",
+            "tone": "lilac",
+            "summary": "მარკეტინგული სააგენტოს ვებსაიტის UI/UX დიზაინი (კონცეფცია): მუქი, თანამედროვე ვიზუალური ენა, გრადიენტული აქცენტები და მკაფიო მოწოდება ნამუშევრების ნახვისა და ზარის დაჯავშნისკენ.",
+            "tags": [
+                "UI/UX დიზაინი"
+            ],
+            "services": [
+                "branding"
+            ],
+            "scope": [
+                "UI/UX დიზაინი",
+                "ვებსაიტის მაკეტი",
+                "ვიზუალური სტილი"
+            ],
+            "shot": "assets/img/work/marketing-agency-website.webp"
+        },
+        {
             "slug": "arlo-funding",
             "name": "Arlo Funding",
             "domain": "arlofunding.com",
