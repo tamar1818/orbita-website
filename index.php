@@ -76,7 +76,7 @@ $HOME_LD = "\n  <script type=\"application/ld+json\">\n" . json_encode([
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <!-- სარეზერვო ქართული შრიფტი — მთავარი შრიფტია LGV Anastasia 2025 Geo (იხ. assets/fonts/) -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap">
-  <link rel="stylesheet" href="assets/css/style.css?v=e699f24c">
+  <link rel="stylesheet" href="assets/css/style.css?v=63b096eb">
 <?= $HOME_LD ?>
 
 </head>
@@ -149,14 +149,14 @@ $HOME_LD = "\n  <script type=\"application/ld+json\">\n" . json_encode([
                 <div class="mega__col mega__col--tools">
                   <p class="mega__label">ტექნოლოგიები</p>
                   <ul class="tools">
-                <li><a href="/services"><span class="tool__mark" style="--tint:#21759b">Wp</span>WordPress</a></li>
-                <li><a href="/services"><span class="tool__mark" style="--tint:#5a8f3d">Sh</span>Shopify</a></li>
-                <li><a href="/services"><span class="tool__mark" style="--tint:#4353ff">Wf</span>Webflow</a></li>
-                <li><a href="/services"><span class="tool__mark" style="--tint:#d1443c">Lo</span>Lovable</a></li>
+                <li><a href="/services"><span class="tool__mark tool__mark--logo"><img src="/assets/img/tech/wordpress.svg" alt="" width="18" height="18" loading="lazy" decoding="async"></span>WordPress</a></li>
+                <li><a href="/services"><span class="tool__mark tool__mark--logo"><img src="/assets/img/tech/shopify.svg" alt="" width="18" height="18" loading="lazy" decoding="async"></span>Shopify</a></li>
+                <li><a href="/services"><span class="tool__mark tool__mark--logo"><img src="/assets/img/tech/webflow.svg" alt="" width="18" height="18" loading="lazy" decoding="async"></span>Webflow</a></li>
+                <li><a href="/services"><span class="tool__mark tool__mark--logo"><img src="/assets/img/tech/lovable.svg" alt="" width="18" height="18" loading="lazy" decoding="async"></span>Lovable</a></li>
                 <li><a href="/services"><span class="tool__mark tool__mark--ink">&lt;/&gt;</span>Custom code</a></li>
-                <li><a href="/services"><span class="tool__mark" style="--tint:#0b7285">Ne</span>Next.js / React</a></li>
-                <li><a href="/services"><span class="tool__mark" style="--tint:#b26a00">aws</span>AWS</a></li>
-                <li><a href="/services"><span class="tool__mark" style="--tint:#8b45d6">Fi</span>Figma</a></li>
+                <li><a href="/services"><span class="tool__mark tool__mark--logo"><img src="/assets/img/tech/nextjs.svg" alt="" width="18" height="18" loading="lazy" decoding="async"></span>Next.js / React</a></li>
+                <li><a href="/services"><span class="tool__mark tool__mark--logo"><img src="/assets/img/tech/aws.svg" alt="" width="18" height="18" loading="lazy" decoding="async"></span>AWS</a></li>
+                <li><a href="/services"><span class="tool__mark tool__mark--logo"><img src="/assets/img/tech/figma.svg" alt="" width="18" height="18" loading="lazy" decoding="async"></span>Figma</a></li>
                   </ul>
                 </div>
                 <div class="mega__foot">
@@ -650,6 +650,6 @@ $HOME_LD = "\n  <script type=\"application/ld+json\">\n" . json_encode([
     </div>
   </footer>
 
-  <script src="assets/js/main.js?v=e699f24c"></script>
+  <script src="assets/js/main.js?v=63b096eb"></script>
 </body>
 </html>
