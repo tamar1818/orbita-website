@@ -76,7 +76,7 @@ $HOME_LD = "\n  <script type=\"application/ld+json\">\n" . json_encode([
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <!-- სარეზერვო ქართული შრიფტი — მთავარი შრიფტია LGV Anastasia 2025 Geo (იხ. assets/fonts/) -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap">
-  <link rel="stylesheet" href="assets/css/style.css?v=2174167f">
+  <link rel="stylesheet" href="assets/css/style.css?v=b4f41683">
 <?= $HOME_LD ?>
 
 </head>
@@ -652,6 +652,6 @@ $HOME_LD = "\n  <script type=\"application/ld+json\">\n" . json_encode([
     </div>
   </footer>
 
-  <script src="assets/js/main.js?v=2174167f"></script>
+  <script src="assets/js/main.js?v=b4f41683"></script>
 </body>
 </html>

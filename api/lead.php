@@ -93,7 +93,8 @@ if (!cms_write('leads', $store)) {
    მიმღები: ადმინის „კონტაქტები → ელფოსტა“, ან hello@webico.io */
 $src = $get('source', 80);
 cms_mail(cms_team_email(),
-    ($src === 'chatbot' ? 'ახალი ლიდი ჩატბოტიდან — ' : 'ახალი განაცხადი — ') . $name,
+    ($src === 'chatbot' ? 'ახალი ლიდი ჩატბოტიდან — '
+        : ($src === 'configurator' ? 'ახალი შეკვეთა: საიტი გამოწერით — ' : 'ახალი განაცხადი — ')) . $name,
     "ახალი განაცხადი webico.io-დან\n\n"
     . cms_mail_lines([
         'სახელი' => $name, 'ელფოსტა' => $email, 'ტელეფონი' => $phone,
@@ -103,5 +104,16 @@ cms_mail(cms_team_email(),
     ])
     . ($message !== '' ? "\n$message\n" : ''),
     $email);
+
+/* კონფიგურატორიდან შეკვეთისას — დადასტურება კლიენტს */
+if ($src === 'configurator') {
+    cms_mail($email, 'Webico — თქვენი შეკვეთა მიღებულია',
+        "გამარჯობა, $name!\n\n"
+        . "მადლობა, რომ Webico აირჩიეთ. თქვენი საიტის შეკვეთა მივიღეთ — 1 სამუშაო დღეში დაგირეკავთ,\n"
+        . "დავაზუსტებთ დეტალებს და მოგიმზადებთ დიზაინს. გადახდა მხოლოდ დიზაინის დამტკიცების შემდეგ.\n\n"
+        . "თქვენი არჩევანი:\n$message\n\n"
+        . "კითხვები? უბრალოდ უპასუხეთ ამ წერილს.\n\nWebico — webico.io",
+        cms_team_email());
+}
 
 echo json_encode(['ok' => true], JSON_UNESCAPED_UNICODE);

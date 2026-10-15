@@ -66,6 +66,6 @@
     </div>
   </footer>
 
-  <script src="/assets/js/main.js?v=2174167f"></script>
+  <script src="/assets/js/main.js?v=b4f41683"></script>
 </body>
 </html>
