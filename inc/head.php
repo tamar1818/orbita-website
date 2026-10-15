@@ -38,7 +38,7 @@ $OG_H = !empty($PAGE_IMAGE) ? ($PAGE_IMAGE_H ?? 1024) : 630;
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <!-- სარეზერვო ქართული შრიფტი — მთავარი შრიფტია LGV Anastasia 2025 Geo (იხ. assets/fonts/) -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap">
-  <link rel="stylesheet" href="/assets/css/style.css?v=c9bcc796">
+  <link rel="stylesheet" href="/assets/css/style.css?v=2174167f">
 <?= $PAGE_LD ?? "" ?>
 </head>
 <body>
@@ -128,6 +128,7 @@ $OG_H = !empty($PAGE_IMAGE) ? ($PAGE_IMAGE_H ?? 1024) : 630;
             </div></div>
           </li>
           <li><a href="/work">ნამუშევრები</a></li>
+          <li><a href="/plans">ფასები</a></li>
           <li><a href="/blog">ბლოგი</a></li>
           <li><a href="/contact">კონტაქტი</a></li>
           <li><a class="btn btn--primary btn--sm" href="/contact#booking">უფასო კონსულტაცია</a></li>

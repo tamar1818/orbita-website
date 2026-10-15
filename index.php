@@ -76,7 +76,7 @@ $HOME_LD = "\n  <script type=\"application/ld+json\">\n" . json_encode([
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <!-- სარეზერვო ქართული შრიფტი — მთავარი შრიფტია LGV Anastasia 2025 Geo (იხ. assets/fonts/) -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap">
-  <link rel="stylesheet" href="assets/css/style.css?v=c9bcc796">
+  <link rel="stylesheet" href="assets/css/style.css?v=2174167f">
 <?= $HOME_LD ?>
 
 </head>
@@ -167,6 +167,7 @@ $HOME_LD = "\n  <script type=\"application/ld+json\">\n" . json_encode([
             </div></div>
           </li>
           <li><a href="/work">ნამუშევრები</a></li>
+          <li><a href="/plans">ფასები</a></li>
           <li><a href="/blog">ბლოგი</a></li>
           <li><a href="/contact">კონტაქტი</a></li>
           <li><a class="btn btn--primary btn--sm" href="/contact#booking">უფასო კონსულტაცია</a></li>
@@ -625,6 +626,7 @@ $HOME_LD = "\n  <script type=\"application/ld+json\">\n" . json_encode([
             <li><a href="/about">ჩვენ შესახებ</a></li>
             <li><a href="/services">ყველა სერვისი</a></li>
             <li><a href="/work">ნამუშევრები</a></li>
+            <li><a href="/plans">ფასები</a></li>
             <li><a href="/blog">ბლოგი</a></li>
             <li><a href="/#faq">კითხვები</a></li>
             <li><a href="/contact">კონტაქტი</a></li>
@@ -650,6 +652,6 @@ $HOME_LD = "\n  <script type=\"application/ld+json\">\n" . json_encode([
     </div>
   </footer>
 
-  <script src="assets/js/main.js?v=c9bcc796"></script>
+  <script src="assets/js/main.js?v=2174167f"></script>
 </body>
 </html>

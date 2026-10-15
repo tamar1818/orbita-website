@@ -752,6 +752,34 @@ const FORM_ENDPOINT = "/api/lead.php";
   }
 
   /* ------------------------------------------ შეხვედრის დაჯავშნა (/contact) */
+  /* ---------- /plans: თვიური/წლიური გადართვა; ?plan= კონტაქტის ფორმაში ---------- */
+  function initPlans() {
+    const bill = $("[data-bill]");
+    if (bill) {
+      const btns = Array.from(bill.querySelectorAll("[data-bill-set]"));
+      btns.forEach((btn) => btn.addEventListener("click", () => {
+        const mode = btn.dataset.billSet;
+        btns.forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
+        document.querySelectorAll(".plans .price__amount").forEach((el) => {
+          el.querySelector("b").textContent = el.dataset[mode];
+          const unit = el.querySelector("span");
+          unit.textContent = unit.dataset[mode === "year" ? "unitYear" : "unitMonth"];
+        });
+      }));
+    }
+
+    const plan = new URLSearchParams(location.search).get("plan");
+    const names = { care: "მოვლა", start: "საიტი გამოწერით", business: "ბიზნესი" };
+    if (!plan || !names[plan]) return;
+    const topic = document.getElementById("bk-topic");
+    if (topic) topic.value = "საიტი გამოწერით";
+    const msg = "მაინტერესებს პაკეტი: „" + names[plan] + "“";
+    ["bk-message", "contact-message"].forEach((id) => {
+      const el = document.getElementById(id);
+      if (el && !el.value) el.value = msg;
+    });
+  }
+
   function initBooking() {
     const root = $("[data-booking]");
     if (!root) return;
@@ -1165,6 +1193,7 @@ const FORM_ENDPOINT = "/api/lead.php";
     initCopyLink();
     initToc();
     initBooking();
+    initPlans();
     initChatbot();
   });
 })();

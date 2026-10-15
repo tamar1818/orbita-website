@@ -9,7 +9,7 @@ $posts = cms_posts();
 $blogMod = $posts ? (string) ($posts[0]['updated'] ?? $posts[0]['date'] ?? $today) : $today;
 
 // [მისამართი, პრიორიტეტი, ბოლო ცვლილება]
-$pages = [['/', '1.0', $today], ['/services', '0.9', $today], ['/work', '0.9', $today],
+$pages = [['/', '1.0', $today], ['/services', '0.9', $today], ['/work', '0.9', $today], ['/plans', '0.9', $today],
           ['/contact', '0.9', $today], ['/about', '0.8', $today], ['/blog', '0.8', $blogMod],
           ['/service-web-development', '0.9', $today], ['/service-wordpress', '0.9', $today],
           ['/service-ecommerce', '0.9', $today], ['/service-maintenance', '0.8', $today], ['/service-seo', '0.8', $today],

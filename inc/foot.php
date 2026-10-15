@@ -39,6 +39,7 @@
             <li><a href="/about">ჩვენ შესახებ</a></li>
             <li><a href="/services">ყველა სერვისი</a></li>
             <li><a href="/work">ნამუშევრები</a></li>
+            <li><a href="/plans">ფასები</a></li>
           <li><a href="/blog">ბლოგი</a></li>
             
             <li><a href="/#faq">კითხვები</a></li>
@@ -65,6 +66,6 @@
     </div>
   </footer>
 
-  <script src="/assets/js/main.js?v=c9bcc796"></script>
+  <script src="/assets/js/main.js?v=2174167f"></script>
 </body>
 </html>
