@@ -49,23 +49,25 @@
 
         <div class="footer__contact">
           <h4>კონტაქტი</h4>
-          <p><a href="tel:+99532200000"><?= cms_setting("phone", "+995 32 2 00 00 00") ?></a></p>
+          <p><a href="tel:+995557643225"><?= cms_setting("phone", "+995 557 64 32 25") ?></a></p>
           <p><a href="mailto:<?= cms_setting("email", "hello@webico.io") ?>"><?= cms_setting("email", "hello@webico.io") ?></a></p>
-          <p><?= cms_setting("address", "ჭავჭავაძის გამზირი 45, თბილისი 0179") ?></p>
+          <p><?= cms_setting("address", "თბილისი, საქართველო") ?></p>
           <p>ორშ–პარ, 10:00–19:00</p>
         </div>
       </div>
 
       <div class="footer__bottom">
-        <span>&copy; <span id="year">2026</span> ვებიკო. ყველა უფლება დაცულია.</span>
+        <span>&copy; <span id="year">2026</span> Webico — <?= cms_setting("legal_name", "თამარ გელიაშვილი") ?>, ს/ნ <?= cms_setting("legal_id", "01024088829") ?>. ყველა უფლება დაცულია.</span>
         <span class="footer__credit">
-          <a href="/contact">კონფიდენციალურობის პოლიტიკა</a>
-          <a href="/contact">წესები და პირობები</a>
+          <a href="/terms">წესები და პირობები</a>
+          <a href="/privacy">კონფიდენციალურობა</a>
+          <a href="/refund">გაუქმება და დაბრუნება</a>
+          <a href="/delivery">მიწოდება</a>
         </span>
       </div>
     </div>
   </footer>
 
-  <script src="/assets/js/main.js?v=b4f41683"></script>
+  <script src="/assets/js/main.js?v=9036cc0d"></script>
 </body>
 </html>

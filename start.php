@@ -181,6 +181,7 @@ require __DIR__ . '/inc/head.php';
                 <div class="field"><label for="cfg-msg">კომენტარი <small>(არასავალდებულო)</small></label><textarea id="cfg-msg" name="message" rows="3" maxlength="2000" placeholder="მაგ.: მაქვს ლოგო, მინდა მსგავსი საიტი, როგორიც…"></textarea></div>
                 <div class="hp-field" aria-hidden="true"><label for="cfg-hp">არ შეავსოთ</label><input type="text" id="cfg-hp" name="company_website" tabindex="-1" autocomplete="off"></div>
                 <p class="cfg__error" data-cfg-error role="alert" hidden></p>
+                <p class="cfg__consent">შეკვეთის გაგზავნით ეთანხმებით <a href="/terms">წესებსა და პირობებს</a>, <a href="/refund">გაუქმების პოლიტიკას</a> და <a href="/privacy">კონფიდენციალურობის პოლიტიკას</a>.</p>
               </div>
             </div>
           </fieldset>

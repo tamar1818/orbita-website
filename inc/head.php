@@ -38,7 +38,7 @@ $OG_H = !empty($PAGE_IMAGE) ? ($PAGE_IMAGE_H ?? 1024) : 630;
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <!-- სარეზერვო ქართული შრიფტი — მთავარი შრიფტია LGV Anastasia 2025 Geo (იხ. assets/fonts/) -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap">
-  <link rel="stylesheet" href="/assets/css/style.css?v=b4f41683">
+  <link rel="stylesheet" href="/assets/css/style.css?v=9036cc0d">
 <?= $PAGE_LD ?? "" ?>
 </head>
 <body>
@@ -48,7 +48,7 @@ $OG_H = !empty($PAGE_IMAGE) ? ($PAGE_IMAGE_H ?? 1024) : 630;
 
   <aside class="sticky-cta" aria-label="სწრაფი კონტაქტი">
     <span class="sticky-cta__text">გაქვთ პროექტი?<small>უფასო კონსულტაცია 24 საათში</small></span>
-    <a class="sticky-cta__call" href="tel:+99532200000" aria-label="დარეკვა: <?= cms_e(cms_setting("phone", "+995 32 2 00 00 00")) ?>"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></a>
+    <a class="sticky-cta__call" href="tel:+995557643225" aria-label="დარეკვა: <?= cms_e(cms_setting("phone", "+995 557 64 32 25")) ?>"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></a>
     <a class="btn btn--primary" href="/contact">მოგვწერეთ</a>
   </aside>
 
@@ -135,7 +135,7 @@ $OG_H = !empty($PAGE_IMAGE) ? ($PAGE_IMAGE_H ?? 1024) : 630;
         </ul>
 
         <div class="nav__cta">
-          <a class="nav__phone" href="tel:+99532200000"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg><span><?= cms_setting("phone", "+995 32 2 00 00 00") ?></span></a>
+          <a class="nav__phone" href="tel:+995557643225"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg><span><?= cms_setting("phone", "+995 557 64 32 25") ?></span></a>
           <a class="btn btn--primary btn--sm" href="/contact#booking">უფასო კონსულტაცია</a>
           <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-links"
                   aria-label="მენიუს გახსნა"><span></span></button>

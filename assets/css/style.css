@@ -3610,3 +3610,27 @@ a:hover .shot img,
 .start-card__price .price__note { margin-bottom: 14px; }
 .start-card__price .link-arrow { align-self: center; margin-top: 6px; font-size: .92rem; }
 @media (max-width: 860px) { .start-card { grid-template-columns: minmax(0, 1fr); } }
+
+/* --- სამართლებრივი გვერდები --- */
+.legal-updated { margin-top: 10px; font-size: .88rem; color: var(--muted); }
+.legal { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: clamp(24px, 4vw, 64px); align-items: start; }
+.legal__nav { position: sticky; top: 110px; padding: 18px; border-radius: var(--radius); background: var(--bg-soft); }
+.legal__nav p { margin: 0 0 10px; font-size: .78rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.legal__nav ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+.legal__nav a { display: block; padding: 8px 10px; border-radius: 10px; font-weight: 600; font-size: .92rem; color: var(--ink-soft); text-decoration: none; }
+.legal__nav a:hover { background: var(--paper); color: var(--ink); }
+.legal__nav a[aria-current="page"] { background: var(--ink); color: var(--paper); }
+.legal__body { max-width: 760px; }
+.legal-owner { list-style: none !important; padding: 18px 20px !important; margin: 0 0 1.6em !important; border: 1px solid var(--line); border-radius: var(--radius); display: grid; gap: 8px; font-size: .95rem; }
+.legal-owner li { display: grid; grid-template-columns: 210px minmax(0, 1fr); gap: 12px; margin: 0 !important; }
+.legal-owner li::marker { content: ""; }
+.legal-owner b { color: var(--muted); font-weight: 600; }
+.legal__contact { margin-top: 2em !important; padding-top: 1.2em; border-top: 1px solid var(--line); }
+.cfg__consent { margin: 12px 0 0; font-size: .84rem; color: var(--muted); }
+.cfg__consent a { color: var(--ink); text-decoration: underline; }
+@media (max-width: 860px) {
+  .legal { grid-template-columns: minmax(0, 1fr); }
+  .legal__nav { position: static; }
+  .legal-owner li { grid-template-columns: minmax(0, 1fr); gap: 0; }
+}
+h1, h2 { overflow-wrap: break-word; }

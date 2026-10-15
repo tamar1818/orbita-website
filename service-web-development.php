@@ -32,7 +32,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <!-- სარეზერვო ქართული შრიფტი — მთავარი შრიფტია LGV Anastasia 2025 Geo (იხ. assets/fonts/) -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap">
-  <link rel="stylesheet" href="assets/css/style.css?v=b4f41683">
+  <link rel="stylesheet" href="assets/css/style.css?v=9036cc0d">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -122,7 +122,7 @@
 
   <aside class="sticky-cta" aria-label="სწრაფი კონტაქტი">
     <span class="sticky-cta__text">გაქვთ პროექტი?<small>უფასო კონსულტაცია 24 საათში</small></span>
-    <a class="sticky-cta__call" href="tel:+99532200000" aria-label="დარეკვა: +995 32 2 00 00 00"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></a>
+    <a class="sticky-cta__call" href="tel:+995557643225" aria-label="დარეკვა: +995 557 64 32 25"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></a>
     <a class="btn btn--primary" href="/contact">მოგვწერეთ</a>
   </aside>
 
@@ -209,7 +209,7 @@
         </ul>
 
         <div class="nav__cta">
-          <a class="nav__phone" href="tel:+99532200000"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg><span>+995 32 2 00 00 00</span></a>
+          <a class="nav__phone" href="tel:+995557643225"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg><span>+995 557 64 32 25</span></a>
           <a class="btn btn--primary btn--sm" href="/contact#booking">უფასო კონსულტაცია</a>
           <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-links"
                   aria-label="მენიუს გახსნა"><span></span></button>
@@ -233,7 +233,7 @@
           <p>ვქმნით საიტებს ნულიდან — სტრატეგიით, დიზაინით და სუფთა კოდით. ყოველი პროექტი იწყება კითხვით: რა მოქმედება უნდა შეასრულოს ვიზიტორმა და რა უშლის მას ხელს?</p>
           <div class="btn-row">
             <a class="btn btn--primary" href="#request">განაცხადის გაგზავნა <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
-            <a class="btn btn--ghost" href="tel:+99532200000">დარეკვა: +995 32 2 00 00 00</a>
+            <a class="btn btn--ghost" href="tel:+995557643225">დარეკვა: +995 557 64 32 25</a>
           </div>
         </div>
       </div>
@@ -360,7 +360,7 @@
             </ul>
             <div class="contact-item" style="margin-top:22px">
               <span class="contact-item__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></span>
-              <span><b>ტელეფონი</b><a href="tel:+99532200000">+995 32 2 00 00 00</a></span>
+              <span><b>ტელეფონი</b><a href="tel:+995557643225">+995 557 64 32 25</a></span>
             </div>
             <div class="contact-item">
               <span class="contact-item__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22 6 12 13 2 6"/></svg></span>
@@ -539,7 +539,7 @@
             <h2>დაიწყეთ უფასო კონსულტაციით</h2>
             <p>მოგვწერეთ და უსასყიდლოდ შევაფასებთ თქვენს ამოცანას: რა არის საჭირო, რა თანმიმდევრობით და რა ბიუჯეტში ჯდება.</p>
             <div class="btn-row" style="margin-top:26px">
-              <a class="btn btn--white" href="tel:+99532200000">დარეკეთ: +995 32 2 00 00 00</a>
+              <a class="btn btn--white" href="tel:+995557643225">დარეკეთ: +995 557 64 32 25</a>
               <a class="btn btn--light" href="mailto:hello@webico.io">hello@webico.io</a>
             </div>
           </div>
@@ -621,23 +621,25 @@
 
         <div class="footer__contact">
           <h4>კონტაქტი</h4>
-          <p><a href="tel:+99532200000">+995 32 2 00 00 00</a></p>
+          <p><a href="tel:+995557643225">+995 557 64 32 25</a></p>
           <p><a href="mailto:hello@webico.io">hello@webico.io</a></p>
-          <p>ჭავჭავაძის გამზირი 45, თბილისი 0179</p>
+          <p>თბილისი, საქართველო</p>
           <p>ორშ–პარ, 10:00–19:00</p>
         </div>
       </div>
 
       <div class="footer__bottom">
-        <span>&copy; <span id="year">2026</span> ვებიკო. ყველა უფლება დაცულია.</span>
+        <span>&copy; <span id="year">2026</span> Webico — თამარ გელიაშვილი, ს/ნ 01024088829. ყველა უფლება დაცულია.</span>
         <span class="footer__credit">
-          <a href="/contact">კონფიდენციალურობის პოლიტიკა</a>
-          <a href="/contact">წესები და პირობები</a>
+          <a href="/terms">წესები და პირობები</a>
+          <a href="/privacy">კონფიდენციალურობა</a>
+          <a href="/refund">გაუქმება და დაბრუნება</a>
+          <a href="/delivery">მიწოდება</a>
         </span>
       </div>
     </div>
   </footer>
 
-  <script src="assets/js/main.js?v=b4f41683"></script>
+  <script src="assets/js/main.js?v=9036cc0d"></script>
 </body>
 </html>
