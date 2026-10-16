@@ -6,6 +6,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
+    "build": "echo \"build step not needed\"",
     "dev": "node --watch server.js"
   },
   "engines": {
