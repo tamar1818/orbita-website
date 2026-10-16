@@ -4,13 +4,16 @@ Thumbs.db
 .vscode/
 .idea/
 
+# Node.js
+node_modules/
+.env
+
 # CMS — საიდუმლო და პერსონალური მონაცემები git-ში არ ინახება
-content/auth.php
+content/auth.json
+content/secret.json
 content/leads.json
 content/bookings.json
-content/.bookings.lock
 content/*.tmp
 
 # ატვირთული ფოტოები სერვერზე რჩება
-assets/img/uploads/*
-!assets/img/uploads/.htaccess
+assets/img/uploads/
