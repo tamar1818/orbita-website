@@ -137,8 +137,8 @@ h1 {
   letter-spacing: -.045em;
 }
 h2 { font-size: clamp(1.9rem, 1.3rem + 2.5vw, 3.1rem); line-height: 1.06; letter-spacing: -.04em; }
-h3 { font-size: clamp(1.2rem, 1.06rem + .7vw, 1.55rem); line-height: 1.1; }
-h4 { font-size: 1.05rem; }
+h3 { font-size: clamp(1.32rem, 1.12rem + .8vw, 1.7rem); line-height: 1.15; }
+h4 { font-size: 1.2rem; }
 
 p { margin: 0 0 1.1em; }
 p:last-child { margin-bottom: 0; }
@@ -706,7 +706,7 @@ li { margin-bottom: .4em; }
 .quote blockquote {
   margin: 0 0 24px;
   font-family: var(--font-display);
-  font-size: 1.22rem; line-height: 1.32;
+  font-size: 1.35rem; line-height: 1.32;
   letter-spacing: -.02em; color: var(--ink);
 }
 .quote blockquote::before { content: "„"; }
@@ -928,7 +928,7 @@ li { margin-bottom: .4em; }
 .timeline time {
   display: block; margin-bottom: 5px;
   font-family: var(--font-display);
-  font-size: 1.15rem; font-weight: 700; letter-spacing: -.03em;
+  font-size: 1.3rem; font-weight: 700; letter-spacing: -.03em;
   color: var(--ink); font-variant-numeric: tabular-nums;
 }
 .timeline b { display: block; font-size: 1rem; color: var(--ink); }
@@ -1820,7 +1820,7 @@ li { margin-bottom: .4em; }
   border-radius: var(--radius-pill);
   background: var(--bg-card);
   font-family: var(--font-display);
-  font-size: clamp(.98rem, .9rem + .3vw, 1.2rem);
+  font-size: clamp(1.1rem, 1rem + .35vw, 1.35rem);
   font-weight: 700;
   letter-spacing: -.02em;
   color: var(--ink);
@@ -2386,7 +2386,7 @@ a:hover .shot img,
 .svc--soft  { --tone: #e9e9ec; }
 .svc__num {
   font-family: var(--font-display);
-  font-size: .95rem;
+  font-size: 1.05rem;
   font-weight: 700;
   color: var(--muted);
   font-variant-numeric: tabular-nums;
@@ -2462,12 +2462,12 @@ a:hover .shot img,
   transition: border-color .25s ease, background-color .25s ease, transform .25s ease;
 }
 .bento__tile:hover { border-color: rgba(255, 255, 255, .3); background: rgba(255, 255, 255, .07); }
-.bento__tile h3 { font-size: 1.28rem; margin: auto 0 0; color: #fff; }
+.bento__tile h3 { font-size: 1.45rem; margin: auto 0 0; color: #fff; }
 .bento__tile p { margin: 0; font-size: .95rem; color: rgba(255, 255, 255, .64); }
 .bento__tile--report { grid-column: span 2; grid-row: span 2; }
 .bento__tile--report .bento__text h3 { margin-top: 0; }
 .bento__tile--tools { grid-column: 1 / -1; min-height: 0; }
-.bento__tile--tools h3 { margin: 0 0 14px; font-size: 1.05rem; color: rgba(255, 255, 255, .8); }
+.bento__tile--tools h3 { margin: 0 0 14px; font-size: 1.25rem; color: rgba(255, 255, 255, .8); }
 .bento__tile--tools .marquee { -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent); mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent); }
 .bento__tile--tools .tool-chip { background: rgba(255, 255, 255, .06); border-color: rgba(255, 255, 255, .14); color: #fff; }
 .bento__tile--ka { background: var(--lilac); border-color: transparent; }
@@ -3424,7 +3424,7 @@ a:hover .shot img,
   background: var(--bg-card);
   border: 1px solid var(--line);
 }
-.addon h3 { margin: 0; font-size: 1.12rem; }
+.addon h3 { margin: 0; font-size: 1.4rem; line-height: 1.15; }
 .addon p { margin: 0 0 8px; color: var(--muted); font-size: .93rem; }
 .addon__price {
   margin-top: auto; align-self: flex-start;
