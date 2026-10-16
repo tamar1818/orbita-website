@@ -184,7 +184,8 @@
             "slug": "cloud-streaming",
             "name": "Cloud Streaming Technology",
             "domain": "cloudstreamingtechnology.com",
-            "tone": "lime"
+            "tone": "lime",
+            "shot": "assets/img/work/cloud-streaming-website.webp"
         },
         {
             "slug": "the-lawlex",
@@ -253,39 +254,8 @@
             "slug": "morevi",
             "name": "Morevi",
             "domain": "morevi.ge",
-            "tone": "soft"
-        },
-        {
-            "slug": "smarter",
-            "name": "Smarter",
-            "domain": "smarter.ge",
-            "tone": "lilac",
-            "partner": "Timeless Agency",
-            "shot": "assets/img/work/smarter-website.webp"
-        },
-        {
-            "slug": "e-motions",
-            "name": "E-Motions",
-            "domain": "e-motions.ge",
-            "tone": "lime",
-            "partner": "Timeless Agency",
-            "shot": "assets/img/work/e-motions-website.webp"
-        },
-        {
-            "slug": "office-pros",
-            "name": "Office Pros",
-            "domain": "officepros.ge",
-            "tone": "pink",
-            "partner": "Timeless Agency",
-            "shot": "assets/img/work/office-pros-website.webp"
-        },
-        {
-            "slug": "safety-hub",
-            "name": "Safety Hub",
-            "domain": "safetyhub.ge",
             "tone": "soft",
-            "partner": "Timeless Agency",
-            "shot": "assets/img/work/safety-hub-website.webp"
+            "shot": "assets/img/work/morevi-website.webp"
         }
     ]
 }
