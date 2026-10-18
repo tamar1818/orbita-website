@@ -8,7 +8,7 @@ const HOME_FAQ = require('../data/home-faq.json');
 
 const { map, truthy, empty } = require('../lib/tpl');
 const { packages, fmt } = require('../lib/pricing');
-const { bentoHero } = require('../lib/hero');
+const { heroWall } = require('../lib/hero');
 const decode = (s) => String(s).replace(/&quot;/g, '"').replace(/&#0?39;/g, "'").replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&');
 
 function homeLd() {
@@ -37,6 +37,7 @@ function render() {
   const allp = projects();
   const shots = showcase().filter((x) => String(x.shot ?? '').trim() !== '');
   const pk = packages();
+  const prev = (sl) => { const f = shots.find((x) => x.slug === sl) || shots[0]; return f ? e(url(f.shot)) : ''; };
   const PICK = ['arlo-funding', 'gcci-germany', 'linden-spa', 'outsourcify'];
   const heroCases = PICK.map((sl) => shots.find((x) => x.slug === sl)).filter(Boolean).concat(shots.filter((x) => !PICK.includes(x.slug))).slice(0, 4);
   const half = Math.ceil(shots.length / 2);
@@ -184,18 +185,17 @@ ${HOME_LD}
   <main id="main">
 
     <!-- ============================ HERO ============================ -->
-${bentoHero({
-    base: '',
-    label: 'დიზაინისა და დეველოპმენტის სტუდია',
-    title: `${T('home.hero2.title_a', 'დიზაინი და კოდი,')} ${T('home.hero2.title_b', 'რომელიც')} <em>${T('home.hero2.title_em', 'ბრენდს')}</em> ${T('home.hero2.title_c', 'აძლიერებს')}`,
-    text: decode(T('home.hero2.text', 'Webico დიზაინისა და დეველოპმენტის სტუდიაა თბილისში. ვქმნით ვებსაიტებს, ონლაინ მაღაზიებს და ციფრულ პროდუქტებს ქართული და საერთაშორისო კომპანიებისთვის.')),
-    cta: [decode(T('home.hero2.cta', 'დაიწყეთ პროექტი')), '/contact'],
-    work: ['ნამუშევრები', '/work'],
-    cases: [shots.find((x) => x.slug === 'bitefit') || heroCases[0]].map((f) => ({ name: f.name, slug: f.slug, shot: f.shot, tag: tags(f)[0] })),
-    stat: [allp.length + '+', 'პროექტი ქართული და საერთაშორისო კომპანიებისთვის'],
-    doTitle: 'რას ვაკეთებთ',
-    doList: ['ვებსაიტები', 'ონლაინ მაღაზიები', 'UI/UX დიზაინი', 'SEO'],
-  })}
+${(() => {
+    const H = {
+      base: '',
+      title: `${T('home.hero2.title_a', 'დიზაინი და კოდი,')} ${T('home.hero2.title_b', 'რომელიც')} <em>${T('home.hero2.title_em', 'ბრენდს')}</em> ${T('home.hero2.title_c', 'აძლიერებს')}`,
+      text: decode(T('home.hero2.text', 'Webico დიზაინისა და დეველოპმენტის სტუდიაა თბილისში. ვქმნით ვებსაიტებს, ონლაინ მაღაზიებს და ციფრულ პროდუქტებს ქართული და საერთაშორისო კომპანიებისთვის.')),
+      cta: [decode(T('home.hero2.cta', 'დაიწყეთ პროექტი')), '/contact'],
+      work: ['ნამუშევრები', '/work'],
+      wall: shots.slice(0, 16).map((f) => ({ name: f.name, slug: f.slug, shot: f.shot })),
+    };
+    return heroWall(H);
+  })()}
     <!-- ================== ნამუშევრების ორმაგი ლენტი ================== -->
     ${truthy(shots.length) ? `    <section class="showcase" aria-label="ნამუშევრები">
       ${map([shots.slice(0, half), shots.slice(half)].map((row, r) => [row, r]).filter(([row]) => row.length), ([row, r]) => { return `      <div class="showcase__row${r ? ' showcase__row--rev' : ''}">
@@ -221,7 +221,7 @@ ${bentoHero({
             და ყოველთვის იცით, ვის ჰკითხოთ.</p>
         </div>
         <div class="svc-list" data-reveal>
-          <a class="svc svc--lilac" href="/service-web-development">
+          <a class="svc svc--lilac" href="/service-web-development" data-preview="${prev('arlo-funding')}">
             <div class="svc__main">
               <h3 class="svc__title">ვებსაიტის დამზადება</h3>
               <span class="svc__desc"><span>კომპანიის საიტი, ლენდინგი ან ვებ-აპლიკაცია. სწრაფი, მობილურზე მოხერხებული და გასაგები.</span></span>
@@ -229,7 +229,7 @@ ${bentoHero({
             <span class="svc__tags"><span>კორპორატიული</span><span>ლენდინგი</span><span>ვებ-აპლიკაცია</span></span>
             <span class="svc__go">${ARROW}</span>
           </a>
-          <a class="svc svc--lime" href="/service-wordpress">
+          <a class="svc svc--lime" href="/service-wordpress" data-preview="${prev('outsourcify')}">
             <div class="svc__main">
               <h3 class="svc__title">WordPress დეველოპმენტი</h3>
               <span class="svc__desc"><span>საკუთარი თემა, Elementor და ACF. ტექსტებს და ფოტოებს თვითონ შეცვლით.</span></span>
@@ -237,7 +237,7 @@ ${bentoHero({
             <span class="svc__tags"><span>WordPress</span><span>Elementor</span><span>ACF</span></span>
             <span class="svc__go">${ARROW}</span>
           </a>
-          <a class="svc svc--pink" href="/service-ecommerce">
+          <a class="svc svc--pink" href="/service-ecommerce" data-preview="${prev('tamaras-collect')}">
             <div class="svc__main">
               <h3 class="svc__title">ონლაინ მაღაზიის შექმნა</h3>
               <span class="svc__desc"><span>WooCommerce ან Shopify, ბარათით გადახდით და მიწოდების პირობებით.</span></span>
@@ -245,7 +245,7 @@ ${bentoHero({
             <span class="svc__tags"><span>WooCommerce</span><span>Shopify</span><span>გადახდები</span></span>
             <span class="svc__go">${ARROW}</span>
           </a>
-          <a class="svc svc--soft" href="/service-branding">
+          <a class="svc svc--soft" href="/service-branding" data-preview="${prev('linden-spa')}">
             <div class="svc__main">
               <h3 class="svc__title">UI/UX დიზაინი და ბრენდინგი</h3>
               <span class="svc__desc"><span>ინტერფეისის დიზაინი Figma-ში, ლოგო და ბრენდბუქი.</span></span>
@@ -253,7 +253,7 @@ ${bentoHero({
             <span class="svc__tags"><span>UI/UX</span><span>Figma</span><span>ბრენდბუქი</span></span>
             <span class="svc__go">${ARROW}</span>
           </a>
-          <a class="svc svc--lilac" href="/service-seo">
+          <a class="svc svc--lilac" href="/service-seo" data-preview="${prev('gcci-germany')}">
             <div class="svc__main">
               <h3 class="svc__title">SEO ოპტიმიზაცია</h3>
               <span class="svc__desc"><span>ტექნიკური SEO, საძიებო სიტყვები და ქართული ტექსტები, რომ Google-ში გიპოვონ.</span></span>
@@ -261,7 +261,7 @@ ${bentoHero({
             <span class="svc__tags"><span>ტექნიკური SEO</span><span>სემანტიკა</span><span>ლოკალური SEO</span></span>
             <span class="svc__go">${ARROW}</span>
           </a>
-          <a class="svc svc--lime" href="/service-maintenance">
+          <a class="svc svc--lime" href="/service-maintenance" data-preview="${prev('bitefit')}">
             <div class="svc__main">
               <h3 class="svc__title">საიტის ტექნიკური მხარდაჭერა</h3>
               <span class="svc__desc"><span>განახლებები, უსაფრთხოება, ასლები და მცირე ცვლილებები ყოველთვე.</span></span>
@@ -269,7 +269,7 @@ ${bentoHero({
             <span class="svc__tags"><span>განახლებები</span><span>უსაფრთხოება</span><span>ასლები</span></span>
             <span class="svc__go">${ARROW}</span>
           </a>
-          <a class="svc svc--pink" href="/service-marketing">
+          <a class="svc svc--pink" href="/service-marketing" data-preview="${prev('marketing-agency')}">
             <div class="svc__main">
               <h3 class="svc__title">ციფრული მარკეტინგი</h3>
               <span class="svc__desc"><span>რეკლამა Google-ში, Facebook-ზე, Instagram-ზე და TikTok-ზე. ხედავთ, რა მოიტანა თითოეულმა ლარმა.</span></span>

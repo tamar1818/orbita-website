@@ -768,6 +768,54 @@ const FORM_ENDPOINT = "/api/lead.php";
   /* ---------- /plans: თვიური/წლიური გადართვა; ?plan= — პაკეტი ჯავშნის ფორმაში ---------- */
 
 
+  /* კურსორის წარწერა ნამუშევრებზე და სერვისების სურათი */
+  function initPointer() {
+    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const en = document.documentElement.lang === "en";
+    const items = $$(".svc-work__item, .showcase__item, .case-card, .work-card");
+    if (items.length) {
+      const tag = document.createElement("div");
+      tag.className = "cursor-tag";
+      tag.setAttribute("aria-hidden", "true");
+      tag.textContent = en ? "View" : "ნახვა";
+      document.body.append(tag);
+      items.forEach((el) => {
+        el.setAttribute("data-cursor", "");
+        el.addEventListener("mouseenter", () => tag.classList.add("is-on"));
+        el.addEventListener("mouseleave", () => tag.classList.remove("is-on"));
+      });
+      document.addEventListener("mousemove", (e) => {
+        tag.style.setProperty("--x", e.clientX + "px");
+        tag.style.setProperty("--y", e.clientY + "px");
+      }, { passive: true });
+    }
+
+    const rows = $$(".svc-list [data-preview]");
+    if (!rows.length) return;
+    const box = document.createElement("div");
+    box.className = "svc-preview";
+    box.setAttribute("aria-hidden", "true");
+    const img = document.createElement("img");
+    img.alt = "";
+    box.append(img);
+    document.body.append(box);
+    rows.forEach((row) => {
+      const pre = new Image();
+      pre.src = row.dataset.preview;
+      row.addEventListener("mouseenter", () => {
+        img.src = row.dataset.preview;
+        box.style.setProperty("--r", (Math.random() * 6 - 3).toFixed(1) + "deg");
+        box.classList.add("is-on");
+      });
+      row.addEventListener("mouseleave", () => box.classList.remove("is-on"));
+      row.addEventListener("mousemove", (e) => {
+        box.style.setProperty("--x", e.clientX + "px");
+        box.style.setProperty("--y", e.clientY + "px");
+      }, { passive: true });
+    });
+  }
+
   function initPlans() {
     const bill = $("[data-bill]");
     if (bill) {
@@ -1361,6 +1409,7 @@ const FORM_ENDPOINT = "/api/lead.php";
     initSplit();
     initCopyLink();
     initToc();
+    initPointer();
     initBooking();
     initPlans();
     initConfigurator();

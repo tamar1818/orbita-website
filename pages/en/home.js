@@ -5,7 +5,7 @@ const { head, foot } = require('../../lib/layout-en');
 const { mock } = require('../../lib/projects');
 const { map, ldJson } = require('../../lib/tpl');
 const S = require('./shared');
-const { bentoHero } = require('../../lib/hero');
+const { heroWall } = require('../../lib/hero');
 
 const FAQ = [
   ['Do you work with clients outside Georgia?', 'Yes. We work in English with companies in Europe, the US and the Gulf. Calls happen over Google Meet or Zoom, and we overlap with European business hours.'],
@@ -15,12 +15,15 @@ const FAQ = [
   ['Do you support the site after launch?', 'Yes. We offer monthly maintenance: updates, security, backups and small changes.'],
 ];
 
+const PREVIEW = { websites: 'arlo-funding', ecommerce: 'tamaras-collect', wordpress: 'outsourcify', design: 'linden-spa', seo: 'gcci-germany', care: 'bitefit' };
+
 function render() {
   const all = S.projects();
   const shots = S.withShots();
   const PICK = ['arlo-funding', 'gcci-germany', 'linden-spa', 'outsourcify'];
   const cases = PICK.map((sl) => shots.find((x) => x.slug === sl)).filter(Boolean).slice(0, 4);
   const grid = shots.slice(0, 6);
+  const prev = (sl) => { const f = shots.find((x) => x.slug === sl) || shots[0]; return f ? e(url(f.shot)) : ''; };
 
   const ld = {
     '@context': 'https://schema.org',
@@ -37,17 +40,13 @@ function render() {
     alt: '/',
     ld: '\n  <script type="application/ld+json">' + ldJson(ld) + '</script>',
   }) + `
-${bentoHero({
+${heroWall({
     base: '/en',
-    label: 'Design & development studio',
     title: 'Design and code that make your <em>brand</em> stronger',
     text: 'Webico is a design and development studio in Tbilisi. We build websites, online stores and digital products for companies in Georgia and abroad.',
     cta: ['Start a project', '/en/contact'],
     work: ['See our work', '/en/work'],
-    cases: [shots.find((x) => x.slug === 'bitefit') || cases[0]].map((f) => ({ name: f.name, slug: f.slug, shot: f.shot, tag: S.projectTags(f)[0] })),
-    stat: [all.length + '+', 'projects for companies in Georgia and abroad'],
-    doTitle: 'What we do',
-    doList: ['Websites', 'Online stores', 'UI/UX design', 'SEO'],
+    wall: shots.slice(0, 16),
   })}
     <section class="section" id="services">
       <div class="container">
@@ -56,7 +55,7 @@ ${bentoHero({
           <p>One team handles design, code and growth, so nothing gets lost between agencies.</p>
         </div>
         <div class="svc-list" data-reveal>${map(S.SERVICES, (s) => `
-          <a class="svc svc--${s.tone}" href="/en/services#${s.id}">
+          <a class="svc svc--${s.tone}" href="/en/services#${s.id}" data-preview="${prev(PREVIEW[s.id])}">
             <div class="svc__main">
               <h3 class="svc__title">${e(s.title)}</h3>
               <span class="svc__desc"><span>${e(s.text)}</span></span>
