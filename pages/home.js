@@ -132,7 +132,7 @@ ${HOME_LD}
               </a>
               <a class="mega__item" href="/service-marketing">
                 <span class="mega__icon mega__icon--pink"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></span>
-                <span><b>ციფრული მარკეტინგი</b><small>Google Ads, Meta და TikTok კამპანიები გაზომვადი შედეგით</small></span>
+                <span><b>ციფრული მარკეტინგი</b><small>რეკლამა Google-ში, Facebook-ზე და TikTok-ზე</small></span>
                 <svg class="mega__go" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
               </a>
               <a class="mega__item" href="/service-branding">
@@ -155,7 +155,7 @@ ${HOME_LD}
                   </ul>
                 </div>
                 <div class="mega__foot">
-                  <span>ვმუშაობთ სტანდარტულ ინსტრუმენტებზე — პროექტი არავის „დაბმული“ არ რჩება.</span>
+                  <span>ვმუშაობთ ცნობილ ინსტრუმენტებზე, ამიტომ საიტი ჩვენზე მიბმული არ რჩება.</span>
                   <a class="link-arrow" href="/services">ყველა სერვისი და ფასები</a>
                 </div>
               </div>
@@ -246,15 +246,15 @@ ${HOME_LD}
         <div class="section-head section-head--center" data-reveal>
           <span class="eyebrow">რას ვაკეთებთ</span>
           <h2>ვებ დიზაინისა და დეველოპმენტის სერვისები</h2>
-          <p>დიზაინიდან რეკლამამდე ყველა ეტაპზე ერთი გუნდი მუშაობს — ინფორმაცია არ იკარგება და
-            პასუხისმგებლობაც ერთ ადგილასაა.</p>
+          <p>დიზაინს, კოდს და რეკლამას ერთი გუნდი აკეთებს. ასე არაფერი იკარგება
+            და ყოველთვის იცით, ვის ჰკითხოთ.</p>
         </div>
         <div class="svc-list" data-reveal>
           <a class="svc svc--lilac" href="/service-web-development">
             <span class="svc__num">01</span>
             <div class="svc__main">
               <h3 class="svc__title">ვებსაიტის დამზადება</h3>
-              <span class="svc__desc"><span>კორპორატიული საიტები, ლენდინგები და ვებ-აპლიკაციები, რომლებიც სწრაფად იტვირთება და ვიზიტორს კლიენტად აქცევს.</span></span>
+              <span class="svc__desc"><span>კომპანიის საიტი, ლენდინგი ან ვებ-აპლიკაცია. სწრაფი, მობილურზე მოხერხებული და გასაგები.</span></span>
             </div>
             <span class="svc__tags"><span>კორპორატიული</span><span>ლენდინგი</span><span>ვებ-აპლიკაცია</span></span>
             <span class="svc__go">${ARROW}</span>
@@ -263,7 +263,7 @@ ${HOME_LD}
             <span class="svc__num">02</span>
             <div class="svc__main">
               <h3 class="svc__title">WordPress დეველოპმენტი</h3>
-              <span class="svc__desc"><span>ინდივიდუალური თემები, Elementor, ACF და საკუთარი პლაგინები — საიტი, რომელსაც თავად მართავთ.</span></span>
+              <span class="svc__desc"><span>საკუთარი თემა, Elementor და ACF. ტექსტებს და ფოტოებს თვითონ შეცვლით.</span></span>
             </div>
             <span class="svc__tags"><span>WordPress</span><span>Elementor</span><span>ACF</span></span>
             <span class="svc__go">${ARROW}</span>
@@ -272,7 +272,7 @@ ${HOME_LD}
             <span class="svc__num">03</span>
             <div class="svc__main">
               <h3 class="svc__title">ონლაინ მაღაზიის შექმნა</h3>
-              <span class="svc__desc"><span>WooCommerce და Shopify მაღაზიები ქართული ბანკების გადახდით, მიწოდებით და მოსახერხებელი კალათით.</span></span>
+              <span class="svc__desc"><span>WooCommerce ან Shopify, ბარათით გადახდით და მიწოდების პირობებით.</span></span>
             </div>
             <span class="svc__tags"><span>WooCommerce</span><span>Shopify</span><span>გადახდები</span></span>
             <span class="svc__go">${ARROW}</span>
@@ -281,7 +281,7 @@ ${HOME_LD}
             <span class="svc__num">04</span>
             <div class="svc__main">
               <h3 class="svc__title">UI/UX დიზაინი და ბრენდინგი</h3>
-              <span class="svc__desc"><span>ინტერფეისი Figma-ში, ლოგო და ბრენდბუქი — დიზაინი, რომელიც ნდობას აჩენს.</span></span>
+              <span class="svc__desc"><span>ინტერფეისის დიზაინი Figma-ში, ლოგო და ბრენდბუქი.</span></span>
             </div>
             <span class="svc__tags"><span>UI/UX</span><span>Figma</span><span>ბრენდბუქი</span></span>
             <span class="svc__go">${ARROW}</span>
@@ -290,7 +290,7 @@ ${HOME_LD}
             <span class="svc__num">05</span>
             <div class="svc__main">
               <h3 class="svc__title">SEO ოპტიმიზაცია</h3>
-              <span class="svc__desc"><span>ტექნიკური SEO, საკვანძო სიტყვების კვლევა და ქართულენოვანი კონტენტი, რომ Google-ში გიპოვონ.</span></span>
+              <span class="svc__desc"><span>ტექნიკური SEO, საძიებო სიტყვები და ქართული ტექსტები, რომ Google-ში გიპოვონ.</span></span>
             </div>
             <span class="svc__tags"><span>ტექნიკური SEO</span><span>სემანტიკა</span><span>ლოკალური SEO</span></span>
             <span class="svc__go">${ARROW}</span>
@@ -299,7 +299,7 @@ ${HOME_LD}
             <span class="svc__num">06</span>
             <div class="svc__main">
               <h3 class="svc__title">საიტის ტექნიკური მხარდაჭერა</h3>
-              <span class="svc__desc"><span>განახლებები, უსაფრთხოება, სარეზერვო ასლები და მცირე ცვლილებები ყოველთვიური მომსახურებით.</span></span>
+              <span class="svc__desc"><span>განახლებები, უსაფრთხოება, ასლები და მცირე ცვლილებები ყოველთვე.</span></span>
             </div>
             <span class="svc__tags"><span>განახლებები</span><span>უსაფრთხოება</span><span>ასლები</span></span>
             <span class="svc__go">${ARROW}</span>
@@ -308,7 +308,7 @@ ${HOME_LD}
             <span class="svc__num">07</span>
             <div class="svc__main">
               <h3 class="svc__title">ციფრული მარკეტინგი</h3>
-              <span class="svc__desc"><span>Google Ads, Meta და TikTok კამპანიები გაზომვადი შედეგითა და გამჭვირვალე ანგარიშგებით.</span></span>
+              <span class="svc__desc"><span>რეკლამა Google-ში, Facebook-ზე, Instagram-ზე და TikTok-ზე. ხედავთ, რა მოიტანა თითოეულმა ლარმა.</span></span>
             </div>
             <span class="svc__tags"><span>Google Ads</span><span>Meta</span><span>TikTok</span></span>
             <span class="svc__go">${ARROW}</span>
@@ -322,16 +322,16 @@ ${HOME_LD}
       <div class="container">
         <div class="section-head section-head--center" data-reveal>
           <span class="eyebrow">რატომ ვებიკო</span>
-          <h2>გამჭვირვალობა, რომელსაც ციფრებში ხედავთ</h2>
-          <p>არ გვჯერა „ლამაზი ანგარიშების“, რომლებიც არაფერს ამბობს. ყოველი პროექტის დასაწყისში
-            ვათანხმებთ კონკრეტულ მაჩვენებლებს და ყოველთვიურად გაჩვენებთ, სად ვართ.</p>
+          <h2>ხედავთ, რაზე იხარჯება ფული</h2>
+          <p>დასაწყისშივე ვთანხმდებით, რას ვზომავთ. მერე ყოველთვე გაჩვენებთ,
+            რა შეიცვალა და რა გავაკეთეთ.</p>
         </div>
 
         <div class="bento">
           <article class="bento__tile bento__tile--report" data-reveal>
             <div class="bento__text">
               <h3>ცოცხალი დაფა</h3>
-              <p>შედეგს ნებისმიერ დროს ხედავთ — არა მხოლოდ თვის ბოლოს მიღებულ PDF-ში.</p>
+              <p>შედეგს ნებისმიერ დროს ნახავთ, თვის ბოლომდე ლოდინი არ გჭირდებათ.</p>
             </div>
             <div class="mock mock--bento" aria-hidden="true">
               <div class="mock__bar"><i></i><i></i><i></i><span>ანგარიშის მაგალითი</span></div>
@@ -353,25 +353,25 @@ ${HOME_LD}
               <text x="60" y="68" text-anchor="middle">90+</text>
             </svg>
             <h3>სისწრაფე PageSpeed-ზე</h3>
-            <p>სწრაფი საიტი მობილურზე ნაკლებ ვიზიტორს კარგავს.</p>
+            <p>ნელ საიტს ტელეფონიდან ბევრი ტოვებს. ჩვენი საიტები სწრაფად იხსნება.</p>
           </article>
 
           <article class="bento__tile bento__tile--manager" data-reveal data-reveal-delay="120">
             <span class="bento__icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
             <h3>პირადი მენეჯერი</h3>
-            <p>ერთი ადამიანი, რომელიც პროექტს იცნობს, და ყოველკვირეული სტატუსი.</p>
+            <p>ერთი ადამიანი, რომელიც თქვენს პროექტს იცნობს და კვირაში ერთხელ გწერთ, სად ვართ.</p>
           </article>
 
           <article class="bento__tile bento__tile--ka" data-reveal data-reveal-delay="60">
             <span class="bento__glyph" aria-hidden="true">ა</span>
             <h3>ქართულად, ბუნებრივად</h3>
-            <p>კონტენტს ვწერთ ქართულად — მანქანური თარგმანის გარეშე.</p>
+            <p>ტექსტებს ქართულად ვწერთ, მანქანური თარგმანის გარეშე.</p>
           </article>
 
           <article class="bento__tile bento__tile--own" data-reveal data-reveal-delay="120">
             <span class="bento__icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="7.5" cy="15.5" r="4.5"/><path d="M10.7 12.3 21 2"/><path d="m16 7 3 3"/><path d="m18 5 3 3"/></svg></span>
             <h3>ყველაფერი თქვენია</h3>
-            <p>კოდი, დომენი, ანალიტიკა და სარეკლამო ანგარიშები თქვენს საკუთრებაში რჩება.</p>
+            <p>დომენი, ანალიტიკა და სარეკლამო ანგარიშები თქვენს სახელზეა.</p>
           </article>
 
           <article class="bento__tile bento__tile--tools" data-reveal>
@@ -396,25 +396,25 @@ ${HOME_LD}
       <div class="container">
         <div class="section-head section-head--center" data-reveal>
           <span class="eyebrow">როგორ ვმუშაობთ</span>
-          <h2>ოთხი ნაბიჯი პირველი შეხვედრიდან შედეგამდე</h2>
-          <p>პროცესი ყოველთვის ერთნაირად გამჭვირვალეა — იცით, რა ეტაპზეა პროექტი და რა მოჰყვება შემდეგ.</p>
+          <h2>როგორ მიმდინარეობს მუშაობა</h2>
+          <p>ყოველთვის იცით, რა ეტაპზეა პროექტი და რა იქნება შემდეგ.</p>
         </div>
         <div class="steps">
           <article class="step" data-reveal data-reveal-delay="0">
             <h3>გაცნობა</h3>
-            <p>ვსწავლობთ თქვენს ბიზნესს, სამიზნე აუდიტორიასა და კონკურენტებს. ვაანალიზებთ არსებულ მონაცემებს.</p>
+            <p>გესაუბრებით ბიზნესზე, კლიენტებზე და კონკურენტებზე. ვუყურებთ, რა გაქვთ ახლა.</p>
           </article>
           <article class="step" data-reveal data-reveal-delay="70">
             <h3>დაგეგმვა</h3>
-            <p>ვადგენთ სამოქმედო გეგმას, ვზომავთ საწყის მაჩვენებლებს და ვათანხმებთ KPI-ებსა და ვადებს.</p>
+            <p>ვწერთ გეგმას, ვთანხმდებით ფასზე, ვადებზე და იმაზე, რას ჩავთვლით შედეგად.</p>
           </article>
           <article class="step" data-reveal data-reveal-delay="140">
             <h3>შექმნა</h3>
-            <p>ვაშენებთ საიტს, ვწერთ კონტენტს და ვუშვებთ კამპანიებს — ყოველკვირეული სტატუსით.</p>
+            <p>ვაწყობთ საიტს, ვწერთ ტექსტებს, ვუშვებთ რეკლამას. კვირაში ერთხელ გიგზავნით სტატუსს.</p>
           </article>
           <article class="step" data-reveal data-reveal-delay="210">
             <h3>გაშვება</h3>
-            <p>ვზომავთ შედეგს, ვატარებთ A/B ტესტებს და ყოველთვიურად ვაუმჯობესებთ მაჩვენებლებს.</p>
+            <p>საიტი ეშვება. მერე ვუყურებთ ციფრებს და ვასწორებთ იმას, რაც ცუდად მუშაობს.</p>
           </article>
         </div>
       </div>
@@ -481,7 +481,7 @@ ${HOME_LD}
         <div class="section-head section-head--split" data-reveal>
           <div>
             <span class="eyebrow">ბლოგი</span>
-            <h2>რჩევები ქართული ბიზნესისთვის</h2>
+            <h2>რჩევები ბიზნესისთვის</h2>
           </div>
           <a class="btn btn--ghost" href="/blog">ყველა სტატია</a>
         </div>
@@ -497,7 +497,7 @@ ${HOME_LD}
           <div class="faq-split__head" data-reveal>
             <span class="eyebrow">კითხვები</span>
             <h2>ხშირი კითხვები საიტის დამზადებაზე</h2>
-            <p>ვერ იპოვეთ პასუხი? მოგვწერეთ და ერთ სამუშაო დღეში გიპასუხებთ.</p>
+            <p>პასუხი ვერ იპოვეთ? მოგვწერეთ და იმავე დღეს გიპასუხებთ.</p>
             <a class="btn btn--primary" href="/contact">დაგვიკავშირდით</a>
           </div>
           <div class="faq">
@@ -518,8 +518,8 @@ ${HOME_LD}
       <div class="container">
         <div class="cta__inner">
           <div data-reveal>
-            <h2>მზად ხართ ზრდისთვის?</h2>
-            <p>მოგვწერეთ და უფასოდ გავაანალიზებთ თქვენს საიტსა და კონკურენტებს. პირველივე შეხვედრაზე მიიღებთ კონკრეტულ რეკომენდაციებს — თანამშრომლობის ვალდებულების გარეშე.</p>
+            <h2>მოდი, დავიწყოთ</h2>
+            <p>მოგვწერეთ, რა გჭირდებათ. გეტყვით, რა ეღირება და რამდენ ხანში გავაკეთებთ. საუბარი არაფერს გავალდებულებთ.</p>
             <div class="btn-row" style="margin-top:26px">
               <a class="btn btn--white" href="tel:+995557643225">დარეკეთ: ${setting("phone", "+995 557 64 32 25")}</a>
               <a class="btn btn--light" href="mailto:${setting("email", "hello@webico.io")}">${setting("email", "hello@webico.io")}</a>
@@ -561,8 +561,8 @@ ${HOME_LD}
       <div class="footer__grid">
         <div>
           <a class="brand" href="/"><img class="brand__logo" src="assets/img/logo/webico-horizontal-white.svg" alt="Webico" width="152" height="38"></a>
-          <p class="footer__about">ციფრული სააგენტო თბილისიდან. ვქმნით ვებსაიტებს, ვზრდით
-            ორგანულ ტრაფიკს და ვმართავთ სარეკლამო კამპანიებს გაზომვადი შედეგისთვის.</p>
+          <p class="footer__about">ვებ სააგენტო თბილისში. ვაწყობთ საიტებს და ონლაინ მაღაზიებს,
+            ვაკეთებთ SEO-ს და რეკლამას.</p>
           <div class="socials">
             <a href="https://facebook.com" aria-label="Facebook" rel="noopener noreferrer" target="_blank">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 9h3V6h-3c-2.2 0-4 1.8-4 4v2H8v3h2v7h3v-7h3l1-3h-4v-2c0-.6.4-1 1-1z"/></svg></a>
