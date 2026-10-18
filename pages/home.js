@@ -181,24 +181,38 @@ ${HOME_LD}
   <main id="main">
 
     <!-- ============================ HERO ============================ -->
-    <section class="hero3">
+    <section class="hero4">
       <div class="container">
-        <div class="hero3__top">
-          <h1 class="hero3__title">${T('home.hero2.title_a', 'საიტი, რომელიც')} ${T('home.hero2.title_em', 'კლიენტს')} ${T('home.hero2.title_b', 'მოგიყვანთ')}</h1>
-          <div class="hero3__side">
+        <div class="hero4__panel">
+          <div class="hero4__text">
+            <h1 class="hero4__title">${T('home.hero2.title_a', 'საიტი, რომელიც')} <span class="hero4__word">${T('home.hero2.title_em', 'კლიენტს')}</span> ${T('home.hero2.title_b', 'მოგიყვანთ')}</h1>
             <p>${T('home.hero2.text', 'Webico თბილისის ვებ სააგენტოა. ვაწყობთ საიტებს და ონლაინ მაღაზიებს მცირე ბიზნესისთვის. ჯერ უფასოდ გაჩვენებთ ნიმუშს, გადაიხდით მხოლოდ თუ მოგეწონებათ.')}</p>
             <div class="btn-row">
               <a class="btn btn--primary" href="/start">${T('home.hero2.cta', 'მიიღე უფასო ნიმუში')}</a>
-              <a class="btn btn--ghost" href="/plans">ფასები</a>
+              <a class="btn btn--white" href="/work">ნამუშევრები</a>
             </div>
           </div>
+
+          <div class="hero4__art" aria-hidden="true">
+            ${map(shots.slice(0, 3), (f, i) => `<figure class="hero4__card hero4__card--${i + 1}"><img src="${e(url(f.shot))}" alt="" width="640" height="420"${i ? ' loading="lazy"' : ' fetchpriority="high"'}><figcaption>${e(f.name)}</figcaption></figure>`)}
+            <svg class="hero4__stamp" viewBox="0 0 200 200">
+              <defs><path id="stamp-c" d="M100,100 m-74,0 a74,74 0 1,1 148,0 a74,74 0 1,1 -148,0"/></defs>
+              <circle cx="100" cy="100" r="98" />
+              <text textLength="458" lengthAdjust="spacing"><textPath href="#stamp-c" textLength="458" lengthAdjust="spacing">უფასო ნიმუში ✦ 24 საათში ✦ უფასოდ ✦</textPath></text>
+              <path class="hero4__stamp-arrow" d="M82 118 L118 82 M90 82 H118 V110" />
+            </svg>
+            <a class="hero4__tag" href="/plans" tabindex="-1">
+              <small>საიტი 7 დღეში</small>
+              <b>${fmt(pk[0].setup)} ₾-დან</b>
+            </a>
+          </div>
         </div>
-        <dl class="hero3__facts">
-          <div><dt>7 დღე</dt><dd>საიტის გაშვება</dd></div>
-          <div><dt>${fmt(pk[0].setup)} ₾-დან</dt><dd>ჩართვა, შემდეგ ${fmt(pk[0].month)} ₾ / თვე</dd></div>
-          <div><dt>24 საათი</dt><dd>უფასო ნიმუში</dd></div>
-          <div><dt><a href="/work">${allp.length} პროექტი</a></dt><dd>ჩვენს პორტფოლიოში</dd></div>
-        </dl>
+
+        <div class="hero4__ticker" aria-hidden="true">
+          <div class="hero4__track">
+            ${map([0, 1], () => `<span>საიტი 7 დღეში</span><i>✦</i><span>უფასო ნიმუში 24 საათში</span><i>✦</i><span>${fmt(pk[0].setup)} ₾-დან</span><i>✦</i><span>დომენი თქვენს სახელზე</span><i>✦</i><span>${allp.length} პროექტი</span><i>✦</i>`)}
+          </div>
+        </div>
       </div>
     </section>
 
