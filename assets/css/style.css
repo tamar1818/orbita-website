@@ -47,7 +47,7 @@
      ბრაუზერი შრიფტს სიმბოლოებად ირჩევს: Space Grotesk-ს ქართული არ აქვს,
      ამიტომ ქართული ავტომატურად LGV-ზე გადადის. თუ LGV-ის საკუთარი
      ლათინური გირჩევნიათ — უბრალოდ წაშალეთ "Space Grotesk" ამ სიიდან. */
-  --font-display: "Space Grotesk", "LGV Anastasia 2025 Geo", "Noto Sans Georgian",
+  --font-display: "LGV Anastasia 2025 Geo", "Space Grotesk", "Noto Sans Georgian",
                   "BPG Arial", system-ui, -apple-system, "Segoe UI", sans-serif;
   /* პატარა სათაურები (h3, h4, ბარათები): LGV მცირე ზომაზე ძნელად იკითხება */
   --font-title-sm: "Space Grotesk", "Noto Sans Georgian", "BPG Arial", system-ui, sans-serif;
@@ -3873,3 +3873,47 @@ h1, h2 { overflow-wrap: break-word; }
 /* დეკორატიული ხატულების კვადრატები და ინიციალების წრეები — შაბლონური იერი */
 .card__icon, .member .avatar { display: none !important; }
 .mega__icon { background: none !important; border: 1px solid var(--line); }
+
+/* სერვისების სია: სათაური | აღწერა და ტექნოლოგიები | ისარი */
+.svc {
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr) 54px; grid-template-rows: auto auto;
+  column-gap: clamp(24px, 4vw, 64px); row-gap: 10px; align-items: start;
+  padding: clamp(26px, 2.6vw, 38px) 4px; border-bottom-color: color-mix(in srgb, var(--ink) 14%, transparent);
+}
+.svc__main { display: contents; }
+.svc__title { grid-column: 1; grid-row: 1 / span 2; align-self: center; font-size: clamp(1.6rem, 1.1rem + 1.7vw, 2.6rem); line-height: 1.08; }
+.svc__desc { grid-column: 2; grid-row: 1; grid-template-rows: 1fr !important; }
+.svc__desc > span { padding-top: 0 !important; max-width: 44ch; color: var(--muted); font-size: 1rem; line-height: 1.6; }
+.svc__tags { grid-column: 2; grid-row: 2; justify-content: flex-start; max-width: none; gap: 0; }
+.svc__tags span { padding: 0; border: 0; background: none; font-size: .86rem; font-weight: 600; color: var(--ink); }
+.svc__tags span + span::before { content: "/"; margin: 0 10px; font-weight: 400; color: var(--muted-light); }
+.svc__go { grid-column: 3; grid-row: 1 / span 2; align-self: center; }
+.svc:hover .svc__title { transform: translateX(10px); }
+.svc-list:hover .svc:not(:hover) .svc__desc > span, .svc-list:hover .svc:not(:hover) .svc__tags span { color: color-mix(in srgb, var(--ink) 30%, transparent); }
+@media (max-width: 880px) {
+  .svc { grid-template-columns: minmax(0, 1fr) 44px; grid-template-rows: auto; row-gap: 8px; padding: 24px 2px; }
+  .svc__title { grid-row: 1; }
+  .svc__desc { grid-column: 1; grid-row: 2; }
+  .svc__tags { grid-column: 1; grid-row: 3; }
+  .svc__go { grid-column: 2; grid-row: 1; width: 44px; height: 44px; }
+  .svc:hover .svc__title { transform: none; }
+}
+
+/* ერთიანი ბადე: სათაური და მის ქვემოთ კონტენტი ერთ ხაზზე იწყება */
+.faq, .read-more, .compare, .svc-intro { max-width: none; margin-inline: 0; }
+.svc-intro { max-width: 72ch; }
+.read-more { padding: clamp(24px, 3vw, 36px); }
+
+/* სერვისის გვერდი: „რას მოიცავს“ ბარათები ბრენდის ფერებში */
+.section-head--center + .grid--3 > .card { border-color: transparent; transition: transform .45s cubic-bezier(.22,.61,.36,1); }
+.section-head--center + .grid--3 > .card:nth-child(9n+1), .section-head--center + .grid--3 > .card:nth-child(9n+5), .section-head--center + .grid--3 > .card:nth-child(9n+9) { background: color-mix(in srgb, var(--lilac) 55%, #fff); }
+.section-head--center + .grid--3 > .card:nth-child(9n+2), .section-head--center + .grid--3 > .card:nth-child(9n+6), .section-head--center + .grid--3 > .card:nth-child(9n+7) { background: color-mix(in srgb, var(--lime) 70%, #fff); }
+.section-head--center + .grid--3 > .card:nth-child(9n+3), .section-head--center + .grid--3 > .card:nth-child(9n+4), .section-head--center + .grid--3 > .card:nth-child(9n+8) { background: color-mix(in srgb, var(--pink) 70%, #fff); }
+.section-head--center + .grid--3 > .card p { color: var(--ink-soft); }
+.section-head--center + .grid--3 > .card:hover { transform: translateY(-4px) rotate(-.4deg); }
+
+/* სერვისების სია მობილურზე: ტექნოლოგიები გამყოფის გარეშე, ერთ ხაზზე იშლება */
+@media (max-width: 880px) {
+  .svc__tags { gap: 4px 14px; }
+  .svc__tags span + span::before { display: none; }
+}

@@ -216,7 +216,7 @@ ${(() => {
       <div class="container">
         <div class="section-head section-head--center" data-reveal>
           <span class="eyebrow">რას ვაკეთებთ</span>
-          <h2>ვებ დიზაინისა და დეველოპმენტის სერვისები</h2>
+          <h2>რას ვაკეთებთ</h2>
           <p>დიზაინს, კოდს და რეკლამას ერთი გუნდი აკეთებს. ასე არაფერი იკარგება
             და ყოველთვის იცით, ვის ჰკითხოთ.</p>
         </div>
