@@ -16,6 +16,8 @@ function render() {
     ['/service-marketing', '0.8', t], ['/service-branding', '0.8', t]];
   for (const n of require('./niche').SLUGS) pages.push(['/' + n, '0.8', t]);
   for (const p of projects()) pages.push(['/work-' + p.slug, '0.7', t]);
+  for (const u of ['/en', '/en/about', '/en/services', '/en/work', '/en/contact']) pages.push([u, u === '/en' ? '0.9' : '0.7', t]);
+  for (const p of projects()) pages.push(['/en/work-' + p.slug, '0.5', t]);
   for (const p of posts) pages.push(['/blog/' + p.slug, '0.7', String(p.updated ?? p.date ?? t)]);
   return '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
     + pages.map(([u, pr, mod]) => '  <url>\n    <loc>https://webico.io' + e(u) + '</loc>\n'

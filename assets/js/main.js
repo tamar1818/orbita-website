@@ -51,7 +51,7 @@ const FORM_ENDPOINT = "/api/lead.php";
 
     $$("#nav-links a[href]").forEach((a) => {
       const href = a.getAttribute("href");
-      if (!href || href.startsWith("#") || href.startsWith("http")) return;
+      if (!href || href.startsWith("#") || href.startsWith("http") || a.classList.contains("lang-switch")) return;
       if (norm(href) === path) a.classList.add("is-active");
     });
 
@@ -259,7 +259,19 @@ const FORM_ENDPOINT = "/api/lead.php";
   }
 
   /* -------------------------------------------------- 7. ლიდების ფორმები */
-  const MSG = {
+  const EN = document.documentElement.lang === "en";
+  const MSG = EN ? {
+    required: "This field is required",
+    email: "Enter a valid email, e.g. name@company.com",
+    phone: "Enter a valid phone number",
+    short: "Please write at least 10 characters",
+    consent: "Please accept the terms",
+    fail: "Something went wrong. Email us at hello@webico.io",
+    check: "Please fill in the highlighted fields.",
+    sending: "Sending…"
+  } : {
+    check: "გთხოვთ, შეავსოთ მონიშნული ველები.",
+    sending: "იგზავნება…",
     required: "ეს ველი სავალდებულოა",
     email: "მიუთითეთ სწორი ელფოსტა, მაგ.: name@company.ge",
     phone: "მიუთითეთ სწორი ტელეფონის ნომერი",
@@ -345,7 +357,7 @@ const FORM_ENDPOINT = "/api/lead.php";
 
   function showSuccess(form) {
     const name = (form.elements.name && form.elements.name.value.trim()) || "";
-    const title = name ? "მადლობა, " + name + "!" : "მადლობა!";
+    const title = EN ? (name ? "Thank you, " + name + "!" : "Thank you!") : (name ? "მადლობა, " + name + "!" : "მადლობა!");
     const wrap = document.createElement("div");
     wrap.className = "form-success";
     wrap.setAttribute("role", "status");
@@ -354,8 +366,9 @@ const FORM_ENDPOINT = "/api/lead.php";
       '<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>' +
       "</div>" +
       "<h3>" + title + "</h3>" +
-      "<p>თქვენი განაცხადი მიღებულია. ჩვენი გუნდი 24 საათის განმავლობაში დაგიკავშირდებათ " +
-      "სამუშაო დღეებში.</p>";
+      (EN ? "<p>We have your message and will reply within one business day.</p>"
+        : "<p>თქვენი განაცხადი მიღებულია. ჩვენი გუნდი 24 საათის განმავლობაში დაგიკავშირდებათ " +
+      "სამუშაო დღეებში.</p>");
     form.replaceWith(wrap);
     wrap.scrollIntoView({ behavior: "smooth", block: "center" });
   }
@@ -383,7 +396,7 @@ const FORM_ENDPOINT = "/api/lead.php";
         if (honey && honey.value) return;
 
         if (!validateForm(form)) {
-          showStatus(form, "error", "გთხოვთ, შეავსოთ მონიშნული ველები.");
+          showStatus(form, "error", MSG.check);
           return;
         }
 
@@ -391,7 +404,7 @@ const FORM_ENDPOINT = "/api/lead.php";
         const label = btn ? btn.textContent : "";
         if (btn) {
           btn.dataset.loading = "true";
-          btn.textContent = "იგზავნება…";
+          btn.textContent = MSG.sending;
         }
 
         const data = Object.fromEntries(new FormData(form).entries());
@@ -1384,6 +1397,6 @@ const FORM_ENDPOINT = "/api/lead.php";
     initBooking();
     initPlans();
     initConfigurator();
-    initChatbot();
+    if (!EN) initChatbot();
   });
 })();

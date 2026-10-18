@@ -3800,3 +3800,12 @@ h1, h2 { overflow-wrap: break-word; }
 
 /* ზედა მცირე წარწერები (eyebrow) აღარ ჩანს — სათაური თავად საკმარისია */
 .eyebrow { display: none !important; }
+
+/* ენის გადამრთველი ნავიგაციაში */
+.nav__links .lang-switch, .lang-switch {
+  display: inline-grid; place-items: center; min-width: 40px; height: 32px; padding: 0 10px;
+  border: 1px solid var(--line-strong); border-radius: var(--radius-pill);
+  font-size: .8rem; font-weight: 700; letter-spacing: .04em;
+}
+.nav__links .lang-switch::before { display: none !important; }
+.nav__links .lang-switch:hover { border-color: var(--ink); background: none; }

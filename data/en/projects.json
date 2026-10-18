@@ -1,0 +1,35 @@
+{
+  "tags": {
+    "UI/UX დიზაინი": "UI/UX design",
+    "ვებ-აპლიკაცია": "Web app",
+    "ვებსაიტის დამზადება": "Website development",
+    "ჩატბოტი": "Chatbot",
+    "ვებსაიტი": "Website"
+  },
+  "projects": {
+    "bitefit": {
+      "summary": "BiteFit is a calorie tracking app: AI food scanning, calorie logging and personal goals in a simple, modern interface with light and dark themes.",
+      "scope": ["UI/UX design", "AI food scanning flow", "Calorie and goal tracking", "Light/dark theme and language switch"]
+    },
+    "marketing-agency": {
+      "summary": "A website concept for a marketing agency: a dark, modern visual language with gradient accents and clear paths to the portfolio and a call booking.",
+      "scope": ["UI/UX design", "Website layout", "Visual style"]
+    },
+    "arlo-funding": {
+      "summary": "Website for a US commercial real estate lender: loan types by property, free tools and an application form.",
+      "scope": ["UI/UX design", "Responsive development", "English-language site", "Application form"]
+    },
+    "gcci-germany": {
+      "summary": "Website for the German office of the Georgian Chamber of Commerce and Industry, built for German and European investors: investment opportunities, resources, media and consultation requests.",
+      "scope": ["UI/UX design", "Responsive development", "German-language site", "Investment and media sections"]
+    },
+    "outsourcify": {
+      "summary": "Website for an accounting outsourcing firm: service structure, pricing and a chatbot that books a consultation in a few questions.",
+      "scope": ["UI/UX design", "Responsive development", "Bilingual site (KA/EN)", "Consultation booking chatbot"]
+    },
+    "linden-spa": {
+      "summary": "A website concept for a spa: a calm visual language, treatment cards with duration and booking, guest reviews and a call request form.",
+      "scope": ["UI/UX design", "Full website layout", "Treatment catalogue design", "Call request form design"]
+    }
+  }
+}

@@ -10,7 +10,7 @@ const path = require('path');
 const express = require('express');
 const compression = require('compression');
 const { ROOT, UPLOADS_DIR } = require('./lib/core');
-const { ASSET_V, withWhatsApp } = require('./lib/layout');
+const { ASSET_V, withWhatsApp, withLang } = require('./lib/layout');
 const { serviceWorkSection } = require('./lib/projects');
 const { servicePage } = require('./lib/service');
 
@@ -59,7 +59,7 @@ for (const f of ['favicon.ico', 'robots.txt']) app.get('/' + f, (req, res) => re
 
 /* ------------------------------------------------------------ HTML პასუხი */
 function html(res, body, status = 200) {
-  res.status(status).set({ 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-cache, must-revalidate' }).send(withWhatsApp(body));
+  res.status(status).set({ 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-cache, must-revalidate' }).send(withWhatsApp(withLang(body, res.req ? res.req.path : '/')));
 }
 
 /** სტატიკური გვერდი views/static/-დან: ასეტების ვერსია + სერვისის პროექტები */
@@ -102,6 +102,19 @@ for (const n of ['wordpress', 'ecommerce', 'maintenance']) {
   app.get('/service-' + n, (req, res) => html(res, servicePage(require('./data/services/' + n + '.json'))));
 }
 for (const n of require('./pages/niche').SLUGS) app.get('/' + n, (req, res) => html(res, require('./pages/niche').render(n)));
+/* ------------------------------------------------------------ English */
+const EN = () => require('./pages/en/pages');
+const enPage = (fn) => (req, res, next) => { try { html(res, fn()); } catch (err) { next(err); } };
+app.get('/en', enPage(() => require('./pages/en/home').render()));
+app.get('/en/about', enPage(() => EN().about()));
+app.get('/en/services', enPage(() => EN().services()));
+app.get('/en/work', enPage(() => EN().work()));
+app.get('/en/contact', enPage(() => EN().contact()));
+app.get('/en/work-:slug', (req, res, next) => {
+  const out = EN().projectPage(req.params.slug);
+  out === null ? next() : html(res, out);
+});
+
 app.get('/sitemap.xml', (req, res) => {
   res.set({ 'Content-Type': 'application/xml; charset=utf-8', 'Cache-Control': 'no-cache' }).send(require('./pages/sitemap').render());
 });
