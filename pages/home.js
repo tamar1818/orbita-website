@@ -7,6 +7,7 @@ const { posts: allPosts, postCard } = require('../lib/blog');
 const HOME_FAQ = require('../data/home-faq.json');
 
 const { map, truthy, empty } = require('../lib/tpl');
+const { packages, fmt } = require('../lib/pricing');
 const decode = (s) => String(s).replace(/&quot;/g, '"').replace(/&#0?39;/g, "'").replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&');
 
 function homeLd() {
@@ -34,8 +35,7 @@ function render() {
   const HOME_LD = homeLd();
   const allp = projects();
   const shots = showcase().filter((x) => String(x.shot ?? '').trim() !== '');
-  const words = decode(T('home.hero.words', 'ვებსაიტებს|ბრენდებს|კამპანიებს|აპლიკაციებს')).split('|').map((w) => w.trim()).filter(Boolean);
-  const cl = allp;
+  const pk = packages();
   const half = Math.ceil(shots.length / 2);
   const toolsList = tools();
   const posts = allPosts().slice(0, 3);
@@ -181,46 +181,48 @@ ${HOME_LD}
   <main id="main">
 
     <!-- ============================ HERO ============================ -->
-        <section class="hero hero--center pattern-grid">
-      <div class="container">
-        <div class="hero__center" data-reveal>
-          <a class="proof-pill" href="/work">
-            <span class="proof-pill__faces" aria-hidden="true">${map(shots.slice(0, 4), (f) => { return `<img src="${e(url(String(f.shot).replace(/\.webp$/, '-sm.webp')))}" alt="" width="30" height="30">`; })}</span>
-            <span>${T('home.hero.proof', allp.length + ' ბრენდმა უკვე გვენდო')}</span>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    <section class="hero2">
+      <div class="container hero2__grid">
+        <div class="hero2__text">
+          <a class="hero2__offer" href="/plans">
+            <span class="hero2__offer-tag">ახალი</span>
+            ${T('home.hero2.offer', 'საიტი 7 დღეში, ' + fmt(pk[0].setup) + ' ₾-დან')}
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </a>
-          <h1 class="hero__title">
-            ${T("home.hero.lead", "ვქმნით")}            <span class="rotator" data-rotate="${e(words.join('|'))}"><span class="rotator__word">${e(words[0] ?? '')}</span></span>,<br>
-            ${T("home.hero.tail", "რომლებიც ყიდის.")}          </h1>
-          <p class="hero__entity">${T("home.hero.entity", "Webico — ვებ დეველოპმენტის სააგენტო თბილისში: საიტის დამზადება, WordPress, ონლაინ მაღაზიები, UI/UX დიზაინი და SEO.")}</p>
-          <p>${T("home.hero.text", "ვებსაიტები, ბრენდინგი და ციფრული მარკეტინგი ქართული ბიზნესისთვის — გააზრებული დიზაინით, სწრაფი კოდით და გუნდით, რომელიც შედეგზე ფიქრობს.")}</p>
-          <div class="btn-row btn-row--center">
-            <a class="btn btn--primary" href="/contact">${T("home.hero.cta", "დავიწყოთ პროექტი")}</a>
-            <a class="btn btn--ghost" href="/work">ნამუშევრები</a>
+          <h1 class="hero2__title">${T('home.hero2.title_a', 'საიტი, რომელიც')} <em>${T('home.hero2.title_em', 'კლიენტს')}</em> ${T('home.hero2.title_b', 'მოგიყვანთ')}</h1>
+          <p class="hero2__lead">${T('home.hero2.text', 'Webico თბილისის ვებ სააგენტოა. ვაწყობთ საიტებს და ონლაინ მაღაზიებს მცირე ბიზნესისთვის. ჯერ უფასოდ გაჩვენებთ ნიმუშს, გადაიხდით მხოლოდ თუ მოგეწონებათ.')}</p>
+          <div class="btn-row">
+            <a class="btn btn--primary" href="/start">${T('home.hero2.cta', 'მიიღე უფასო ნიმუში')}</a>
+            <a class="btn btn--ghost" href="/plans">ფასები</a>
           </div>
-          <button class="hero__chat" type="button" data-open-chat>
-            <span class="hero__chat-dot" aria-hidden="true"></span>გაქვთ კითხვა? ჰკითხეთ ჩვენს ასისტენტს — 2 წუთი
-          </button>
-          <ul class="hero__perks">
-            <li>უფასო პირველი კონსულტაცია</li>
-            <li>პასუხი 24 საათში</li>
-            <li>მუშაობა ხელშეკრულებით</li>
-          </ul>
+          <a class="hero2__proof" href="/work">
+            <span class="proof-pill__faces" aria-hidden="true">${map(shots.slice(0, 4), (f) => `<img src="${e(url(String(f.shot).replace(/\.webp$/, '-sm.webp')))}" alt="" width="30" height="30">`)}</span>
+            <span><b>${allp.length}+ პროექტი</b> ქართული ბიზნესისთვის</span>
+          </a>
+        </div>
+
+        <div class="hero2__visual" aria-hidden="true">
+          <div class="hero2__browser">
+            <div class="hero2__bar"><i></i><i></i><i></i><span>webico.io/ნიმუში</span></div>
+            <div class="hero2__screens">
+              ${map(shots.slice(0, 4), (f, i) => `<img src="${e(url(f.shot))}" alt="" width="880" height="560"${i ? ' loading="lazy"' : ' fetchpriority="high"'} style="--i:${i}">`)}
+            </div>
+          </div>
+          <div class="hero2__float hero2__float--sample">
+            <span class="hero2__dot"></span>
+            <div><b>ნიმუში მზადაა</b><small>24 საათში, უფასოდ</small></div>
+          </div>
+          <div class="hero2__float hero2__float--price">
+            <small>ჩართვა</small>
+            <b>${fmt(pk[0].setup)} ₾</b>
+            <small>შემდეგ ${fmt(pk[0].month)} ₾ / თვე</small>
+          </div>
+          <div class="hero2__float hero2__float--live">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            საიტი გაშვებულია · 7 დღე
+          </div>
         </div>
       </div>
-    </section>
-
-    <!-- ========================== ნდობა ============================= -->
-    <section class="trustbar">
-      <div class="container">
-        <p class="trustbar__label">${T("home.clients.label", "გვენდობიან")}</p>
-        ${truthy(cl.length) ? `        <div class="marquee">
-          <div class="marquee__track">
-            ${map([0, 1], (g) => { return `              <div class="marquee__group"${g ? ' aria-hidden="true"' : ''}>
-                ${map(cl, (c) => { const lg = String(c.logo ?? '').trim(); return `<a class="marquee__item${lg ? ' marquee__item--logo' : ''}"${g ? ' tabindex="-1"' : ''} href="/work-${e(c.slug)}">${truthy(lg) ? `<img class="marquee__logo" src="${e(lg)}" alt="${e(c.name)}" loading="lazy">` : `<i aria-hidden="true"></i>${e(c.name)}`}</a>`; })}              </div>
-            `; })}          </div>
-        </div>
-        ` : ''}      </div>
     </section>
 
     <!-- ================== ნამუშევრების ორმაგი ლენტი ================== -->
@@ -377,7 +379,7 @@ ${HOME_LD}
                         <div class="marquee marquee--tools">
               <div class="marquee__track">
                 ${map([0, 1], (g) => { return `                  <div class="marquee__group"${g ? ' aria-hidden="true"' : ''}>
-                    ${map(toolsList, ([name, mark, color]) => { return `<span class="tool-chip"><span class="tool-chip__mark" style="--tint:${e(color)}">${e(mark)}</span>${e(name)}</span>`; })}                  </div>
+                    ${map(toolsList, ([name, mark, color, logo]) => { return `<span class="tool-chip">${logo ? `<span class="tool-chip__mark tool-chip__mark--logo"><img src="${e(logo)}" alt="" width="20" height="20" loading="lazy"></span>` : `<span class="tool-chip__mark" style="--tint:${e(color)}">${e(mark)}</span>`}${e(name)}</span>`; })}                  </div>
                 `; })}              </div>
             </div>
           </article>
