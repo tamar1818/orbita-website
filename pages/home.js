@@ -194,7 +194,7 @@ ${HOME_LD}
           </div>
 
           <div class="hero4__art" aria-hidden="true">
-            ${map(shots.slice(0, 3), (f, i) => `<figure class="hero4__card hero4__card--${i + 1}"><img src="${e(url(f.shot))}" alt="" width="640" height="420"${i ? ' loading="lazy"' : ' fetchpriority="high"'}><figcaption>${e(f.name)}</figcaption></figure>`)}
+            ${map(shots.slice(0, 3), (f, i) => `<figure class="hero4__card hero4__card--${i + 1}"><img src="${e(url(f.shot))}" alt="" width="640" height="420"${i ? ' loading="lazy"' : ' fetchpriority="high"'}></figure>`)}
             <svg class="hero4__stamp" viewBox="0 0 200 200">
               <defs><path id="stamp-c" d="M100,100 m-74,0 a74,74 0 1,1 148,0 a74,74 0 1,1 -148,0"/></defs>
               <circle cx="100" cy="100" r="98" />

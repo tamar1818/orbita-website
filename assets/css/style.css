@@ -3736,7 +3736,6 @@ h1, h2 { overflow-wrap: break-word; }
   transition: transform .35s cubic-bezier(.22,.61,.36,1);
 }
 .hero4__card img { display: block; width: 100%; aspect-ratio: 16 / 10.5; object-fit: cover; object-position: top; }
-.hero4__card figcaption { padding: 8px 14px; border-top: 3px solid var(--ink); font-weight: 700; font-size: .88rem; background: var(--paper); }
 .hero4__card--1 { left: 0; top: 4%; transform: rotate(-6deg); z-index: 1; }
 .hero4__card--2 { right: 0; top: 22%; transform: rotate(4deg); z-index: 2; }
 .hero4__card--3 { left: 12%; bottom: -2%; width: 60%; transform: rotate(-1.5deg); z-index: 3; }
@@ -3762,7 +3761,7 @@ h1, h2 { overflow-wrap: break-word; }
 
 /* ლენტი ბანერის ქვემოთ */
 .hero4__ticker {
-  position: relative; z-index: 5; margin: -38px -40px 0; padding: 16px 0;
+  position: relative; z-index: 5; width: calc(100vw + 120px); margin: -38px 0 0 calc(50% - 50vw - 60px); padding: 16px 0;
   background: var(--ink); color: var(--paper); transform: rotate(-1.6deg); overflow: hidden;
 }
 .hero4__track { display: flex; width: max-content; animation: hero4-tick 32s linear infinite; }
@@ -3779,12 +3778,11 @@ h1, h2 { overflow-wrap: break-word; }
   .hero4__word { border-width: 2px; box-shadow: 4px 4px 0 var(--ink); border-radius: 12px; }
   .hero4__art { height: 270px; }
   .hero4__card { border-width: 2px; box-shadow: 5px 5px 0 var(--ink); border-radius: 12px; }
-  .hero4__card figcaption { display: none; }
   .hero4__stamp { width: 92px; top: -4%; }
   .hero4__tag { left: 0; bottom: 4%; padding: 8px 14px 8px 26px; }
   .hero4__tag b { font-size: 1.15rem; }
   .hero4 .btn-row .btn { flex: 1 1 auto; }
-  .hero4__ticker { margin-top: -44px; margin-inline: -24px; }
+  .hero4__ticker { margin-top: -44px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .hero4__stamp, .hero4__track { animation: none; }
