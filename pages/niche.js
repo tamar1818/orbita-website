@@ -67,7 +67,6 @@ function render(slug) {
         </div>
         <div class="grid grid--3">${map(n.pains, ([h, t], i) => `
           <article class="card niche-pain" data-reveal data-reveal-delay="${i * 70}">
-            <span class="niche-pain__n">0${i + 1}</span>
             <h3>${e(h)}</h3>
             <p>${e(t)}</p>
           </article>`)}

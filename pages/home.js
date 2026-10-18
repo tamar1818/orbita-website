@@ -181,47 +181,24 @@ ${HOME_LD}
   <main id="main">
 
     <!-- ============================ HERO ============================ -->
-    <section class="hero2">
-      <div class="container hero2__grid">
-        <div class="hero2__text">
-          <a class="hero2__offer" href="/plans">
-            <span class="hero2__offer-tag">ახალი</span>
-            ${T('home.hero2.offer', 'საიტი 7 დღეში, ' + fmt(pk[0].setup) + ' ₾-დან')}
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </a>
-          <h1 class="hero2__title">${T('home.hero2.title_a', 'საიტი, რომელიც')} <em>${T('home.hero2.title_em', 'კლიენტს')}</em> ${T('home.hero2.title_b', 'მოგიყვანთ')}</h1>
-          <p class="hero2__lead">${T('home.hero2.text', 'Webico თბილისის ვებ სააგენტოა. ვაწყობთ საიტებს და ონლაინ მაღაზიებს მცირე ბიზნესისთვის. ჯერ უფასოდ გაჩვენებთ ნიმუშს, გადაიხდით მხოლოდ თუ მოგეწონებათ.')}</p>
-          <div class="btn-row">
-            <a class="btn btn--primary" href="/start">${T('home.hero2.cta', 'მიიღე უფასო ნიმუში')}</a>
-            <a class="btn btn--ghost" href="/plans">ფასები</a>
-          </div>
-          <a class="hero2__proof" href="/work">
-            <span class="proof-pill__faces" aria-hidden="true">${map(shots.slice(0, 4), (f) => `<img src="${e(url(String(f.shot).replace(/\.webp$/, '-sm.webp')))}" alt="" width="30" height="30">`)}</span>
-            <span><b>${allp.length}+ პროექტი</b> ქართული ბიზნესისთვის</span>
-          </a>
-        </div>
-
-        <div class="hero2__visual" aria-hidden="true">
-          <div class="hero2__browser">
-            <div class="hero2__bar"><i></i><i></i><i></i><span>webico.io/ნიმუში</span></div>
-            <div class="hero2__screens">
-              ${map(shots.slice(0, 4), (f, i) => `<img src="${e(url(f.shot))}" alt="" width="880" height="560"${i ? ' loading="lazy"' : ' fetchpriority="high"'} style="--i:${i}">`)}
+    <section class="hero3">
+      <div class="container">
+        <div class="hero3__top">
+          <h1 class="hero3__title">${T('home.hero2.title_a', 'საიტი, რომელიც')} ${T('home.hero2.title_em', 'კლიენტს')} ${T('home.hero2.title_b', 'მოგიყვანთ')}</h1>
+          <div class="hero3__side">
+            <p>${T('home.hero2.text', 'Webico თბილისის ვებ სააგენტოა. ვაწყობთ საიტებს და ონლაინ მაღაზიებს მცირე ბიზნესისთვის. ჯერ უფასოდ გაჩვენებთ ნიმუშს, გადაიხდით მხოლოდ თუ მოგეწონებათ.')}</p>
+            <div class="btn-row">
+              <a class="btn btn--primary" href="/start">${T('home.hero2.cta', 'მიიღე უფასო ნიმუში')}</a>
+              <a class="btn btn--ghost" href="/plans">ფასები</a>
             </div>
           </div>
-          <div class="hero2__float hero2__float--sample">
-            <span class="hero2__dot"></span>
-            <div><b>ნიმუში მზადაა</b><small>24 საათში, უფასოდ</small></div>
-          </div>
-          <div class="hero2__float hero2__float--price">
-            <small>ჩართვა</small>
-            <b>${fmt(pk[0].setup)} ₾</b>
-            <small>შემდეგ ${fmt(pk[0].month)} ₾ / თვე</small>
-          </div>
-          <div class="hero2__float hero2__float--live">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-            საიტი გაშვებულია · 7 დღე
-          </div>
         </div>
+        <dl class="hero3__facts">
+          <div><dt>7 დღე</dt><dd>საიტის გაშვება</dd></div>
+          <div><dt>${fmt(pk[0].setup)} ₾-დან</dt><dd>ჩართვა, შემდეგ ${fmt(pk[0].month)} ₾ / თვე</dd></div>
+          <div><dt>24 საათი</dt><dd>უფასო ნიმუში</dd></div>
+          <div><dt><a href="/work">${allp.length} პროექტი</a></dt><dd>ჩვენს პორტფოლიოში</dd></div>
+        </dl>
       </div>
     </section>
 
@@ -251,7 +228,6 @@ ${HOME_LD}
         </div>
         <div class="svc-list" data-reveal>
           <a class="svc svc--lilac" href="/service-web-development">
-            <span class="svc__num">01</span>
             <div class="svc__main">
               <h3 class="svc__title">ვებსაიტის დამზადება</h3>
               <span class="svc__desc"><span>კომპანიის საიტი, ლენდინგი ან ვებ-აპლიკაცია. სწრაფი, მობილურზე მოხერხებული და გასაგები.</span></span>
@@ -260,7 +236,6 @@ ${HOME_LD}
             <span class="svc__go">${ARROW}</span>
           </a>
           <a class="svc svc--lime" href="/service-wordpress">
-            <span class="svc__num">02</span>
             <div class="svc__main">
               <h3 class="svc__title">WordPress დეველოპმენტი</h3>
               <span class="svc__desc"><span>საკუთარი თემა, Elementor და ACF. ტექსტებს და ფოტოებს თვითონ შეცვლით.</span></span>
@@ -269,7 +244,6 @@ ${HOME_LD}
             <span class="svc__go">${ARROW}</span>
           </a>
           <a class="svc svc--pink" href="/service-ecommerce">
-            <span class="svc__num">03</span>
             <div class="svc__main">
               <h3 class="svc__title">ონლაინ მაღაზიის შექმნა</h3>
               <span class="svc__desc"><span>WooCommerce ან Shopify, ბარათით გადახდით და მიწოდების პირობებით.</span></span>
@@ -278,7 +252,6 @@ ${HOME_LD}
             <span class="svc__go">${ARROW}</span>
           </a>
           <a class="svc svc--soft" href="/service-branding">
-            <span class="svc__num">04</span>
             <div class="svc__main">
               <h3 class="svc__title">UI/UX დიზაინი და ბრენდინგი</h3>
               <span class="svc__desc"><span>ინტერფეისის დიზაინი Figma-ში, ლოგო და ბრენდბუქი.</span></span>
@@ -287,7 +260,6 @@ ${HOME_LD}
             <span class="svc__go">${ARROW}</span>
           </a>
           <a class="svc svc--lilac" href="/service-seo">
-            <span class="svc__num">05</span>
             <div class="svc__main">
               <h3 class="svc__title">SEO ოპტიმიზაცია</h3>
               <span class="svc__desc"><span>ტექნიკური SEO, საძიებო სიტყვები და ქართული ტექსტები, რომ Google-ში გიპოვონ.</span></span>
@@ -296,7 +268,6 @@ ${HOME_LD}
             <span class="svc__go">${ARROW}</span>
           </a>
           <a class="svc svc--lime" href="/service-maintenance">
-            <span class="svc__num">06</span>
             <div class="svc__main">
               <h3 class="svc__title">საიტის ტექნიკური მხარდაჭერა</h3>
               <span class="svc__desc"><span>განახლებები, უსაფრთხოება, ასლები და მცირე ცვლილებები ყოველთვე.</span></span>
@@ -305,7 +276,6 @@ ${HOME_LD}
             <span class="svc__go">${ARROW}</span>
           </a>
           <a class="svc svc--pink" href="/service-marketing">
-            <span class="svc__num">07</span>
             <div class="svc__main">
               <h3 class="svc__title">ციფრული მარკეტინგი</h3>
               <span class="svc__desc"><span>რეკლამა Google-ში, Facebook-ზე, Instagram-ზე და TikTok-ზე. ხედავთ, რა მოიტანა თითოეულმა ლარმა.</span></span>
@@ -428,49 +398,6 @@ ${HOME_LD}
           <div class="stat"><span class="stat__num" data-count="8" data-suffix=" წელი">8 წელი</span><span class="stat__label">ბაზარზე მუშაობის გამოცდილება</span></div>
           <div class="stat"><span class="stat__num" data-count="3.4" data-suffix="x">3.4x</span><span class="stat__label">საშუალო ROI-ის ზრდა</span></div>
           <div class="stat"><span class="stat__num" data-count="96" data-suffix="%">96%</span><span class="stat__label">კლიენტი რჩება ჩვენთან</span></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ======================== რეკომენდაციები ====================== -->
-    <section class="section section--soft">
-      <div class="container">
-        <div class="section-head section-head--center" data-reveal>
-          <span class="eyebrow">კლიენტები</span>
-          <h2>რას ამბობენ ჩვენზე</h2>
-        </div>
-        <div class="carousel carousel--2" data-carousel>
-          <div class="carousel__viewport" data-carousel-track role="group" aria-label="კლიენტების შეფასებები">
-            <div class="carousel__slide"><figure class="quote" data-reveal data-reveal-delay="0">
-            <div class="quote__stars" aria-label="შეფასება: 5 ვარსკვლავი 5-დან"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.1 8.6 22 9.6 17 14.5 18.2 21.5 12 18.2 5.8 21.5 7 14.5 2 9.6 8.9 8.6"/></svg><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.1 8.6 22 9.6 17 14.5 18.2 21.5 12 18.2 5.8 21.5 7 14.5 2 9.6 8.9 8.6"/></svg><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.1 8.6 22 9.6 17 14.5 18.2 21.5 12 18.2 5.8 21.5 7 14.5 2 9.6 8.9 8.6"/></svg><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.1 8.6 22 9.6 17 14.5 18.2 21.5 12 18.2 5.8 21.5 7 14.5 2 9.6 8.9 8.6"/></svg><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.1 8.6 22 9.6 17 14.5 18.2 21.5 12 18.2 5.8 21.5 7 14.5 2 9.6 8.9 8.6"/></svg></div>
-            <blockquote>ვებიკოსთან მუშაობის ექვს თვეში ორგანული ტრაფიკი გასამმაგდა, მაგრამ მთავარი ისაა, რომ ყოველთვიურად ზუსტად ვიცით, რაში იხარჯება ბიუჯეტი.</blockquote>
-            <figcaption class="quote__person">
-              <span class="avatar">ნ.ბ.</span>
-              <span><b>ნინო ბერიძე</b><small>მარკეტინგის ხელმძღვანელი, ალტა ჰოუმი</small></span>
-            </figcaption>
-          </figure></div>
-            <div class="carousel__slide"><figure class="quote" data-reveal data-reveal-delay="80">
-            <div class="quote__stars" aria-label="შეფასება: 5 ვარსკვლავი 5-დან"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.1 8.6 22 9.6 17 14.5 18.2 21.5 12 18.2 5.8 21.5 7 14.5 2 9.6 8.9 8.6"/></svg><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.1 8.6 22 9.6 17 14.5 18.2 21.5 12 18.2 5.8 21.5 7 14.5 2 9.6 8.9 8.6"/></svg><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.1 8.6 22 9.6 17 14.5 18.2 21.5 12 18.2 5.8 21.5 7 14.5 2 9.6 8.9 8.6"/></svg><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.1 8.6 22 9.6 17 14.5 18.2 21.5 12 18.2 5.8 21.5 7 14.5 2 9.6 8.9 8.6"/></svg><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.1 8.6 22 9.6 17 14.5 18.2 21.5 12 18.2 5.8 21.5 7 14.5 2 9.6 8.9 8.6"/></svg></div>
-            <blockquote>ახალი საიტი ორ კვირაში აეწყო და ჯავშნების რაოდენობა მაშინვე გაიზარდა. გუნდი პასუხობს სწრაფად და საქმეს ბოლომდე მიჰყავს.</blockquote>
-            <figcaption class="quote__person">
-              <span class="avatar avatar--accent">თ.ჩ.</span>
-              <span><b>თამარ ჩხეიძე</b><small>დირექტორი, მედიქ კლინიკა</small></span>
-            </figcaption>
-          </figure></div>
-            <div class="carousel__slide"><figure class="quote" data-reveal data-reveal-delay="160">
-            <div class="quote__stars" aria-label="შეფასება: 5 ვარსკვლავი 5-დან"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.1 8.6 22 9.6 17 14.5 18.2 21.5 12 18.2 5.8 21.5 7 14.5 2 9.6 8.9 8.6"/></svg><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.1 8.6 22 9.6 17 14.5 18.2 21.5 12 18.2 5.8 21.5 7 14.5 2 9.6 8.9 8.6"/></svg><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.1 8.6 22 9.6 17 14.5 18.2 21.5 12 18.2 5.8 21.5 7 14.5 2 9.6 8.9 8.6"/></svg><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.1 8.6 22 9.6 17 14.5 18.2 21.5 12 18.2 5.8 21.5 7 14.5 2 9.6 8.9 8.6"/></svg><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.1 8.6 22 9.6 17 14.5 18.2 21.5 12 18.2 5.8 21.5 7 14.5 2 9.6 8.9 8.6"/></svg></div>
-            <blockquote>პირველად შემხვდა სააგენტო, რომელიც ლამაზი სიტყვების ნაცვლად რიცხვებზე საუბრობს. ლიდის ღირებულება თითქმის განახევრდა.</blockquote>
-            <figcaption class="quote__person">
-              <span class="avatar">გ.კ.</span>
-              <span><b>გიორგი კაპანაძე</b><small>დამფუძნებელი, ფინექსი</small></span>
-            </figcaption>
-          </figure></div>
-          </div>
-          <div class="carousel__controls">
-            <button class="carousel__btn" type="button" data-carousel-prev aria-label="წინა"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg></button>
-            <div class="carousel__dots" data-carousel-dots></div>
-            <button class="carousel__btn" type="button" data-carousel-next aria-label="შემდეგი"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></button>
-          </div>
         </div>
       </div>
     </section>
