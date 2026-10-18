@@ -26,7 +26,9 @@ async function lead(req, res) {
   const message = get('message', 4000);
   const errors = [];
   if (!name) errors.push('name');
-  if (!email || !isEmail(email)) errors.push('email');
+  // საკმარისია ელფოსტა ან ტელეფონი (კონფიგურატორი მხოლოდ ტელეფონს ითხოვს)
+  const phoneOk = phone.replace(/\D/g, '').length >= 7;
+  if (email ? !isEmail(email) : !phoneOk) errors.push(email ? 'email' : 'phone');
   if (errors.length) return res.status(422).json({ ok: false, fields: errors });
 
   const store = read('leads', { leads: [] });
@@ -50,7 +52,7 @@ async function lead(req, res) {
 
   // ელფოსტა — წარუმატებლობა განაცხადს არ აუქმებს
   const subject = (src === 'chatbot' ? 'ახალი ლიდი ჩატბოტიდან — '
-    : src === 'configurator' ? 'ახალი შეკვეთა: საიტი გამოწერით — ' : 'ახალი განაცხადი — ') + name;
+    : src === 'configurator' ? 'ნიმუშის მოთხოვნა — ' : 'ახალი განაცხადი — ') + name;
   await mail.send(mail.teamEmail(), subject,
     'ახალი განაცხადი webico.io-დან\n\n'
     + mail.lines({
@@ -60,13 +62,13 @@ async function lead(req, res) {
       'წყარო': src, 'გვერდი': get('page', 200),
     })
     + (message !== '' ? '\n' + message + '\n' : ''), email);
-  if (src === 'configurator') {
-    await mail.send(email, 'Webico — თქვენი შეკვეთა მიღებულია',
+  if (src === 'configurator' && email) {
+    await mail.send(email, 'Webico: თქვენი მოთხოვნა მივიღეთ',
       `გამარჯობა, ${name}!\n\n`
-      + 'მადლობა, რომ Webico აირჩიეთ. თქვენი საიტის შეკვეთა მივიღეთ — 1 სამუშაო დღეში დაგირეკავთ,\n'
-      + 'დავაზუსტებთ დეტალებს და მოგიმზადებთ დიზაინს. გადახდა მხოლოდ დიზაინის დამტკიცების შემდეგ.\n\n'
+      + 'მადლობა. 24 საათში დაგიკავშირდებით და გაჩვენებთ, როგორ შეიძლება გამოიყურებოდეს თქვენი საიტი.\n'
+      + 'ნიმუში უფასოა. თუ მოგეწონებათ, მხოლოდ მაშინ გადაიხდით.\n\n'
       + `თქვენი არჩევანი:\n${message}\n\n`
-      + 'კითხვები? უბრალოდ უპასუხეთ ამ წერილს.\n\nWebico — webico.io', mail.teamEmail());
+      + 'კითხვა თუ გაქვთ, უპასუხეთ ამ წერილს.\n\nWebico, webico.io', mail.teamEmail());
   }
 }
 

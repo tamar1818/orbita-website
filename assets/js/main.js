@@ -752,27 +752,40 @@ const FORM_ENDPOINT = "/api/lead.php";
   }
 
   /* ------------------------------------------ შეხვედრის დაჯავშნა (/contact) */
-  /* ---------- ?plan= — არჩეული პაკეტი ჯავშნის/კონტაქტის ფორმაში ---------- */
+  /* ---------- /plans: თვიური/წლიური გადართვა; ?plan= — პაკეტი ჯავშნის ფორმაში ---------- */
   function initPlans() {
+    const bill = $("[data-bill]");
+    if (bill) {
+      const btns = $$("[data-bill-set]", bill);
+      btns.forEach((btn) => btn.addEventListener("click", () => {
+        const mode = btn.dataset.billSet;
+        btns.forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
+        $$(".plans .price__amount").forEach((el) => {
+          el.querySelector("b").textContent = el.dataset[mode];
+          const unit = el.querySelector("span");
+          unit.textContent = unit.dataset[mode === "year" ? "unitYear" : "unitMonth"];
+        });
+      }));
+    }
     const plan = new URLSearchParams(location.search).get("plan");
-    const names = { start: "საიტი გამოწერით", wordpress: "WordPress მოვლა", custom: "ინდივიდუალური საიტის მოვლა", seo: "SEO + მოვლა" };
+    const names = { wordpress: "WordPress-ის მოვლა", custom: "ინდივიდუალური საიტის მოვლა", seo: "SEO და მოვლა" };
     if (!plan || !names[plan]) return;
     const topic = document.getElementById("bk-topic");
     if (topic) topic.value = "საიტი გამოწერით / მოვლა";
-    const msg = "მაინტერესებს პაკეტი: „" + names[plan] + "“";
+    const msg = "მაინტერესებს: „" + names[plan] + "“";
     ["bk-message", "contact-message"].forEach((id) => {
       const el = document.getElementById(id);
       if (el && !el.value) el.value = msg;
     });
   }
 
-  /* ---------- /start: საიტის კონფიგურატორი ---------- */
+  /* ---------- /start: უფასო ნიმუშის მოთხოვნა ---------- */
   function initConfigurator() {
     const form = $("[data-cfg]");
     if (!form) return;
     let conf;
     try { conf = JSON.parse(form.dataset.cfgConf); } catch (e) { return; }
-    const C = conf.cfg;
+    const F = (n) => form.elements[n];
     const steps = $$(".cfg__step", form);
     const total = steps.length;
     const bar = $("[data-cfg-bar]", form);
@@ -782,27 +795,19 @@ const FORM_ENDPOINT = "/api/lead.php";
     const submit = $("[data-cfg-submit]", form);
     const errBox = $("[data-cfg-error]", form);
     let cur = 1;
-    let pagesTouched = false;
+    let pkgTouched = new URLSearchParams(location.search).has("pkg");
 
     const val = (n) => (form.querySelector('[name="' + n + '"]:checked') || {}).value || "";
     const vals = (n) => $$('[name="' + n + '"]:checked', form).map((i) => i.value);
-    const label = (input) => input.closest("label").querySelector("span").firstChild.textContent.trim();
-    const labels = (n) => $$('[name="' + n + '"]:checked', form).map(label);
-    const business = () => (form.elements["business"].value.trim() || "თქვენი ბიზნესი");
-
-    // ბიზნესის ტიპის მიხედვით რეკომენდებული გვერდები (სანამ მომხმარებელი თავად შეცვლის)
-    const presetPages = () => {
-      if (pagesTouched) return;
-      const rec = (conf.types[val("type")] || [])[2] || [];
-      $$('[name="pages"]:not([data-locked])', form).forEach((i) => { i.checked = rec.includes(i.value); });
-    };
+    const business = () => (F("business").value.trim() || "თქვენი ბიზნესი");
+    const styleName = () => { const s = form.querySelector('[name="design"]:checked'); return s ? s.closest("label").querySelector(".design__label b").textContent : "—"; };
 
     const calc = () => {
-      const pages = vals("pages").length;
-      const extra = Math.max(0, pages - C.included);
-      const addons = vals("addons").reduce((sum, k) => sum + (C.addons[k] ? C.addons[k][1] : 0), 0);
-      const base = val("billing") === "month" ? C.month : C.year;
-      return { pages, extra, addons, base, monthly: base + extra * C.extraPage + addons };
+      const p = conf.packages[val("pkg")] || { name: "", setup: 0, month: 0 };
+      const addonsList = vals("addons").map((k) => conf.addons[k]).filter(Boolean);
+      const month = p.month + addonsList.reduce((s, a) => s + a[1], 0);
+      const year = val("billing") === "year";
+      return { p, addonsList, month, year, shown: year ? month * 10 : month };
     };
 
     const renderPreview = () => {
@@ -813,15 +818,13 @@ const FORM_ENDPOINT = "/api/lead.php";
     };
 
     const renderSummary = () => {
-      const p = calc();
+      const c = calc();
       const t = conf.types[val("type")] || [""];
-      const style = form.querySelector('[name="design"]:checked');
       const rows = [
         ["ბიზნესი", business() + " · " + t[0]],
-        ["მიზანი", labels("goals").join(", ") || "—"],
-        ["გვერდები", p.pages + " — " + labels("pages").join(", ")],
-        ["დამატებები", labels("addons").join(", ") || "—"],
-        ["დიზაინი", style ? style.closest("label").querySelector(".design__label b").textContent : "—"],
+        ["პაკეტი", c.p.name],
+        ["დამატებები", c.addonsList.map((a) => a[0]).join(", ") || "—"],
+        ["სტილი", styleName()],
       ];
       const ul = $("[data-cfg-summary]", form);
       ul.innerHTML = "";
@@ -831,12 +834,12 @@ const FORM_ENDPOINT = "/api/lead.php";
         const sp = document.createElement("span"); sp.textContent = v;
         li.append(b, sp); ul.append(li);
       });
-      $("[data-cfg-total]", form).textContent = p.monthly;
-      const year = val("billing") === "year";
-      $("[data-cfg-note]", form).textContent = (year
-        ? "წლიური გადახდა: " + (p.monthly * 12) + " ₾ წელიწადში."
-        : "თვიური გადახდა, მინიმალური ვადა — 12 თვე.")
-        + (p.extra ? " მოიცავს " + p.extra + " დამატებით გვერდს." : "");
+      $("[data-cfg-setup]", form).textContent = c.p.setup;
+      $("[data-cfg-total]", form).textContent = c.shown;
+      $("[data-cfg-unit]", form).textContent = c.year ? "₾ / წელი" : "₾ / თვე";
+      $("[data-cfg-note]", form).textContent = c.year
+        ? "თვეში " + c.month + " ₾-ის ნაცვლად 12 თვეს 10 თვის ფასად იხდით."
+        : "წლიურად თუ გადაიხდით, ორი თვე უფასოა.";
     };
 
     const show = (n) => {
@@ -847,7 +850,6 @@ const FORM_ENDPOINT = "/api/lead.php";
       back.hidden = n === 1;
       next.hidden = n === total;
       submit.hidden = n !== total;
-      if (n === 3) presetPages();
       if (n === 4) renderPreview();
       if (n === total) renderSummary();
       const top = form.getBoundingClientRect().top + window.scrollY - 110;
@@ -856,18 +858,20 @@ const FORM_ENDPOINT = "/api/lead.php";
 
     const fail = (msg) => { errBox.textContent = msg; errBox.hidden = false; };
 
-    next.addEventListener("click", () => {
-      if (cur === 2 && !vals("goals").length) return alert("აირჩიეთ ერთი მიზანი მაინც.");
-      show(Math.min(total, cur + 1));
-    });
+    next.addEventListener("click", () => show(Math.min(total, cur + 1)));
     back.addEventListener("click", () => show(Math.max(1, cur - 1)));
     form.addEventListener("change", (e) => {
-      if (e.target.name === "pages") pagesTouched = true;
-      if (e.target.name === "type") pagesTouched = false;
+      if (e.target.name === "pkg") pkgTouched = true;
+      // ბიზნესის ტიპის მიხედვით პაკეტის შეთავაზება, სანამ მომხმარებელი თავად არ აირჩევს
+      if (e.target.name === "type" && !pkgTouched) {
+        const want = e.target.value === "shop" ? "shop" : e.target.value === "other" ? "start" : "business";
+        const r = form.querySelector('[name="pkg"][value="' + want + '"]');
+        if (r) r.checked = true;
+      }
       if (cur === 4) renderPreview();
       if (cur === total) renderSummary();
     });
-    form.elements["business"].addEventListener("input", renderPreview);
+    F("business").addEventListener("input", renderPreview);
     form.addEventListener("keydown", (e) => {
       if (e.key === "Enter" && e.target.tagName === "INPUT" && cur < total) { e.preventDefault(); next.click(); }
     });
@@ -875,26 +879,24 @@ const FORM_ENDPOINT = "/api/lead.php";
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
       errBox.hidden = true;
-      const name = form.elements["name"].value.trim();
-      const phone = form.elements["phone"].value.trim();
-      const email = form.elements["email"].value.trim();
+      const name = F("name").value.trim();
+      const phone = F("phone").value.trim();
+      const email = F("email").value.trim();
       if (!name) return fail("მიუთითეთ სახელი.");
-      if (phone.replace(/\D/g, "").length < 7) return fail("მიუთითეთ ტელეფონის ნომერი.");
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return fail("მიუთითეთ სწორი ელფოსტა.");
+      if (phone.replace(/\D/g, "").length < 9) return fail("მიუთითეთ ტელეფონის ნომერი.");
+      if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return fail("ელფოსტა არასწორია.");
 
-      const p = calc();
+      const c = calc();
       const t = conf.types[val("type")] || [""];
-      const style = form.querySelector('[name="design"]:checked');
       const lines = [
-        "საიტის კონფიგურატორი (/start)",
+        "უფასო ნიმუშის მოთხოვნა (/start)",
         "ბიზნესი: " + business() + " (" + t[0] + ")",
-        "მიზანი: " + (labels("goals").join(", ") || "—"),
-        "გვერდები (" + p.pages + "): " + labels("pages").join(", "),
-        "დამატებები: " + (labels("addons").join(", ") || "—"),
-        "დიზაინი: " + (style ? style.closest("label").querySelector(".design__label b").textContent : "—") + ", ფერი " + val("color"),
-        "გადახდა: " + (val("billing") === "year" ? "წლიური" : "თვიური") + " — " + p.monthly + " ₾ / თვე",
+        "პაკეტი: " + c.p.name + " — ჩართვა " + c.p.setup + " ₾, " + c.p.month + " ₾ / თვე",
+        "დამატებები: " + (c.addonsList.map((a) => a[0] + " +" + a[1] + " ₾").join(", ") || "—"),
+        "სტილი: " + styleName() + ", ფერი " + val("color"),
+        "გადახდა: " + (c.year ? "წლიური — " + c.shown + " ₾ / წელი" : "თვიური — " + c.month + " ₾ / თვე"),
       ];
-      const msg = form.elements["message"].value.trim();
+      const msg = F("message").value.trim();
       if (msg) lines.push("", "კომენტარი: " + msg);
 
       submit.disabled = true;
@@ -906,12 +908,12 @@ const FORM_ENDPOINT = "/api/lead.php";
           body: JSON.stringify({
             name, phone, email,
             company: business(),
-            service: "საიტი გამოწერით",
-            budget: p.monthly + " ₾/თვე (" + (val("billing") === "year" ? "წლიური" : "თვიური") + ")",
+            service: "საიტი — " + c.p.name,
+            budget: c.p.setup + " ₾ + " + c.month + " ₾/თვე" + (c.year ? " (წლიური)" : ""),
             message: lines.join("\n"),
             source: "configurator",
             page: location.pathname,
-            company_website: form.elements["company_website"].value,
+            company_website: F("company_website").value,
           }),
         });
         const data = await res.json().catch(() => ({}));
@@ -920,11 +922,12 @@ const FORM_ENDPOINT = "/api/lead.php";
         const done = $("[data-cfg-done]");
         done.hidden = false;
         done.focus();
-        if (typeof window.gtag === "function") window.gtag("event", "generate_lead", { value: p.monthly, currency: "GEL" });
+        if (typeof window.gtag === "function") window.gtag("event", "generate_lead", { value: c.p.setup, currency: "GEL" });
+        if (typeof window.fbq === "function") window.fbq("track", "Lead");
       } catch (err) {
-        fail("შეკვეთა ვერ გაიგზავნა. სცადეთ თავიდან ან დაგვირეკეთ.");
+        fail("ვერ გაიგზავნა. სცადეთ თავიდან ან მოგვწერეთ WhatsApp-ზე.");
         submit.disabled = false;
-        submit.textContent = "შეკვეთის გაგზავნა";
+        submit.textContent = "ნიმუშის მიღება";
       }
     });
 
