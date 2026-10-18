@@ -753,6 +753,40 @@ const FORM_ENDPOINT = "/api/lead.php";
 
   /* ------------------------------------------ შეხვედრის დაჯავშნა (/contact) */
   /* ---------- /plans: თვიური/წლიური გადართვა; ?plan= — პაკეტი ჯავშნის ფორმაში ---------- */
+
+  /* მთავარი გვერდის hero: ნამუშევრების სლაიდერი */
+  function initCases() {
+    const box = $("[data-cases]");
+    if (!box) return;
+    const frames = $$(".hero5__frame", box);
+    const dots = $$("[data-case]", box);
+    const caps = $$("[data-case-caption] > span", box);
+    if (frames.length < 2) return;
+    const ms = 5500;
+    box.style.setProperty("--case-ms", ms + "ms");
+    const still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let cur = 0, timer = null;
+    const show = (n) => {
+      cur = (n + frames.length) % frames.length;
+      frames.forEach((f, i) => {
+        const on = i === cur;
+        f.classList.toggle("is-active", on);
+        f.tabIndex = on ? 0 : -1;
+        f.setAttribute("aria-hidden", on ? "false" : "true");
+      });
+      dots.forEach((d, i) => {
+        d.removeAttribute("aria-current");
+        if (i === cur) { void d.offsetWidth; d.setAttribute("aria-current", "true"); }
+      });
+      caps.forEach((c, i) => { c.hidden = i !== cur; });
+    };
+    const play = () => { if (!still) { clearInterval(timer); timer = setInterval(() => show(cur + 1), ms); } };
+    dots.forEach((d) => d.addEventListener("click", () => { show(Number(d.dataset.case)); play(); }));
+    box.addEventListener("mouseenter", () => clearInterval(timer));
+    box.addEventListener("mouseleave", play);
+    play();
+  }
+
   function initPlans() {
     const bill = $("[data-bill]");
     if (bill) {
@@ -1346,6 +1380,7 @@ const FORM_ENDPOINT = "/api/lead.php";
     initSplit();
     initCopyLink();
     initToc();
+    initCases();
     initBooking();
     initPlans();
     initConfigurator();

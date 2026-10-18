@@ -125,7 +125,7 @@ function render(rawSlug) {
               <h2>გინდათ, ეს თქვენს ბიზნესზე ერთად შევხედოთ?</h2>
               <p>უფასო კონსულტაციაზე ვნახავთ თქვენს საიტს და ერთ სამუშაო დღეში გეტყვით, საიდან ღირს დაწყება.</p>
               <div class="btn-row">
-                <a class="btn btn--primary" href="/contact#booking">უფასო კონსულტაცია</a>
+                <a class="btn btn--primary" href="/contact#booking">დაიწყეთ პროექტი</a>
                 <a class="btn btn--ghost-light" href="${e(svcLink[0])}">${e(svcLink[1])} →</a>
               </div>
             </aside>

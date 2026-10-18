@@ -2,7 +2,7 @@
 /** მთავარი გვერდი */
 const { e, T, setting, url } = require('../lib/core');
 const { ASSET_V } = require('../lib/layout');
-const { projects, showcase, mock, tools, ARROW } = require('../lib/projects');
+const { projects, showcase, mock, tools, tags, ARROW } = require('../lib/projects');
 const { posts: allPosts, postCard } = require('../lib/blog');
 const HOME_FAQ = require('../data/home-faq.json');
 
@@ -36,6 +36,8 @@ function render() {
   const allp = projects();
   const shots = showcase().filter((x) => String(x.shot ?? '').trim() !== '');
   const pk = packages();
+  const PICK = ['arlo-funding', 'gcci-germany', 'linden-spa', 'outsourcify'];
+  const heroCases = PICK.map((sl) => shots.find((x) => x.slug === sl)).filter(Boolean).concat(shots.filter((x) => !PICK.includes(x.slug))).slice(0, 4);
   const half = Math.ceil(shots.length / 2);
   const toolsList = tools();
   const posts = allPosts().slice(0, 3);
@@ -81,7 +83,7 @@ ${HOME_LD}
   <div class="scroll-progress" aria-hidden="true"></div>
 
   <aside class="sticky-cta" aria-label="სწრაფი კონტაქტი">
-    <span class="sticky-cta__text">საიტი 7 დღეში<small>უფასო ნიმუში 24 საათში</small></span>
+    <span class="sticky-cta__text">გაქვთ პროექტი?<small>გიპასუხებთ 24 საათში</small></span>
     <a class="sticky-cta__call" href="tel:+995557643225" aria-label="დარეკვა: ${e(setting("phone", "+995 557 64 32 25"))}"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></a>
     <a class="btn btn--primary" href="/contact">მოგვწერეთ</a>
   </aside>
@@ -165,12 +167,12 @@ ${HOME_LD}
           <li><a href="/plans">ფასები</a></li>
           <li><a href="/blog">ბლოგი</a></li>
           <li><a href="/contact">კონტაქტი</a></li>
-          <li><a class="btn btn--primary btn--sm" href="/contact#booking">უფასო კონსულტაცია</a></li>
+          <li><a class="btn btn--primary btn--sm" href="/contact#booking">დაიწყეთ პროექტი</a></li>
         </ul>
 
         <div class="nav__cta">
           <a class="nav__phone" href="tel:+995557643225"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg><span>${setting("phone", "+995 557 64 32 25")}</span></a>
-          <a class="btn btn--primary btn--sm" href="/contact#booking">უფასო კონსულტაცია</a>
+          <a class="btn btn--primary btn--sm" href="/contact#booking">დაიწყეთ პროექტი</a>
           <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-links"
                   aria-label="მენიუს გახსნა"><span></span></button>
         </div>
@@ -181,37 +183,33 @@ ${HOME_LD}
   <main id="main">
 
     <!-- ============================ HERO ============================ -->
-    <section class="hero4">
+    <section class="hero5">
       <div class="container">
-        <div class="hero4__panel">
-          <div class="hero4__text">
-            <h1 class="hero4__title">${T('home.hero2.title_a', 'საიტი, რომელიც')} <span class="hero4__word">${T('home.hero2.title_em', 'კლიენტს')}</span> ${T('home.hero2.title_b', 'მოგიყვანთ')}</h1>
-            <p>${T('home.hero2.text', 'Webico თბილისის ვებ სააგენტოა. ვაწყობთ საიტებს და ონლაინ მაღაზიებს მცირე ბიზნესისთვის. ჯერ უფასოდ გაჩვენებთ ნიმუშს, გადაიხდით მხოლოდ თუ მოგეწონებათ.')}</p>
+        <div class="hero5__panel">
+          <div class="hero5__text">
+            <h1 class="hero5__title">${T('home.hero2.title_a', 'დიზაინი და კოდი,')} ${T('home.hero2.title_b', 'რომელიც')} <em>${T('home.hero2.title_em', 'ბრენდს')}</em> ${T('home.hero2.title_c', 'აძლიერებს')}</h1>
+            <p>${T('home.hero2.text', 'Webico დიზაინისა და დეველოპმენტის სტუდიაა თბილისში. ვქმნით ვებსაიტებს, ონლაინ მაღაზიებს და ციფრულ პროდუქტებს ქართული და საერთაშორისო კომპანიებისთვის.')}</p>
             <div class="btn-row">
-              <a class="btn btn--primary" href="/start">${T('home.hero2.cta', 'მიიღე უფასო ნიმუში')}</a>
-              <a class="btn btn--white" href="/work">ნამუშევრები</a>
+              <a class="btn btn--white" href="/contact">${T('home.hero2.cta', 'დაიწყეთ პროექტი')}</a>
+              <a class="btn btn--outline-light" href="/work">ნამუშევრები</a>
             </div>
           </div>
 
-          <div class="hero4__art" aria-hidden="true">
-            ${map(shots.slice(0, 3), (f, i) => `<figure class="hero4__card hero4__card--${i + 1}"><img src="${e(url(f.shot))}" alt="" width="640" height="420"${i ? ' loading="lazy"' : ' fetchpriority="high"'}></figure>`)}
-            <svg class="hero4__stamp" viewBox="0 0 200 200">
-              <defs><path id="stamp-c" d="M100,100 m-74,0 a74,74 0 1,1 148,0 a74,74 0 1,1 -148,0"/></defs>
-              <circle cx="100" cy="100" r="98" />
-              <text textLength="458" lengthAdjust="spacing"><textPath href="#stamp-c" textLength="458" lengthAdjust="spacing">უფასო ნიმუში ✦ 24 საათში ✦ უფასოდ ✦</textPath></text>
-              <path class="hero4__stamp-arrow" d="M82 118 L118 82 M90 82 H118 V110" />
-            </svg>
-            <a class="hero4__tag" href="/plans" tabindex="-1">
-              <small>საიტი 7 დღეში</small>
-              <b>${fmt(pk[0].setup)} ₾-დან</b>
-            </a>
+          <div class="hero5__cases" data-cases>
+            <div class="hero5__frames">
+              ${map(heroCases, (f, i) => `<a class="hero5__frame${i ? '' : ' is-active'}" href="/work-${e(f.slug)}"${i ? ' tabindex="-1" aria-hidden="true"' : ''}><img src="${e(url(f.shot))}" alt="${e(f.name)}" width="880" height="580"${i ? ' loading="lazy"' : ' fetchpriority="high"'}></a>`)}
+            </div>
+            <div class="hero5__meta">
+              <ol class="hero5__dots">
+                ${map(heroCases, (f, i) => `<li><button type="button" data-case="${i}"${i ? '' : ' aria-current="true"'} aria-label="${e(f.name)}"><span></span></button></li>`)}
+              </ol>
+              <p class="hero5__caption" data-case-caption>${map(heroCases, (f, i) => `<span${i ? ' hidden' : ''}><b>${e(f.name)}</b> ${e(tags(f)[0])}</span>`)}</p>
+            </div>
           </div>
-        </div>
 
-        <div class="hero4__ticker" aria-hidden="true">
-          <div class="hero4__track">
-            ${map([0, 1], () => `<span>საიტი 7 დღეში</span><i>✦</i><span>უფასო ნიმუში 24 საათში</span><i>✦</i><span>${fmt(pk[0].setup)} ₾-დან</span><i>✦</i><span>დომენი თქვენს სახელზე</span><i>✦</i><span>${allp.length} პროექტი</span><i>✦</i>`)}
-          </div>
+          <ul class="hero5__skills">
+            <li>ვებ დიზაინი</li><li>დეველოპმენტი</li><li>ონლაინ მაღაზიები</li><li>UI/UX</li><li>SEO</li>
+          </ul>
         </div>
       </div>
     </section>
@@ -306,7 +304,7 @@ ${HOME_LD}
       <div class="container">
         <div class="section-head section-head--center" data-reveal>
           <span class="eyebrow">რატომ ვებიკო</span>
-          <h2>ხედავთ, რაზე იხარჯება ფული</h2>
+          <h2>შედეგი, რომელიც იზომება</h2>
           <p>დასაწყისშივე ვთანხმდებით, რას ვზომავთ. მერე ყოველთვე გაჩვენებთ,
             რა შეიცვალა და რა გავაკეთეთ.</p>
         </div>
@@ -459,8 +457,8 @@ ${HOME_LD}
       <div class="container">
         <div class="cta__inner">
           <div data-reveal>
-            <h2>მოდი, დავიწყოთ</h2>
-            <p>მოგვწერეთ, რა გჭირდებათ. გეტყვით, რა ეღირება და რამდენ ხანში გავაკეთებთ. საუბარი არაფერს გავალდებულებთ.</p>
+            <h2>განვიხილოთ თქვენი პროექტი</h2>
+            <p>მოგვიყევით, რას აკეთებთ და რა გსურთ. ერთ სამუშაო დღეში დაგიკავშირდებით და შემდეგ ნაბიჯებს ერთად დავგეგმავთ.</p>
             <div class="btn-row" style="margin-top:26px">
               <a class="btn btn--white" href="tel:+995557643225">დარეკეთ: ${setting("phone", "+995 557 64 32 25")}</a>
               <a class="btn btn--light" href="mailto:${setting("email", "hello@webico.io")}">${setting("email", "hello@webico.io")}</a>
@@ -468,8 +466,8 @@ ${HOME_LD}
           </div>
           <div data-reveal data-reveal-delay="90">
             <form class="lead-form" data-lead-form="home-cta-band" method="post" action="#">
-          <h3>მიიღეთ უფასო კონსულტაცია</h3>
-          <p class="lead-form__intro">შეავსეთ ფორმა და 24 საათში დაგიკავშირდებით.</p>
+          <h3>მოგვიყევით პროექტზე</h3>
+          <p class="lead-form__intro">რამდენიმე სიტყვაც საკმარისია.</p>
           <div class="form-status" role="alert" aria-live="polite"></div>
           <div class="field">
             <label for="home-cta-name">სახელი <span class="req">*</span></label>
