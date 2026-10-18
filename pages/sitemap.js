@@ -14,6 +14,7 @@ function render() {
     ['/service-web-development', '0.9', t], ['/service-wordpress', '0.9', t],
     ['/service-ecommerce', '0.9', t], ['/service-maintenance', '0.8', t], ['/service-seo', '0.8', t],
     ['/service-marketing', '0.8', t], ['/service-branding', '0.8', t]];
+  for (const n of require('./niche').SLUGS) pages.push(['/' + n, '0.8', t]);
   for (const p of projects()) pages.push(['/work-' + p.slug, '0.7', t]);
   for (const p of posts) pages.push(['/blog/' + p.slug, '0.7', String(p.updated ?? p.date ?? t)]);
   return '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'

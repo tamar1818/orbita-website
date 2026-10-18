@@ -10,7 +10,7 @@ const path = require('path');
 const express = require('express');
 const compression = require('compression');
 const { ROOT, UPLOADS_DIR } = require('./lib/core');
-const { ASSET_V } = require('./lib/layout');
+const { ASSET_V, withWhatsApp } = require('./lib/layout');
 const { serviceWorkSection } = require('./lib/projects');
 const { servicePage } = require('./lib/service');
 
@@ -59,7 +59,7 @@ for (const f of ['favicon.ico', 'robots.txt']) app.get('/' + f, (req, res) => re
 
 /* ------------------------------------------------------------ HTML პასუხი */
 function html(res, body, status = 200) {
-  res.status(status).set({ 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-cache, must-revalidate' }).send(body);
+  res.status(status).set({ 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-cache, must-revalidate' }).send(withWhatsApp(body));
 }
 
 /** სტატიკური გვერდი views/static/-დან: ასეტების ვერსია + სერვისის პროექტები */
@@ -101,6 +101,7 @@ for (const n of ['terms', 'privacy', 'refund', 'delivery']) app.get('/' + n, (re
 for (const n of ['wordpress', 'ecommerce', 'maintenance']) {
   app.get('/service-' + n, (req, res) => html(res, servicePage(require('./data/services/' + n + '.json'))));
 }
+for (const n of require('./pages/niche').SLUGS) app.get('/' + n, (req, res) => html(res, require('./pages/niche').render(n)));
 app.get('/sitemap.xml', (req, res) => {
   res.set({ 'Content-Type': 'application/xml; charset=utf-8', 'Cache-Control': 'no-cache' }).send(require('./pages/sitemap').render());
 });

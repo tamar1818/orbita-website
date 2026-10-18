@@ -3792,3 +3792,34 @@ h1, h2 { overflow-wrap: break-word; }
   .hero2__screens img { animation: none; }
 }
 @media (max-width: 960px) { .hero2::before { width: 480px; height: 480px; right: -200px; top: -120px; opacity: .7; } }
+
+/* --------------------------------------------------------------------------
+   45. WhatsApp — მცურავი ღილაკი მარცხნივ ქვემოთ (ჩატი მარჯვნივაა)
+   -------------------------------------------------------------------------- */
+.wa-float {
+  position: fixed; left: 20px; bottom: 20px; z-index: 150;
+  display: inline-flex; align-items: center; gap: 10px;
+  height: 56px; padding: 0 20px 0 16px; border-radius: var(--radius-pill);
+  background: #25d366; color: #fff; font-weight: 700; font-size: .92rem;
+  box-shadow: 0 10px 30px rgba(37, 211, 102, .35);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.wa-float:hover { color: #fff; transform: translateY(-2px); box-shadow: 0 14px 34px rgba(37, 211, 102, .45); }
+.wa-float:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+.sticky-cta__wa { color: #fff !important; background: #25d366 !important; border-color: #25d366 !important; }
+@media (max-width: 880px) { .wa-float { display: none; } }
+@media print { .wa-float { display: none; } }
+
+/* --------------------------------------------------------------------------
+   46. ნიშის გვერდები (სალონი, კაფე, მაღაზია)
+   -------------------------------------------------------------------------- */
+.niche-pain__n { font-family: var(--font-display); font-size: .95rem; font-weight: 700; color: var(--lilac); margin-bottom: 14px; }
+.niche-pain h3 { margin-bottom: .4em; }
+.niche-offer { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, .85fr); gap: clamp(28px, 4vw, 64px); align-items: center; }
+.niche-feats { list-style: none; margin: 28px 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.niche-feats li { display: flex; flex-direction: column; gap: 4px; padding: 18px 20px; border-radius: var(--radius-sm); background: var(--paper); border: 1px solid var(--line); }
+.niche-feats b { font-size: 1.02rem; color: var(--ink); }
+.niche-feats span { font-size: .92rem; color: var(--muted); line-height: 1.5; }
+.niche-offer__note { margin: 14px 0 0; text-align: center; font-size: .86rem; color: var(--ink-soft); }
+@media (max-width: 900px) { .niche-offer { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 560px) { .niche-feats { grid-template-columns: minmax(0, 1fr); } }

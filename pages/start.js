@@ -14,6 +14,8 @@ function render(req) {
   const want = String((req && req.query && req.query.pkg) || '');
   const chosen = pk.some((p) => p.id === want) ? want : 'business';
   const { types: TYPES, styles: STYLES, colors: COLORS } = D;
+  const wantType = String((req && req.query && req.query.type) || '');
+  const type = Object.prototype.hasOwnProperty.call(TYPES, wantType) ? wantType : 'service';
   const conf = {
     types: Object.fromEntries(Object.entries(TYPES).map(([k, v]) => [k, [v[0], v[1]]])),
     packages: Object.fromEntries(pk.map((p) => [p.id, { name: p.name, setup: p.setup, month: p.month }])),
@@ -51,7 +53,7 @@ function render(req) {
           <fieldset class="cfg__step" data-step="1">
             <legend class="cfg__title">რა ბიზნესი გაქვთ?</legend>
             <div class="cfg__tiles">
-              ${map(Object.entries(TYPES), ([k, [label]]) => `<label class="tile"><input type="radio" name="type" value="${k}"${k === 'service' ? ' checked' : ''}><span>${e(label)}</span></label>`)}
+              ${map(Object.entries(TYPES), ([k, [label]]) => `<label class="tile"><input type="radio" name="type" value="${k}"${k === type ? ' checked' : ''}><span>${e(label)}</span></label>`)}
             </div>
             <div class="field cfg__field">
               <label for="cfg-name">ბიზნესის სახელი</label>
