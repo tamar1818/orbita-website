@@ -8,6 +8,7 @@ const HOME_FAQ = require('../data/home-faq.json');
 
 const { map, truthy, empty } = require('../lib/tpl');
 const { packages, fmt } = require('../lib/pricing');
+const { bentoHero } = require('../lib/hero');
 const decode = (s) => String(s).replace(/&quot;/g, '"').replace(/&#0?39;/g, "'").replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&');
 
 function homeLd() {
@@ -183,37 +184,18 @@ ${HOME_LD}
   <main id="main">
 
     <!-- ============================ HERO ============================ -->
-    <section class="hero5">
-      <div class="container">
-        <div class="hero5__panel">
-          <div class="hero5__text">
-            <h1 class="hero5__title">${T('home.hero2.title_a', 'დიზაინი და კოდი,')} ${T('home.hero2.title_b', 'რომელიც')} <em>${T('home.hero2.title_em', 'ბრენდს')}</em> ${T('home.hero2.title_c', 'აძლიერებს')}</h1>
-            <p>${T('home.hero2.text', 'Webico დიზაინისა და დეველოპმენტის სტუდიაა თბილისში. ვქმნით ვებსაიტებს, ონლაინ მაღაზიებს და ციფრულ პროდუქტებს ქართული და საერთაშორისო კომპანიებისთვის.')}</p>
-            <div class="btn-row">
-              <a class="btn btn--white" href="/contact">${T('home.hero2.cta', 'დაიწყეთ პროექტი')}</a>
-              <a class="btn btn--outline-light" href="/work">ნამუშევრები</a>
-            </div>
-          </div>
-
-          <div class="hero5__cases" data-cases>
-            <div class="hero5__frames">
-              ${map(heroCases, (f, i) => `<a class="hero5__frame${i ? '' : ' is-active'}" href="/work-${e(f.slug)}"${i ? ' tabindex="-1" aria-hidden="true"' : ''}><img src="${e(url(f.shot))}" alt="${e(f.name)}" width="880" height="580"${i ? ' loading="lazy"' : ' fetchpriority="high"'}></a>`)}
-            </div>
-            <div class="hero5__meta">
-              <ol class="hero5__dots">
-                ${map(heroCases, (f, i) => `<li><button type="button" data-case="${i}"${i ? '' : ' aria-current="true"'} aria-label="${e(f.name)}"><span></span></button></li>`)}
-              </ol>
-              <p class="hero5__caption" data-case-caption>${map(heroCases, (f, i) => `<span${i ? ' hidden' : ''}><b>${e(f.name)}</b> ${e(tags(f)[0])}</span>`)}</p>
-            </div>
-          </div>
-
-          <ul class="hero5__skills">
-            <li>ვებ დიზაინი</li><li>დეველოპმენტი</li><li>ონლაინ მაღაზიები</li><li>UI/UX</li><li>SEO</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
+${bentoHero({
+    base: '',
+    label: 'დიზაინისა და დეველოპმენტის სტუდია',
+    title: `${T('home.hero2.title_a', 'დიზაინი და კოდი,')} ${T('home.hero2.title_b', 'რომელიც')} <em>${T('home.hero2.title_em', 'ბრენდს')}</em> ${T('home.hero2.title_c', 'აძლიერებს')}`,
+    text: decode(T('home.hero2.text', 'Webico დიზაინისა და დეველოპმენტის სტუდიაა თბილისში. ვქმნით ვებსაიტებს, ონლაინ მაღაზიებს და ციფრულ პროდუქტებს ქართული და საერთაშორისო კომპანიებისთვის.')),
+    cta: [decode(T('home.hero2.cta', 'დაიწყეთ პროექტი')), '/contact'],
+    work: ['ნამუშევრები', '/work'],
+    cases: [shots.find((x) => x.slug === 'bitefit') || heroCases[0]].map((f) => ({ name: f.name, slug: f.slug, shot: f.shot, tag: tags(f)[0] })),
+    stat: [allp.length + '+', 'პროექტი ქართული და საერთაშორისო კომპანიებისთვის'],
+    doTitle: 'რას ვაკეთებთ',
+    doList: ['ვებსაიტები', 'ონლაინ მაღაზიები', 'UI/UX დიზაინი', 'SEO'],
+  })}
     <!-- ================== ნამუშევრების ორმაგი ლენტი ================== -->
     ${truthy(shots.length) ? `    <section class="showcase" aria-label="ნამუშევრები">
       ${map([shots.slice(0, half), shots.slice(half)].map((row, r) => [row, r]).filter(([row]) => row.length), ([row, r]) => { return `      <div class="showcase__row${r ? ' showcase__row--rev' : ''}">

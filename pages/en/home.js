@@ -5,6 +5,7 @@ const { head, foot } = require('../../lib/layout-en');
 const { mock } = require('../../lib/projects');
 const { map, ldJson } = require('../../lib/tpl');
 const S = require('./shared');
+const { bentoHero } = require('../../lib/hero');
 
 const FAQ = [
   ['Do you work with clients outside Georgia?', 'Yes. We work in English with companies in Europe, the US and the Gulf. Calls happen over Google Meet or Zoom, and we overlap with European business hours.'],
@@ -36,37 +37,18 @@ function render() {
     alt: '/',
     ld: '\n  <script type="application/ld+json">' + ldJson(ld) + '</script>',
   }) + `
-    <section class="hero5">
-      <div class="container">
-        <div class="hero5__panel">
-          <div class="hero5__text">
-            <h1 class="hero5__title">Design and code that make your <em>brand</em> stronger</h1>
-            <p>Webico is a design and development studio in Tbilisi. We build websites, online stores and digital products for companies in Georgia and abroad.</p>
-            <div class="btn-row">
-              <a class="btn btn--white" href="/en/contact">Start a project</a>
-              <a class="btn btn--outline-light" href="/en/work">See our work</a>
-            </div>
-          </div>
-
-          <div class="hero5__cases" data-cases>
-            <div class="hero5__frames">
-              ${map(cases, (f, i) => `<a class="hero5__frame${i ? '' : ' is-active'}" href="/en/work-${e(f.slug)}"${i ? ' tabindex="-1" aria-hidden="true"' : ''}><img src="${e(url(f.shot))}" alt="${e(f.name)}" width="880" height="580"${i ? ' loading="lazy"' : ' fetchpriority="high"'}></a>`)}
-            </div>
-            <div class="hero5__meta">
-              <ol class="hero5__dots">
-                ${map(cases, (f, i) => `<li><button type="button" data-case="${i}"${i ? '' : ' aria-current="true"'} aria-label="${e(f.name)}"><span></span></button></li>`)}
-              </ol>
-              <p class="hero5__caption" data-case-caption>${map(cases, (f, i) => `<span${i ? ' hidden' : ''}><b>${e(f.name)}</b> ${e(S.projectTags(f)[0])}</span>`)}</p>
-            </div>
-          </div>
-
-          <ul class="hero5__skills">
-            <li>Web design</li><li>Development</li><li>E-commerce</li><li>UI/UX</li><li>SEO</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
+${bentoHero({
+    base: '/en',
+    label: 'Design & development studio',
+    title: 'Design and code that make your <em>brand</em> stronger',
+    text: 'Webico is a design and development studio in Tbilisi. We build websites, online stores and digital products for companies in Georgia and abroad.',
+    cta: ['Start a project', '/en/contact'],
+    work: ['See our work', '/en/work'],
+    cases: [shots.find((x) => x.slug === 'bitefit') || cases[0]].map((f) => ({ name: f.name, slug: f.slug, shot: f.shot, tag: S.projectTags(f)[0] })),
+    stat: [all.length + '+', 'projects for companies in Georgia and abroad'],
+    doTitle: 'What we do',
+    doList: ['Websites', 'Online stores', 'UI/UX design', 'SEO'],
+  })}
     <section class="section" id="services">
       <div class="container">
         <div class="section-head section-head--center" data-reveal>
