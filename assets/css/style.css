@@ -3976,10 +3976,11 @@ h1, h2 { overflow-wrap: break-word; }
 .mega__item:has(.mega__icon:not([class*="mega__icon--"])):hover { background: var(--bg-soft); }
 .mega__icon { transition: transform .35s cubic-bezier(.22,.61,.36,1); }
 .mega__item:hover .mega__icon { transform: rotate(-8deg) scale(1.06); }
-.mega__item[href="/service-web-development"] b::after,
-.mega__item[href="/service-seo"] b::after {
-  content: "🔥 პოპულარული";
-  display: inline-block; vertical-align: 2px; margin-left: 8px; padding: 2px 8px;
-  border-radius: var(--radius-pill); background: #ffe7d6; color: #b4400c;
-  font-size: .68rem; font-weight: 700; line-height: 1.5; white-space: nowrap;
+.mega__item[href="/service-web-development"] b::before,
+.mega__item[href="/service-seo"] b::before {
+  content: "ხშირად ირჩევენ";
+  display: flex; align-items: center; gap: 6px; margin-bottom: 4px;
+  font-size: .7rem; font-weight: 600; letter-spacing: .02em; color: var(--muted);
+  background: radial-gradient(circle, #7fae00 0 3px, transparent 3.5px) no-repeat left center / 8px 8px;
+  padding-left: 13px;
 }
