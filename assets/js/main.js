@@ -831,6 +831,12 @@ const FORM_ENDPOINT = "/api/lead.php";
       }));
     }
     const plan = new URLSearchParams(location.search).get("plan");
+    if (EN) {
+      const en = { start: "Starter package", business: "Business package", shop: "Store package", wordpress: "WordPress maintenance", custom: "Custom site maintenance", seo: "SEO and maintenance" };
+      const box = document.getElementById("en-contact-message");
+      if (plan && en[plan] && box && !box.value) box.value = "I'm interested in: " + en[plan];
+      return;
+    }
     const names = { wordpress: "WordPress-ის მოვლა", custom: "ინდივიდუალური საიტის მოვლა", seo: "SEO და მოვლა" };
     if (!plan || !names[plan]) return;
     const topic = document.getElementById("bk-topic");

@@ -111,6 +111,9 @@ app.get('/en/about', enPage(() => EN().about()));
 app.get('/en/services', enPage(() => EN().services()));
 app.get('/en/work', enPage(() => EN().work()));
 app.get('/en/contact', enPage(() => EN().contact()));
+for (const n of require('./pages/en/service').SLUGS) app.get('/en/' + n, enPage(() => require('./pages/en/service').render(n)));
+app.get('/en/pricing', enPage(() => require('./pages/en/pricing').render()));
+for (const n of ['privacy', 'terms']) app.get('/en/' + n, enPage(() => require('./pages/en/legal').render(n)));
 app.get('/en/work-:slug', (req, res, next) => {
   const out = EN().projectPage(req.params.slug);
   out === null ? next() : html(res, out);
@@ -126,7 +129,7 @@ app.get('/:name', (req, res, next) => {
 });
 
 /* ------------------------------------------------------------------ 404 */
-app.use((req, res) => html(res, staticPage('404') || 'Not found', 404));
+app.use((req, res) => html(res, /^\/en(\/|$)/.test(req.path) ? EN().notFound() : (staticPage('404') || 'Not found'), 404));
 app.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
   console.error(err);
   html(res, '<!doctype html><meta charset="utf-8"><title>შეცდომა</title><p style="font-family:sans-serif;padding:40px">სერვერის შეცდომა. სცადეთ მოგვიანებით.</p>', 500);

@@ -8,7 +8,7 @@ const S = require('./shared');
 const { heroWall } = require('../../lib/hero');
 
 const FAQ = [
-  ['Do you work with clients outside Georgia?', 'Yes. We work in English with companies in Europe, the US and the Gulf. Calls happen over Google Meet or Zoom, and we overlap with European business hours.'],
+  ['Do you work with clients outside Georgia?', 'Yes. We work in English with companies in Europe and the US. Calls happen over Google Meet or Zoom, and our hours overlap with European business hours.'],
   ['How much does a website cost?', 'Every project is quoted individually, based on the number of pages, design depth, languages and integrations. After a first call you get a fixed quote within one or two business days.'],
   ['How long does a project take?', 'A website usually takes three to eight weeks. Online stores and web apps take longer. You get a schedule with milestones together with the quote.'],
   ['Who owns the website?', 'You do. The domain, code, content and all accounts are registered to you, and you can move them at any time.'],
@@ -28,7 +28,17 @@ function render() {
   const ld = {
     '@context': 'https://schema.org',
     '@graph': [
-      { '@type': 'Organization', '@id': 'https://webico.io/#org', name: 'Webico', url: 'https://webico.io/en' },
+      { '@type': 'Organization', '@id': 'https://webico.io/#org', name: 'Webico', url: 'https://webico.io/',
+        logo: 'https://webico.io/assets/img/apple-touch-icon.png', email: 'hello@webico.io' },
+      { '@type': 'WebSite', '@id': 'https://webico.io/#website', url: 'https://webico.io/', name: 'Webico', inLanguage: ['ka', 'en'],
+        publisher: { '@id': 'https://webico.io/#org' } },
+      { '@type': 'ProfessionalService', name: 'Webico', url: 'https://webico.io/en', image: 'https://webico.io/assets/img/og-image.png',
+        description: 'Design and development studio in Tbilisi, Georgia: websites, online stores, UI/UX design, SEO and maintenance.',
+        telephone: '+995557643225', email: 'hello@webico.io', priceRange: '$$',
+        address: { '@type': 'PostalAddress', addressLocality: 'Tbilisi', addressCountry: 'GE' },
+        areaServed: [{ '@type': 'Country', name: 'Georgia' }, { '@type': 'Place', name: 'Europe' }, { '@type': 'Country', name: 'United States' }],
+        knowsAbout: ['Web design', 'Web development', 'WordPress', 'WooCommerce', 'Shopify', 'UI/UX design', 'SEO'],
+        parentOrganization: { '@id': 'https://webico.io/#org' } },
       { '@type': 'FAQPage', mainEntity: FAQ.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) },
     ],
   };
@@ -55,7 +65,7 @@ ${heroWall({
           <p>One team handles design, code and growth, so nothing gets lost between agencies.</p>
         </div>
         <div class="svc-list" data-reveal>${map(S.SERVICES, (s) => `
-          <a class="svc svc--${s.tone}" href="/en/services#${s.id}" data-preview="${prev(PREVIEW[s.id])}">
+          <a class="svc svc--${s.tone}" href="/en/${s.page}" data-preview="${prev(PREVIEW[s.id] || 'marketing-agency')}">
             <div class="svc__main">
               <h3 class="svc__title">${e(s.title)}</h3>
               <span class="svc__desc"><span>${e(s.text)}</span></span>

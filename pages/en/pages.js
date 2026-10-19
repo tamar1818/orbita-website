@@ -82,7 +82,7 @@ ${map(S.SERVICES, (s, i) => `
           <div data-reveal>
             <h2>${e(s.title)}</h2>
             <p class="lead">${e(s.text)}</p>
-            <div class="btn-row" style="margin-top:24px"><a class="btn btn--primary" href="/en/contact">Get a quote</a></div>
+            <div class="btn-row" style="margin-top:24px"><a class="btn btn--primary" href="/en/${s.page}">Learn more</a><a class="btn btn--ghost" href="/en/contact">Get a quote</a></div>
           </div>
           <ul class="checklist" data-reveal data-reveal-delay="80">${map(s.items, (li) => `<li>${e(li)}</li>`)}</ul>
         </div>
@@ -129,13 +129,13 @@ function projectPage(rawSlug) {
   const next = all[(idx + 1) % all.length];
   const domain = String(p.domain ?? '');
   const tg = S.projectTags(p);
-  const summary = tr.summary || `${p.name}: ${tg.join(', ').toLowerCase()} by Webico.`;
+  const summary = tr.summary || `${p.name}${domain ? ' (' + domain + ')' : ''}: ${tg.join(' and ').replace(/^./, (c) => c.toLowerCase())} by Webico, a design and development studio in Tbilisi, Georgia.`;
   const shot = String(p.shot ?? '').trim();
   const full = String(p.full ?? '').trim();
 
   return head({
-    title: `${p.name} | Webico`,
-    desc: summary,
+    title: `${p.name}: ${tg[0]} | Webico`,
+    desc: summary.length > 158 ? summary.slice(0, 155).replace(/\s+\S*$/, '') + '…' : summary,
     url: '/en/work-' + slug, alt: '/work-' + slug,
     image: shot ? shot.replace(/\.webp$/, '-og.jpg') : '',
   }) + pageHero([['Home', '/en'], ['Work', '/en/work'], [p.name]], e(p.name), e(summary)) + `
@@ -149,12 +149,12 @@ function projectPage(rawSlug) {
         ${full ? `<figure class="project-full" data-reveal style="margin-top:28px"><img src="${e(cu(full))}" alt="${e(p.name)} full page design" loading="lazy" decoding="async"></figure>` : ''}
       </div>
     </section>
-${(tr.scope || []).length ? `
+${(tr.scope || tg).length ? `
     <section class="section section--soft">
       <div class="container">
         <div class="grid grid--2" style="align-items:start">
           <h2 data-reveal>What we did</h2>
-          <ul class="checklist" data-reveal data-reveal-delay="80">${map(tr.scope, (s) => `<li>${e(s)}</li>`)}</ul>
+          <ul class="checklist" data-reveal data-reveal-delay="80">${map(tr.scope || tg, (s) => `<li>${e(s)}</li>`)}</ul>
         </div>
       </div>
     </section>` : ''}
@@ -198,4 +198,23 @@ function contact() {
 ` + foot();
 }
 
-module.exports = { about, services, work, projectPage, contact };
+/* ------------------------------------------------------------------ 404 */
+function notFound() {
+  return head({ title: 'Page not found | Webico', desc: 'This page does not exist.', url: '/en/404', alt: '/' })
+    .replace('<meta name="robots" content="index, follow, max-image-preview:large">', '<meta name="robots" content="noindex">') + `
+    <section class="page-hero">
+      <div class="container">
+        <div class="page-hero__inner">
+          <h1>Page not found</h1>
+          <p>The page you are looking for has moved or never existed.</p>
+          <div class="btn-row">
+            <a class="btn btn--primary" href="/en">Back to home</a>
+            <a class="btn btn--ghost" href="/en/work">See our work</a>
+          </div>
+        </div>
+      </div>
+    </section>
+` + foot();
+}
+
+module.exports = { about, services, work, projectPage, contact, notFound };
