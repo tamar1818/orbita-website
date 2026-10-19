@@ -10,7 +10,7 @@ const path = require('path');
 const express = require('express');
 const compression = require('compression');
 const { ROOT, UPLOADS_DIR } = require('./lib/core');
-const { ASSET_V, withWhatsApp, withLang, withSales } = require('./lib/layout');
+const { ASSET_V, withWhatsApp, withLang } = require('./lib/layout');
 const { serviceWorkSection } = require('./lib/projects');
 const { servicePage } = require('./lib/service');
 const { teamSection } = require('./lib/team');
@@ -60,7 +60,7 @@ for (const f of ['favicon.ico', 'robots.txt']) app.get('/' + f, (req, res) => re
 
 /* ------------------------------------------------------------ HTML პასუხი */
 function html(res, body, status = 200) {
-  res.status(status).set({ 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-cache, must-revalidate' }).send(withSales(withWhatsApp(withLang(body, res.req ? res.req.path : '/'))));
+  res.status(status).set({ 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-cache, must-revalidate' }).send(withWhatsApp(withLang(body, res.req ? res.req.path : '/')));
 }
 
 /** სტატიკური გვერდი views/static/-დან: ასეტების ვერსია + სერვისის პროექტები */
