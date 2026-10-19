@@ -3872,7 +3872,6 @@ h1, h2 { overflow-wrap: break-word; }
 .svc-list:hover .svc:not(:hover) { color: color-mix(in srgb, var(--ink) 35%, transparent); }
 /* დეკორატიული ხატულების კვადრატები და ინიციალების წრეები — შაბლონური იერი */
 .card__icon, .member .avatar { display: none !important; }
-.mega__icon { background: none !important; border: 1px solid var(--line); }
 
 /* სერვისების სია: სათაური | აღწერა და ტექნოლოგიები | ისარი */
 .svc {
@@ -3921,11 +3920,9 @@ h1, h2 { overflow-wrap: break-word; }
 /* --------------------------------------------------------------------------
    48. გუნდი — პორტრეტები, ლუწი ბარათები ოდნავ დაბლა (რედაქციული რიტმი)
    -------------------------------------------------------------------------- */
-.team-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(16px, 2vw, 28px); }
-.person { margin: 0; display: flex; flex-direction: column; min-width: 0; }
-.person:first-child { grid-column: 1 / span 2; grid-row: 1 / span 2; }
+.team-grid { --cols: 3; --gap: clamp(16px, 2vw, 28px); display: flex; flex-wrap: wrap; justify-content: center; gap: clamp(28px, 3vw, 44px) var(--gap); }
+.person { margin: 0; width: calc((100% - (var(--cols) - 1) * var(--gap)) / var(--cols)); min-width: 0; }
 .person__photo { position: relative; overflow: hidden; border-radius: var(--radius); background: #e9e8ee; aspect-ratio: 4 / 5; }
-.person:first-child .person__photo { flex: 1; aspect-ratio: auto; min-height: 420px; }
 .person__photo img {
   position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 22%; display: block;
   filter: grayscale(1) contrast(1.04);
@@ -3939,18 +3936,11 @@ h1, h2 { overflow-wrap: break-word; }
 }
 .person:hover .person__photo::after { opacity: 1; transform: none; }
 .person figcaption { display: grid; gap: 4px; padding: 16px 2px 0; }
-.person figcaption b { font-family: var(--font-title-sm); font-size: 1.15rem; line-height: 1.25; color: var(--ink); }
-.person:first-child figcaption b { font-size: clamp(1.3rem, 1.1rem + .6vw, 1.6rem); }
-.person figcaption span { font-size: .92rem; line-height: 1.45; color: var(--muted); }
+.person figcaption b { font-family: var(--font-title-sm); font-size: 1.2rem; line-height: 1.25; color: var(--ink); }
+.person figcaption span { font-size: .94rem; line-height: 1.45; color: var(--muted); }
 @media (hover: none) { .person__photo img { filter: none; } }
-@media (max-width: 1100px) {
-  .team-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .person:first-child { grid-column: 1 / -1; grid-row: auto; }
-  .person:first-child .person__photo { flex: none; aspect-ratio: 16 / 11; min-height: 0; }
-}
-@media (max-width: 560px) {
-  .team-grid { gap: 14px; }
-  .person:first-child .person__photo { aspect-ratio: 4 / 4.2; }
+@media (max-width: 700px) {
+  .team-grid { --cols: 2; --gap: 14px; row-gap: 26px; }
   .person figcaption b { font-size: 1rem; }
   .person figcaption span { font-size: .84rem; }
 }
@@ -3965,3 +3955,19 @@ h1, h2 { overflow-wrap: break-word; }
 .section-head--center + .grid--4 > .card:nth-child(4n+4) p, .section-head--center + .grid--2 > .card:nth-child(4n+4) p { color: rgba(255,255,255,.72); }
 .section-head--center + .grid--4 > .card p, .section-head--center + .grid--2 > .card p { color: var(--ink-soft); }
 .section-head--center + .grid--4 > .card:hover, .section-head--center + .grid--2 > .card:hover { transform: translateY(-4px) rotate(-.4deg); }
+
+/* სერვისების მენიუ: ფერადი ხატულები, ფერადი hover და „პოპულარული“ ნიშანი */
+.mega__icon:not([class*="mega__icon--"]) { background: var(--ink); color: var(--paper); }
+.mega__item:has(.mega__icon--lilac):hover { background: color-mix(in srgb, var(--lilac) 24%, #fff); }
+.mega__item:has(.mega__icon--lime):hover { background: color-mix(in srgb, var(--lime) 34%, #fff); }
+.mega__item:has(.mega__icon--pink):hover { background: color-mix(in srgb, var(--pink) 34%, #fff); }
+.mega__item:has(.mega__icon:not([class*="mega__icon--"])):hover { background: var(--bg-soft); }
+.mega__icon { transition: transform .35s cubic-bezier(.22,.61,.36,1); }
+.mega__item:hover .mega__icon { transform: rotate(-8deg) scale(1.06); }
+.mega__item[href="/service-web-development"] b::after,
+.mega__item[href="/service-seo"] b::after {
+  content: "🔥 პოპულარული";
+  display: inline-block; vertical-align: 2px; margin-left: 8px; padding: 2px 8px;
+  border-radius: var(--radius-pill); background: #ffe7d6; color: #b4400c;
+  font-size: .68rem; font-weight: 700; line-height: 1.5; white-space: nowrap;
+}
