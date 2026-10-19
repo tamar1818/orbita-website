@@ -9,27 +9,116 @@
   "projects": {
     "bitefit": {
       "summary": "BiteFit is a calorie tracking app: AI food scanning, calorie logging and personal goals in a simple, modern interface with light and dark themes.",
-      "scope": ["UI/UX design", "AI food scanning flow", "Calorie and goal tracking", "Light/dark theme and language switch"]
+      "scope": [
+        "UI/UX design",
+        "AI food scanning flow",
+        "Calorie and goal tracking",
+        "Light/dark theme and language switch"
+      ]
     },
     "marketing-agency": {
       "summary": "A website concept for a marketing agency: a dark, modern visual language with gradient accents and clear paths to the portfolio and a call booking.",
-      "scope": ["UI/UX design", "Website layout", "Visual style"]
+      "scope": [
+        "UI/UX design",
+        "Website layout",
+        "Visual style"
+      ]
     },
     "arlo-funding": {
       "summary": "Website for a US commercial real estate lender: loan types by property, free tools and an application form.",
-      "scope": ["UI/UX design", "Responsive development", "English-language site", "Application form"]
+      "scope": [
+        "UI/UX design",
+        "Responsive development",
+        "English-language site",
+        "Application form"
+      ]
     },
     "gcci-germany": {
       "summary": "Website for the German office of the Georgian Chamber of Commerce and Industry, built for German and European investors: investment opportunities, resources, media and consultation requests.",
-      "scope": ["UI/UX design", "Responsive development", "German-language site", "Investment and media sections"]
+      "scope": [
+        "UI/UX design",
+        "Responsive development",
+        "German-language site",
+        "Investment and media sections"
+      ]
     },
     "outsourcify": {
       "summary": "Website for an accounting outsourcing firm: service structure, pricing and a chatbot that books a consultation in a few questions.",
-      "scope": ["UI/UX design", "Responsive development", "Bilingual site (KA/EN)", "Consultation booking chatbot"]
+      "scope": [
+        "UI/UX design",
+        "Responsive development",
+        "Bilingual site (KA/EN)",
+        "Consultation booking chatbot"
+      ]
     },
     "linden-spa": {
       "summary": "A website concept for a spa: a calm visual language, treatment cards with duration and booking, guest reviews and a call request form.",
-      "scope": ["UI/UX design", "Full website layout", "Treatment catalogue design", "Call request form design"]
+      "scope": [
+        "UI/UX design",
+        "Full website layout",
+        "Treatment catalogue design",
+        "Call request form design"
+      ]
+    },
+    "archetypes-creatives": {
+      "summary": "Website for Archetypes Creatives: a minimal portfolio for a creative studio, where the work and large visuals do the talking."
+    },
+    "tamaras-collect": {
+      "summary": "Online store for Tamara's Collect: clothing, bags, shoes and accessories, with seasonal collections and an easy checkout."
+    },
+    "oribu": {
+      "summary": "Website for Oribu: wooden children's furniture and toys, with a product catalogue in two languages."
+    },
+    "memory-casa": {
+      "summary": "Online store for Memory Casa: handmade ceramic tableware, with collections, customer accounts and a cart."
+    },
+    "mubana": {
+      "summary": "Online pet store for Mubana: food and accessories for pets, with a catalogue, blog and FAQ."
+    },
+    "bekaia-fund": {
+      "summary": "Website for the Tamaz Bekaia Education Fund: partner universities, scholarships and projects, in Georgian and English."
+    },
+    "galogrea": {
+      "summary": "Website for Galogrea, a wedding dress brand in Georgia: bridal collections, rental, custom design and accessories, in two languages."
+    },
+    "cx-panda": {
+      "summary": "Platform for customer experience professionals: articles, frameworks, case studies, a CCXP course and AI-powered search."
+    },
+    "wine-station": {
+      "summary": "Website for The Wine Station: a hotel and winery with room booking, a wine section and two languages."
+    },
+    "cloud-streaming": {
+      "summary": "Corporate website for Cloud Streaming Technology: company story, blog and events, careers and contact."
+    },
+    "the-lawlex": {
+      "summary": "Website for LawLex, a law firm: practice areas, sectors, people, offices and insights."
+    },
+    "tg-events": {
+      "summary": "Website for TG Events: wedding and event design in Tbilisi, with a portfolio and an event enquiry form, in two languages."
+    },
+    "vrs-studio": {
+      "summary": "Website for VRS Studio, a vinyl recording and DJ studio in Tbilisi: studio booking, a DJ course and equipment rental."
+    },
+    "realops": {
+      "summary": "Website for RealOps: DevOps and infrastructure services for iGaming companies, with team, case study and industry pages."
+    },
+    "my-creator": {
+      "summary": "Platform that brings brands and Georgian content creators together: a creator catalogue and an easy way to start a collaboration."
+    },
+    "anapea": {
+      "summary": "Website for Anapea Village: a hotel and winery with room booking, a winery section and two languages."
+    },
+    "pearl-island": {
+      "summary": "Website for Pearl Island Bahamas: private island day trips near Nassau, with an experiences catalogue and online booking."
+    },
+    "autism-ge": {
+      "summary": "Website for the Autism Research and Support Foundation: projects, news, a learning centre and a donation page."
+    },
+    "phono": {
+      "summary": "Website for Phono, a music label: releases, news, events, playlists and a demo submission form."
+    },
+    "morevi": {
+      "summary": "Website for Morevi: a catalogue of music releases with cover art front and centre."
     }
   }
 }

@@ -122,140 +122,160 @@
             "name": "Archetypes Creatives",
             "domain": "archetypescreatives.com",
             "tone": "lilac",
-            "shot": "assets/img/work/archetypes-creatives-website.webp"
+            "shot": "assets/img/work/archetypes-creatives-website.webp",
+            "summary": "Archetypes Creatives-ის ვებსაიტი: მინიმალისტური პორტფოლიო კრეატიული სტუდიისთვის, სადაც მთავარი როლი ნამუშევრებსა და დიდ ვიზუალებს აქვს."
         },
         {
             "slug": "tamaras-collect",
             "name": "Tamara's Collect",
             "domain": "tamarascollect.com",
             "tone": "lime",
-            "shot": "assets/img/work/tamaras-collect-website.webp"
+            "shot": "assets/img/work/tamaras-collect-website.webp",
+            "summary": "Tamara's Collect-ის ონლაინ მაღაზია: ტანსაცმელი, ჩანთები, ფეხსაცმელი და აქსესუარები, სეზონური კოლექციებით და მოსახერხებელი კალათით."
         },
         {
             "slug": "oribu",
             "name": "Oribu",
             "domain": "oribu.ge",
             "tone": "pink",
-            "shot": "assets/img/work/oribu-website.webp"
+            "shot": "assets/img/work/oribu-website.webp",
+            "summary": "Oribu-ს ვებსაიტი: ბავშვის ხის ავეჯი და სათამაშოები, პროდუქციის კატალოგით და ორ ენაზე."
         },
         {
             "slug": "memory-casa",
             "name": "Memory Casa",
             "domain": "memorycasa.ge",
             "tone": "soft",
-            "shot": "assets/img/work/memory-casa-website.webp"
+            "shot": "assets/img/work/memory-casa-website.webp",
+            "summary": "Memory Casa-ს ონლაინ მაღაზია: ხელნაკეთი კერამიკული ჭურჭელი, კოლექციებით, მომხმარებლის პროფილით და კალათით."
         },
         {
             "slug": "mubana",
             "name": "Mubana",
             "domain": "mubana.ge",
             "tone": "lilac",
-            "shot": "assets/img/work/mubana-website.webp"
+            "shot": "assets/img/work/mubana-website.webp",
+            "summary": "Mubana-ს ონლაინ მაღაზია ცხოველების საკვებისა და აქსესუარებისთვის: კატალოგი, ბლოგი და ხშირად დასმული კითხვები."
         },
         {
             "slug": "bekaia-fund",
             "name": "Bekaia Fund",
             "domain": "bekaiafund.org",
             "tone": "lime",
-            "shot": "assets/img/work/bekaia-fund-website.webp"
+            "shot": "assets/img/work/bekaia-fund-website.webp",
+            "summary": "თამაზ ბექაიას საგანმანათლებლო ფონდის ვებსაიტი: უნივერსიტეტები, სტიპენდიები და პროექტები, ქართულ და ინგლისურ ენებზე."
         },
         {
             "slug": "galogrea",
             "name": "Galogrea",
             "domain": "galogrea.ge",
             "tone": "pink",
-            "shot": "assets/img/work/galogrea-website.webp"
+            "shot": "assets/img/work/galogrea-website.webp",
+            "summary": "Galogrea-ს ვებსაიტი: საქორწილო კაბები, გაქირავების კოლექცია, ინდივიდუალური დიზაინი და აქსესუარები, ორ ენაზე."
         },
         {
             "slug": "cx-panda",
             "name": "CX Panda",
             "domain": "cx-panda.com",
             "shot": "assets/img/work/cx-panda-website.webp",
-            "tone": "soft"
+            "tone": "soft",
+            "summary": "CX Panda-ს პლატფორმა მომხმარებლის გამოცდილების (CX) სპეციალისტებისთვის: სტატიები, ფრეიმვორკები, ქეისები, კურსი და AI ძიება."
         },
         {
             "slug": "wine-station",
             "name": "Wine Station",
             "domain": "winestation.ge",
             "tone": "lilac",
-            "shot": "assets/img/work/wine-station-website.webp"
+            "shot": "assets/img/work/wine-station-website.webp",
+            "summary": "The Wine Station-ის ვებსაიტი: სასტუმრო და მარანი, ოთახების დაჯავშნით, ღვინოების გვერდით და ორ ენაზე."
         },
         {
             "slug": "cloud-streaming",
             "name": "Cloud Streaming Technology",
             "domain": "cloudstreamingtechnology.com",
             "tone": "lime",
-            "shot": "assets/img/work/cloud-streaming-website.webp"
+            "shot": "assets/img/work/cloud-streaming-website.webp",
+            "summary": "Cloud Streaming Technology-ის კორპორატიული ვებსაიტი: კომპანიის შესახებ, ბლოგი და ღონისძიებები, ვაკანსიები და კონტაქტი."
         },
         {
             "slug": "the-lawlex",
             "name": "The Lawlex",
             "domain": "thelawlex.com",
             "tone": "pink",
-            "shot": "assets/img/work/the-lawlex-website.webp"
+            "shot": "assets/img/work/the-lawlex-website.webp",
+            "summary": "LawLex-ის ვებსაიტი: იურიდიული ფირმა, მიმართულებები, სექტორები, გუნდი, ოფისები და ანალიტიკური სტატიები."
         },
         {
             "slug": "tg-events",
             "name": "TG Events",
             "domain": "tgevents.ge",
             "tone": "soft",
-            "shot": "assets/img/work/tg-events-website.webp"
+            "shot": "assets/img/work/tg-events-website.webp",
+            "summary": "TG Events-ის ვებსაიტი: ქორწილებისა და ღონისძიებების დიზაინი თბილისში, პორტფოლიოთი და ღონისძიების დაგეგმვის ფორმით, ორ ენაზე."
         },
         {
             "slug": "vrs-studio",
             "name": "VRS Studio",
             "domain": "vrs-studio.ge",
             "tone": "lilac",
-            "shot": "assets/img/work/vrs-studio-website.webp"
+            "shot": "assets/img/work/vrs-studio-website.webp",
+            "summary": "VRS Studio-ს ვებსაიტი: ვინილის ჩამწერი და DJ სტუდია თბილისში, სტუდიის დაჯავშნით, DJ კურსით და აღჭურვილობის გაქირავებით."
         },
         {
             "slug": "realops",
             "name": "RealOps",
             "domain": "realops.tech",
             "tone": "lime",
-            "shot": "assets/img/work/realops-website.webp"
+            "shot": "assets/img/work/realops-website.webp",
+            "summary": "RealOps-ის ვებსაიტი: DevOps და ინფრასტრუქტურის სერვისები iGaming კომპანიებისთვის, გუნდის, ქეისებისა და ინდუსტრიების გვერდებით."
         },
         {
             "slug": "my-creator",
             "name": "My Creator",
             "domain": "mycreator.ge",
             "tone": "pink",
-            "shot": "assets/img/work/my-creator-website.webp"
+            "shot": "assets/img/work/my-creator-website.webp",
+            "summary": "MyCreator-ის პლატფორმა: ბრენდები და ქართველი კრეატორები ერთ სივრცეში, კრეატორების კატალოგით და თანამშრომლობის დაწყებით."
         },
         {
             "slug": "anapea",
             "name": "Anapea",
             "domain": "anapea.ge",
             "tone": "soft",
-            "shot": "assets/img/work/anapea-website.webp"
+            "shot": "assets/img/work/anapea-website.webp",
+            "summary": "Anapea Village-ის ვებსაიტი: სასტუმრო და მარანი, ოთახების დაჯავშნით, ღვინის გვერდით და ორ ენაზე."
         },
         {
             "slug": "pearl-island",
             "name": "Pearl Island Bahamas",
             "domain": "pearlislandbahamas.com",
             "tone": "lilac",
-            "shot": "assets/img/work/pearl-island-website.webp"
+            "shot": "assets/img/work/pearl-island-website.webp",
+            "summary": "Pearl Island Bahamas-ის ვებსაიტი: კერძო კუნძულზე ერთდღიანი ტურები ნასაუსთან, თავგადასავლების კატალოგით და ონლაინ დაჯავშნით."
         },
         {
             "slug": "autism-ge",
             "name": "Autism.ge",
             "domain": "autism.ge",
             "tone": "lime",
-            "shot": "assets/img/work/autism-ge-website.webp"
+            "shot": "assets/img/work/autism-ge-website.webp",
+            "summary": "აუტიზმის კვლევისა და ხელშეწყობის ფონდის ვებსაიტი: პროექტები, სიახლეები, სასწავლო ცენტრი და შემოწირულობის გვერდი."
         },
         {
             "slug": "phono",
             "name": "Phono",
             "domain": "phono.uk",
             "tone": "pink",
-            "shot": "assets/img/work/phono-website.webp"
+            "shot": "assets/img/work/phono-website.webp",
+            "summary": "Phono-ს ვებსაიტი: მუსიკალური ლეიბლი, რელიზები, სიახლეები, ღონისძიებები, პლეილისტები და დემოს გამოგზავნის ფორმა."
         },
         {
             "slug": "morevi",
             "name": "Morevi",
             "domain": "morevi.ge",
             "tone": "soft",
-            "shot": "assets/img/work/morevi-website.webp"
+            "shot": "assets/img/work/morevi-website.webp",
+            "summary": "Morevi-ს ვებსაიტი: მუსიკალური გამოცემების კატალოგი, სადაც ყდის არტი წინა პლანზეა."
         }
     ]
 }
