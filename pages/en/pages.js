@@ -5,6 +5,7 @@ const { head, foot } = require('../../lib/layout-en');
 const { project, mock } = require('../../lib/projects');
 const { map, ldJson } = require('../../lib/tpl');
 const S = require('./shared');
+const { teamSection } = require('../../lib/team');
 
 const crumbs = (items) => `<ol class="breadcrumb">${map(items, ([t, h], i) => i === items.length - 1
   ? `<li><span aria-current="page">${e(t)}</span></li>` : `<li><a href="${h}">${e(t)}</a></li>`)}</ol>`;
@@ -56,6 +57,7 @@ function about() {
         </div>
       </div>
     </section>
+${teamSection('en')}
 ${S.ctaSection('en-about-cta')}` + foot();
 }
 

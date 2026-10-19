@@ -13,6 +13,7 @@ const { ROOT, UPLOADS_DIR } = require('./lib/core');
 const { ASSET_V, withWhatsApp, withLang } = require('./lib/layout');
 const { serviceWorkSection } = require('./lib/projects');
 const { servicePage } = require('./lib/service');
+const { teamSection } = require('./lib/team');
 
 const app = express();
 app.disable('x-powered-by');
@@ -71,7 +72,7 @@ function staticPage(name) {
     src = fs.existsSync(p) ? fs.readFileSync(p, 'utf8').replace(/\?v=[0-9a-f]{8}/g, '?v=' + ASSET_V) : null;
     if (process.env.NODE_ENV === 'production') staticCache.set(name, src);
   }
-  return src === null ? null : src.replace(/<!--@work:([a-z-]+)-->/g, (m, k) => serviceWorkSection(k));
+  return src === null ? null : src.replace(/<!--@work:([a-z-]+)-->/g, (m, k) => serviceWorkSection(k)).replace('<!--@team-->', () => teamSection('ka'));
 }
 
 /* ------------------------------------------------------------------ API */
