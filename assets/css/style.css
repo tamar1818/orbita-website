@@ -4009,3 +4009,26 @@ h1, h2 { overflow-wrap: break-word; }
 @keyframes stack-move { to { transform: translateX(-100%); } }
 @media (prefers-reduced-motion: reduce) { .stack__track { animation: none; } .stack__viewport { flex-wrap: wrap; justify-content: center; } .stack__track[aria-hidden] { display: none; } }
 @media (max-width: 560px) { .stack__track li { font-size: 1rem; } }
+
+/* --------------------------------------------------------------------------
+   50. CTA: გაყიდვების ხელმძღვანელის ბარათი
+   -------------------------------------------------------------------------- */
+.sales-card {
+  display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 20px; align-items: start;
+  margin-top: 30px; padding: 16px; max-width: 520px;
+  border-radius: var(--radius); background: rgba(255,255,255,.55);
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+}
+.sales-card__photo { width: 112px; height: 140px; object-fit: cover; object-position: center 20%; border-radius: 16px; background: #e9e8ee; }
+.sales-card__body { display: grid; gap: 2px; min-width: 0; padding-top: 4px; }
+.sales-card__body b { font-family: var(--font-title-sm); font-size: 1.15rem; color: var(--ink); }
+.sales-card__body > span { font-size: .9rem; color: var(--ink-soft); }
+.sales-card__body p { margin: 8px 0 12px; font-size: .9rem; line-height: 1.5; color: var(--ink-soft); }
+.sales-card__links { display: flex; flex-wrap: wrap; gap: 8px 22px; }
+.sales-card__links a { display: grid; font-weight: 700; font-size: .95rem; color: var(--ink); text-decoration: none; background: linear-gradient(currentColor, currentColor) no-repeat left bottom / 0 1px; transition: background-size .35s ease; }
+.sales-card__links a:hover { background-size: 100% 1px; }
+.sales-card__links small { font-size: .72rem; font-weight: 600; color: var(--ink-soft); opacity: .8; }
+@media (max-width: 480px) {
+  .sales-card { grid-template-columns: 84px minmax(0, 1fr); gap: 14px; padding: 12px; }
+  .sales-card__photo { width: 84px; height: 105px; }
+}
