@@ -3957,3 +3957,14 @@ h1, h2 { overflow-wrap: break-word; }
   .person figcaption b { font-size: 1rem; }
   .person figcaption span { font-size: .84rem; }
 }
+
+/* 2- და 4-სვეტიანი ბარათები სათაურის ქვეშ: ლილისფერი, ლაიმი, ვარდისფერი, მუქი */
+.section-head--center + .grid--4 > .card, .section-head--center + .grid--2 > .card { border-color: transparent; transition: transform .45s cubic-bezier(.22,.61,.36,1); }
+.section-head--center + .grid--4 > .card:nth-child(4n+1), .section-head--center + .grid--2 > .card:nth-child(4n+1) { background: color-mix(in srgb, var(--lilac) 55%, #fff); }
+.section-head--center + .grid--4 > .card:nth-child(4n+2), .section-head--center + .grid--2 > .card:nth-child(4n+2) { background: color-mix(in srgb, var(--lime) 70%, #fff); }
+.section-head--center + .grid--4 > .card:nth-child(4n+3), .section-head--center + .grid--2 > .card:nth-child(4n+3) { background: color-mix(in srgb, var(--pink) 70%, #fff); }
+.section-head--center + .grid--4 > .card:nth-child(4n+4), .section-head--center + .grid--2 > .card:nth-child(4n+4) { background: var(--ink); }
+.section-head--center + .grid--4 > .card:nth-child(4n+4) h3, .section-head--center + .grid--2 > .card:nth-child(4n+4) h3 { color: var(--paper); }
+.section-head--center + .grid--4 > .card:nth-child(4n+4) p, .section-head--center + .grid--2 > .card:nth-child(4n+4) p { color: rgba(255,255,255,.72); }
+.section-head--center + .grid--4 > .card p, .section-head--center + .grid--2 > .card p { color: var(--ink-soft); }
+.section-head--center + .grid--4 > .card:hover, .section-head--center + .grid--2 > .card:hover { transform: translateY(-4px) rotate(-.4deg); }
