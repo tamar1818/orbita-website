@@ -4010,3 +4010,17 @@ h1, h2 { overflow-wrap: break-word; }
 @keyframes stack-move { to { transform: translateX(-100%); } }
 @media (prefers-reduced-motion: reduce) { .stack__track { animation: none; } .stack__viewport { flex-wrap: wrap; justify-content: center; } .stack__track[aria-hidden] { display: none; } }
 @media (max-width: 560px) { .stack__track li { font-size: 1rem; } }
+
+/* ბლოგის ბარათები: სათაური, ტექსტი და „წაიკითხე“ ყველა ბარათში ერთ ხაზზე */
+.post-card:not(.post-card--big) { display: flex; flex-direction: column; height: 100%; }
+.post-card:not(.post-card--big) .post-card__body { display: flex; flex-direction: column; flex: 1; }
+.post-card:not(.post-card--big) .post-card__title {
+  display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden;
+  min-height: calc(2 * 1.25em); line-height: 1.25;
+}
+.post-card:not(.post-card--big) .post-card__excerpt {
+  display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden;
+  min-height: calc(2 * 1.6em); line-height: 1.6;
+}
+.post-card:not(.post-card--big) .post-card__more { margin-top: auto; padding-top: 14px; }
+.post-grid { align-items: stretch; }
