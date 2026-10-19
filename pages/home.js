@@ -8,7 +8,7 @@ const HOME_FAQ = require('../data/home-faq.json');
 
 const { map, truthy, empty } = require('../lib/tpl');
 const { packages, fmt } = require('../lib/pricing');
-const { heroWall } = require('../lib/hero');
+const { heroWall, stackStrip } = require('../lib/hero');
 const decode = (s) => String(s).replace(/&quot;/g, '"').replace(/&#0?39;/g, "'").replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&');
 
 function homeLd() {
@@ -40,7 +40,6 @@ function render() {
   const prev = (sl) => { const f = shots.find((x) => x.slug === sl) || shots[0]; return f ? e(url(f.shot)) : ''; };
   const PICK = ['arlo-funding', 'gcci-germany', 'linden-spa', 'outsourcify'];
   const heroCases = PICK.map((sl) => shots.find((x) => x.slug === sl)).filter(Boolean).concat(shots.filter((x) => !PICK.includes(x.slug))).slice(0, 4);
-  const half = Math.ceil(shots.length / 2);
   const toolsList = tools();
   const posts = allPosts().slice(0, 3);
   return `<!DOCTYPE html>
@@ -196,21 +195,7 @@ ${(() => {
     };
     return heroWall(H);
   })()}
-    <!-- ================== ნამუშევრების ორმაგი ლენტი ================== -->
-    ${truthy(shots.length) ? `    <section class="showcase" aria-label="ნამუშევრები">
-      ${map([shots.slice(0, half), shots.slice(half)].map((row, r) => [row, r]).filter(([row]) => row.length), ([row, r]) => { return `      <div class="showcase__row${r ? ' showcase__row--rev' : ''}">
-        <div class="showcase__track">
-          ${map([0, 1], (g) => { return `          <div class="showcase__group"${g ? ' aria-hidden="true"' : ''}>
-            ${map(row, (m) => { return `<a class="showcase__item" href="/work-${e(m.slug)}"${g ? ' tabindex="-1"' : ''}>
-              ${mock(m, '(max-width: 620px) 72vw, 440px')}              <span class="showcase__label"><b>${e(m.name)}</b><small>${e(m.domain ?? '')}</small><span class="showcase__go">${ARROW}</span></span>
-            </a>`; })}          </div>
-          `; })}        </div>
-      </div>
-      `; })}      <div class="container showcase__more">
-        <a class="btn btn--ghost" href="/work">ყველა ნამუშევარი (${allp.length})</a>
-      </div>
-    </section>
-    ` : ''}
+    ${stackStrip('პლატფორმები, რომლებზეც ვმუშაობთ')}
     <!-- ========================= სერვისები ========================== -->
     <section class="section" id="services">
       <div class="container">

@@ -5,7 +5,7 @@ const { head, foot } = require('../../lib/layout-en');
 const { mock } = require('../../lib/projects');
 const { map, ldJson } = require('../../lib/tpl');
 const S = require('./shared');
-const { heroWall } = require('../../lib/hero');
+const { heroWall, stackStrip } = require('../../lib/hero');
 
 const FAQ = [
   ['Do you work with clients outside Georgia?', 'Yes. We work in English with companies in Europe and the US. Calls happen over Google Meet or Zoom, and our hours overlap with European business hours.'],
@@ -58,6 +58,7 @@ ${heroWall({
     work: ['See our work', '/en/work'],
     wall: shots.slice(0, 16),
   })}
+${stackStrip('Platforms we build on')}
     <section class="section" id="services">
       <div class="container">
         <div class="section-head section-head--center" data-reveal>
