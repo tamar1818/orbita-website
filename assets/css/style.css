@@ -2174,14 +2174,14 @@ li { margin-bottom: .4em; }
   position: absolute;
   left: 0;
   top: 100%;
-  padding-top: .25em;
+  padding-top: .35em;
 }
+/* ზემოთ წასული ასლი სრულად უნდა გავიდეს ხილული ზოლიდან, ქართული ასოების კუდებიანად */
 a:hover > .roll > .roll__a,
-a:hover > .roll > .roll__b,
-a:focus-visible > .roll > .roll__a,
-a:focus-visible > .roll > .roll__b { transform: translateY(-100%); }
+a:focus-visible > .roll > .roll__a { transform: translateY(calc(-100% - .6em)); }
 a:hover > .roll > .roll__b,
 a:focus-visible > .roll > .roll__b { transform: translateY(calc(-100% - .25em)); }
+.roll__a, .roll__b { white-space: nowrap; }
 
 .rotator {
   display: inline-block;
