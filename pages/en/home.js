@@ -6,6 +6,7 @@ const { mock } = require('../../lib/projects');
 const { map, ldJson } = require('../../lib/tpl');
 const S = require('./shared');
 const { heroWall, stackStrip } = require('../../lib/hero');
+const { statement, teamStrip, workBento, ctaGrow } = require('../../lib/blocks');
 
 const FAQ = [
   ['Do you work with clients outside Georgia?', 'Yes. We work in English with companies in Europe and the US. Calls happen over Google Meet or Zoom, and our hours overlap with European business hours.'],
@@ -57,8 +58,11 @@ ${heroWall({
     cta: ['Start a project', '/en/contact'],
     work: ['See our work', '/en/work'],
     wall: shots.slice(0, 16),
+    tags: ['Strategy', 'UI/UX design', 'Development', 'SEO & growth'],
   })}
 ${stackStrip('Platforms we build on')}
+${statement('en')}
+${teamStrip('en')}
     <section class="section" id="services">
       <div class="container">
         <div class="section-head section-head--center" data-reveal>
@@ -78,25 +82,8 @@ ${stackStrip('Platforms we build on')}
       </div>
     </section>
 
-    <section class="section svc-work" id="work">
-      <div class="container">
-        <div class="section-head section-head--split" data-reveal>
-          <div><h2>Selected work</h2></div>
-          <a class="btn btn--ghost" href="/en/work">All projects (${all.length})</a>
-        </div>
-        <div class="svc-work__grid">${map(grid, (w, i) => `
-          <a class="svc-work__item" href="/en/work-${e(w.slug)}" data-reveal data-reveal-delay="${Math.min(i, 5) * 50}">
-            ${mock(w, '(max-width: 620px) 100vw, (max-width: 1000px) 50vw, 400px')}
-            <span class="svc-work__body">
-              <b>${e(w.name)}</b>
-              <small>${e(S.projectTags(w).slice(0, 2).join(' · '))}</small>
-              <span class="svc-work__go" aria-hidden="true">${S.ARROW}</span>
-            </span>
-          </a>`)}
-        </div>
-      </div>
-    </section>
 
+${workBento('en', shots, all.length, (w) => S.projectTags(w)[0])}
     <section class="section section--soft" id="process">
       <div class="container">
         <div class="section-head section-head--center" data-reveal>
@@ -124,7 +111,7 @@ ${stackStrip('Platforms we build on')}
         </div>
       </div>
     </section>
-${S.ctaSection('en-home-cta')}` + foot();
+${ctaGrow('en')}` + foot();
 }
 
 module.exports = { render };

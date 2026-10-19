@@ -9,6 +9,7 @@ const HOME_FAQ = require('../data/home-faq.json');
 const { map, truthy, empty } = require('../lib/tpl');
 const { packages, fmt } = require('../lib/pricing');
 const { heroWall, stackStrip } = require('../lib/hero');
+const { statement, teamStrip, workBento, ctaGrow } = require('../lib/blocks');
 const decode = (s) => String(s).replace(/&quot;/g, '"').replace(/&#0?39;/g, "'").replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&');
 
 function homeLd() {
@@ -192,10 +193,13 @@ ${(() => {
       cta: [decode(T('home.hero2.cta', 'დაიწყეთ პროექტი')), '/contact'],
       work: ['ნამუშევრები', '/work'],
       wall: shots.slice(0, 16).map((f) => ({ name: f.name, slug: f.slug, shot: f.shot })),
+      tags: ['სტრატეგია', 'UI/UX დიზაინი', 'დეველოპმენტი', 'SEO და ზრდა'],
     };
     return heroWall(H);
   })()}
     ${stackStrip('პლატფორმები, რომლებზეც ვმუშაობთ')}
+    ${statement('ka')}
+    ${teamStrip('ka')}
     <!-- ========================= სერვისები ========================== -->
     <section class="section" id="services">
       <div class="container">
@@ -266,80 +270,7 @@ ${(() => {
       </div>
     </section>
 
-    <!-- ===================== რატომ ვებიკო — bento ===================== -->
-    <section class="section section--dark pattern-grid pattern-grid--light" id="why">
-      <div class="container">
-        <div class="section-head section-head--center" data-reveal>
-          <span class="eyebrow">რატომ ვებიკო</span>
-          <h2>შედეგი, რომელიც იზომება</h2>
-          <p>დასაწყისშივე ვთანხმდებით, რას ვზომავთ. მერე ყოველთვე გაჩვენებთ,
-            რა შეიცვალა და რა გავაკეთეთ.</p>
-        </div>
-
-        <div class="bento">
-          <article class="bento__tile bento__tile--report" data-reveal>
-            <div class="bento__text">
-              <h3>ცოცხალი დაფა</h3>
-              <p>შედეგს ნებისმიერ დროს ნახავთ, თვის ბოლომდე ლოდინი არ გჭირდებათ.</p>
-            </div>
-            <div class="mock mock--bento" aria-hidden="true">
-              <div class="mock__bar"><i></i><i></i><i></i><span>ანგარიშის მაგალითი</span></div>
-              <div class="mock__row"><span><b>ორგანული ვიზიტები</b><br><small>წინა თვესთან შედარებით</small></span><span class="mock__pill">↑</span></div>
-              <div class="mock__row"><span><b>საკვანძო სიტყვები TOP-10-ში</b><br><small>პოზიციების დინამიკა</small></span><span class="mock__pill">↑</span></div>
-              <div class="mock__row"><span><b>ლიდის ღირებულება</b><br><small>Google Ads · Meta</small></span><span class="mock__pill">↓</span></div>
-              <div class="mock__chart">
-                <i style="height:38%"></i><i style="height:52%"></i><i style="height:46%"></i>
-                <i style="height:64%"></i><i style="height:72%"></i><i style="height:88%"></i>
-                <i style="height:100%"></i>
-              </div>
-            </div>
-          </article>
-
-          <article class="bento__tile bento__tile--speed" data-reveal data-reveal-delay="60">
-            <svg class="gauge" viewBox="0 0 120 120" aria-hidden="true">
-              <circle cx="60" cy="60" r="50" pathLength="100" class="gauge__track"/>
-              <circle cx="60" cy="60" r="50" pathLength="100" class="gauge__bar"/>
-              <text x="60" y="68" text-anchor="middle">90+</text>
-            </svg>
-            <h3>სისწრაფე PageSpeed-ზე</h3>
-            <p>ნელ საიტს ტელეფონიდან ბევრი ტოვებს. ჩვენი საიტები სწრაფად იხსნება.</p>
-          </article>
-
-          <article class="bento__tile bento__tile--manager" data-reveal data-reveal-delay="120">
-            <span class="bento__icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
-            <h3>პირადი მენეჯერი</h3>
-            <p>ერთი ადამიანი, რომელიც თქვენს პროექტს იცნობს და კვირაში ერთხელ გწერთ, სად ვართ.</p>
-          </article>
-
-          <article class="bento__tile bento__tile--ka" data-reveal data-reveal-delay="60">
-            <span class="bento__glyph" aria-hidden="true">ა</span>
-            <h3>ქართულად, ბუნებრივად</h3>
-            <p>ტექსტებს ქართულად ვწერთ, მანქანური თარგმანის გარეშე.</p>
-          </article>
-
-          <article class="bento__tile bento__tile--own" data-reveal data-reveal-delay="120">
-            <span class="bento__icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="7.5" cy="15.5" r="4.5"/><path d="M10.7 12.3 21 2"/><path d="m16 7 3 3"/><path d="m18 5 3 3"/></svg></span>
-            <h3>ყველაფერი თქვენია</h3>
-            <p>დომენი, ანალიტიკა და სარეკლამო ანგარიშები თქვენს სახელზეა.</p>
-          </article>
-
-          <article class="bento__tile bento__tile--tools" data-reveal>
-            <h3>${T("home.tools.label", "ინსტრუმენტები, რომლებზეც ვმუშაობთ")}</h3>
-                        <div class="marquee marquee--tools">
-              <div class="marquee__track">
-                ${map([0, 1], (g) => { return `                  <div class="marquee__group"${g ? ' aria-hidden="true"' : ''}>
-                    ${map(toolsList, ([name, mark, color, logo]) => { return `<span class="tool-chip">${logo ? `<span class="tool-chip__mark tool-chip__mark--logo"><img src="${e(logo)}" alt="" width="20" height="20" loading="lazy"></span>` : `<span class="tool-chip__mark" style="--tint:${e(color)}">${e(mark)}</span>`}${e(name)}</span>`; })}                  </div>
-                `; })}              </div>
-            </div>
-          </article>
-        </div>
-
-        <div class="btn-row btn-row--center" style="margin-top:34px">
-          <a class="btn btn--primary" href="/about">გაიცანით გუნდი</a>
-        </div>
-      </div>
-    </section>
-
+    ${workBento('ka', shots, allp.length, (w) => tags(w)[0])}
     <!-- ========================== პროცესი =========================== -->
     <section class="section section--soft" id="process">
       <div class="container">
@@ -365,18 +296,6 @@ ${(() => {
             <h3>გაშვება</h3>
             <p>საიტი ეშვება. მერე ვუყურებთ ციფრებს და ვასწორებთ იმას, რაც ცუდად მუშაობს.</p>
           </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- =========================== ციფრები ========================== -->
-    <section class="section section--tight">
-      <div class="container">
-        <div class="stats" data-reveal>
-          <div class="stat"><span class="stat__num" data-count="120" data-suffix="+">120+</span><span class="stat__label">დასრულებული პროექტი</span></div>
-          <div class="stat"><span class="stat__num" data-count="8" data-suffix=" წელი">8 წელი</span><span class="stat__label">ბაზარზე მუშაობის გამოცდილება</span></div>
-          <div class="stat"><span class="stat__num" data-count="3.4" data-suffix="x">3.4x</span><span class="stat__label">საშუალო ROI-ის ზრდა</span></div>
-          <div class="stat"><span class="stat__num" data-count="96" data-suffix="%">96%</span><span class="stat__label">კლიენტი რჩება ჩვენთან</span></div>
         </div>
       </div>
     </section>
@@ -420,45 +339,7 @@ ${(() => {
       </div>
     </section>
 
-    <section class="cta">
-      <div class="container">
-        <div class="cta__inner">
-          <div data-reveal>
-            <h2>განვიხილოთ თქვენი პროექტი</h2>
-            <p>მოგვიყევით, რას აკეთებთ და რა გსურთ. ერთ სამუშაო დღეში დაგიკავშირდებით და შემდეგ ნაბიჯებს ერთად დავგეგმავთ.</p>
-            <div class="btn-row" style="margin-top:26px">
-              <a class="btn btn--white" href="tel:+995557643225">დარეკეთ: ${setting("phone", "+995 557 64 32 25")}</a>
-              <a class="btn btn--light" href="mailto:${setting("email", "hello@webico.io")}">${setting("email", "hello@webico.io")}</a>
-            </div>
-          </div>
-          <div data-reveal data-reveal-delay="90">
-            <form class="lead-form" data-lead-form="home-cta-band" method="post" action="#">
-          <h3>მოგვიყევით პროექტზე</h3>
-          <p class="lead-form__intro">რამდენიმე სიტყვაც საკმარისია.</p>
-          <div class="form-status" role="alert" aria-live="polite"></div>
-          <div class="field">
-            <label for="home-cta-name">სახელი <span class="req">*</span></label>
-            <input type="text" id="home-cta-name" name="name" autocomplete="name" placeholder="თქვენი სახელი" required>
-            <span class="field__error"></span>
-          </div>
-          <div class="field">
-            <label for="home-cta-email">ელფოსტა <span class="req">*</span></label>
-            <input type="email" id="home-cta-email" name="email" autocomplete="email" placeholder="name@company.ge" required>
-            <span class="field__error"></span>
-          </div>
-          <div class="field">
-            <label for="home-cta-website">ვებსაიტი ან ტელეფონი <span class="req">*</span></label>
-            <input type="text" id="home-cta-website" name="website" placeholder="example.ge / +995 5XX XX XX XX" required>
-            <span class="field__error"></span>
-          </div>
-          <div class="hp-field" aria-hidden="true"><label for="home-cta-hp">არ შეავსოთ</label><input type="text" id="home-cta-hp" name="company_website" tabindex="-1" autocomplete="off"></div>
-          <button class="btn btn--primary btn--block" type="submit">გაგზავნა</button>
-          <p class="form-note"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><span>თქვენს მონაცემებს არავის გადავცემთ.</span></p>
-        </form>
-          </div>
-        </div>
-      </div>
-    </section>
+    ${ctaGrow('ka')}
 
   </main>
 

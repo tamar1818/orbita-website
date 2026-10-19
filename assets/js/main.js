@@ -773,7 +773,7 @@ const FORM_ENDPOINT = "/api/lead.php";
     if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const en = document.documentElement.lang === "en";
-    const items = $$(".svc-work__item, .showcase__item, .case-card, .work-card");
+    const items = $$(".svc-work__item, .showcase__item, .case-card, .work-card, .work-tile");
     if (items.length) {
       const tag = document.createElement("div");
       tag.className = "cursor-tag";
@@ -814,6 +814,32 @@ const FORM_ENDPOINT = "/api/lead.php";
         box.style.setProperty("--y", e.clientY + "px");
       }, { passive: true });
     });
+  }
+
+  /* დიდი სტეიტმენტი: სიტყვები სქროლისას მუქდება */
+  function initStatement() {
+    const el = $("[data-statement]");
+    if (!el || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const words = el.textContent.trim().split(/\s+/);
+    el.textContent = "";
+    const spans = words.map((w, i) => {
+      const s = document.createElement("span");
+      s.textContent = w;
+      el.append(s, i < words.length - 1 ? " " : "");
+      return s;
+    });
+    el.classList.add("is-split");
+    let ticking = false;
+    const update = () => {
+      ticking = false;
+      const r = el.getBoundingClientRect();
+      const vh = window.innerHeight;
+      const p = Math.min(1, Math.max(0, (vh * 0.85 - r.top) / (r.height + vh * 0.35)));
+      const lit = Math.round(p * spans.length);
+      spans.forEach((s, i) => s.classList.toggle("is-on", i < lit));
+    };
+    window.addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+    update();
   }
 
   function initPlans() {
@@ -1416,6 +1442,7 @@ const FORM_ENDPOINT = "/api/lead.php";
     initCopyLink();
     initToc();
     initPointer();
+    initStatement();
     initBooking();
     initPlans();
     initConfigurator();
