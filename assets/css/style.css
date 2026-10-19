@@ -3920,15 +3920,16 @@ h1, h2 { overflow-wrap: break-word; }
 /* --------------------------------------------------------------------------
    48. გუნდი — პორტრეტები, ლუწი ბარათები ოდნავ დაბლა (რედაქციული რიტმი)
    -------------------------------------------------------------------------- */
-.team-grid { --cols: 3; --gap: clamp(16px, 2vw, 28px); display: flex; flex-wrap: wrap; justify-content: center; gap: clamp(28px, 3vw, 44px) var(--gap); }
-.person { margin: 0; width: calc((100% - (var(--cols) - 1) * var(--gap)) / var(--cols)); min-width: 0; }
-.person__photo { position: relative; overflow: hidden; border-radius: var(--radius); background: #e9e8ee; aspect-ratio: 4 / 5; }
+.team-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: clamp(14px, 1.6vw, 24px); align-items: start; }
+.person { margin: 0; }
+.person:nth-child(even) { margin-top: clamp(28px, 4vw, 64px); }
+.person__photo { position: relative; overflow: hidden; border-radius: var(--radius); background: var(--bg-soft); aspect-ratio: 4 / 5; }
 .person__photo img {
-  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 22%; display: block;
+  width: 100%; height: 100%; object-fit: cover; display: block;
   filter: grayscale(1) contrast(1.04);
   transition: filter .6s ease, transform 1.1s cubic-bezier(.22,.61,.36,1);
 }
-.person:hover .person__photo img { filter: none; transform: scale(1.03); }
+.person:hover .person__photo img { filter: none; transform: scale(1.04); }
 .person__photo::after {
   content: ""; position: absolute; left: 14px; bottom: 14px; width: 12px; height: 12px; border-radius: 50%;
   background: var(--lime); box-shadow: 0 0 0 4px rgba(255,255,255,.7);
@@ -3936,11 +3937,22 @@ h1, h2 { overflow-wrap: break-word; }
 }
 .person:hover .person__photo::after { opacity: 1; transform: none; }
 .person figcaption { display: grid; gap: 4px; padding: 16px 2px 0; }
-.person figcaption b { font-family: var(--font-title-sm); font-size: 1.2rem; line-height: 1.25; color: var(--ink); }
-.person figcaption span { font-size: .94rem; line-height: 1.45; color: var(--muted); }
+.person figcaption b { font-family: var(--font-title-sm); font-size: 1.12rem; line-height: 1.25; color: var(--ink); }
+.person figcaption span { font-size: .9rem; line-height: 1.45; color: var(--muted); }
+.section--soft .person__photo, .team .person__photo { background: #e9e8ee; }
 @media (hover: none) { .person__photo img { filter: none; } }
+@media (max-width: 1100px) {
+  .team-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .person:nth-child(even) { margin-top: 0; }
+  .person:nth-child(3n+2) { margin-top: clamp(24px, 4vw, 48px); }
+}
 @media (max-width: 700px) {
-  .team-grid { --cols: 2; --gap: 14px; row-gap: 26px; }
+  .team-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+  .person:nth-child(3n+2), .person:nth-child(even) { margin-top: 0; }
+  .person:first-child { grid-column: 1 / -1; }
+  .person:first-child .person__photo { aspect-ratio: 4 / 3; }
+  .person:first-child .person__photo img { object-position: center 20%; }
+  .person:nth-child(3), .person:nth-child(5) { margin-top: 32px; }
   .person figcaption b { font-size: 1rem; }
   .person figcaption span { font-size: .84rem; }
 }
