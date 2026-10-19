@@ -3988,7 +3988,8 @@ h1, h2 { overflow-wrap: break-word; }
 /* --------------------------------------------------------------------------
    49. პლატფორმების ზოლი ბანერის ქვეშ — მკრთალი, hover-ზე ფერადდება
    -------------------------------------------------------------------------- */
-.stack { margin-top: calc(-1 * clamp(16px, 3vw, 44px)); padding-block: 0 clamp(36px, 4.5vw, 64px); }
+.stack { margin-top: calc(-1 * clamp(8px, 1.5vw, 24px)); padding-block: 0; }
+.stack + .section { padding-top: clamp(40px, 5vw, 72px); }
 .stack__label { margin: 0 0 18px; text-align: center; font-size: .82rem; font-weight: 600; color: var(--muted-light); }
 .stack__viewport {
   display: flex; overflow: hidden;
