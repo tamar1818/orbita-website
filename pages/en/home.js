@@ -33,7 +33,7 @@ function render() {
         logo: 'https://webico.io/assets/img/apple-touch-icon.png', email: 'hello@webico.io' },
       { '@type': 'WebSite', '@id': 'https://webico.io/#website', url: 'https://webico.io/', name: 'Webico', inLanguage: ['ka', 'en'],
         publisher: { '@id': 'https://webico.io/#org' } },
-      { '@type': 'ProfessionalService', name: 'Webico', url: 'https://webico.io/en', image: 'https://webico.io/assets/img/og-image.png',
+      { '@type': 'ProfessionalService', name: 'Webico', url: 'https://webico.io/en', image: 'https://webico.io/assets/img/og-webico-en.jpg',
         description: 'Design and development studio in Tbilisi, Georgia: websites, online stores, UI/UX design, SEO and maintenance.',
         telephone: '+995557643225', email: 'hello@webico.io', priceRange: '$$',
         address: { '@type': 'PostalAddress', addressLocality: 'Tbilisi', addressCountry: 'GE' },
@@ -45,7 +45,7 @@ function render() {
   };
 
   return head({
-    title: 'Webico | Web design & development studio in Tbilisi',
+    title: 'Webico | Web design & development studio',
     desc: 'Webico is a design and development studio in Tbilisi, Georgia. We build websites, online stores and digital products for companies in Georgia and abroad.',
     url: '/en',
     alt: '/',

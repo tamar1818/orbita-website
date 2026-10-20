@@ -22,8 +22,8 @@ function homeLd() {
       { '@type': 'WebSite', '@id': 'https://webico.io/#website', url: 'https://webico.io/', name: 'Webico', inLanguage: 'ka',
         publisher: { '@id': 'https://webico.io/#org' } },
       { '@type': 'ProfessionalService', '@id': 'https://webico.io/#service', name: 'Webico', url: 'https://webico.io/',
-        description: 'Webico — ვებ დეველოპმენტის სააგენტო თბილისში: საიტის დამზადება, WordPress და WooCommerce დეველოპმენტი, ონლაინ მაღაზიები, UI/UX დიზაინი, SEO და ტექნიკური მხარდაჭერა.',
-        image: 'https://webico.io/assets/img/og-image.png', email,
+        description: 'Webico — ვებსაიტები, ონლაინ მაღაზიები და ციფრული პროდუქტები: საიტის დამზადება, WordPress და WooCommerce დეველოპმენტი, ონლაინ მაღაზიები, UI/UX დიზაინი, SEO და ტექნიკური მხარდაჭერა.',
+        image: 'https://webico.io/assets/img/og-webico.jpg', email,
         address: { '@type': 'PostalAddress', addressLocality: 'თბილისი', addressCountry: 'GE' },
         areaServed: { '@type': 'Country', name: 'Georgia' },
         parentOrganization: { '@id': 'https://webico.io/#org' },
@@ -50,23 +50,23 @@ function render() {
   <meta name="google-site-verification" content="Zl7OvqIP-1s-wqbhxwTPnmISoEdJGMlH0hoNgwNrXHk">
   <script>document.documentElement.classList.add("js");</script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Webico — ვებ დეველოპმენტის სააგენტო თბილისში | საიტის დამზადება, WordPress, SEO</title>
-  <meta name="description" content="Webico — ვებ დეველოპმენტის სააგენტო თბილისში. ვქმნით საიტებს, WordPress და WooCommerce პროექტებს, ონლაინ მაღაზიებს, UI/UX დიზაინს და ვაკეთებთ SEO-ს. ნახეთ ნამუშევრები და დაჯავშნეთ უფასო კონსულტაცია.">
+  <title>Webico — ვებსაიტები, ონლაინ მაღაზიები და ციფრული პროდუქტები</title>
+  <meta name="description" content="Webico — ვებსაიტები, ონლაინ მაღაზიები და ციფრული პროდუქტები. ვქმნით საიტებს, WordPress და WooCommerce პროექტებს, ონლაინ მაღაზიებს, UI/UX დიზაინს და ვაკეთებთ SEO-ს. ნახეთ ნამუშევრები და დაჯავშნეთ უფასო კონსულტაცია.">
   <meta name="theme-color" content="#0d0d0d">
   <link rel="canonical" href="https://webico.io/">
 
   <meta property="og:type" content="website">
   <meta property="og:locale" content="ka_GE">
   <meta property="og:site_name" content="ვებიკო">
-  <meta property="og:title" content="Webico — ვებ დეველოპმენტის სააგენტო თბილისში">
-  <meta property="og:description" content="Webico — ვებ დეველოპმენტის სააგენტო თბილისში. ვქმნით საიტებს, WordPress და WooCommerce პროექტებს, ონლაინ მაღაზიებს, UI/UX დიზაინს და ვაკეთებთ SEO-ს. ნახეთ ნამუშევრები და დაჯავშნეთ უფასო კონსულტაცია.">
+  <meta property="og:title" content="Webico — ვებსაიტები, ონლაინ მაღაზიები და ციფრული პროდუქტები">
+  <meta property="og:description" content="Webico — ვებსაიტები, ონლაინ მაღაზიები და ციფრული პროდუქტები. ვქმნით საიტებს, WordPress და WooCommerce პროექტებს, ონლაინ მაღაზიებს, UI/UX დიზაინს და ვაკეთებთ SEO-ს. ნახეთ ნამუშევრები და დაჯავშნეთ უფასო კონსულტაცია.">
   <meta property="og:url" content="https://webico.io/">
   <meta name="twitter:card" content="summary_large_image">
-  <meta property="og:image" content="https://webico.io/assets/img/og-image.png">
+  <meta property="og:image" content="https://webico.io/assets/img/og-webico.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="ვებიკო — ციფრული სააგენტო">
-  <meta name="twitter:image" content="https://webico.io/assets/img/og-image.png">
+  <meta name="twitter:image" content="https://webico.io/assets/img/og-webico.jpg">
   <meta name="robots" content="index, follow, max-image-preview:large">
 
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">

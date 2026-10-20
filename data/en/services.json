@@ -2,7 +2,7 @@
   "web-development": {
     "ka": "/service-web-development",
     "key": "web-development",
-    "title": "Website Design & Development in Georgia | Webico",
+    "title": "Website Design & Development | Webico",
     "desc": "Custom website design and development from a Tbilisi studio. Corporate sites, landing pages and web apps that load fast, rank well and bring enquiries.",
     "crumb": "Website development",
     "service_type": "Web Design and Development",
@@ -99,7 +99,7 @@
   "wordpress-development": {
     "ka": "/service-wordpress",
     "key": "wordpress",
-    "title": "WordPress Development in Georgia | Webico",
+    "title": "WordPress Development | Webico",
     "desc": "WordPress development in Tbilisi, Georgia: custom themes, Elementor, ACF, WooCommerce, integrations and multilingual sites. Fast, secure and easy to manage.",
     "crumb": "WordPress development",
     "service_type": "WordPress Development",
@@ -196,7 +196,7 @@
   "ecommerce-development": {
     "ka": "/service-ecommerce",
     "key": "ecommerce",
-    "title": "E-commerce Website Development in Georgia | Webico",
+    "title": "E-commerce Website Development | Webico",
     "desc": "Online stores on WooCommerce, Shopify or custom code, built in Tbilisi. Card payments, shipping rules, product catalogues and a checkout people finish.",
     "crumb": "Online stores",
     "service_type": "E-commerce Development",
@@ -293,7 +293,7 @@
   "ui-ux-design": {
     "ka": "/service-branding",
     "key": "branding",
-    "title": "UI/UX Design & Branding Studio in Tbilisi | Webico",
+    "title": "UI/UX Design & Branding Studio | Webico",
     "desc": "UI/UX design, design systems, logos and brand guidelines from a studio in Tbilisi, Georgia. Interfaces and brands that stay consistent across every touchpoint.",
     "crumb": "UI/UX design & branding",
     "service_type": "UI/UX Design and Branding",
@@ -390,7 +390,7 @@
   "seo": {
     "ka": "/service-seo",
     "key": "seo",
-    "title": "SEO Services in Georgia | Technical SEO & Content | Webico",
+    "title": "SEO Services: Technical SEO & Content | Webico",
     "desc": "SEO services from Tbilisi, Georgia: technical audits, keyword research, on-page work, content and local SEO in English and Georgian, reported monthly.",
     "crumb": "SEO",
     "service_type": "Search Engine Optimization",
@@ -584,7 +584,7 @@
   "digital-marketing": {
     "ka": "/service-marketing",
     "key": "marketing",
-    "title": "Digital Marketing Agency in Georgia | Webico",
+    "title": "Digital Marketing Agency | Webico",
     "desc": "Digital marketing from Tbilisi, Georgia: Google Ads, Facebook and Instagram ads, TikTok campaigns and social media management with clear monthly reporting.",
     "crumb": "Digital marketing",
     "service_type": "Digital Marketing",
