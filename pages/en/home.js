@@ -6,7 +6,7 @@ const { mock } = require('../../lib/projects');
 const { map, ldJson } = require('../../lib/tpl');
 const S = require('./shared');
 const { heroWall, stackStrip } = require('../../lib/hero');
-const { statement, teamStrip, workBento, ctaGrow } = require('../../lib/blocks');
+const { statement, workBento, ctaGrow } = require('../../lib/blocks');
 
 const FAQ = [
   ['Do you work with clients outside Georgia?', 'Yes. We work in English with companies in Europe and the US. Calls happen over Google Meet or Zoom, and our hours overlap with European business hours.'],
@@ -62,7 +62,6 @@ ${heroWall({
   })}
 ${stackStrip('Platforms we build on')}
 ${statement('en')}
-${teamStrip('en')}
     <section class="section" id="services">
       <div class="container">
         <div class="section-head section-head--center" data-reveal>
@@ -99,6 +98,7 @@ ${workBento('en', shots, all.length, (w) => S.projectTags(w)[0])}
       </div>
     </section>
 
+${ctaGrow('en')}
     <section class="section" id="faq">
       <div class="container">
         <div class="faq-split">
@@ -111,7 +111,7 @@ ${workBento('en', shots, all.length, (w) => S.projectTags(w)[0])}
         </div>
       </div>
     </section>
-${ctaGrow('en')}` + foot();
+` + foot();
 }
 
 module.exports = { render };

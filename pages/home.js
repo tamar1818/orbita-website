@@ -9,7 +9,7 @@ const HOME_FAQ = require('../data/home-faq.json');
 const { map, truthy, empty } = require('../lib/tpl');
 const { packages, fmt } = require('../lib/pricing');
 const { heroWall, stackStrip } = require('../lib/hero');
-const { statement, teamStrip, workBento, ctaGrow } = require('../lib/blocks');
+const { statement, workBento, ctaGrow } = require('../lib/blocks');
 const decode = (s) => String(s).replace(/&quot;/g, '"').replace(/&#0?39;/g, "'").replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&');
 
 function homeLd() {
@@ -199,7 +199,6 @@ ${(() => {
   })()}
     ${stackStrip('პლატფორმები, რომლებზეც ვმუშაობთ')}
     ${statement('ka')}
-    ${teamStrip('ka')}
     <!-- ========================= სერვისები ========================== -->
     <section class="section" id="services">
       <div class="container">
@@ -300,6 +299,8 @@ ${(() => {
       </div>
     </section>
 
+    ${ctaGrow('ka')}
+
     <!-- ============================ ბლოგი ============================ -->
     ${truthy(posts.length) ? `    <section class="section" id="blog">
       <div class="container">
@@ -338,8 +339,6 @@ ${(() => {
         </div>
       </div>
     </section>
-
-    ${ctaGrow('ka')}
 
   </main>
 
