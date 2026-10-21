@@ -23,7 +23,7 @@ function homeLd() {
         publisher: { '@id': 'https://webico.io/#org' } },
       { '@type': 'ProfessionalService', '@id': 'https://webico.io/#service', name: 'Webico', url: 'https://webico.io/',
         description: 'Webico — ვებსაიტები, ონლაინ მაღაზიები და ციფრული პროდუქტები: საიტის დამზადება, WordPress და WooCommerce დეველოპმენტი, ონლაინ მაღაზიები, UI/UX დიზაინი, SEO და ტექნიკური მხარდაჭერა.',
-        image: 'https://webico.io/assets/img/og-webico-2.jpg', email,
+        image: 'https://webico.io/assets/img/og-webico-3.jpg', email,
         address: { '@type': 'PostalAddress', addressLocality: 'თბილისი', addressCountry: 'GE' },
         areaServed: { '@type': 'Country', name: 'Georgia' },
         parentOrganization: { '@id': 'https://webico.io/#org' },
@@ -62,11 +62,11 @@ function render() {
   <meta property="og:description" content="Webico — ვებსაიტები, ონლაინ მაღაზიები და ციფრული პროდუქტები. ვქმნით საიტებს, WordPress და WooCommerce პროექტებს, ონლაინ მაღაზიებს, UI/UX დიზაინს და ვაკეთებთ SEO-ს. ნახეთ ნამუშევრები და დაჯავშნეთ უფასო კონსულტაცია.">
   <meta property="og:url" content="https://webico.io/">
   <meta name="twitter:card" content="summary_large_image">
-  <meta property="og:image" content="https://webico.io/assets/img/og-webico-2.jpg">
+  <meta property="og:image" content="https://webico.io/assets/img/og-webico-3.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="ვებიკო — ციფრული სააგენტო">
-  <meta name="twitter:image" content="https://webico.io/assets/img/og-webico-2.jpg">
+  <meta name="twitter:image" content="https://webico.io/assets/img/og-webico-3.jpg">
   <meta name="robots" content="index, follow, max-image-preview:large">
 
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
