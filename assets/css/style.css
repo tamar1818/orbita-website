@@ -3866,10 +3866,8 @@ h1, h2 { overflow-wrap: break-word; }
 .svc-preview.is-on { opacity: 1; transform: translate3d(var(--x), var(--y), 0) rotate(var(--r, 0deg)) scale(1); }
 .svc-preview img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
 @media (hover: none), (pointer: coarse), (max-width: 900px) { .svc-preview { display: none; } }
-.svc::before { display: none; }
 .svc:hover .svc__title { transform: translateX(14px); }
 .svc { transition: color .3s ease; }
-.svc-list:hover .svc:not(:hover) { color: color-mix(in srgb, var(--ink) 35%, transparent); }
 /* დეკორატიული ხატულების კვადრატები და ინიციალების წრეები — შაბლონური იერი */
 .card__icon, .member .avatar { display: none !important; }
 
@@ -3888,7 +3886,6 @@ h1, h2 { overflow-wrap: break-word; }
 .svc__tags span + span::before { content: "/"; margin: 0 10px; font-weight: 400; color: var(--muted-light); }
 .svc__go { grid-column: 3; grid-row: 1 / span 2; align-self: center; }
 .svc:hover .svc__title { transform: translateX(10px); }
-.svc-list:hover .svc:not(:hover) .svc__desc > span, .svc-list:hover .svc:not(:hover) .svc__tags span { color: color-mix(in srgb, var(--ink) 30%, transparent); }
 @media (max-width: 880px) {
   .svc { grid-template-columns: minmax(0, 1fr) 44px; grid-template-rows: auto; row-gap: 8px; padding: 24px 2px; }
   .svc__title { grid-row: 1; }
@@ -4170,3 +4167,38 @@ h1, h2 { overflow-wrap: break-word; }
 @media (max-width: 560px) { .foot__top { grid-template-columns: minmax(0, 1fr); } .foot__bottom .foot__pills { margin-left: 0; } }
 /* მობილურის მიმაგრებული ზოლი ფუტერს არ უნდა ფარავდეს */
 @media (max-width: 880px) { .site-footer.foot { padding-bottom: 76px; } }
+
+/* სერვისების სია: hover-ზე სტრიქონი ბრენდის ფერით ივსება (სურათის გარეშე) */
+.svc { border-radius: 0; transition: border-radius .45s ease; }
+.svc:hover, .svc:focus-visible { border-radius: var(--radius); border-bottom-color: transparent; }
+.svc:hover .svc__desc > span, .svc:focus-visible .svc__desc > span { color: var(--ink); }
+.svc:hover .svc__go, .svc:focus-visible .svc__go { background: var(--ink); color: #fff; border-color: var(--ink); }
+.svc-preview { display: none !important; }
+.svc-list { border-top: 0; }
+.svc { padding-inline: clamp(16px, 2vw, 28px); }
+
+/* ერთი სიგანე: hero, „ვიზრდებით ერთად“ და ფუტერი ჰედერის ზოლს ემთხვევა */
+.hx-b { width: min(1312px, calc(100% - 2 * var(--gutter))); margin-inline: auto; }
+.grow > .container, .site-footer.foot > .container { max-width: 1360px; }
+
+/* კომპაქტური ფუტერი */
+.foot__box { padding: clamp(24px, 3vw, 40px) clamp(22px, 3vw, 44px) 18px; }
+.foot__top { grid-template-columns: minmax(0, 1.2fr) repeat(3, minmax(0, 1fr)); gap: 24px 32px; }
+.foot__claim { font-size: clamp(1.35rem, 1.1rem + .8vw, 1.8rem); max-width: 12ch; }
+.foot__pills { gap: 6px; }
+.foot__pills a { font-size: .9rem; }
+.foot h4 { margin-bottom: 10px; }
+.foot__curl { width: clamp(160px, 18vw, 240px); right: -30px; top: -30px; opacity: .8; }
+.foot__mark { margin: clamp(20px, 2.5vw, 32px) 0 14px; }
+.foot__mark img { width: auto; height: clamp(56px, 7vw, 104px); }
+.foot__bottom { padding-top: 12px; }
+@media (max-width: 560px) { .hx-b { width: calc(100% - 20px); } }
+.section--soft, .section--dark, .cta { width: min(1312px, calc(100% - 2 * var(--gutter))); margin-inline: auto; }
+@media (max-width: 560px) { .section--soft, .section--dark, .cta { width: calc(100% - 20px); } }
+
+/* მთავარი ღილაკი ლილისფერ ფონზე: hover-ზე თეთრით ივსება, რომ ფონში არ ჩაიკარგოს */
+.cta .btn--primary::after, .price--featured .btn--primary::after, .card--lilac .btn--primary::after,
+.hero__panel .btn--primary::after, .section-head--center + .grid--3 > .card .btn--primary::after { background: var(--paper); }
+.cta .btn--primary:hover, .price--featured .btn--primary:hover, .card--lilac .btn--primary:hover,
+.hero__panel .btn--primary:hover { color: var(--ink); border-color: var(--paper); }
+.cta .btn--light:hover, .cta .btn--white:hover { border-color: var(--ink); }

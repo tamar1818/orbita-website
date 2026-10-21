@@ -33,7 +33,7 @@ function render() {
         logo: 'https://webico.io/assets/img/apple-touch-icon.png', email: 'hello@webico.io' },
       { '@type': 'WebSite', '@id': 'https://webico.io/#website', url: 'https://webico.io/', name: 'Webico', inLanguage: ['ka', 'en'],
         publisher: { '@id': 'https://webico.io/#org' } },
-      { '@type': 'ProfessionalService', name: 'Webico', url: 'https://webico.io/en', image: 'https://webico.io/assets/img/og-webico-en.jpg',
+      { '@type': 'ProfessionalService', name: 'Webico', url: 'https://webico.io/en', image: 'https://webico.io/assets/img/og-webico-en-2.jpg',
         description: 'Design and development studio in Tbilisi, Georgia: websites, online stores, UI/UX design, SEO and maintenance.',
         telephone: '+995557643225', email: 'hello@webico.io', priceRange: '$$',
         address: { '@type': 'PostalAddress', addressLocality: 'Tbilisi', addressCountry: 'GE' },
@@ -58,18 +58,15 @@ ${heroWall({
     cta: ['Start a project', '/en/contact'],
     work: ['See our work', '/en/work'],
     wall: shots.slice(0, 16),
+    altSuffix: ' — website by Webico',
     tags: ['Strategy', 'UI/UX design', 'Development', 'SEO & growth'],
   })}
 ${stackStrip('Platforms we build on')}
 ${statement('en')}
     <section class="section" id="services">
       <div class="container">
-        <div class="section-head section-head--center" data-reveal>
-          <h2>What we do</h2>
-          <p>One team handles design, code and growth, so nothing gets lost between agencies.</p>
-        </div>
         <div class="svc-list" data-reveal>${map(S.SERVICES, (s) => `
-          <a class="svc svc--${s.tone}" href="/en/${s.page}" data-preview="${prev(PREVIEW[s.id] || 'marketing-agency')}">
+          <a class="svc svc--${s.tone}" href="/en/${s.page}">
             <div class="svc__main">
               <h3 class="svc__title">${e(s.title)}</h3>
               <span class="svc__desc"><span>${e(s.text)}</span></span>

@@ -23,7 +23,7 @@ function homeLd() {
         publisher: { '@id': 'https://webico.io/#org' } },
       { '@type': 'ProfessionalService', '@id': 'https://webico.io/#service', name: 'Webico', url: 'https://webico.io/',
         description: 'Webico — ვებსაიტები, ონლაინ მაღაზიები და ციფრული პროდუქტები: საიტის დამზადება, WordPress და WooCommerce დეველოპმენტი, ონლაინ მაღაზიები, UI/UX დიზაინი, SEO და ტექნიკური მხარდაჭერა.',
-        image: 'https://webico.io/assets/img/og-webico.jpg', email,
+        image: 'https://webico.io/assets/img/og-webico-2.jpg', email,
         address: { '@type': 'PostalAddress', addressLocality: 'თბილისი', addressCountry: 'GE' },
         areaServed: { '@type': 'Country', name: 'Georgia' },
         parentOrganization: { '@id': 'https://webico.io/#org' },
@@ -62,11 +62,11 @@ function render() {
   <meta property="og:description" content="Webico — ვებსაიტები, ონლაინ მაღაზიები და ციფრული პროდუქტები. ვქმნით საიტებს, WordPress და WooCommerce პროექტებს, ონლაინ მაღაზიებს, UI/UX დიზაინს და ვაკეთებთ SEO-ს. ნახეთ ნამუშევრები და დაჯავშნეთ უფასო კონსულტაცია.">
   <meta property="og:url" content="https://webico.io/">
   <meta name="twitter:card" content="summary_large_image">
-  <meta property="og:image" content="https://webico.io/assets/img/og-webico.jpg">
+  <meta property="og:image" content="https://webico.io/assets/img/og-webico-2.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="ვებიკო — ციფრული სააგენტო">
-  <meta name="twitter:image" content="https://webico.io/assets/img/og-webico.jpg">
+  <meta name="twitter:image" content="https://webico.io/assets/img/og-webico-2.jpg">
   <meta name="robots" content="index, follow, max-image-preview:large">
 
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
@@ -148,14 +148,14 @@ ${HOME_LD}
                 <div class="mega__col mega__col--tools">
                   <p class="mega__label">ტექნოლოგიები</p>
                   <ul class="tools">
-                <li><a href="/services"><span class="tool__mark tool__mark--logo"><img src="/assets/img/tech/wordpress.svg" alt="" width="18" height="18" loading="lazy" decoding="async"></span>WordPress</a></li>
-                <li><a href="/services"><span class="tool__mark tool__mark--logo"><img src="/assets/img/tech/shopify.svg" alt="" width="18" height="18" loading="lazy" decoding="async"></span>Shopify</a></li>
-                <li><a href="/services"><span class="tool__mark tool__mark--logo"><img src="/assets/img/tech/webflow.svg" alt="" width="18" height="18" loading="lazy" decoding="async"></span>Webflow</a></li>
-                <li><a href="/services"><span class="tool__mark tool__mark--logo"><img src="/assets/img/tech/lovable.svg" alt="" width="18" height="18" loading="lazy" decoding="async"></span>Lovable</a></li>
+                <li><a href="/services"><span class="tool__mark tool__mark--logo"><img src="/assets/img/tech/wordpress.svg" alt="WordPress logo" width="18" height="18" loading="lazy" decoding="async"></span>WordPress</a></li>
+                <li><a href="/services"><span class="tool__mark tool__mark--logo"><img src="/assets/img/tech/shopify.svg" alt="Shopify logo" width="18" height="18" loading="lazy" decoding="async"></span>Shopify</a></li>
+                <li><a href="/services"><span class="tool__mark tool__mark--logo"><img src="/assets/img/tech/webflow.svg" alt="Webflow logo" width="18" height="18" loading="lazy" decoding="async"></span>Webflow</a></li>
+                <li><a href="/services"><span class="tool__mark tool__mark--logo"><img src="/assets/img/tech/lovable.svg" alt="Lovable logo" width="18" height="18" loading="lazy" decoding="async"></span>Lovable</a></li>
                 <li><a href="/services"><span class="tool__mark tool__mark--ink">&lt;/&gt;</span>Custom code</a></li>
-                <li><a href="/services"><span class="tool__mark tool__mark--logo"><img src="/assets/img/tech/nextjs.svg" alt="" width="18" height="18" loading="lazy" decoding="async"></span>Next.js / React</a></li>
-                <li><a href="/services"><span class="tool__mark tool__mark--logo"><img src="/assets/img/tech/aws.svg" alt="" width="18" height="18" loading="lazy" decoding="async"></span>AWS</a></li>
-                <li><a href="/services"><span class="tool__mark tool__mark--logo"><img src="/assets/img/tech/figma.svg" alt="" width="18" height="18" loading="lazy" decoding="async"></span>Figma</a></li>
+                <li><a href="/services"><span class="tool__mark tool__mark--logo"><img src="/assets/img/tech/nextjs.svg" alt="Next.js / React logo" width="18" height="18" loading="lazy" decoding="async"></span>Next.js / React</a></li>
+                <li><a href="/services"><span class="tool__mark tool__mark--logo"><img src="/assets/img/tech/aws.svg" alt="AWS logo" width="18" height="18" loading="lazy" decoding="async"></span>AWS</a></li>
+                <li><a href="/services"><span class="tool__mark tool__mark--logo"><img src="/assets/img/tech/figma.svg" alt="Figma logo" width="18" height="18" loading="lazy" decoding="async"></span>Figma</a></li>
                   </ul>
                 </div>
                 <div class="mega__foot">
@@ -193,6 +193,7 @@ ${(() => {
       cta: [decode(T('home.hero2.cta', 'დაიწყეთ პროექტი')), '/contact'],
       work: ['ნამუშევრები', '/work'],
       wall: shots.slice(0, 16).map((f) => ({ name: f.name, slug: f.slug, shot: f.shot })),
+      altSuffix: ' — Webico-ს ნამუშევარი',
       tags: ['სტრატეგია', 'UI/UX დიზაინი', 'დეველოპმენტი', 'SEO და ზრდა'],
     };
     return heroWall(H);
@@ -202,14 +203,8 @@ ${(() => {
     <!-- ========================= სერვისები ========================== -->
     <section class="section" id="services">
       <div class="container">
-        <div class="section-head section-head--center" data-reveal>
-          <span class="eyebrow">რას ვაკეთებთ</span>
-          <h2>რას ვაკეთებთ</h2>
-          <p>დიზაინს, კოდს და რეკლამას ერთი გუნდი აკეთებს. ასე არაფერი იკარგება
-            და ყოველთვის იცით, ვის ჰკითხოთ.</p>
-        </div>
         <div class="svc-list" data-reveal>
-          <a class="svc svc--lilac" href="/service-web-development" data-preview="${prev('arlo-funding')}">
+          <a class="svc svc--lilac" href="/service-web-development">
             <div class="svc__main">
               <h3 class="svc__title">ვებსაიტის დამზადება</h3>
               <span class="svc__desc"><span>კომპანიის საიტი, ლენდინგი ან ვებ-აპლიკაცია. სწრაფი, მობილურზე მოხერხებული და გასაგები.</span></span>
@@ -217,7 +212,7 @@ ${(() => {
             <span class="svc__tags"><span>კორპორატიული</span><span>ლენდინგი</span><span>ვებ-აპლიკაცია</span></span>
             <span class="svc__go">${ARROW}</span>
           </a>
-          <a class="svc svc--lime" href="/service-wordpress" data-preview="${prev('outsourcify')}">
+          <a class="svc svc--lime" href="/service-wordpress">
             <div class="svc__main">
               <h3 class="svc__title">WordPress დეველოპმენტი</h3>
               <span class="svc__desc"><span>საკუთარი თემა, Elementor და ACF. ტექსტებს და ფოტოებს თვითონ შეცვლით.</span></span>
@@ -225,7 +220,7 @@ ${(() => {
             <span class="svc__tags"><span>WordPress</span><span>Elementor</span><span>ACF</span></span>
             <span class="svc__go">${ARROW}</span>
           </a>
-          <a class="svc svc--pink" href="/service-ecommerce" data-preview="${prev('tamaras-collect')}">
+          <a class="svc svc--pink" href="/service-ecommerce">
             <div class="svc__main">
               <h3 class="svc__title">ონლაინ მაღაზიის შექმნა</h3>
               <span class="svc__desc"><span>WooCommerce ან Shopify, ბარათით გადახდით და მიწოდების პირობებით.</span></span>
@@ -233,7 +228,7 @@ ${(() => {
             <span class="svc__tags"><span>WooCommerce</span><span>Shopify</span><span>გადახდები</span></span>
             <span class="svc__go">${ARROW}</span>
           </a>
-          <a class="svc svc--soft" href="/service-branding" data-preview="${prev('linden-spa')}">
+          <a class="svc svc--soft" href="/service-branding">
             <div class="svc__main">
               <h3 class="svc__title">UI/UX დიზაინი და ბრენდინგი</h3>
               <span class="svc__desc"><span>ინტერფეისის დიზაინი Figma-ში, ლოგო და ბრენდბუქი.</span></span>
@@ -241,7 +236,7 @@ ${(() => {
             <span class="svc__tags"><span>UI/UX</span><span>Figma</span><span>ბრენდბუქი</span></span>
             <span class="svc__go">${ARROW}</span>
           </a>
-          <a class="svc svc--lilac" href="/service-seo" data-preview="${prev('gcci-germany')}">
+          <a class="svc svc--lilac" href="/service-seo">
             <div class="svc__main">
               <h3 class="svc__title">SEO ოპტიმიზაცია</h3>
               <span class="svc__desc"><span>ტექნიკური SEO, საძიებო სიტყვები და ქართული ტექსტები, რომ Google-ში გიპოვონ.</span></span>
@@ -249,7 +244,7 @@ ${(() => {
             <span class="svc__tags"><span>ტექნიკური SEO</span><span>სემანტიკა</span><span>ლოკალური SEO</span></span>
             <span class="svc__go">${ARROW}</span>
           </a>
-          <a class="svc svc--lime" href="/service-maintenance" data-preview="${prev('bitefit')}">
+          <a class="svc svc--lime" href="/service-maintenance">
             <div class="svc__main">
               <h3 class="svc__title">საიტის ტექნიკური მხარდაჭერა</h3>
               <span class="svc__desc"><span>განახლებები, უსაფრთხოება, ასლები და მცირე ცვლილებები ყოველთვე.</span></span>
@@ -257,7 +252,7 @@ ${(() => {
             <span class="svc__tags"><span>განახლებები</span><span>უსაფრთხოება</span><span>ასლები</span></span>
             <span class="svc__go">${ARROW}</span>
           </a>
-          <a class="svc svc--pink" href="/service-marketing" data-preview="${prev('marketing-agency')}">
+          <a class="svc svc--pink" href="/service-marketing">
             <div class="svc__main">
               <h3 class="svc__title">ციფრული მარკეტინგი</h3>
               <span class="svc__desc"><span>რეკლამა Google-ში, Facebook-ზე, Instagram-ზე და TikTok-ზე. ხედავთ, რა მოიტანა თითოეულმა ლარმა.</span></span>
