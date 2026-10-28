@@ -842,6 +842,18 @@ const FORM_ENDPOINT = "/api/lead.php";
     update();
   }
 
+  /* პროექტების ვიდეოები: იკვრება მხოლოდ ეკრანზე ყოფნისას, შემცირებული მოძრაობისას — არა */
+  function initVideos() {
+    const vids = $$("video[data-autoplay]");
+    if (!vids.length) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const io = new IntersectionObserver((entries) => entries.forEach((en) => {
+      const v = en.target;
+      if (en.isIntersecting) { const pr = v.play(); if (pr && pr.catch) pr.catch(() => {}); } else v.pause();
+    }), { threshold: 0.25 });
+    vids.forEach((v) => { v.preload = "auto"; io.observe(v); });
+  }
+
   function initPlans() {
     const bill = $("[data-bill]");
     if (bill) {
@@ -1443,6 +1455,7 @@ const FORM_ENDPOINT = "/api/lead.php";
     initToc();
     initPointer();
     initStatement();
+    initVideos();
     initBooking();
     initPlans();
     initConfigurator();

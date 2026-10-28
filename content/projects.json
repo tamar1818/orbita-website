@@ -115,7 +115,8 @@
             ],
             "shot": "assets/img/work/linden-spa-website.webp",
             "full": "assets/img/work/linden-spa-website-full.webp",
-            "hide_shot": true
+            "hide_shot": true,
+            "video": "assets/video/linden-spa.mp4"
         },
         {
             "slug": "archetypes-creatives",

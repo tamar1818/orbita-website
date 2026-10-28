@@ -111,7 +111,7 @@ router.all(['/', '/index.php'], maybeUpload, (req, res) => {
             tone: ['lilac', 'lime', 'pink', 'soft'].includes(B.tone) ? B.tone : 'lilac',
             year: str(B.year), partner: str(B.partner), summary: str(B.summary),
             challenge: str(B.challenge), solution: str(B.solution), result: str(B.result),
-            shot: str(B.shot), logo: str(B.logo), full: str(B.full), full_caption: str(B.full_caption),
+            shot: str(B.shot), logo: str(B.logo), full: str(B.full), full_caption: str(B.full_caption), video: str(B.video),
             hide_shot: !empty(B.hide_shot), hidden: !empty(B.hidden),
             tags: csv(B.tags), stack: csv(B.stack),
             scope: String(B.scope ?? '').split('\n').map((x) => x.trim()).filter(Boolean),
@@ -379,6 +379,10 @@ ${truthy(page === 'setup') ? `  <main class="auth">
             <input name="full" placeholder="assets/img/uploads/…" value="${e(E.full ?? '')}">
             <small class="muted">გრძელი სქრინშოტი ან დამატებითი ეკრანი — პროექტის გვერდზე სრულად გამოჩნდება</small>
           </label>
+          <label>ვიდეო (არასავალდებულო)
+            <input name="video" placeholder="assets/img/uploads/….mp4" value="${e(E.video ?? '')}">
+            <small class="muted">MP4 ან WebM, ხმის გარეშე, 5–15 წამი, 25 MB-მდე. ატვირთეთ „მედიაში“ და ჩასვით ბმული. მთავარ გვერდზე ფოტოს ნაცვლად ავტომატურად დაიკვრება.</small>
+          </label>
           <label>დამატებითი სურათის წარწერა<input name="full_caption" placeholder="სრული გვერდის დიზაინი" value="${e(E.full_caption ?? '')}"></label>
           <label class="check"><input type="checkbox" name="hide_shot" ${!empty(E.hide_shot) ? 'checked' : ''}> პროექტის გვერდზე მთავარი მოკაპი არ გამოჩნდეს (დაბალი გარჩევადობისას)</label>
           <label>მოკლე აღწერა<textarea name="summary" rows="2">${e(E.summary ?? '')}</textarea></label>
@@ -473,14 +477,14 @@ ${truthy(page === 'setup') ? `  <main class="auth">
       ` : truthy(page === 'media') ? `        <h1>ფოტოები</h1>
         <form method="post" enctype="multipart/form-data" class="card upload">
           ${csrfField}          <input type="hidden" name="action" value="upload">
-          <label>ფაილი<input type="file" name="file" accept="image/jpeg,image/png,image/webp,image/svg+xml" required></label>
+          <label>ფაილი<input type="file" name="file" accept="image/jpeg,image/png,image/webp,image/svg+xml,video/mp4,video/webm" required></label>
           <label>სახელის პრეფიქსი<input name="prefix" placeholder="oribu"></label>
           <button class="btn" type="submit">ატვირთვა</button>
-          <small class="muted">JPG, PNG, WebP, SVG — მაქსიმუმ 6 MB</small>
+          <small class="muted">ფოტო: JPG, PNG, WebP, SVG — 6 MB-მდე. ვიდეო: MP4, WebM — 25 MB-მდე</small>
         </form>
         <div class="grid">
           ${map(media.list(), (m) => { return `            <figure class="shot">
-              <img src="../${e(m.url)}" alt="" loading="lazy">
+              ${/\.(mp4|webm)$/i.test(m.url) ? `<video src="../${e(m.url)}" muted playsinline preload="metadata" style="width:100%;display:block;aspect-ratio:3/2;object-fit:cover"></video>` : `<img src="../${e(m.url)}" alt="" loading="lazy">`}
               <figcaption>
                 <input class="copy" value="${e(m.url)}" readonly onclick="this.select()">
                 <form method="post" onsubmit="return confirm('წავშალოთ?')">
