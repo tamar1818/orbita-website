@@ -15,6 +15,120 @@ const FORM_ENDPOINT = "/api/lead.php";
   const $  = (sel, ctx = document) => ctx.querySelector(sel);
   const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
 
+  /* ინგლისური ვერსია (/en): სკრიპტის ტექსტები T()-ით ითარგმნება */
+  const EN = document.documentElement.lang === "en";
+  const TR = {
+"პროექტი": "projects",
+"მეტის ნახვა": "Read more",
+"დახურვა": "Close",
+"ბმული დაკოპირდა": "Link copied",
+"WordPress-ის მოვლა": "WordPress care",
+"ინდივიდუალური საიტის მოვლა": "Custom site care",
+"SEO და მოვლა": "SEO and care",
+"საიტი გამოწერით / მოვლა": "Website subscription / care",
+"მაინტერესებს: „": "I'm interested in: “",
+"სლაიდი ": "Slide ",
+"თქვენი ბიზნესი": "Your business",
+"ბიზნესი": "Business",
+"პაკეტი": "Plan",
+"დამატებები": "Add-ons",
+"სტილი": "Style",
+"₾ / წელი": "GEL / year",
+"₾ / თვე": "GEL / month",
+"თვეში ": "Instead of ",
+" ₾-ის ნაცვლად 12 თვეს 10 თვის ფასად იხდით.": " GEL a month, you pay for 10 months and get 12.",
+"წლიურად თუ გადაიხდით, ორი თვე უფასოა.": "Pay yearly and get two months free.",
+"ნაბიჯი ": "Step ",
+"მიუთითეთ სახელი.": "Please enter your name.",
+"მიუთითეთ ტელეფონის ნომერი.": "Please enter your phone number.",
+"ელფოსტა არასწორია.": "The email address is not valid.",
+"უფასო ნიმუშის მოთხოვნა (/start)": "Free sample request (/en/start)",
+"ბიზნესი: ": "Business: ",
+"პაკეტი: ": "Plan: ",
+" — ჩართვა ": " — setup ",
+" ₾ / თვე": " GEL / month",
+"დამატებები: ": "Add-ons: ",
+"სტილი: ": "Style: ",
+", ფერი ": ", colour ",
+"გადახდა: ": "Payment: ",
+"წლიური — ": "yearly — ",
+" ₾ / წელი": " GEL / year",
+"თვიური — ": "monthly — ",
+"კომენტარი: ": "Comment: ",
+"იგზავნება…": "Sending…",
+"საიტი — ": "Website — ",
+" ₾/თვე": " GEL/month",
+" (წლიური)": " (yearly)",
+"ვერ გაიგზავნა. სცადეთ თავიდან ან მოგვწერეთ WhatsApp-ზე.": "Couldn't send. Try again or message us on WhatsApp.",
+"ნიმუშის მიღება": "Get my sample",
+"ამ დღეს თავისუფალი დრო აღარ არის — აირჩიეთ სხვა დღე.": "No free times left on this day. Please choose another day.",
+" თავისუფალი დრო": " free slots",
+", დაკავებულია": ", fully booked",
+"კალენდარი ვერ ჩაიტვირთა. დაგვირეკეთ ან შეავსეთ ფორმა ქვემოთ.": "The calendar couldn't load. Call us or fill in the form below.",
+"იჯავშნება…": "Booking…",
+"ეს დრო ახლახან დაიკავეს — აირჩიეთ სხვა.": "This time was just taken. Please choose another.",
+"<h3></h3><p class=\"booking__when\"></p><p>დადასტურება გამოგიგზავნეთ ელფოსტაზე. ჩვენი გუნდის წევრი დათქმულ დროს დაგიკავშირდებათ.</p>": "<h3></h3><p class=\"booking__when\"></p><p>We've sent a confirmation to your email. A member of our team will contact you at the agreed time.</p>",
+"<div class=\"btn-row\"><a class=\"btn btn--primary\" target=\"_blank\" rel=\"noopener\">კალენდარში დამატება</a><a class=\"btn btn--ghost\" href=\"/work\">ნამუშევრების ნახვა</a></div>": "<div class=\"btn-row\"><a class=\"btn btn--primary\" target=\"_blank\" rel=\"noopener\">Add to calendar</a><a class=\"btn btn--ghost\" href=\"/en/work\">See our work</a></div>",
+"მადლობა, ": "Thank you, ",
+"! შეხვედრა დაჯავშნილია.": "! Your meeting is booked.",
+" (თბილისის დროით)": " (Tbilisi time)",
+"ჯავშანი ვერ გაიგზავნა. სცადეთ თავიდან ან დაგვირეკეთ.": "The booking couldn't be sent. Try again or call us.",
+"<p class=\"chat__nudge\" hidden><button type=\"button\" class=\"chat__nudge-close\" aria-label=\"დახურვა\">": "<p class=\"chat__nudge\" hidden><button type=\"button\" class=\"chat__nudge-close\" aria-label=\"Close\">",
+"</button><span>გაქვთ პროექტი? 👋 ორ წუთში გავარკვიოთ, რა გჭირდებათ.</span></p>": "</button><span>Got a project? 👋 Let's figure out what you need in two minutes.</span></p>",
+"<button class=\"chat__launcher\" type=\"button\" aria-expanded=\"false\" aria-controls=\"chat-panel\" aria-label=\"ჩატის გახსნა\">": "<button class=\"chat__launcher\" type=\"button\" aria-expanded=\"false\" aria-controls=\"chat-panel\" aria-label=\"Open chat\">",
+"<section class=\"chat__panel\" id=\"chat-panel\" role=\"dialog\" aria-label=\"ვებიკოს ასისტენტი\" hidden>": "<section class=\"chat__panel\" id=\"chat-panel\" role=\"dialog\" aria-label=\"Webico assistant\" hidden>",
+"<span><b>ვებიკოს ასისტენტი</b><small>გუნდი გპასუხობთ 1 სამუშაო დღეში</small></span>": "<span><b>Webico assistant</b><small>The team replies within 1 business day</small></span>",
+"<button class=\"chat__close\" type=\"button\" aria-label=\"ჩატის დახურვა\">": "<button class=\"chat__close\" type=\"button\" aria-label=\"Close chat\">",
+"<form class=\"chat__form\" hidden novalidate><label class=\"sr-only\" for=\"chat-input\">პასუხი</label>": "<form class=\"chat__form\" hidden novalidate><label class=\"sr-only\" for=\"chat-input\">Answer</label>",
+"<button class=\"chat__send\" type=\"submit\" aria-label=\"გაგზავნა\">": "<button class=\"chat__send\" type=\"submit\" aria-label=\"Send\">",
+"გამარჯობა! 👋 მე ვებიკოს ასისტენტი ვარ.": "Hi! 👋 I'm the Webico assistant.",
+"რამდენიმე მოკლე კითხვით გავიგებ, რა გჭირდებათ, და ჩვენი გუნდი დაგიკავშირდებათ. რით შეგვიძლია დაგეხმაროთ?": "With a few short questions I'll find out what you need, and our team will get in touch. How can we help?",
+"ახალი ვებსაიტი": "New website",
+"ონლაინ მაღაზია": "Online store",
+"ციფრული მარკეტინგი": "Digital marketing",
+"ბრენდინგი": "Branding",
+"სხვა": "Other",
+"კარგი! უკვე გაქვთ ვებსაიტი? თუ კი, ჩაწერეთ მისამართი.": "Great! Do you already have a website? If so, type the address.",
+"ჯერ არ მაქვს": "Not yet",
+"დაახლოებით რა ბიუჯეტზე ფიქრობთ?": "Roughly what budget do you have in mind?",
+"1 500 ₾-მდე": "Up to 1,500 GEL",
+"15 000 ₾-ზე მეტი": "Over 15,000 GEL",
+"ჯერ არ ვიცი": "Not sure yet",
+"როდის გსურთ დაწყება?": "When would you like to start?",
+"რაც შეიძლება მალე": "As soon as possible",
+"1–3 თვეში": "In 1–3 months",
+"ჯერ ვარკვევ": "Still exploring",
+"გმადლობთ! როგორ მოგმართოთ?": "Thanks! What should we call you?",
+"თქვენი სახელი": "Your name",
+"გთხოვთ, ჩაწეროთ სახელი": "Please enter your name",
+"სასიამოვნოა, ": "Nice to meet you, ",
+"! რომელ ელფოსტაზე მოგწეროთ?": "! Which email should we write to?",
+"ელფოსტა არასწორია — შეამოწმეთ, გთხოვთ": "That email doesn't look right. Please check it",
+"ტელეფონსაც თუ დაგვიტოვებთ, უფრო სწრაფად დაგიკავშირდებით. (არასავალდებულო)": "If you leave a phone number too, we can get back to you faster. (Optional)",
+"გამოტოვება": "Skip",
+"ნომერი არასწორია — ან დააჭირეთ „გამოტოვებას“": "That number doesn't look right, or tap “Skip”",
+"ბოლო კითხვა: კიდევ რამე ხომ არ გვინდა ვიცოდეთ?": "Last question: is there anything else we should know?",
+"მოკლედ აღწერეთ ამოცანა…": "Briefly describe the task…",
+"არა, სულ ესაა": "No, that's all",
+"იწერება": "Typing",
+"ვაგზავნი…": "Sending…",
+"! 🎉 თქვენი მოთხოვნა მივიღეთ.": "! 🎉 We've received your request.",
+"ჩვენი გუნდი ერთ სამუშაო დღეში მოგწერთ ": "Our team will write to you at ",
+"-ზე. თუ გინდათ, ზარის დრო ახლავე დაჯავშნეთ.": " within one business day. If you like, book a call time right now.",
+"📅 ზარის დაჯავშნა": "📅 Book a call",
+"ნამუშევრების ნახვა": "See our work",
+"ზარის": "call",
+"სამწუხაროდ, შეტყობინება ვერ გაიგზავნა. სცადეთ თავიდან ან მოგვწერეთ პირდაპირ: hello@webico.io": "Sorry, the message couldn't be sent. Try again or email us directly: hello@webico.io",
+"თავიდან ცდა": "Try again",
+"კიდევ ერთხელ გამარჯობა, ": "Hello again, ",
+"! 👋 თქვენი მოთხოვნა უკვე მივიღეთ და მალე დაგიკავშირდებით.": "! 👋 We already have your request and will be in touch soon.",
+"ახალი მოთხოვნა": "New request",
+"ჩატის დახურვა": "Close chat",
+"ჩატის გახსნა": "Open chat"
+};
+  const T = (s) => (EN && TR[s]) || s;
+  const P = (p) => (EN ? "/en" + p : p);
+
   /* ----------------------------------------------- 1. მობილური ნავიგაცია */
   function initNav() {
     const toggle = $(".nav__toggle");
@@ -259,7 +373,6 @@ const FORM_ENDPOINT = "/api/lead.php";
   }
 
   /* -------------------------------------------------- 7. ლიდების ფორმები */
-  const EN = document.documentElement.lang === "en";
   const MSG = EN ? {
     required: "This field is required",
     email: "Enter a valid email, e.g. name@company.com",
@@ -487,7 +600,7 @@ const FORM_ENDPOINT = "/api/lead.php";
           const b = document.createElement("button");
           b.type = "button";
           b.className = "carousel__dot";
-          b.setAttribute("aria-label", "სლაიდი " + (i + 1));
+          b.setAttribute("aria-label", T("სლაიდი ") + (i + 1));
           b.addEventListener("click", () => goTo(i));
           dotsBox.appendChild(b);
           dots.push(b);
@@ -568,7 +681,7 @@ const FORM_ENDPOINT = "/api/lead.php";
       });
       buttons.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.filter === value)));
       if (empty) empty.hidden = shown > 0;
-      if (live) live.textContent = shown + " " + (group.dataset.filterNoun || "პროექტი");
+      if (live) live.textContent = shown + " " + (group.dataset.filterNoun || T("პროექტი"));
     };
 
     buttons.forEach((b) => b.addEventListener("click", () => apply(b.dataset.filter)));
@@ -595,7 +708,7 @@ const FORM_ENDPOINT = "/api/lead.php";
         btn.setAttribute("aria-expanded", String(!open));
         panel.setAttribute("data-open", String(!open));
         const label = $(".member__toggle-label", btn);
-        if (label) label.textContent = open ? "მეტის ნახვა" : "დახურვა";
+        if (label) label.textContent = open ? T("მეტის ნახვა") : T("დახურვა");
       });
     });
   }
@@ -738,7 +851,7 @@ const FORM_ENDPOINT = "/api/lead.php";
         const out = btn.closest(".share") && $(".share__done", btn.closest(".share"));
         try {
           await navigator.clipboard.writeText(btn.dataset.copyLink);
-          if (out) out.textContent = "ბმული დაკოპირდა";
+          if (out) out.textContent = T("ბმული დაკოპირდა");
         } catch (e) {
           if (out) out.textContent = btn.dataset.copyLink;
         }
@@ -875,11 +988,11 @@ const FORM_ENDPOINT = "/api/lead.php";
       if (plan && en[plan] && box && !box.value) box.value = "I'm interested in: " + en[plan];
       return;
     }
-    const names = { wordpress: "WordPress-ის მოვლა", custom: "ინდივიდუალური საიტის მოვლა", seo: "SEO და მოვლა" };
+    const names = { wordpress: T("WordPress-ის მოვლა"), custom: T("ინდივიდუალური საიტის მოვლა"), seo: T("SEO და მოვლა") };
     if (!plan || !names[plan]) return;
     const topic = document.getElementById("bk-topic");
-    if (topic) topic.value = "საიტი გამოწერით / მოვლა";
-    const msg = "მაინტერესებს: „" + names[plan] + "“";
+    if (topic) topic.value = T("საიტი გამოწერით / მოვლა");
+    const msg = T("მაინტერესებს: „") + names[plan] + "“";
     ["bk-message", "contact-message"].forEach((id) => {
       const el = document.getElementById(id);
       if (el && !el.value) el.value = msg;
@@ -906,7 +1019,7 @@ const FORM_ENDPOINT = "/api/lead.php";
 
     const val = (n) => (form.querySelector('[name="' + n + '"]:checked') || {}).value || "";
     const vals = (n) => $$('[name="' + n + '"]:checked', form).map((i) => i.value);
-    const business = () => (F("business").value.trim() || "თქვენი ბიზნესი");
+    const business = () => (F("business").value.trim() || T("თქვენი ბიზნესი"));
     const styleName = () => { const s = form.querySelector('[name="design"]:checked'); return s ? s.closest("label").querySelector(".design__label b").textContent : "—"; };
 
     const calc = () => {
@@ -928,10 +1041,10 @@ const FORM_ENDPOINT = "/api/lead.php";
       const c = calc();
       const t = conf.types[val("type")] || [""];
       const rows = [
-        ["ბიზნესი", business() + " · " + t[0]],
-        ["პაკეტი", c.p.name],
-        ["დამატებები", c.addonsList.map((a) => a[0]).join(", ") || "—"],
-        ["სტილი", styleName()],
+        [T("ბიზნესი"), business() + " · " + t[0]],
+        [T("პაკეტი"), c.p.name],
+        [T("დამატებები"), c.addonsList.map((a) => a[0]).join(", ") || "—"],
+        [T("სტილი"), styleName()],
       ];
       const ul = $("[data-cfg-summary]", form);
       ul.innerHTML = "";
@@ -943,17 +1056,17 @@ const FORM_ENDPOINT = "/api/lead.php";
       });
       $("[data-cfg-setup]", form).textContent = c.p.setup;
       $("[data-cfg-total]", form).textContent = c.shown;
-      $("[data-cfg-unit]", form).textContent = c.year ? "₾ / წელი" : "₾ / თვე";
+      $("[data-cfg-unit]", form).textContent = c.year ? T("₾ / წელი") : T("₾ / თვე");
       $("[data-cfg-note]", form).textContent = c.year
-        ? "თვეში " + c.month + " ₾-ის ნაცვლად 12 თვეს 10 თვის ფასად იხდით."
-        : "წლიურად თუ გადაიხდით, ორი თვე უფასოა.";
+        ? T("თვეში ") + c.month + T(" ₾-ის ნაცვლად 12 თვეს 10 თვის ფასად იხდით.")
+        : T("წლიურად თუ გადაიხდით, ორი თვე უფასოა.");
     };
 
     const show = (n) => {
       cur = n;
       steps.forEach((s) => { s.hidden = Number(s.dataset.step) !== n; });
       bar.style.width = (n / total) * 100 + "%";
-      count.textContent = "ნაბიჯი " + n + " / " + total;
+      count.textContent = T("ნაბიჯი ") + n + " / " + total;
       back.hidden = n === 1;
       next.hidden = n === total;
       submit.hidden = n !== total;
@@ -989,25 +1102,25 @@ const FORM_ENDPOINT = "/api/lead.php";
       const name = F("name").value.trim();
       const phone = F("phone").value.trim();
       const email = F("email").value.trim();
-      if (!name) return fail("მიუთითეთ სახელი.");
-      if (phone.replace(/\D/g, "").length < 9) return fail("მიუთითეთ ტელეფონის ნომერი.");
-      if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return fail("ელფოსტა არასწორია.");
+      if (!name) return fail(T("მიუთითეთ სახელი."));
+      if (phone.replace(/\D/g, "").length < 9) return fail(T("მიუთითეთ ტელეფონის ნომერი."));
+      if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return fail(T("ელფოსტა არასწორია."));
 
       const c = calc();
       const t = conf.types[val("type")] || [""];
       const lines = [
-        "უფასო ნიმუშის მოთხოვნა (/start)",
-        "ბიზნესი: " + business() + " (" + t[0] + ")",
-        "პაკეტი: " + c.p.name + " — ჩართვა " + c.p.setup + " ₾, " + c.p.month + " ₾ / თვე",
-        "დამატებები: " + (c.addonsList.map((a) => a[0] + " +" + a[1] + " ₾").join(", ") || "—"),
-        "სტილი: " + styleName() + ", ფერი " + val("color"),
-        "გადახდა: " + (c.year ? "წლიური — " + c.shown + " ₾ / წელი" : "თვიური — " + c.month + " ₾ / თვე"),
+        T("უფასო ნიმუშის მოთხოვნა (/start)"),
+        T("ბიზნესი: ") + business() + " (" + t[0] + ")",
+        T("პაკეტი: ") + c.p.name + T(" — ჩართვა ") + c.p.setup + " ₾, " + c.p.month + T(" ₾ / თვე"),
+        T("დამატებები: ") + (c.addonsList.map((a) => a[0] + " +" + a[1] + " ₾").join(", ") || "—"),
+        T("სტილი: ") + styleName() + T(", ფერი ") + val("color"),
+        T("გადახდა: ") + (c.year ? T("წლიური — ") + c.shown + T(" ₾ / წელი") : T("თვიური — ") + c.month + T(" ₾ / თვე")),
       ];
       const msg = F("message").value.trim();
-      if (msg) lines.push("", "კომენტარი: " + msg);
+      if (msg) lines.push("", T("კომენტარი: ") + msg);
 
       submit.disabled = true;
-      submit.textContent = "იგზავნება…";
+      submit.textContent = T("იგზავნება…");
       try {
         const res = await fetch("/api/lead.php", {
           method: "POST",
@@ -1015,8 +1128,8 @@ const FORM_ENDPOINT = "/api/lead.php";
           body: JSON.stringify({
             name, phone, email,
             company: business(),
-            service: "საიტი — " + c.p.name,
-            budget: c.p.setup + " ₾ + " + c.month + " ₾/თვე" + (c.year ? " (წლიური)" : ""),
+            service: T("საიტი — ") + c.p.name,
+            budget: c.p.setup + " ₾ + " + c.month + T(" ₾/თვე") + (c.year ? T(" (წლიური)") : ""),
             message: lines.join("\n"),
             source: "configurator",
             page: location.pathname,
@@ -1032,9 +1145,9 @@ const FORM_ENDPOINT = "/api/lead.php";
         if (typeof window.gtag === "function") window.gtag("event", "generate_lead", { value: c.p.setup, currency: "GEL" });
         if (typeof window.fbq === "function") window.fbq("track", "Lead");
       } catch (err) {
-        fail("ვერ გაიგზავნა. სცადეთ თავიდან ან მოგვწერეთ WhatsApp-ზე.");
+        fail(T("ვერ გაიგზავნა. სცადეთ თავიდან ან მოგვწერეთ WhatsApp-ზე."));
         submit.disabled = false;
-        submit.textContent = "ნიმუშის მიღება";
+        submit.textContent = T("ნიმუშის მიღება");
       }
     });
 
@@ -1062,7 +1175,7 @@ const FORM_ENDPOINT = "/api/lead.php";
       if (!day || !day.slots.length) {
         const p = document.createElement("p");
         p.className = "booking__empty";
-        p.textContent = "ამ დღეს თავისუფალი დრო აღარ არის — აირჩიეთ სხვა დღე.";
+        p.textContent = T("ამ დღეს თავისუფალი დრო აღარ არის — აირჩიეთ სხვა დღე.");
         timesBox.append(p);
         return;
       }
@@ -1093,7 +1206,7 @@ const FORM_ENDPOINT = "/api/lead.php";
         b.className = "booking__day";
         b.disabled = !d.slots.length;
         b.setAttribute("aria-pressed", String(sel.date === d.date));
-        b.setAttribute("aria-label", fmtDay(d) + (d.slots.length ? ", " + d.slots.length + " თავისუფალი დრო" : ", დაკავებულია"));
+        b.setAttribute("aria-label", fmtDay(d) + (d.slots.length ? ", " + d.slots.length + T(" თავისუფალი დრო") : T(", დაკავებულია")));
         b.innerHTML = "<small></small><b></b><small></small>";
         b.children[0].textContent = d.dow;
         b.children[1].textContent = d.day;
@@ -1111,7 +1224,7 @@ const FORM_ENDPOINT = "/api/lead.php";
 
     const load = async (keepDate) => {
       try {
-        const res = await fetch("/api/slots.php", { headers: { Accept: "application/json" } });
+        const res = await fetch("/api/slots.php" + (EN ? "?lang=en" : ""), { headers: { Accept: "application/json" } });
         const data = await res.json();
         days = data.days || [];
         $$("[data-booking-mins]").forEach((el) => { el.textContent = data.slot || 30; });
@@ -1125,7 +1238,7 @@ const FORM_ENDPOINT = "/api/lead.php";
         daysBox.innerHTML = "";
         const p = document.createElement("p");
         p.className = "booking__empty";
-        p.textContent = "კალენდარი ვერ ჩაიტვირთა. დაგვირეკეთ ან შეავსეთ ფორმა ქვემოთ.";
+        p.textContent = T("კალენდარი ვერ ჩაიტვირთა. დაგვირეკეთ ან შეავსეთ ფორმა ქვემოთ.");
         daysBox.append(p);
       }
     };
@@ -1147,10 +1260,11 @@ const FORM_ENDPOINT = "/api/lead.php";
       const btn = $("button[type=submit]", form);
       const text = btn.textContent;
       btn.disabled = true;
-      btn.textContent = "იჯავშნება…";
+      btn.textContent = T("იჯავშნება…");
       const payload = Object.fromEntries(new FormData(form).entries());
       payload.date = sel.date;
       payload.time = sel.time;
+      payload.lang = EN ? "en" : "ka";
       try {
         const res = await fetch("/api/book.php", {
           method: "POST",
@@ -1159,7 +1273,7 @@ const FORM_ENDPOINT = "/api/lead.php";
         });
         const data = await res.json().catch(() => ({}));
         if (res.status === 409) {
-          showStatus(form, "error", "ეს დრო ახლახან დაიკავეს — აირჩიეთ სხვა.");
+          showStatus(form, "error", T("ეს დრო ახლახან დაიკავეს — აირჩიეთ სხვა."));
           await load(true);
           form.hidden = true;
           pick.hidden = false;
@@ -1170,15 +1284,15 @@ const FORM_ENDPOINT = "/api/lead.php";
         done.hidden = false;
         done.innerHTML =
           '<span class="booking__check" aria-hidden="true"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>' +
-          "<h3></h3><p class=\"booking__when\"></p><p>დადასტურება გამოგიგზავნეთ ელფოსტაზე. ჩვენი გუნდის წევრი დათქმულ დროს დაგიკავშირდებათ.</p>" +
-          '<div class="btn-row"><a class="btn btn--primary" target="_blank" rel="noopener">კალენდარში დამატება</a><a class="btn btn--ghost" href="/work">ნამუშევრების ნახვა</a></div>';
-        $("h3", done).textContent = "მადლობა, " + payload.name + "! შეხვედრა დაჯავშნილია.";
-        $(".booking__when", done).textContent = data.label + " (თბილისის დროით)";
+          T("<h3></h3><p class=\"booking__when\"></p><p>დადასტურება გამოგიგზავნეთ ელფოსტაზე. ჩვენი გუნდის წევრი დათქმულ დროს დაგიკავშირდებათ.</p>") +
+          T('<div class="btn-row"><a class="btn btn--primary" target="_blank" rel="noopener">კალენდარში დამატება</a><a class="btn btn--ghost" href="/work">ნამუშევრების ნახვა</a></div>');
+        $("h3", done).textContent = T("მადლობა, ") + payload.name + T("! შეხვედრა დაჯავშნილია.");
+        $(".booking__when", done).textContent = data.label + T(" (თბილისის დროით)");
         const cal = $("a.btn--primary", done);
         if (data.gcal) cal.href = data.gcal; else cal.remove();
         done.focus();
       } catch (err) {
-        showStatus(form, "error", "ჯავშანი ვერ გაიგზავნა. სცადეთ თავიდან ან დაგვირეკეთ.");
+        showStatus(form, "error", T("ჯავშანი ვერ გაიგზავნა. სცადეთ თავიდან ან დაგვირეკეთ."));
       } finally {
         btn.disabled = false;
         btn.textContent = text;
@@ -1205,17 +1319,17 @@ const FORM_ENDPOINT = "/api/lead.php";
     const wrap = document.createElement("div");
     wrap.className = "chat";
     wrap.innerHTML =
-      '<p class="chat__nudge" hidden><button type="button" class="chat__nudge-close" aria-label="დახურვა">' + ICON_X + '</button><span>გაქვთ პროექტი? 👋 ორ წუთში გავარკვიოთ, რა გჭირდებათ.</span></p>' +
-      '<button class="chat__launcher" type="button" aria-expanded="false" aria-controls="chat-panel" aria-label="ჩატის გახსნა">' + ICON_CHAT + '</button>' +
-      '<section class="chat__panel" id="chat-panel" role="dialog" aria-label="ვებიკოს ასისტენტი" hidden>' +
+      T('<p class="chat__nudge" hidden><button type="button" class="chat__nudge-close" aria-label="დახურვა">') + ICON_X + T('</button><span>გაქვთ პროექტი? 👋 ორ წუთში გავარკვიოთ, რა გჭირდებათ.</span></p>') +
+      T('<button class="chat__launcher" type="button" aria-expanded="false" aria-controls="chat-panel" aria-label="ჩატის გახსნა">') + ICON_CHAT + '</button>' +
+      T('<section class="chat__panel" id="chat-panel" role="dialog" aria-label="ვებიკოს ასისტენტი" hidden>') +
         '<header class="chat__head"><span class="chat__avatar" aria-hidden="true">W</span>' +
-        '<span><b>ვებიკოს ასისტენტი</b><small>გუნდი გპასუხობთ 1 სამუშაო დღეში</small></span>' +
-        '<button class="chat__close" type="button" aria-label="ჩატის დახურვა">' + ICON_X + '</button></header>' +
+        T('<span><b>ვებიკოს ასისტენტი</b><small>გუნდი გპასუხობთ 1 სამუშაო დღეში</small></span>') +
+        T('<button class="chat__close" type="button" aria-label="ჩატის დახურვა">') + ICON_X + '</button></header>' +
         '<div class="chat__log" role="log" aria-live="polite"></div>' +
         '<div class="chat__chips"></div>' +
-        '<form class="chat__form" hidden novalidate><label class="sr-only" for="chat-input">პასუხი</label>' +
+        T('<form class="chat__form" hidden novalidate><label class="sr-only" for="chat-input">პასუხი</label>') +
         '<input id="chat-input" class="chat__input" autocomplete="off">' +
-        '<button class="chat__send" type="submit" aria-label="გაგზავნა">' + ICON_SEND + '</button></form>' +
+        T('<button class="chat__send" type="submit" aria-label="გაგზავნა">') + ICON_SEND + '</button></form>' +
         '<p class="chat__hint" hidden></p>' +
       '</section>';
     document.body.append(wrap);
@@ -1236,38 +1350,38 @@ const FORM_ENDPOINT = "/api/lead.php";
 
     const STEPS = [
       { key: "service",
-        ask: () => ["გამარჯობა! 👋 მე ვებიკოს ასისტენტი ვარ.",
-                    "რამდენიმე მოკლე კითხვით გავიგებ, რა გჭირდებათ, და ჩვენი გუნდი დაგიკავშირდებათ. რით შეგვიძლია დაგეხმაროთ?"],
-        chips: ["ახალი ვებსაიტი", "ონლაინ მაღაზია", "SEO", "ციფრული მარკეტინგი", "ბრენდინგი", "სხვა"] },
+        ask: () => [T("გამარჯობა! 👋 მე ვებიკოს ასისტენტი ვარ."),
+                    T("რამდენიმე მოკლე კითხვით გავიგებ, რა გჭირდებათ, და ჩვენი გუნდი დაგიკავშირდებათ. რით შეგვიძლია დაგეხმაროთ?")],
+        chips: [T("ახალი ვებსაიტი"), T("ონლაინ მაღაზია"), "SEO", T("ციფრული მარკეტინგი"), T("ბრენდინგი"), T("სხვა")] },
       { key: "website",
-        ask: () => ["კარგი! უკვე გაქვთ ვებსაიტი? თუ კი, ჩაწერეთ მისამართი."],
+        ask: () => [T("კარგი! უკვე გაქვთ ვებსაიტი? თუ კი, ჩაწერეთ მისამართი.")],
         input: { type: "text", placeholder: "example.ge", inputmode: "url" },
-        chips: ["ჯერ არ მაქვს"] },
+        chips: [T("ჯერ არ მაქვს")] },
       { key: "budget",
-        ask: () => ["დაახლოებით რა ბიუჯეტზე ფიქრობთ?"],
-        chips: ["1 500 ₾-მდე", "1 500 – 5 000 ₾", "5 000 – 15 000 ₾", "15 000 ₾-ზე მეტი", "ჯერ არ ვიცი"] },
+        ask: () => [T("დაახლოებით რა ბიუჯეტზე ფიქრობთ?")],
+        chips: [T("1 500 ₾-მდე"), "1 500 – 5 000 ₾", "5 000 – 15 000 ₾", T("15 000 ₾-ზე მეტი"), T("ჯერ არ ვიცი")] },
       { key: "timeline",
-        ask: () => ["როდის გსურთ დაწყება?"],
-        chips: ["რაც შეიძლება მალე", "1–3 თვეში", "ჯერ ვარკვევ"] },
+        ask: () => [T("როდის გსურთ დაწყება?")],
+        chips: [T("რაც შეიძლება მალე"), T("1–3 თვეში"), T("ჯერ ვარკვევ")] },
       { key: "name",
-        ask: () => ["გმადლობთ! როგორ მოგმართოთ?"],
-        input: { type: "text", placeholder: "თქვენი სახელი", autocomplete: "name" },
-        check: (v) => (v.length >= 2 ? "" : "გთხოვთ, ჩაწეროთ სახელი") },
+        ask: () => [T("გმადლობთ! როგორ მოგმართოთ?")],
+        input: { type: "text", placeholder: T("თქვენი სახელი"), autocomplete: "name" },
+        check: (v) => (v.length >= 2 ? "" : T("გთხოვთ, ჩაწეროთ სახელი")) },
       { key: "email",
-        ask: (a) => ["სასიამოვნოა, " + a.name + "! რომელ ელფოსტაზე მოგწეროთ?"],
+        ask: (a) => [T("სასიამოვნოა, ") + a.name + T("! რომელ ელფოსტაზე მოგწეროთ?")],
         input: { type: "email", placeholder: "name@company.ge", autocomplete: "email", inputmode: "email" },
-        check: (v) => (EMAIL_RE.test(v) ? "" : "ელფოსტა არასწორია — შეამოწმეთ, გთხოვთ") },
+        check: (v) => (EMAIL_RE.test(v) ? "" : T("ელფოსტა არასწორია — შეამოწმეთ, გთხოვთ")) },
       { key: "phone",
-        ask: () => ["ტელეფონსაც თუ დაგვიტოვებთ, უფრო სწრაფად დაგიკავშირდებით. (არასავალდებულო)"],
+        ask: () => [T("ტელეფონსაც თუ დაგვიტოვებთ, უფრო სწრაფად დაგიკავშირდებით. (არასავალდებულო)")],
         input: { type: "tel", placeholder: "+995 5XX XX XX XX", autocomplete: "tel", inputmode: "tel" },
-        chips: ["გამოტოვება"],
-        check: (v) => (PHONE_RE.test(v) ? "" : "ნომერი არასწორია — ან დააჭირეთ „გამოტოვებას“") },
+        chips: [T("გამოტოვება")],
+        check: (v) => (PHONE_RE.test(v) ? "" : T("ნომერი არასწორია — ან დააჭირეთ „გამოტოვებას“")) },
       { key: "message",
-        ask: () => ["ბოლო კითხვა: კიდევ რამე ხომ არ გვინდა ვიცოდეთ?"],
-        input: { type: "text", placeholder: "მოკლედ აღწერეთ ამოცანა…" },
-        chips: ["არა, სულ ესაა"] },
+        ask: () => [T("ბოლო კითხვა: კიდევ რამე ხომ არ გვინდა ვიცოდეთ?")],
+        input: { type: "text", placeholder: T("მოკლედ აღწერეთ ამოცანა…") },
+        chips: [T("არა, სულ ესაა")] },
     ];
-    const SKIP = { website: "ჯერ არ მაქვს", phone: "გამოტოვება", message: "არა, სულ ესაა" };
+    const SKIP = { website: T("ჯერ არ მაქვს"), phone: T("გამოტოვება"), message: T("არა, სულ ესაა") };
 
     const scroll = () => { log.scrollTop = log.scrollHeight; };
     const wait = (ms) => new Promise((r) => setTimeout(r, reduce ? 0 : ms));
@@ -1285,7 +1399,7 @@ const FORM_ENDPOINT = "/api/lead.php";
       for (const line of lines) {
         const typing = document.createElement("p");
         typing.className = "chat__msg chat__msg--bot chat__typing";
-        typing.setAttribute("aria-label", "იწერება");
+        typing.setAttribute("aria-label", T("იწერება"));
         typing.innerHTML = "<i></i><i></i><i></i>";
         log.append(typing);
         scroll();
@@ -1352,7 +1466,7 @@ const FORM_ENDPOINT = "/api/lead.php";
       setChips([]);
       setInput(null);
       busy = true;
-      await say(["ვაგზავნი…"]);
+      await say([T("ვაგზავნი…")]);
       const a = answers;
       const payload = {
         name: a.name, email: a.email, phone: a.phone || "",
@@ -1368,16 +1482,16 @@ const FORM_ENDPOINT = "/api/lead.php";
         const data = await res.json().catch(() => ({}));
         if (!res.ok || !data.ok) throw new Error("send");
         store.set("webico_chat_done", a.name);
-        await say(["მადლობა, " + a.name + "! 🎉 თქვენი მოთხოვნა მივიღეთ.",
-                   "ჩვენი გუნდი ერთ სამუშაო დღეში მოგწერთ " + a.email + "-ზე. თუ გინდათ, ზარის დრო ახლავე დაჯავშნეთ."]);
+        await say([T("მადლობა, ") + a.name + T("! 🎉 თქვენი მოთხოვნა მივიღეთ."),
+                   T("ჩვენი გუნდი ერთ სამუშაო დღეში მოგწერთ ") + a.email + T("-ზე. თუ გინდათ, ზარის დრო ახლავე დაჯავშნეთ.")]);
         busy = false;
-        setChips(["📅 ზარის დაჯავშნა", "ნამუშევრების ნახვა"], (c) => {
-          location.href = c.indexOf("ზარის") > -1 ? "/contact#booking" : "/work";
+        setChips([T("📅 ზარის დაჯავშნა"), T("ნამუშევრების ნახვა")], (c) => {
+          location.href = c.indexOf(T("ზარის")) > -1 ? P("/contact#booking") : P("/work");
         });
       } catch (e) {
-        await say(["სამწუხაროდ, შეტყობინება ვერ გაიგზავნა. სცადეთ თავიდან ან მოგვწერეთ პირდაპირ: hello@webico.io"]);
+        await say([T("სამწუხაროდ, შეტყობინება ვერ გაიგზავნა. სცადეთ თავიდან ან მოგვწერეთ პირდაპირ: hello@webico.io")]);
         busy = false;
-        setChips(["თავიდან ცდა"], () => submit());
+        setChips([T("თავიდან ცდა")], () => submit());
       }
     };
 
@@ -1387,10 +1501,10 @@ const FORM_ENDPOINT = "/api/lead.php";
       const prev = store.get("webico_chat_done");
       if (prev) {
         busy = true;
-        await say(["კიდევ ერთხელ გამარჯობა, " + prev + "! 👋 თქვენი მოთხოვნა უკვე მივიღეთ და მალე დაგიკავშირდებით."]);
+        await say([T("კიდევ ერთხელ გამარჯობა, ") + prev + T("! 👋 თქვენი მოთხოვნა უკვე მივიღეთ და მალე დაგიკავშირდებით.")]);
         busy = false;
-        setChips(["ახალი მოთხოვნა", "📅 ზარის დაჯავშნა"], (c) => {
-          if (c === "ახალი მოთხოვნა") ask(0); else location.href = "/contact#booking";
+        setChips([T("ახალი მოთხოვნა"), T("📅 ზარის დაჯავშნა")], (c) => {
+          if (c === T("ახალი მოთხოვნა")) ask(0); else location.href = P("/contact#booking");
         });
         return;
       }
@@ -1401,7 +1515,7 @@ const FORM_ENDPOINT = "/api/lead.php";
       panel.hidden = false;
       wrap.classList.add("is-open");
       launcher.setAttribute("aria-expanded", "true");
-      launcher.setAttribute("aria-label", "ჩატის დახურვა");
+      launcher.setAttribute("aria-label", T("ჩატის დახურვა"));
       launcher.innerHTML = ICON_X;
       nudge.hidden = true;
       store.sset("webico_nudge", "1");
@@ -1412,7 +1526,7 @@ const FORM_ENDPOINT = "/api/lead.php";
       panel.hidden = true;
       wrap.classList.remove("is-open");
       launcher.setAttribute("aria-expanded", "false");
-      launcher.setAttribute("aria-label", "ჩატის გახსნა");
+      launcher.setAttribute("aria-label", T("ჩატის გახსნა"));
       launcher.innerHTML = ICON_CHAT;
       launcher.focus({ preventScroll: true });
     };
@@ -1459,6 +1573,6 @@ const FORM_ENDPOINT = "/api/lead.php";
     initBooking();
     initPlans();
     initConfigurator();
-    if (!EN) initChatbot();
+    initChatbot();
   });
 })();

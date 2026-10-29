@@ -62,7 +62,14 @@ async function lead(req, res) {
       'წყარო': src, 'გვერდი': get('page', 200),
     })
     + (message !== '' ? '\n' + message + '\n' : ''), email);
-  if (src === 'configurator' && email) {
+  if (src === 'configurator' && email && /^\/en(\/|$)/.test(get('page', 200))) {
+    await mail.send(email, 'Webico: we have your request',
+      `Hi ${name},\n\n`
+      + 'Thank you. We\'ll get in touch within 24 hours and show you how your website could look.\n'
+      + 'The sample is free. You only pay if you like it.\n\n'
+      + `Your choices:\n${message}\n\n`
+      + 'If you have a question, just reply to this email.\n\nWebico, webico.io', mail.teamEmail());
+  } else if (src === 'configurator' && email) {
     await mail.send(email, 'Webico: თქვენი მოთხოვნა მივიღეთ',
       `გამარჯობა, ${name}!\n\n`
       + 'მადლობა. 24 საათში დაგიკავშირდებით და გაჩვენებთ, როგორ შეიძლება გამოიყურებოდეს თქვენი საიტი.\n'
@@ -75,7 +82,7 @@ async function lead(req, res) {
 /* -------------------------------------------------------------- ჯავშანი */
 function slots(req, res) {
   const cfg = booking.config();
-  res.json({ ok: true, slot: cfg.slot, days: booking.days() });
+  res.json({ ok: true, slot: cfg.slot, days: booking.days(req.query.lang) });
 }
 
 async function book(req, res) {
@@ -112,28 +119,39 @@ async function book(req, res) {
   store.bookings = list.slice(-3000);
   if (!write('bookings', store)) return res.status(500).json({ ok: false, error: 'storage' });
 
-  const label = booking.label(date, time);
+  const en = get('lang', 2) === 'en';
+  const label = booking.label(date, time, en ? 'en' : 'ka');
+  const kaLabel = booking.label(date, time);
   const slot = booking.config().slot;
   const start = booking.at(date, time);
   const end = new Date(start.getTime() + slot * 60000);
   const z = (d) => d.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
   const team = mail.teamEmail();
   const gcal = 'https://calendar.google.com/calendar/render?action=TEMPLATE'
-    + '&text=' + encodeURIComponent('კონსულტაცია — Webico')
+    + '&text=' + encodeURIComponent(en ? 'Consultation — Webico' : 'კონსულტაცია — Webico')
     + '&dates=' + z(start) + '/' + z(end)
-    + '&details=' + encodeURIComponent('ვებიკოს გუნდი დაგიკავშირდებათ დათქმულ დროს. კითხვები: ' + team);
+    + '&details=' + encodeURIComponent((en ? 'The Webico team will contact you at the agreed time. Questions: ' : 'ვებიკოს გუნდი დაგიკავშირდებათ დათქმულ დროს. კითხვები: ') + team);
 
   res.json({ ok: true, label, gcal });
 
-  await mail.send(team, 'ახალი შეხვედრა: ' + label + ' — ' + name,
+  await mail.send(team, 'ახალი შეხვედრა: ' + kaLabel + ' — ' + name + (en ? ' (EN)' : ''),
     'ახალი ჯავშანი webico.io-დან\n\n'
     + mail.lines({
-      'დრო': label + ' (' + slot + ' წთ, თბილისის დროით)',
+      'დრო': kaLabel + ' (' + slot + ' წთ, თბილისის დროით)',
       'სახელი': name, 'ელფოსტა': email, 'ტელეფონი': phone,
       'კომპანია': item.company, 'თემა': item.topic, 'ფორმატი': item.format,
     })
     + (item.message !== '' ? '\n' + item.message + '\n' : '')
     + '\nყველა ჯავშანი: https://webico.io/admin?p=bookings\n', email);
+  if (en) {
+    await mail.send(email, 'Your meeting is booked — ' + label,
+      `Hi ${name},\n\n`
+      + `Thank you, your meeting is booked:\n${label} (Tbilisi time, ${slot} minutes).\n\n`
+      + 'A member of our team will contact you at the agreed time and send you the meeting link.\n\n'
+      + `Add to calendar: ${gcal}\n\n`
+      + 'If you need a different time, just reply to this email.\n\n— The Webico team\nhttps://webico.io/en\n', team);
+    return;
+  }
   await mail.send(email, 'შეხვედრა დაჯავშნილია — ' + label,
     `გამარჯობა, ${name}!\n\n`
     + `მადლობა — შეხვედრა დაჯავშნილია:\n${label} (თბილისის დროით, ${slot} წუთი).\n\n`

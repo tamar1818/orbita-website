@@ -17,3 +17,4 @@ content/*.tmp
 
 # ატვირთული ფოტოები სერვერზე რჩება
 assets/img/uploads/
+data/en/i18n-todo.json

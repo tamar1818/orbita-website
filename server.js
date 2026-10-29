@@ -15,6 +15,7 @@ const { serviceWorkSection } = require('./lib/projects');
 const { servicePage } = require('./lib/service');
 const { teamSection } = require('./lib/team');
 const { withFooter } = require('./lib/blocks');
+const { toEnglish, kaPath } = require('./lib/i18n');
 
 const app = express();
 app.disable('x-powered-by');
@@ -60,8 +61,13 @@ app.use('/assets', express.static(path.join(ROOT, 'assets'), { ...longCache, dot
 for (const f of ['favicon.ico', 'robots.txt']) app.get('/' + f, (req, res) => res.sendFile(path.join(ROOT, f)));
 
 /* ------------------------------------------------------------ HTML პასუხი */
+const HTML_HEAD = { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-cache, must-revalidate' };
 function html(res, body, status = 200) {
-  res.status(status).set({ 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-cache, must-revalidate' }).send(withFooter(withWhatsApp(withLang(body, res.req ? res.req.path : '/'))));
+  res.status(status).set(HTML_HEAD).send(withFooter(withWhatsApp(withLang(body, res.req ? res.req.path : '/'))));
+}
+/** ინგლისური: ქართული გვერდი სრულად აიწყობა და ითარგმნება */
+function htmlEn(res, body, ka, status = 200) {
+  res.status(status).set(HTML_HEAD).send(toEnglish(withFooter(withWhatsApp(withLang(body, ka))), ka));
 }
 
 /** სტატიკური გვერდი views/static/-დან: ასეტების ვერსია + სერვისის პროექტები */
@@ -83,54 +89,51 @@ app.use('/api', require('./routes/api'));
 app.use('/admin', require('./routes/admin'));
 
 /* -------------------------------------------------------------- გვერდები */
-const page = (mod) => (req, res, next) => {
-  try { html(res, require(mod).render(req)); } catch (err) { next(err); }
-};
-app.get('/', page('./pages/home'));
-app.get('/work', page('./pages/work'));
-app.get('/work-:slug', (req, res, next) => {
-  const out = require('./pages/project').render(req.params.slug);
-  out === null ? next() : html(res, out);
-});
-app.get('/blog', page('./pages/blog'));
-app.get('/blog/:slug', (req, res, next) => {
-  const out = require('./pages/post').render(req.params.slug);
-  out === null ? next() : html(res, out);
-});
-app.get('/plans', page('./pages/plans'));
-app.get('/start', page('./pages/start'));
-for (const n of ['terms', 'privacy', 'refund', 'delivery']) app.get('/' + n, (req, res) => html(res, require('./pages/legal').render(n)));
-for (const n of ['wordpress', 'ecommerce', 'maintenance']) {
-  app.get('/service-' + n, (req, res) => html(res, servicePage(require('./data/services/' + n + '.json'))));
+/** ქართული გვერდის HTML მისამართით (null — თუ ასეთი გვერდი არ არსებობს) */
+function kaRender(p, req) {
+  const m = (mod) => require(mod);
+  if (p === '/') return m('./pages/home').render(req);
+  if (p === '/work') return m('./pages/work').render(req);
+  if (p === '/blog') return m('./pages/blog').render(req);
+  if (p === '/plans') return m('./pages/plans').render(req);
+  if (p === '/start') return m('./pages/start').render(req);
+  let r = p.match(/^\/work-([a-z0-9-]+)$/);
+  if (r) return m('./pages/project').render(r[1]);
+  r = p.match(/^\/blog\/([^/]+)$/);
+  if (r) return m('./pages/post').render(r[1]);
+  r = p.match(/^\/(terms|privacy|refund|delivery)$/);
+  if (r) return m('./pages/legal').render(r[1]);
+  r = p.match(/^\/service-(wordpress|ecommerce|maintenance)$/);
+  if (r) return servicePage(require('./data/services/' + r[1] + '.json'));
+  if (m('./pages/niche').SLUGS.includes(p.slice(1))) return m('./pages/niche').render(p.slice(1));
+  r = p.match(/^\/([a-z0-9-]+)$/);
+  if (r && r[1] !== '404') return staticPage(r[1]);
+  return null;
 }
-for (const n of require('./pages/niche').SLUGS) app.get('/' + n, (req, res) => html(res, require('./pages/niche').render(n)));
+
 /* ------------------------------------------------------------ English */
-const EN = () => require('./pages/en/pages');
-const enPage = (fn) => (req, res, next) => { try { html(res, fn()); } catch (err) { next(err); } };
-app.get('/en', enPage(() => require('./pages/en/home').render()));
-app.get('/en/about', enPage(() => EN().about()));
-app.get('/en/services', enPage(() => EN().services()));
-app.get('/en/work', enPage(() => EN().work()));
-app.get('/en/contact', enPage(() => EN().contact()));
-for (const n of require('./pages/en/service').SLUGS) app.get('/en/' + n, enPage(() => require('./pages/en/service').render(n)));
-app.get('/en/pricing', enPage(() => require('./pages/en/pricing').render()));
-for (const n of ['privacy', 'terms']) app.get('/en/' + n, enPage(() => require('./pages/en/legal').render(n)));
-app.get('/en/work-:slug', (req, res, next) => {
-  const out = EN().projectPage(req.params.slug);
-  out === null ? next() : html(res, out);
+// ინგლისური გვერდი = ქართული გვერდი, ნათარგმნი data/en/i18n.json-ით (lib/i18n.js)
+app.get(/^\/en(\/.*)?$/, (req, res, next) => {
+  try {
+    const kp = kaPath(req.path);
+    const body = kp === null ? null : kaRender(kp, req);
+    if (body === null) return next();
+    htmlEn(res, body, kp);
+  } catch (err) { next(err); }
 });
 
 app.get('/sitemap.xml', (req, res) => {
   res.set({ 'Content-Type': 'application/xml; charset=utf-8', 'Cache-Control': 'no-cache' }).send(require('./pages/sitemap').render());
 });
-app.get('/:name', (req, res, next) => {
-  if (!/^[a-z0-9-]+$/.test(req.params.name) || req.params.name === '404') return next();
-  const out = staticPage(req.params.name);
-  out === null ? next() : html(res, out);
+app.get(/^\/[^.]*$/, (req, res, next) => {
+  try {
+    const body = kaRender(req.path, req);
+    body === null ? next() : html(res, body);
+  } catch (err) { next(err); }
 });
 
 /* ------------------------------------------------------------------ 404 */
-app.use((req, res) => html(res, /^\/en(\/|$)/.test(req.path) ? EN().notFound() : (staticPage('404') || 'Not found'), 404));
+app.use((req, res) => (/^\/en(\/|$)/.test(req.path) ? htmlEn(res, staticPage('404') || 'Not found', '/404', 404) : html(res, staticPage('404') || 'Not found', 404)));
 app.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
   console.error(err);
   html(res, '<!doctype html><meta charset="utf-8"><title>შეცდომა</title><p style="font-family:sans-serif;padding:40px">სერვერის შეცდომა. სცადეთ მოგვიანებით.</p>', 500);
