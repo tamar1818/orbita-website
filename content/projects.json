@@ -1,5 +1,7 @@
 {
-    "seed_new": ["veloria"],
+    "seed_new": [
+        "veloria"
+    ],
     "projects": [
         {
             "slug": "veloria",
@@ -25,6 +27,25 @@
             "shot": "assets/img/work/veloria-website.webp",
             "full": "assets/img/work/veloria-website-full.webp",
             "video": "assets/video/veloria.mp4"
+        },
+        {
+            "slug": "anapea",
+            "name": "Anapea",
+            "domain": "anapea.ge",
+            "tone": "soft",
+            "shot": "assets/img/work/anapea-website.webp",
+            "summary": "Anapea Village-ის ვებსაიტი: სასტუმრო და მარანი, ოთახების დაჯავშნით, ღვინის გვერდით და ორ ენაზე.",
+            "full": "assets/img/work/anapea-website-full.webp",
+            "video": "assets/video/anapea.mp4"
+        },
+        {
+            "slug": "tamaras-collect",
+            "name": "Tamara's Collect",
+            "domain": "tamarascollect.com",
+            "tone": "lime",
+            "shot": "assets/img/work/tamaras-collect-website.webp",
+            "summary": "Tamara's Collect-ის ონლაინ მაღაზია: ტანსაცმელი, ჩანთები, ფეხსაცმელი და აქსესუარები, სეზონური კოლექციებით და მოსახერხებელი კალათით.",
+            "full": "assets/img/work/tamaras-collect-website-full.webp"
         },
         {
             "slug": "bitefit",
@@ -152,14 +173,6 @@
             "summary": "Archetypes Creatives-ის ვებსაიტი: მინიმალისტური პორტფოლიო კრეატიული სტუდიისთვის, სადაც მთავარი როლი ნამუშევრებსა და დიდ ვიზუალებს აქვს."
         },
         {
-            "slug": "tamaras-collect",
-            "name": "Tamara's Collect",
-            "domain": "tamarascollect.com",
-            "tone": "lime",
-            "shot": "assets/img/work/tamaras-collect-website.webp",
-            "summary": "Tamara's Collect-ის ონლაინ მაღაზია: ტანსაცმელი, ჩანთები, ფეხსაცმელი და აქსესუარები, სეზონური კოლექციებით და მოსახერხებელი კალათით."
-        },
-        {
             "slug": "oribu",
             "name": "Oribu",
             "domain": "oribu.ge",
@@ -262,14 +275,6 @@
             "tone": "pink",
             "shot": "assets/img/work/my-creator-website.webp",
             "summary": "MyCreator-ის პლატფორმა: ბრენდები და ქართველი კრეატორები ერთ სივრცეში, კრეატორების კატალოგით და თანამშრომლობის დაწყებით."
-        },
-        {
-            "slug": "anapea",
-            "name": "Anapea",
-            "domain": "anapea.ge",
-            "tone": "soft",
-            "shot": "assets/img/work/anapea-website.webp",
-            "summary": "Anapea Village-ის ვებსაიტი: სასტუმრო და მარანი, ოთახების დაჯავშნით, ღვინის გვერდით და ორ ენაზე."
         },
         {
             "slug": "pearl-island",
