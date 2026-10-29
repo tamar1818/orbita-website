@@ -9,7 +9,7 @@ const HOME_FAQ = require('../data/home-faq.json');
 const { map, truthy, empty } = require('../lib/tpl');
 const { packages, fmt } = require('../lib/pricing');
 const { heroWall, stackStrip } = require('../lib/hero');
-const { SOCIAL, statement, workBento, ctaGrow } = require('../lib/blocks');
+const { SOCIAL, workBento, ctaGrow } = require('../lib/blocks');
 const decode = (s) => String(s).replace(/&quot;/g, '"').replace(/&#0?39;/g, "'").replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&');
 
 function homeLd() {
@@ -199,7 +199,6 @@ ${(() => {
     return heroWall(H);
   })()}
     ${stackStrip('პლატფორმები, რომლებზეც ვმუშაობთ')}
-    ${statement('ka')}
     <!-- ========================= სერვისები ========================== -->
     <section class="section" id="services">
       <div class="container">
