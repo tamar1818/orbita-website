@@ -7,6 +7,15 @@
     "ვებსაიტი": "Website"
   },
   "projects": {
+    "veloria": {
+      "summary": "Online store for Veloria: laptop sleeves, organizers and bags. A clean, minimal design with large product photos, clear categories, Georgian and English versions and an easy checkout.",
+      "scope": [
+        "UI/UX design",
+        "Online store development",
+        "Product catalogue and categories",
+        "Georgian and English versions"
+      ]
+    },
     "bitefit": {
       "summary": "BiteFit is a calorie tracking app: AI food scanning, calorie logging and personal goals in a simple, modern interface with light and dark themes.",
       "scope": [

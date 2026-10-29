@@ -8,7 +8,7 @@ const auth = require('../lib/auth');
 const media = require('../lib/media');
 const blog = require('../lib/blog');
 const booking = require('../lib/booking');
-const { SERVICE_KEYS, projectServices } = require('../lib/projects');
+const { SERVICE_KEYS, projectServices, projectsData } = require('../lib/projects');
 const { map, truthy, empty } = require('../lib/tpl');
 const FIELDS = require('../data/admin-fields.json');
 
@@ -100,7 +100,7 @@ router.all(['/', '/index.php'], maybeUpload, (req, res) => {
         save('site', site, 'კონტაქტები შენახულია');
       }
       if (action === 'save_project') {
-        const all = read('projects', { projects: [] });
+        const all = projectsData();
         const items = all.projects || [];
         const slug = toSlug(B.slug);
         if (!slug) err = 'slug სავალდებულოა';
@@ -124,13 +124,14 @@ router.all(['/', '/index.php'], maybeUpload, (req, res) => {
         }
       }
       if (action === 'delete_project') {
-        const all = read('projects', { projects: [] });
+        const all = projectsData();
         const slug = toSlug(B.slug);
         all.projects = (all.projects || []).filter((p) => (p.slug || '') !== slug);
+        all.deleted = [...new Set([...(all.deleted || []), slug])];
         save('projects', all, 'პროექტი წაიშალა', 'წაშლა ვერ მოხერხდა');
       }
       if (action === 'reorder') {
-        const all = read('projects', { projects: [] });
+        const all = projectsData();
         const by = new Map((all.projects || []).map((p) => [p.slug || '', p]));
         const sorted = [];
         for (const sl of list(B.order)) if (by.has(sl)) { sorted.push(by.get(sl)); by.delete(sl); }
@@ -235,7 +236,7 @@ function view({ page, msg, err, s, query, body, isPost }) {
   const site = read('site');
   const texts = site.texts || {};
   const settings = site.settings || {};
-  const projectsList = read('projects', { projects: [] }).projects || [];
+  const projectsList = projectsData().projects || [];
   const projects = projectsList;
   const leads = (read('leads', { leads: [] }).leads || []).slice().reverse();
   const postsList = blog.posts(true);

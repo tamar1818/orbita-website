@@ -1,5 +1,31 @@
 {
+    "seed_new": ["veloria"],
     "projects": [
+        {
+            "slug": "veloria",
+            "name": "Veloria",
+            "domain": "",
+            "tone": "soft",
+            "summary": "Veloria-ს ონლაინ მაღაზია: ლეპტოპის ქეისები, ორგანაიზერები და ჩანთები. სუფთა, მინიმალისტური დიზაინი, დიდი პროდუქტის ფოტოები, კატეგორიები, ქართული და ინგლისური ვერსია და მოსახერხებელი კალათა.",
+            "tags": [
+                "ვებსაიტის დამზადება",
+                "UI/UX დიზაინი"
+            ],
+            "services": [
+                "ecommerce",
+                "web-development",
+                "branding"
+            ],
+            "scope": [
+                "UI/UX დიზაინი",
+                "ონლაინ მაღაზიის დეველოპმენტი",
+                "პროდუქტის კატალოგი და კატეგორიები",
+                "ქართული და ინგლისური ვერსია"
+            ],
+            "shot": "assets/img/work/veloria-website.webp",
+            "full": "assets/img/work/veloria-website-full.webp",
+            "video": "assets/video/veloria.mp4"
+        },
         {
             "slug": "bitefit",
             "name": "BiteFit",
@@ -115,8 +141,7 @@
             ],
             "shot": "assets/img/work/linden-spa-website.webp",
             "full": "assets/img/work/linden-spa-website-full.webp",
-            "hide_shot": true,
-            "video": "assets/video/linden-spa.mp4"
+            "hide_shot": true
         },
         {
             "slug": "archetypes-creatives",
