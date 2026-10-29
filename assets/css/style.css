@@ -3745,13 +3745,11 @@ h1, h2 { overflow-wrap: break-word; }
 .eyebrow { display: none !important; }
 
 /* ენის გადამრთველი ნავიგაციაში */
-.nav__links .lang-switch, .lang-switch {
-  display: inline-grid; place-items: center; min-width: 40px; height: 32px; padding: 0 10px;
-  border: 1px solid var(--line-strong); border-radius: var(--radius-pill);
-  font-size: .8rem; font-weight: 700; letter-spacing: .04em;
-}
-.nav__links .lang-switch::before { display: none !important; }
-.nav__links .lang-switch:hover { border-color: var(--ink); background: none; }
+.lang-switch { display: inline-flex; align-items: center; gap: 8px; padding: 0 10px; font-size: .82rem; font-weight: 700; letter-spacing: .04em; }
+.lang-switch > span { color: var(--line-strong); font-weight: 400; }
+.lang-switch a { color: var(--ink-soft); padding: 2px 0; border-bottom: 1.5px solid transparent; transition: color .2s, border-color .2s; }
+.lang-switch a:hover { color: var(--ink); }
+.lang-switch a[aria-current] { color: var(--ink); border-bottom-color: var(--ink); }
 
 /* --- მთავარი გვერდის ბანერი: ნამუშევრების კედელი --- */
 .hx-b { position: relative; overflow: hidden; margin: clamp(12px, 1.6vw, 24px) clamp(12px, 3vw, 40px) clamp(40px, 5vw, 72px); border-radius: var(--radius-xl); background: var(--ink); min-height: clamp(560px, 48vw, 720px); display: grid; place-items: center; isolation: isolate; }
