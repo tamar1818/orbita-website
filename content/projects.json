@@ -45,7 +45,8 @@
             "tone": "lime",
             "shot": "assets/img/work/tamaras-collect-website.webp",
             "summary": "Tamara's Collect-ის ონლაინ მაღაზია: ტანსაცმელი, ჩანთები, ფეხსაცმელი და აქსესუარები, სეზონური კოლექციებით და მოსახერხებელი კალათით.",
-            "full": "assets/img/work/tamaras-collect-website-full.webp"
+            "full": "assets/img/work/tamaras-collect-website-full.webp",
+            "tile": "assets/img/work/tamaras-collect-tile.webp"
         },
         {
             "slug": "bitefit",
@@ -76,7 +77,8 @@
             "tone": "lilac",
             "shot": "assets/img/work/wine-station-website.webp",
             "summary": "The Wine Station-ის ვებსაიტი: სასტუმრო და მარანი, ოთახების დაჯავშნით, ღვინოების გვერდით და ორ ენაზე.",
-            "full": "assets/img/work/wine-station-website-full.webp"
+            "full": "assets/img/work/wine-station-website-full.webp",
+            "tile": "assets/img/work/wine-station-tile.webp"
         },
         {
             "slug": "marketing-agency",

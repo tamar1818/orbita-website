@@ -4099,6 +4099,7 @@ h1, h2 { overflow-wrap: break-word; }
 .work-tile__img, .work-tile__img img, .work-tile__img video { position: absolute; inset: 0; width: 100%; height: 100%; }
 .work-tile__img video { object-fit: cover; object-position: top center; }
 .work-tile__img img { object-fit: cover; object-position: top center; transition: transform 1.1s cubic-bezier(.22,.61,.36,1), filter .5s ease; }
+.work-tile__img img.is-tile { object-position: center; }
 .work-tile:hover .work-tile__img img, .work-tile:hover .work-tile__img video { filter: brightness(.85); }
 .work-tile:hover .work-tile__img img { transform: scale(1.05); }
 .work-tile__cap {
