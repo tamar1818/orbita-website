@@ -4208,3 +4208,9 @@ h1, h2 { overflow-wrap: break-word; }
 .cta .btn--primary:hover, .price--featured .btn--primary:hover, .card--lilac .btn--primary:hover,
 .hero__panel .btn--primary:hover { color: var(--ink); border-color: var(--paper); }
 .cta .btn--light:hover, .cta .btn--white:hover { border-color: var(--ink); }
+
+/* ---------------------------------------------- English: გრძელი სათაურები */
+/* ინგლისური ტექსტი ქართულზე გრძელია: ch-ზე დამოკიდებული სიგანე სიტყვა-სიტყვით წყვეტდა სტრიქონებს */
+:lang(en) h1, :lang(en) h2 { text-wrap: balance; }
+:lang(en) .hx-b__title { max-width: 100%; font-size: clamp(2.3rem, 1rem + 4vw, 5rem); line-height: 1.02; overflow-wrap: break-word; }
+:lang(en) .grow__card h2 { max-width: none; font-size: clamp(1.75rem, 1.1rem + 1.5vw, 2.6rem); line-height: 1.08; }
