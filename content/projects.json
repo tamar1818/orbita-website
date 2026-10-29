@@ -70,6 +70,15 @@
             "shot": "assets/img/work/bitefit-website.webp"
         },
         {
+            "slug": "wine-station",
+            "name": "Wine Station",
+            "domain": "winestation.ge",
+            "tone": "lilac",
+            "shot": "assets/img/work/wine-station-website.webp",
+            "summary": "The Wine Station-ის ვებსაიტი: სასტუმრო და მარანი, ოთახების დაჯავშნით, ღვინოების გვერდით და ორ ენაზე.",
+            "full": "assets/img/work/wine-station-website-full.webp"
+        },
+        {
             "slug": "marketing-agency",
             "name": "Marketing Agency",
             "domain": "",
@@ -219,14 +228,6 @@
             "shot": "assets/img/work/cx-panda-website.webp",
             "tone": "soft",
             "summary": "CX Panda-ს პლატფორმა მომხმარებლის გამოცდილების (CX) სპეციალისტებისთვის: სტატიები, ფრეიმვორკები, ქეისები, კურსი და AI ძიება."
-        },
-        {
-            "slug": "wine-station",
-            "name": "Wine Station",
-            "domain": "winestation.ge",
-            "tone": "lilac",
-            "shot": "assets/img/work/wine-station-website.webp",
-            "summary": "The Wine Station-ის ვებსაიტი: სასტუმრო და მარანი, ოთახების დაჯავშნით, ღვინოების გვერდით და ორ ენაზე."
         },
         {
             "slug": "cloud-streaming",
