@@ -6,7 +6,7 @@ const { mock } = require('../../lib/projects');
 const { map, ldJson } = require('../../lib/tpl');
 const S = require('./shared');
 const { heroWall, stackStrip } = require('../../lib/hero');
-const { statement, workBento, ctaGrow } = require('../../lib/blocks');
+const { SOCIAL, statement, workBento, ctaGrow } = require('../../lib/blocks');
 
 const FAQ = [
   ['Do you work with clients outside Georgia?', 'Yes. We work in English with companies in Europe and the US. Calls happen over Google Meet or Zoom, and our hours overlap with European business hours.'],
@@ -30,7 +30,7 @@ function render() {
     '@context': 'https://schema.org',
     '@graph': [
       { '@type': 'Organization', '@id': 'https://webico.io/#org', name: 'Webico', url: 'https://webico.io/',
-        logo: 'https://webico.io/assets/img/apple-touch-icon.png', email: 'hello@webico.io' },
+        logo: 'https://webico.io/assets/img/apple-touch-icon.png', email: 'hello@webico.io', sameAs: [SOCIAL.instagram, SOCIAL.facebook] },
       { '@type': 'WebSite', '@id': 'https://webico.io/#website', url: 'https://webico.io/', name: 'Webico', inLanguage: ['ka', 'en'],
         publisher: { '@id': 'https://webico.io/#org' } },
       { '@type': 'ProfessionalService', name: 'Webico', url: 'https://webico.io/en', image: 'https://webico.io/assets/img/og-webico-en-3.jpg',
