@@ -68,7 +68,8 @@
                 "კალორიებისა და მიზნების აღრიცხვა",
                 "ღია/მუქი თემა და ენის არჩევა"
             ],
-            "shot": "assets/img/work/bitefit-website.webp"
+            "shot": "assets/img/work/bitefit-website.webp",
+            "tile": "assets/img/work/bitefit-tile.webp"
         },
         {
             "slug": "wine-station",
