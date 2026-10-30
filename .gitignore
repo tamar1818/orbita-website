@@ -18,3 +18,11 @@ content/*.tmp
 # ატვირთული ფოტოები სერვერზე რჩება
 assets/img/uploads/
 data/en/i18n-todo.json
+
+# Next.js
+.next/
+uploads/
+
+# next dev-ის მიერ შექმნილი
+AGENTS.md
+CLAUDE.md

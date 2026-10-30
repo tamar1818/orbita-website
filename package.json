@@ -1,24 +1,24 @@
 {
   "name": "webico-site",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "private": true,
-  "description": "Webico — ვებ სააგენტოს საიტი და CMS (Node.js / Express)",
-  "main": "server.js",
+  "description": "Webico — ვებ სააგენტოს საიტი და CMS (Next.js / React)",
   "scripts": {
-    "start": "node server.js",
-    "build": "echo \"build step not needed\"",
-    "dev": "node --watch server.js"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=20.9"
   },
   "dependencies": {
-    "compression": "^1.8.2",
     "dom-serializer": "^3.1.1",
-    "express": "^4.21.2",
     "htmlparser2": "^12.0.0",
-    "multer": "^2.4.0",
+    "next": "^16.4.3",
     "nodemailer": "^10.1.2",
+    "qs": "^6.17.1",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
     "sanitize-html": "^2.14.0"
   }
 }
