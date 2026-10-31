@@ -2716,6 +2716,8 @@ a:hover .shot img,
 .post-cover--wide .post-cover__title { font-size: clamp(1.6rem, 1rem + 2.6vw, 3.4rem); max-width: 20ch; }
 .post-cover--img { padding: 0; background: var(--bg-soft); }
 .post-cover--img img { width: 100%; height: 100%; object-fit: cover; }
+.post-cover--wide.post-cover--img { aspect-ratio: 2 / 1; }
+@media (max-width: 760px) { .post-cover--wide.post-cover--img { aspect-ratio: 16 / 10; min-height: 0; } }
 
 /* --- ბარათი --- */
 .post-grid {

@@ -124,7 +124,7 @@ export function post(rawSlug, lang) {
   const meta = { title: title + ' | Webico', desc: excerpt, url: '/blog/' + slug, ogType: 'article' };
   if (!empty(p.cover)) {
     ld[0].image = 'https://webico.io' + cu(String(p.cover));
-    Object.assign(meta, { image: cu(String(p.cover)).replace(/^\/+/, ''), imageW: 1200, imageH: 630 });
+    Object.assign(meta, { image: cu(String(p.cover)).replace(/^\/+/, ''), imageW: 1200, imageH: 750 });
   }
   const faq = blog.postFaq(p);
   if (faq.length) {
