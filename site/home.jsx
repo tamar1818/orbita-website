@@ -71,9 +71,8 @@ export default function home() {
       <section className="section" id="services">
         <div className="container">
           <div className="svc-grid" data-reveal="">
-            {SERVICES.map(([tone, href, title, desc], i) => (
+            {SERVICES.map(([tone, href, title, desc]) => (
               <a className={'svc-cell svc-cell--' + tone} href={href} key={href}>
-                <span className="svc-cell__n" aria-hidden="true">{i + 1}</span>
                 <span className="svc-cell__body">
                   <h3 className="svc-cell__title">{title}</h3>
                   <span className="svc-cell__desc">{desc}</span>
