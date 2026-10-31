@@ -698,6 +698,52 @@ export function init() {
     apply("all");
   }
 
+  /* ნამუშევრები: ბარათის 3D დახრა და ჰეროს სცენის პარალაქსი (მხოლოდ მაუსით) */
+  function initWorkTilt() {
+    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    $$("[data-wk-tilt]").forEach((card) => {
+      const frame = $(".wk-card__frame", card);
+      const media = $(".wk-card__media", card);
+      if (!frame || !media) return;
+      let raf = 0;
+      media.addEventListener("pointermove", (e) => {
+        const r = media.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - 0.5;
+        const y = (e.clientY - r.top) / r.height - 0.5;
+        cancelAnimationFrame(raf);
+        raf = requestAnimationFrame(() => {
+          frame.style.setProperty("--ry", (x * 8).toFixed(2) + "deg");
+          frame.style.setProperty("--rx", (-y * 6).toFixed(2) + "deg");
+        });
+      });
+      media.addEventListener("pointerleave", () => {
+        cancelAnimationFrame(raf);
+        frame.style.removeProperty("--rx");
+        frame.style.removeProperty("--ry");
+      });
+    });
+    const wrap = $("[data-wk-stage-wrap]");
+    const scene = $("[data-wk-stage]");
+    if (wrap && scene) {
+      let raf = 0;
+      wrap.addEventListener("pointermove", (e) => {
+        const r = wrap.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - 0.5;
+        const y = (e.clientY - r.top) / r.height - 0.5;
+        cancelAnimationFrame(raf);
+        raf = requestAnimationFrame(() => {
+          scene.style.setProperty("--sy", (-20 + x * 14).toFixed(2) + "deg");
+          scene.style.setProperty("--sx", (10 - y * 10).toFixed(2) + "deg");
+        });
+      });
+      wrap.addEventListener("pointerleave", () => {
+        scene.style.removeProperty("--sx");
+        scene.style.removeProperty("--sy");
+      });
+    }
+  }
+
   /* ---------------------------------------- 11. გუნდის ბარათის გაშლა */
   function initTeamCards() {
     $$("[data-member-toggle]").forEach((btn) => {
@@ -896,7 +942,7 @@ export function init() {
     if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const en = document.documentElement.lang === "en";
-    const items = $$(".svc-work__item, .showcase__item, .case-card, .work-card, .work-tile");
+    const items = $$(".svc-work__item, .showcase__item, .case-card, .work-card, .work-tile, .wk-card");
     if (items.length) {
       const tag = document.createElement("div");
       tag.className = "cursor-tag";
@@ -1569,6 +1615,7 @@ export function init() {
     initMisc();
     initCarousels();
     initFilters();
+    initWorkTilt();
     initTeamCards();
     initMegaMenu();
     initScrollUi();

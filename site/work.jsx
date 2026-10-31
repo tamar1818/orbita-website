@@ -5,58 +5,128 @@ import { txt, slug as toSlug, url as cu, PUBLIC } from '@/lib/core';
 import { showcase, projects, project as findProject, tags, projectServices } from '@/lib/projects';
 import { empty } from '@/lib/tpl';
 import { Mock } from '@/components/work';
+import { FEATURED } from '@/lib/blocks';
 import { JsonLd, PageHero } from '@/components/blocks';
-import { ArrowUpRight, External } from '@/components/icons';
+import { ArrowUpRight } from '@/components/icons';
 
 const list = (v) => (v || []).map((x) => String(x).trim()).filter(Boolean);
 
 /** ტექსტი ხაზების გადატანით */
 const Lines = ({ text }) => String(text).split(/\r\n|\n|\r/).flatMap((l, i) => (i ? [<br key={i} />, '\n' + l] : [l]));
 
+/** პროექტის კატეგორიები ფილტრისთვის (მონაცემებიდან და აღწერიდან) */
+const CATS = [['web', 'ვებსაიტები'], ['shop', 'ონლაინ მაღაზიები'], ['platform', 'პლატფორმები და აპები'], ['design', 'UI/UX დიზაინი']];
+function cats(p) {
+  const sum = String(p.summary ?? '');
+  const tg = (p.tags || []).join(' ');
+  const svc = projectServices(p);
+  const out = [];
+  const concept = sum.includes('კონცეფცია');
+  if (sum.includes('ონლაინ მაღაზია') || svc.includes('ecommerce')) out.push('shop');
+  if (sum.includes('პლატფორმ') || sum.includes('აპლიკაცი') || tg.includes('აპლიკაცი')) out.push('platform');
+  if (!concept && !out.length) out.push('web');
+  if (tg.includes('UI/UX') || svc.includes('branding')) out.push('design');
+  return out;
+}
+const catLabel = (k) => (CATS.find((c) => c[0] === k) || CATS[0])[1];
+
 export function work() {
   const all = showcase();
-  const meta = { title: 'ნამუშევრები — Webico', desc: 'Webico-ს პორტფოლიო: ' + all.length + ' შესრულებული ვებსაიტი.', url: '/work' };
+  const meta = { title: 'ნამუშევრები — Webico', desc: 'Webico-ს პორტფოლიო: ' + all.length + ' ვებსაიტი, ონლაინ მაღაზია, პლატფორმა და UI/UX დიზაინი.', url: '/work' };
   const ld = {
     '@context': 'https://schema.org', '@type': 'ItemList',
     itemListElement: all.map((p, i) => ({ '@type': 'ListItem', position: i + 1, url: 'https://webico.io/work-' + encodeURIComponent(String(p.slug)), name: p.name ?? '' })),
   };
+  const withShot = all.filter((p) => String(p.shot ?? '') !== '');
+  const stage = FEATURED.map((k) => withShot.find((p) => p.slug === k)).filter(Boolean).slice(0, 3);
+  while (stage.length < 3 && withShot[stage.length]) stage.push(withShot[stage.length]);
+  const counts = Object.fromEntries(CATS.map(([k]) => [k, all.filter((p) => cats(p).includes(k)).length]));
+
   const body = (
     <>
       <JsonLd data={ld} />
-      <PageHero crumbs={[[null, 'ნამუშევრები']]} eyebrow="ჩვენი ნამუშევრები" title={txt('work.title', 'შესრულებული პროექტები')}>
-        <p>{txt('work.text', all.length + ' ვებსაიტი ბიზნესებისთვის, ორგანიზაციებისთვის, ონლაინ მაღაზიები და სერვისები საქართველოსა და მის ფარგლებს გარეთ.')}</p>
-      </PageHero>
-
-      <section className="section">
+      <section className="wk-hero" data-wk-stage-wrap="">
         <div className="container">
-          <div className="work-grid">
+          <div className="wk-hero__grid">
+            <div className="wk-hero__text">
+              <ol className="breadcrumb breadcrumb--light">
+                <li><a href="/">მთავარი</a></li>
+                <li><span aria-current="page">ნამუშევრები</span></li>
+              </ol>
+              <h1>{txt('work.title', 'ნამუშევრები, რომლებითაც ვამაყობთ')}</h1>
+              <p>{txt('work.text', 'ვებსაიტები, ონლაინ მაღაზიები, პლატფორმები და დიზაინი ბიზნესებისთვის საქართველოსა და მის ფარგლებს გარეთ.')}</p>
+              <dl className="wk-hero__stats">
+                <div><dt>დასრულებული პროექტი</dt><dd>{all.length}</dd></div>
+                <div><dt>შექმნილი ონლაინ მაღაზია</dt><dd>{counts.shop}</dd></div>
+                <div><dt>UI/UX დიზაინის პროექტი</dt><dd>{counts.design}</dd></div>
+              </dl>
+            </div>
+            <div className="wk-stage" aria-hidden="true">
+              <div className="wk-stage__scene" data-wk-stage="">
+                {stage.map((p, i) => (
+                  <div className={'wk-stage__card wk-stage__card--' + (i + 1)} key={p.slug}>
+                    <span className="wk-stage__bar"><i /><i /><i /><b>{p.domain}</b></span>
+                    <img src={cu(p.shot)} alt="" loading={i ? 'lazy' : undefined} decoding="async" width="1400" height="900" />
+                  </div>
+                ))}
+                <span className="wk-stage__orb wk-stage__orb--1" />
+                <span className="wk-stage__orb wk-stage__orb--2" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section wk-list">
+        <div className="container">
+          <div className="wk-toolbar">
+            <div className="filters" data-filter-group="" data-filter-noun="პროექტი" role="group" aria-label="კატეგორიები">
+              <button className="filter" type="button" data-filter="all" aria-pressed="true">ყველა<span className="filter__count" /></button>
+              {CATS.filter(([k]) => counts[k]).map(([k, label]) => (
+                <button className="filter" type="button" data-filter={k} aria-pressed="false" key={k}>{label}<span className="filter__count" /></button>
+              ))}
+            </div>
+            <p className="sr-only" aria-live="polite" data-filter-status="" />
+          </div>
+
+          <div className="wk-grid">
             {all.map((p, i) => {
               const href = '/work-' + (p.slug ?? '');
-              const stack = list(p.stack);
+              const c = cats(p);
+              const tone = ['lilac', 'lime', 'pink', 'soft'].includes(p.tone) ? p.tone : ['lilac', 'lime', 'pink', 'soft'][i % 4];
               return (
-                <article className="work" data-category="web" data-reveal="" data-reveal-delay={Math.min(i, 6) * 40} key={p.slug}>
-                  <a className="work__cover-link" href={href} tabIndex="-1" aria-hidden="true">
-                    <div className="work__cover work__cover--mock"><Mock p={p} sizes="(max-width: 620px) 100vw, (max-width: 1100px) 50vw, 600px" /></div>
-                  </a>
-                  <div className="work__body">
-                    <div className="work__head">
-                      <h3><a href={href}>{p.name ?? ''}</a></h3>
-                      <span className="work__go" aria-hidden="true"><ArrowUpRight /></span>
-                    </div>
-                    {!empty(p.summary) ? <p>{p.summary}</p> : null}
-                    <div className="work__meta">
-                      {tags(p).map((t) => <span className="tag" key={t}>{t}</span>)}
-                      {!empty(p.partner) ? <span className="tag tag--partner">{p.partner}</span> : null}
-                    </div>
-                    {stack.length ? <div className="work__tools"><b>ინსტრუმენტები</b>{stack.map((s) => <span className="tag tag--tool" key={s}>{s}</span>)}</div> : null}
-                    <div className="work__actions">
-                      <a className="btn btn--primary btn--sm" href={href}>ნახე მეტი</a>
-                      {!empty(p.domain) ? <a className="work__site" href={'https://' + p.domain + '/'} target="_blank" rel="noopener noreferrer">{p.domain} <External /></a> : null}
-                    </div>
-                  </div>
-                </article>
+                <a className={'wk-card wk-card--' + tone + (i % 7 === 0 ? ' wk-card--wide' : '')} href={href} data-category={c.join(' ')} data-wk-tilt="" key={p.slug}>
+                  <span className="wk-card__media">
+                    <span className="wk-card__frame">
+                      <span className="wk-card__bar"><i /><i /><i /></span>
+                      <Mock p={p} sizes={i % 7 === 0 ? '(max-width: 760px) 100vw, 1100px' : '(max-width: 760px) 100vw, 600px'} />
+                    </span>
+                  </span>
+                  <span className="wk-card__info">
+                    <span className="wk-card__text">
+                      <b className="wk-card__name">{p.name ?? ''}</b>
+                      <small><span>{c.map(catLabel).join(' · ')}</span>{!empty(p.domain) ? <span className="wk-card__domain"> · {p.domain}</span> : null}</small>
+                    </span>
+                    <span className="wk-card__go" aria-hidden="true"><ArrowUpRight /></span>
+                  </span>
+                  {!empty(p.summary) ? <span className="wk-card__sum">{p.summary}</span> : null}
+                </a>
               );
             })}
+          </div>
+          <p className="blog-empty" data-filter-empty="" hidden>ამ კატეგორიაში პროექტი ჯერ არ არის.</p>
+        </div>
+      </section>
+
+      <section className="cta cta--center">
+        <div className="container">
+          <div className="cta__inner" data-reveal="">
+            <h2>შემდეგი პროექტი შეიძლება თქვენი იყოს</h2>
+            <p>მოგვიყევით თქვენს იდეაზე. ერთ სამუშაო დღეში გამოგიგზავნით გეგმას, ვადებს და ღირებულებას.</p>
+            <div className="btn-row">
+              <a className="btn btn--primary" href="/start">დაიწყეთ პროექტი</a>{' '}
+              <a className="btn btn--light" href="/contact#booking">უფასო კონსულტაცია</a>
+            </div>
           </div>
         </div>
       </section>
