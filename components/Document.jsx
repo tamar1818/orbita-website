@@ -16,8 +16,10 @@ export default function Document({ lang, children }) {
         <script dangerouslySetInnerHTML={{ __html: 'document.documentElement.classList.add("js");' }} />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-        {/* სარეზერვო ქართული შრიფტი — მთავარი შრიფტია LGV Anastasia 2025 Geo (იხ. public/assets/fonts/) */}
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" />
+        {/* სათაურების შრიფტი წინასწარ, რომ სათაური სარეზერვო შრიფტით არ „აციმციმდეს“ */}
+        <link rel="preload" href="/assets/fonts/dachi-the-lynx.woff2" as="font" type="font/woff2" crossOrigin="" />
+        {/* ტექსტის შრიფტი */}
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;500;600;700&display=swap" />
         <link rel="stylesheet" href={'/assets/css/style.css?v=' + CSS_V} />
       </head>
       <body>{children}</body>

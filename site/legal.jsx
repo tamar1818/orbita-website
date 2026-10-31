@@ -1,4 +1,4 @@
-/** სამართლებრივი გვერდები: /terms, /privacy, /refund, /delivery (ტექსტები — data/legal/) */
+/** სამართლებრივი გვერდები: /terms, /privacy (ტექსტები — data/legal/) */
 import fs from 'fs';
 import path from 'path';
 import { opt, ROOT } from '@/lib/core';
@@ -8,8 +8,6 @@ import { JsonLd, PageHero } from '@/components/blocks';
 export const PAGES = {
   '/terms': 'წესები და პირობები',
   '/privacy': 'კონფიდენციალურობის პოლიტიკა',
-  '/refund': 'გაუქმება და თანხის დაბრუნება',
-  '/delivery': 'მომსახურების მიწოდება',
 };
 
 function Owner() {

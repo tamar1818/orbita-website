@@ -4,37 +4,18 @@
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
-   1. შრიფტები — LGV Anastasia 2025 Geo (მხოლოდ სათაურები)
+   1. შრიფტები — Dachi The Lynx (სათაურები, მენიუ, სერვისები, ღილაკები)
    ფაილები განათავსეთ assets/fonts/ — იხ. assets/fonts/README.md
    -------------------------------------------------------------------------- */
 
+/* ფაილი საიტზევეა (public/assets/fonts), ამიტომ ყველა მოწყობილობაზე ერთნაირად ჩანს —
+   Mac-ზე და iPhone-ზეც, სადაც შრიფტი დაინსტალირებული არ არის. მხოლოდ ერთი წონა აქვს (400). */
 @font-face {
-  font-family: "LGV Anastasia 2025 Geo";
-  src: local("LGV Anastasia 2025 Geo"), local("LGVAnastasia2025Geo-Regular"),
-       url("../fonts/lgv-anastasia-2025-geo-regular.woff2") format("woff2"),
-       url("../fonts/lgv-anastasia-2025-geo-regular.woff") format("woff");
-  font-weight: 400; font-style: normal; font-display: swap;
-}
-@font-face {
-  font-family: "LGV Anastasia 2025 Geo";
-  src: local("LGV Anastasia 2025 Geo Medium"), local("LGVAnastasia2025Geo-Medium"),
-       url("../fonts/lgv-anastasia-2025-geo-medium.woff2") format("woff2"),
-       url("../fonts/lgv-anastasia-2025-geo-medium.woff") format("woff");
-  font-weight: 500; font-style: normal; font-display: swap;
-}
-@font-face {
-  font-family: "LGV Anastasia 2025 Geo";
-  src: local("LGV Anastasia 2025 Geo SemiBold"), local("LGVAnastasia2025Geo-SemiBold"),
-       url("../fonts/lgv-anastasia-2025-geo-semibold.woff2") format("woff2"),
-       url("../fonts/lgv-anastasia-2025-geo-semibold.woff") format("woff");
-  font-weight: 600; font-style: normal; font-display: swap;
-}
-@font-face {
-  font-family: "LGV Anastasia 2025 Geo";
-  src: local("LGV Anastasia 2025 Geo Bold"), local("LGVAnastasia2025Geo-Bold"),
-       url("../fonts/lgv-anastasia-2025-geo-bold.woff2") format("woff2"),
-       url("../fonts/lgv-anastasia-2025-geo-bold.woff") format("woff");
-  font-weight: 700; font-style: normal; font-display: swap;
+  font-family: "Dachi The Lynx";
+  src: url("../fonts/dachi-the-lynx.woff2") format("woff2"),
+       url("../fonts/dachi-the-lynx.woff") format("woff");
+  font-weight: 100 900;   /* ერთი ფაილი ყველა წონისთვის — ყალბი bold-ის გარეშე */
+  font-style: normal; font-display: swap;
 }
 
 /* --------------------------------------------------------------------------
@@ -43,14 +24,8 @@
 
 :root {
   /* ტიპოგრაფია: display — მხოლოდ სათაურები, base — ყველა დანარჩენი */
-  /* სათაურებში ლათინურს "Space Grotesk" ხატავს, ქართულს — LGV Anastasia.
-     ბრაუზერი შრიფტს სიმბოლოებად ირჩევს: Space Grotesk-ს ქართული არ აქვს,
-     ამიტომ ქართული ავტომატურად LGV-ზე გადადის. თუ LGV-ის საკუთარი
-     ლათინური გირჩევნიათ — უბრალოდ წაშალეთ "Space Grotesk" ამ სიიდან. */
-  --font-display: "LGV Anastasia 2025 Geo", "Space Grotesk", "Noto Sans Georgian",
-                  "BPG Arial", system-ui, -apple-system, "Segoe UI", sans-serif;
-  /* პატარა სათაურები (h3, h4, ბარათები): LGV მცირე ზომაზე ძნელად იკითხება */
-  --font-title-sm: "Space Grotesk", "Noto Sans Georgian", "BPG Arial", system-ui, sans-serif;
+  --font-display: "Dachi The Lynx", "Noto Sans Georgian", "BPG Arial", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-title-sm: var(--font-display);
   --font-base: "Noto Sans Georgian", "BPG Arial", system-ui, -apple-system,
                "Segoe UI", Roboto, sans-serif;
 
@@ -2416,15 +2391,15 @@ a:hover .shot img,
   overflow: hidden;
 }
 .svc-cell:nth-child(even) { border-left: 1px solid var(--line); }
-.svc-cell::before {            /* hover-ზე ფერი ქვემოდან ივსება */
+.svc-cell::before {            /* hover-ზე ფერი რბილად ჩნდება */
   content: "";
   position: absolute;
   inset: 0;
   z-index: -1;
   background: var(--tone);
-  transform: scaleY(0);
-  transform-origin: 50% 100%;
-  transition: transform .5s cubic-bezier(.65, 0, .25, 1);
+  opacity: 0;
+  transform: scale(.97);
+  transition: opacity .6s cubic-bezier(.22, .61, .36, 1), transform .8s cubic-bezier(.22, .61, .36, 1);
 }
 .svc-cell--lilac { --tone: var(--lilac); }
 .svc-cell--lime  { --tone: var(--lime); }
@@ -2440,7 +2415,7 @@ a:hover .shot img,
   line-height: 1.2;
   letter-spacing: -.02em;
 }
-.svc-cell__desc { max-width: 46ch; color: var(--muted); font-size: 1rem; line-height: 1.65; transition: color .3s ease; }
+.svc-cell__desc { max-width: 46ch; color: var(--muted); font-size: 1rem; line-height: 1.65; transition: color .6s ease; }
 .svc-cell__go {
   display: inline-flex;
   align-items: center;
@@ -2450,19 +2425,30 @@ a:hover .shot img,
   font-weight: 600;
   color: var(--ink);
 }
-.svc-cell__go svg { width: 16px; height: 16px; transition: transform .25s ease; }
-.svc-cell:hover::before, .svc-cell:focus-visible::before { transform: scaleY(1); }
+.svc-cell__go svg { width: 16px; height: 16px; transition: transform .6s cubic-bezier(.22, .61, .36, 1); }
+.svc-cell:hover::before, .svc-cell:focus-visible::before { opacity: 1; transform: none; }
+.svc-cell__icon {
+  display: grid; place-items: center;
+  width: 52px; height: 52px;
+  margin-bottom: 10px;
+  border: 1px solid var(--line-strong);
+  border-radius: 16px;
+  color: var(--ink);
+  transition: background-color .6s cubic-bezier(.22, .61, .36, 1), color .6s ease, border-color .6s ease, transform .8s cubic-bezier(.22, .61, .36, 1);
+}
+.svc-cell__icon svg { width: 24px; height: 24px; }
+.svc-cell:hover .svc-cell__icon, .svc-cell:focus-visible .svc-cell__icon { background: var(--ink); color: #fff; border-color: var(--ink); transform: rotate(-6deg); }
 .svc-cell:hover .svc-cell__desc, .svc-cell:focus-visible .svc-cell__desc { color: var(--ink-soft); }
 .svc-cell:hover .svc-cell__go svg, .svc-cell:focus-visible .svc-cell__go svg { transform: translateX(4px); }
-.svc-cell--all { align-content: center; transition: color .3s ease; }
+.svc-cell--all { align-content: center; transition: color .6s ease; }
 .svc-cell--all .svc-cell__title { font-family: var(--font-display); font-size: clamp(1.6rem, 1.1rem + 1.6vw, 2.6rem); }
-.svc-cell--all .svc-cell__go { transition: color .3s ease; }
+.svc-cell--all .svc-cell__go { transition: color .6s ease; }
 .svc-cell--all:hover, .svc-cell--all:hover .svc-cell__go { color: #fff; }
 @media (max-width: 760px) {
   .svc-grid { grid-template-columns: 1fr; }
   .svc-cell, .svc-cell:nth-child(even) { padding: 30px 16px; border-left: 0; }
 }
-@media (prefers-reduced-motion: reduce) { .svc-cell::before { transition: none; } }
+@media (prefers-reduced-motion: reduce) { .svc-cell::before, .svc-cell__icon { transition: none; } }
 
 /* --- bento ბადე მუქ სექციაში --- */
 .bento {
@@ -4203,3 +4189,16 @@ h1, h2 { overflow-wrap: break-word; }
 :lang(en) h1, :lang(en) h2 { text-wrap: balance; }
 :lang(en) .hx-b__title { max-width: 100%; font-size: clamp(2.3rem, 1rem + 4vw, 5rem); line-height: 1.02; overflow-wrap: break-word; }
 :lang(en) .grow__card h2 { max-width: none; font-size: clamp(1.75rem, 1.1rem + 1.5vw, 2.6rem); line-height: 1.08; }
+
+/* --------------------------------------------------------------------------
+   Dachi The Lynx: სათაურები, მენიუ, სერვისები, ღილაკები.
+   შრიფტს მხოლოდ ერთი წონა აქვს — ბრაუზერმა „ყალბი bold“ არ უნდა დახატოს (Safari-ზე ბუნდოვანია).
+   -------------------------------------------------------------------------- */
+h1, h2, h3, h4, h5, h6,
+.nav__links > li > a, .nav__links > li > .nav__trigger, .mega__cat, .mega__panel ul a, .mega__all,
+.svc-cell__title, .btn {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-synthesis: none;
+}
+h1, h2, h3, h4, h5, h6 { letter-spacing: -.01em; }

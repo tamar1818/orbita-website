@@ -9,13 +9,20 @@ import { PostCard } from '@/components/posts';
 import { ArrowRight } from '@/components/icons';
 
 const SERVICES = [
-  ['lilac', '/service-web-development', 'ვებსაიტის დამზადება', 'კომპანიის საიტი, ლენდინგი ან ვებ-აპლიკაცია. სწრაფი, მობილურზე მოხერხებული და გასაგები.', ['კორპორატიული', 'ლენდინგი', 'ვებ-აპლიკაცია']],
-  ['lime', '/service-wordpress', 'WordPress დეველოპმენტი', 'საკუთარი თემა, Elementor და ACF. ტექსტებს და ფოტოებს თვითონ შეცვლით.', ['WordPress', 'Elementor', 'ACF']],
-  ['pink', '/service-ecommerce', 'ონლაინ მაღაზიის შექმნა', 'WooCommerce ან Shopify, ბარათით გადახდით და მიწოდების პირობებით.', ['WooCommerce', 'Shopify', 'გადახდები']],
-  ['soft', '/service-branding', 'UI/UX დიზაინი და ბრენდინგი', 'ინტერფეისის დიზაინი Figma-ში, ლოგო და ბრენდბუქი.', ['UI/UX', 'Figma', 'ბრენდბუქი']],
-  ['lilac', '/service-seo', 'SEO ოპტიმიზაცია', 'ტექნიკური SEO, საძიებო სიტყვები და ქართული ტექსტები, რომ Google-ში გიპოვონ.', ['ტექნიკური SEO', 'სემანტიკა', 'ლოკალური SEO']],
-  ['lime', '/service-maintenance', 'საიტის ტექნიკური მხარდაჭერა', 'განახლებები, უსაფრთხოება, ასლები და მცირე ცვლილებები ყოველთვე.', ['განახლებები', 'უსაფრთხოება', 'ასლები']],
-  ['pink', '/service-marketing', 'ციფრული მარკეტინგი', 'რეკლამა Google-ში, Facebook-ზე, Instagram-ზე და TikTok-ზე. ხედავთ, რა მოიტანა თითოეულმა ლარმა.', ['Google Ads', 'Meta', 'TikTok']],
+  ['lilac', '/service-web-development', 'ვებსაიტის დამზადება', 'კომპანიის საიტი, ლენდინგი ან ვებ-აპლიკაცია. სწრაფი, მობილურზე მოხერხებული და გასაგები.',
+    <><polyline points="16 18 22 12 16 6" /><polyline points="8 6 2 12 8 18" /><line x1="13" y1="4" x2="11" y2="20" /></>],
+  ['lime', '/service-wordpress', 'WordPress დეველოპმენტი', 'საკუთარი თემა, Elementor და ACF. ტექსტებს და ფოტოებს თვითონ შეცვლით.',
+    <><circle cx="12" cy="12" r="9" /><path d="M3.5 9h17M3.5 15h17" /><path d="M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" /></>],
+  ['pink', '/service-ecommerce', 'ონლაინ მაღაზიის შექმნა', 'WooCommerce ან Shopify, ბარათით გადახდით და მიწოდების პირობებით.',
+    <><circle cx="9" cy="21" r="1" /><circle cx="20" cy="21" r="1" /><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6" /></>],
+  ['soft', '/service-branding', 'UI/UX დიზაინი და ბრენდინგი', 'ინტერფეისის დიზაინი Figma-ში, ლოგო და ბრენდბუქი.',
+    <><polygon points="12 2 2 7 12 12 22 7 12 2" /><polyline points="2 17 12 22 22 17" /><polyline points="2 12 12 17 22 12" /></>],
+  ['lilac', '/service-seo', 'SEO ოპტიმიზაცია', 'ტექნიკური SEO, საძიებო სიტყვები და ქართული ტექსტები, რომ Google-ში გიპოვონ.',
+    <><circle cx="11" cy="11" r="7" /><line x1="21" y1="21" x2="16.7" y2="16.7" /></>],
+  ['lime', '/service-maintenance', 'საიტის ტექნიკური მხარდაჭერა', 'განახლებები, უსაფრთხოება, ასლები და მცირე ცვლილებები ყოველთვე.',
+    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.8-3.8a6 6 0 0 1-7.9 7.9l-6.9 6.9a2.1 2.1 0 0 1-3-3l6.9-6.9a6 6 0 0 1 7.9-7.9z" />],
+  ['pink', '/service-marketing', 'ციფრული მარკეტინგი', 'რეკლამა Google-ში, Facebook-ზე, Instagram-ზე და TikTok-ზე. ხედავთ, რა მოიტანა თითოეულმა ლარმა.',
+    <><polyline points="23 6 13.5 15.5 8.5 10.5 1 18" /><polyline points="17 6 23 6 23 12" /></>],
 ];
 
 const STEPS = [
@@ -71,9 +78,12 @@ export default function home() {
       <section className="section" id="services">
         <div className="container">
           <div className="svc-grid" data-reveal="">
-            {SERVICES.map(([tone, href, title, desc]) => (
+            {SERVICES.map(([tone, href, title, desc, icon]) => (
               <a className={'svc-cell svc-cell--' + tone} href={href} key={href}>
                 <span className="svc-cell__body">
+                  <span className="svc-cell__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">{icon}</svg>
+                  </span>
                   <h3 className="svc-cell__title">{title}</h3>
                   <span className="svc-cell__desc">{desc}</span>
                   <span className="svc-cell__go">დეტალურად <ArrowRight /></span>

@@ -24,6 +24,9 @@ export function proxy(request) {
   // ფასების გვერდი წაიშალა (2026-10-31) — პაკეტები /start-ზეა
   if (p === '/plans') return go(local('start'));
   if (p === '/en/pricing') return go(local('en/start'));
+  // გაუქმების და მიწოდების გვერდები წაიშალა (2026-10-31) — პირობები /terms-ზეა
+  if (p === '/refund' || p === '/delivery') return go(local('terms'));
+  if (p === '/en/refund' || p === '/en/delivery') return go(local('en/terms'));
   // ფაილები (favicon.ico, robots.txt, sitemap.xml) — როგორც არის
   if (/\.[a-z0-9]+$/i.test(p)) return next();
   // გვერდი, რომელიც არ არსებობს → Next-ის 404 მარშრუტი (app/not-found.jsx, სტატუსი 404).

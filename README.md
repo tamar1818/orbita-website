@@ -68,7 +68,6 @@ content/             projects.json, posts.json, site.json (საწყისი
 public/              CSS, ფოტოები, ლოგოები, favicon, robots.txt
 ```
 
-## შრიფტი — LGV Anastasia 2025 Geo
+## შრიფტები
 
-შრიფტის ფაილები რეპოზიტორიაში არ არის (ლიცენზირებულია). იხ. [`public/assets/fonts/README.md`](public/assets/fonts/README.md).
-სანამ დაამატებთ, საიტი სარეზერვო შრიფტით (Noto Sans Georgian) ჩანს.
+სათაურები: Dachi The Lynx (`public/assets/fonts/`), ტექსტი: Noto Sans Georgian. იხ. [`public/assets/fonts/README.md`](public/assets/fonts/README.md).

@@ -20,7 +20,7 @@ export function match(p) {
   if (r) return toSlug(r[1]) && project(toSlug(r[1])) ? ['project', r[1]] : null;
   r = p.match(/^\/blog\/([^/]+)$/);
   if (r) return toSlug(r[1]) && post(toSlug(r[1])) ? ['post', r[1]] : null;
-  r = p.match(/^\/(terms|privacy|refund|delivery)$/);
+  r = p.match(/^\/(terms|privacy)$/);
   if (r) return ['legal', r[1]];
   r = p.match(/^\/service-([a-z]+)$/);
   if (r && JSON_SERVICES.includes(r[1])) return ['service', r[1]];
