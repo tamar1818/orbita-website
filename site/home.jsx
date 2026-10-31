@@ -11,8 +11,6 @@ import { ArrowRight } from '@/components/icons';
 const SERVICES = [
   ['lilac', '/service-web-development', 'ვებსაიტის დამზადება', 'კომპანიის საიტი, ლენდინგი ან ვებ-აპლიკაცია. სწრაფი, მობილურზე მოხერხებული და გასაგები.',
     <><polyline points="16 18 22 12 16 6" /><polyline points="8 6 2 12 8 18" /><line x1="13" y1="4" x2="11" y2="20" /></>],
-  ['lime', '/service-wordpress', 'WordPress დეველოპმენტი', 'საკუთარი თემა, Elementor და ACF. ტექსტებს და ფოტოებს თვითონ შეცვლით.',
-    <><circle cx="12" cy="12" r="9" /><path d="M3.5 9h17M3.5 15h17" /><path d="M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" /></>],
   ['pink', '/service-ecommerce', 'ონლაინ მაღაზიის შექმნა', 'WooCommerce ან Shopify, ბარათით გადახდით და მიწოდების პირობებით.',
     <><circle cx="9" cy="21" r="1" /><circle cx="20" cy="21" r="1" /><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6" /></>],
   ['soft', '/service-branding', 'UI/UX დიზაინი და ბრენდინგი', 'ინტერფეისის დიზაინი Figma-ში, ლოგო და ბრენდბუქი.',
@@ -23,6 +21,12 @@ const SERVICES = [
     <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.8-3.8a6 6 0 0 1-7.9 7.9l-6.9 6.9a2.1 2.1 0 0 1-3-3l6.9-6.9a6 6 0 0 1 7.9-7.9z" />],
   ['pink', '/service-marketing', 'ციფრული მარკეტინგი', 'რეკლამა Google-ში, Facebook-ზე, Instagram-ზე და TikTok-ზე. ხედავთ, რა მოიტანა თითოეულმა ლარმა.',
     <><polyline points="23 6 13.5 15.5 8.5 10.5 1 18" /><polyline points="17 6 23 6 23 12" /></>],
+  ['lilac', '/service-payments', 'ონლაინ გადახდების ინტეგრაცია', 'Flitt, UniPAY, საქართველოს ბანკი, TBC, Apple Pay და Stripe საიტზე ან აპლიკაციაში.',
+    <><rect x="1" y="4" width="22" height="16" rx="2" /><line x1="1" y1="10" x2="23" y2="10" /><line x1="5" y1="15" x2="9" y2="15" /></>],
+  ['lime', '/service-ai', 'AI კონტენტის შექმნა', 'ტექსტები, პროდუქტის ფოტოები და ვიდეოები საიტისთვის, მაღაზიისთვის და კამპანიებისთვის.',
+    <><path d="M12 3l1.9 4.6L18.5 9.5l-4.6 1.9L12 16l-1.9-4.6L5.5 9.5l4.6-1.9z" /><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z" /></>],
+  ['soft', '/service-devops', 'DevOps სერვისები', 'ღრუბელი, CI/CD, Kubernetes და მონიტორინგი. iGaming DevOps პარტნიორ RealOps-თან ერთად.',
+    <><rect x="2" y="3" width="20" height="7" rx="1.5" /><rect x="2" y="14" width="20" height="7" rx="1.5" /><line x1="6" y1="6.5" x2="6.01" y2="6.5" /><line x1="6" y1="17.5" x2="6.01" y2="17.5" /></>],
 ];
 
 const STEPS = [

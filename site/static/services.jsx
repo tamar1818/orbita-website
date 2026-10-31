@@ -369,6 +369,52 @@ export default function pageServices() {
           </div>
         </div>
       </section>
+      <section className="section section--tight">
+        <div className="container">
+          <div className="section-head section-head--center" data-reveal="">
+            <span className="eyebrow eyebrow--accent">ახალი</span>
+            <h2>გადახდები, AI კონტენტი და DevOps</h2>
+          </div>
+          <div className="grid grid--3">
+            <article className="card card--link" data-reveal="">
+              <h3>ონლაინ გადახდების ინტეგრაცია</h3>
+              <p>Flitt, UniPAY, საქართველოს ბანკი, TBC, Apple Pay და Google Pay. საერთაშორისო გაყიდვებისთვის Stripe და PayPal.</p>
+              <a className="link-arrow" href="/service-payments">
+                დეტალურად{" "}
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                  <polyline points="12 5 19 12 12 19" />
+                </svg>
+                <span className="sr-only">{" "}— ონლაინ გადახდების ინტეგრაცია</span>
+              </a>
+            </article>
+            <article className="card card--link" data-reveal="">
+              <h3>AI კონტენტის შექმნა</h3>
+              <p>საიტის ტექსტები, პროდუქტის ფოტოები, ვიდეოები და სარეკლამო კონტენტი, რომელსაც ჩვენი გუნდი ამოწმებს.</p>
+              <a className="link-arrow" href="/service-ai">
+                დეტალურად{" "}
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                  <polyline points="12 5 19 12 12 19" />
+                </svg>
+                <span className="sr-only">{" "}— AI კონტენტის შექმნა</span>
+              </a>
+            </article>
+            <article className="card card--link" data-reveal="">
+              <h3>DevOps სერვისები</h3>
+              <p>ღრუბელი, CI/CD, Kubernetes და მონიტორინგი. iGaming DevOps პარტნიორ RealOps-თან ერთად.</p>
+              <a className="link-arrow" href="/service-devops">
+                დეტალურად{" "}
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                  <polyline points="12 5 19 12 12 19" />
+                </svg>
+                <span className="sr-only">{" "}— DevOps სერვისები</span>
+              </a>
+            </article>
+          </div>
+        </div>
+      </section>
       <section className="section section--soft" id="pricing">
         <div className="container">
           <div className="section-head section-head--center" data-reveal="">

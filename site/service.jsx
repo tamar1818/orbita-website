@@ -20,6 +20,9 @@ const SERVICES = {
   '/service-maintenance': ['საიტის ტექნიკური მხარდაჭერა', 'განახლებები, უსაფრთხოება, სარეზერვო ასლები.'],
   '/service-branding': ['ბრენდინგი და UI/UX დიზაინი', 'ლოგო, ბრენდბუქი და ინტერფეისის დიზაინი.'],
   '/service-marketing': ['ციფრული მარკეტინგი', 'Google Ads, Meta და TikTok კამპანიები.'],
+  '/service-payments': ['ონლაინ გადახდების ინტეგრაცია', 'Flitt, UniPAY, BOG, TBC, Apple Pay, Stripe და PayPal.'],
+  '/service-ai': ['AI კონტენტის შექმნა', 'ტექსტები, ფოტოები და ვიდეოები საიტისა და რეკლამისთვის.'],
+  '/service-devops': ['DevOps სერვისები', 'ღრუბელი, CI/CD, Kubernetes და iGaming DevOps.'],
 };
 
 export default function service(name) {
@@ -53,6 +56,7 @@ export default function service(name) {
       <JsonLd data={ld} />
       <PageHero crumbs={[['/services', 'სერვისები'], [null, S.crumb]]} eyebrow={S.eyebrow} title={S.h1}>
         <p>{S.lead}</p>
+        {S.chips && S.chips.length ? <ul className="svc-chips" aria-label={S.chips_label || 'ინსტრუმენტები'}>{S.chips.map((c) => <li key={c}>{c}</li>)}</ul> : null}
         <div className="btn-row">
           <a className="btn btn--primary" href="/contact#booking">უფასო კონსულტაცია</a>{' '}
           <a className="btn btn--ghost" href="/work">ნამუშევრები</a>
@@ -64,6 +68,16 @@ export default function service(name) {
           <div className="svc-intro" data-reveal="">
             {S.intro.map((p, i) => <p key={i}>{p}</p>)}
           </div>
+          {S.partner ? (
+            <aside className="svc-partner" data-reveal="">
+              <div className="svc-partner__body">
+                <span className="svc-partner__tag">{S.partner.eyebrow}</span>
+                <h3>{S.partner.title}</h3>
+                <p>{S.partner.text}</p>
+              </div>
+              <a className="btn svc-partner__btn" href={S.partner.url} target="_blank" rel="noopener">{S.partner.cta} <ArrowRight /></a>
+            </aside>
+          ) : null}
         </div>
       </section>
 

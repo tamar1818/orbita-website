@@ -8,7 +8,7 @@ import { post } from '@/lib/blog';
 import NICHES from '@/data/niches.json';
 
 export const STATIC_PATHS = ['/about', '/contact', '/services', '/service-web-development', '/service-branding', '/service-marketing', '/service-seo'];
-export const JSON_SERVICES = ['wordpress', 'ecommerce', 'maintenance'];
+export const JSON_SERVICES = ['wordpress', 'ecommerce', 'maintenance', 'payments', 'ai', 'devops'];
 export const NICHE_SLUGS = Object.keys(NICHES);
 
 const PAGES = { '/': 'home', '/work': 'work', '/blog': 'blog', '/start': 'start' };

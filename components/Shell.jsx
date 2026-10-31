@@ -30,6 +30,18 @@ const MEGA = [
   ['care', '/service-maintenance', 'lime', 'მხარდაჭერა',
     <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.8-3.8a6 6 0 0 1-7.9 7.9l-6.9 6.9a2.1 2.1 0 0 1-3-3l6.9-6.9a6 6 0 0 1 7.9-7.9z" />,
     [['/service-maintenance', 'საიტის ტექნიკური მხარდაჭერა'], ['/service-maintenance', 'განახლებები და სარეზერვო ასლები'], ['/contact#booking', 'უფასო კონსულტაცია']]],
+  ['pay', '/service-payments', 'pink', 'ონლაინ გადახდები',
+    <><rect x="1" y="4" width="22" height="16" rx="2" /><line x1="1" y1="10" x2="23" y2="10" /><line x1="5" y1="15" x2="9" y2="15" /></>,
+    [['/service-payments', 'გადახდების ინტეგრაცია'], ['/service-payments', 'Flitt და UniPAY'], ['/service-payments', 'საქართველოს ბანკი და TBC'],
+      ['/service-payments', 'Apple Pay და Google Pay'], ['/service-payments', 'Stripe და PayPal'], ['/service-payments', 'გამოწერები და ინვოისები']]],
+  ['ai', '/service-ai', 'lilac', 'AI კონტენტი',
+    <><path d="M12 3l1.9 4.6L18.5 9.5l-4.6 1.9L12 16l-1.9-4.6L5.5 9.5l4.6-1.9z" /><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z" /></>,
+    [['/service-ai', 'AI კონტენტის შექმნა'], ['/service-ai', 'საიტის ტექსტები'], ['/service-ai', 'პროდუქტის ფოტოები და აღწერები'],
+      ['/service-ai', 'კონტენტი სარეკლამო კამპანიებისთვის'], ['/service-ai', 'სოციალური ქსელები და ვიდეოები'], ['/service-ai', 'AI ჩატბოტი საიტზე']]],
+  ['devops', '/service-devops', 'lime', 'DevOps',
+    <><rect x="2" y="3" width="20" height="7" rx="1.5" /><rect x="2" y="14" width="20" height="7" rx="1.5" /><line x1="6" y1="6.5" x2="6.01" y2="6.5" /><line x1="6" y1="17.5" x2="6.01" y2="17.5" /></>,
+    [['/service-devops', 'DevOps სერვისები'], ['/service-devops', 'ღრუბლოვანი ინფრასტრუქტურა'], ['/service-devops', 'CI/CD და ავტომატიზაცია'],
+      ['/service-devops', 'Docker და Kubernetes'], ['/service-devops', 'მონიტორინგი და უსაფრთხოება'], ['/service-devops', 'iGaming DevOps — RealOps']]],
 ];
 
 const MegaIcon = ({ children }) => (
@@ -106,7 +118,7 @@ function Header({ lang, kaPath }) {
 }
 
 const FOOT_NAV = [['/', 'მთავარი'], ['/about', 'ჩვენ შესახებ'], ['/services', 'სერვისები'], ['/work', 'ნამუშევრები'], ['/blog', 'ბლოგი'], ['/contact', 'კონტაქტი']];
-const FOOT_SVC = [['/service-web-development', 'ვებსაიტები'], ['/service-ecommerce', 'ონლაინ მაღაზიები'], ['/service-wordpress', 'WordPress'], ['/service-branding', 'UI/UX და ბრენდინგი'], ['/service-seo', 'SEO'], ['/service-marketing', 'მარკეტინგი'], ['/service-maintenance', 'მხარდაჭერა']];
+const FOOT_SVC = [['/service-web-development', 'ვებსაიტები'], ['/service-ecommerce', 'ონლაინ მაღაზიები'], ['/service-wordpress', 'WordPress'], ['/service-branding', 'UI/UX და ბრენდინგი'], ['/service-seo', 'SEO'], ['/service-marketing', 'მარკეტინგი'], ['/service-maintenance', 'მხარდაჭერა'], ['/service-payments', 'ონლაინ გადახდები'], ['/service-ai', 'AI კონტენტი'], ['/service-devops', 'DevOps']];
 const FOOT_LEGAL = [['/terms', 'წესები და პირობები'], ['/privacy', 'კონფიდენციალურობა']];
 
 const Pills = ({ list }) => <ul className="foot__pills">{list.map(([h, t]) => <li key={h}><a href={h}>{t}</a></li>)}</ul>;
