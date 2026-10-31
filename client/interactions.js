@@ -765,6 +765,17 @@ export function init() {
         if (e.target.closest("a")) close();
       });
 
+      // კატეგორია (hover ან ფოკუსი) → მარჯვნივ მისი ბმულები
+      const cats = $$("[data-mega-cat]", panel);
+      const pick = (cat) => {
+        cats.forEach((c) => c.classList.toggle("is-active", c === cat));
+        $$("[data-mega-panel]", panel).forEach((p) => p.classList.toggle("is-active", p.dataset.megaPanel === cat.dataset.megaCat));
+      };
+      cats.forEach((cat) => {
+        cat.addEventListener("mouseenter", () => pick(cat));
+        cat.addEventListener("focus", () => pick(cat));
+      });
+
       document.addEventListener("click", (e) => {
         if (!item.contains(e.target)) close();
       });
@@ -878,7 +889,6 @@ export function init() {
   }
 
   /* ------------------------------------------ შეხვედრის დაჯავშნა (/contact) */
-  /* ---------- /plans: თვიური/წლიური გადართვა; ?plan= — პაკეტი ჯავშნის ფორმაში ---------- */
 
 
   /* კურსორის წარწერა ნამუშევრებზე და სერვისების სურათი */

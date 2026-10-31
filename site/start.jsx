@@ -28,7 +28,7 @@ export default function start(search) {
 
   const body = (
     <>
-      <PageHero compact crumbs={[['/plans', 'ფასები'], [null, 'უფასო ნიმუში']]} eyebrow="უფასოდ, ვალდებულების გარეშე" title="ნახეთ თქვენი საიტი 24 საათში">
+      <PageHero compact crumbs={[[null, 'უფასო ნიმუში']]} eyebrow="უფასოდ, ვალდებულების გარეშე" title="ნახეთ თქვენი საიტი 24 საათში">
         <p>ოთხ მარტივ კითხვას უპასუხეთ და ჩვენ მოვამზადებთ ნიმუშს თქვენი სახელით. თუ მოგეწონებათ, საიტი 7 დღეში გაეშვება.</p>
       </PageHero>
 

@@ -3,11 +3,10 @@ import { txt, opt } from '@/lib/core';
 import { projects, showcase, tags } from '@/lib/projects';
 import { posts as allPosts } from '@/lib/blog';
 import { SOCIAL } from '@/lib/blocks';
-import HOME_FAQ from '@/data/home-faq.json';
-import { HeroWall, StackStrip, CtaGrow, Faq, JsonLd } from '@/components/blocks';
+import { HeroWall, StackStrip, CtaGrow, JsonLd } from '@/components/blocks';
 import { WorkBento } from '@/components/work';
 import { PostCard } from '@/components/posts';
-import { ArrowUpRight } from '@/components/icons';
+import { ArrowRight } from '@/components/icons';
 
 const SERVICES = [
   ['lilac', '/service-web-development', 'ვებსაიტის დამზადება', 'კომპანიის საიტი, ლენდინგი ან ვებ-აპლიკაცია. სწრაფი, მობილურზე მოხერხებული და გასაგები.', ['კორპორატიული', 'ლენდინგი', 'ვებ-აპლიკაცია']],
@@ -42,7 +41,6 @@ function ld() {
         areaServed: { '@type': 'Country', name: 'Georgia' },
         parentOrganization: { '@id': 'https://webico.io/#org' },
         knowsAbout: ['ვებ დეველოპმენტი', 'WordPress', 'WooCommerce', 'UI/UX დიზაინი', 'SEO', 'ონლაინ მაღაზია'] },
-      { '@type': 'FAQPage', mainEntity: HOME_FAQ.map((f) => ({ '@type': 'Question', name: f[0], acceptedAnswer: { '@type': 'Answer', text: f[1] } })) },
     ],
   };
 }
@@ -72,17 +70,23 @@ export default function home() {
 
       <section className="section" id="services">
         <div className="container">
-          <div className="svc-list" data-reveal="">
-            {SERVICES.map(([tone, href, title, desc, tg]) => (
-              <a className={'svc svc--' + tone} href={href} key={href}>
-                <div className="svc__main">
-                  <h3 className="svc__title">{title}</h3>
-                  <span className="svc__desc"><span>{desc}</span></span>
-                </div>
-                <span className="svc__tags">{tg.map((t) => <span key={t}>{t}</span>)}</span>
-                <span className="svc__go"><ArrowUpRight /></span>
+          <div className="svc-grid" data-reveal="">
+            {SERVICES.map(([tone, href, title, desc], i) => (
+              <a className={'svc-cell svc-cell--' + tone} href={href} key={href}>
+                <span className="svc-cell__n" aria-hidden="true">{i + 1}</span>
+                <span className="svc-cell__body">
+                  <h3 className="svc-cell__title">{title}</h3>
+                  <span className="svc-cell__desc">{desc}</span>
+                  <span className="svc-cell__go">დეტალურად <ArrowRight /></span>
+                </span>
               </a>
             ))}
+            <a className="svc-cell svc-cell--all" href="/services">
+              <span className="svc-cell__body">
+                <span className="svc-cell__title">ყველა სერვისი</span>
+                <span className="svc-cell__go">დეტალურად <ArrowRight /></span>
+              </span>
+            </a>
           </div>
         </div>
       </section>
@@ -126,16 +130,58 @@ export default function home() {
         </section>
       ) : null}
 
-      <section className="section section--soft" id="faq">
+      <section className="section section--soft" id="lead">
         <div className="container">
           <div className="faq-split">
             <div className="faq-split__head" data-reveal="">
-              <span className="eyebrow">კითხვები</span>
-              <h2>ხშირი კითხვები საიტის დამზადებაზე</h2>
-              <p>პასუხი ვერ იპოვეთ? მოგვწერეთ და იმავე დღეს გიპასუხებთ.</p>
-              <a className="btn btn--primary" href="/contact">დაგვიკავშირდით</a>
+              <span className="eyebrow">დაგვიკავშირდით</span>
+              <h2>მოგვიყევით თქვენს პროექტზე</h2>
+              <p>დაგვიტოვეთ სახელი და ტელეფონი. ერთ სამუშაო დღეში დაგიკავშირდებით და გეტყვით სავარაუდო ფასს და ვადას.</p>
             </div>
-            <Faq items={HOME_FAQ} id="home-a" />
+            <div data-reveal="" data-reveal-delay="90">
+              <form className="lead-form" data-lead-form="home" method="post" action="#">
+                <div className="form-status" role="alert" aria-live="polite" />
+                <div className="field-row">
+                  <div className="field">
+                    <label htmlFor="home-name">სახელი <span className="req">*</span></label>
+                    <input type="text" id="home-name" name="name" autoComplete="name" placeholder="თქვენი სახელი" required />
+                    <span className="field__error" />
+                  </div>
+                  <div className="field">
+                    <label htmlFor="home-phone">ტელეფონი <span className="req">*</span></label>
+                    <input type="tel" id="home-phone" name="phone" autoComplete="tel" inputMode="tel" placeholder="+995 5XX XX XX XX" required />
+                    <span className="field__error" />
+                  </div>
+                </div>
+                <div className="field-row">
+                  <div className="field">
+                    <label htmlFor="home-email">ელფოსტა</label>
+                    <input type="email" id="home-email" name="email" autoComplete="email" placeholder="name@company.ge" />
+                    <span className="field__error" />
+                  </div>
+                  <div className="field">
+                    <label htmlFor="home-service">რომელი სერვისი გაინტერესებთ?</label>
+                    <select id="home-service" name="service" defaultValue="">
+                      <option value="">აირჩიეთ სერვისი</option>
+                      {SERVICES.map(([, href, title]) => <option value={href.replace('/service-', '')} key={href}>{title}</option>)}
+                      <option value="other">სხვა / ჯერ არ ვიცი</option>
+                    </select>
+                    <span className="field__error" />
+                  </div>
+                </div>
+                <div className="field">
+                  <label htmlFor="home-message">მოკლედ პროექტზე</label>
+                  <textarea id="home-message" name="message" rows="4" placeholder="მაგალითად: მჭირდება საიტი სალონისთვის ონლაინ ჯავშნით…" />
+                  <span className="field__error" />
+                </div>
+                <div className="hp-field" aria-hidden="true">
+                  <label htmlFor="home-hp">არ შეავსოთ</label>
+                  <input type="text" id="home-hp" name="company_website" tabIndex="-1" autoComplete="off" />
+                </div>
+                <button className="btn btn--primary btn--block" type="submit">განაცხადის გაგზავნა</button>
+                <p className="form-note"><span>თქვენს მონაცემებს არავის გადავცემთ.</span></p>
+              </form>
+            </div>
           </div>
         </div>
       </section>

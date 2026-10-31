@@ -11,7 +11,7 @@ export const STATIC_PATHS = ['/about', '/contact', '/services', '/service-web-de
 export const JSON_SERVICES = ['wordpress', 'ecommerce', 'maintenance'];
 export const NICHE_SLUGS = Object.keys(NICHES);
 
-const PAGES = { '/': 'home', '/work': 'work', '/blog': 'blog', '/plans': 'plans', '/start': 'start' };
+const PAGES = { '/': 'home', '/work': 'work', '/blog': 'blog', '/start': 'start' };
 
 export function match(p) {
   if (PAGES[p]) return [PAGES[p]];

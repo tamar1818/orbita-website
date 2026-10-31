@@ -1348,121 +1348,78 @@ li { margin-bottom: .4em; }
 
 .mega {
   position: absolute;
-  top: calc(100% + 12px);
-  left: 50%;
+  top: calc(100% + 14px);
+  left: -12px;
   z-index: 120;
-  width: min(780px, calc(100vw - 32px));
-  transform: translateX(-50%) translateY(8px);
+  width: min(720px, calc(100vw - 32px));
+  transform: translateY(8px);
   visibility: hidden;          /* a11y ხისგანაც მალავს და ფოკუსსაც კეტავს */
   opacity: 0;
-  transition: opacity .18s ease, transform .18s ease, visibility .18s;
+  transition: opacity .2s ease, transform .2s ease, visibility .2s;
 }
-.nav__item.is-open .mega {
-  visibility: visible;
-  opacity: 1;
-  transform: translateX(-50%) translateY(0);
-}
+.mega::before { content: ""; position: absolute; inset: -16px 0 auto; height: 16px; } /* hover-ის ხიდი ღილაკიდან პანელამდე */
+.nav__item.is-open .mega { visibility: visible; opacity: 1; transform: none; }
 
 .mega__inner {
   display: grid;
-  grid-template-columns: 1.25fr .85fr;
-  overflow: hidden;
-  background: var(--bg-card);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-lift);
-}
-
-.mega__col { padding: 24px; }
-.mega__col--tools { background: var(--bg-soft); border-left: 1px solid var(--line); }
-
-.mega__label {
-  margin: 0 0 14px;
-  font-size: .75rem;
-  font-weight: 700;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-
-.mega__item {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
-  gap: 14px;
-  padding: 12px;
-  border-radius: var(--radius-sm);
-  color: var(--ink);
-  transition: background-color .14s ease;
-}
-.mega__item:hover { background: var(--bg-soft); color: var(--ink); }
-.mega__item b { display: block; font-size: .95rem; font-weight: 700; line-height: 1.25; }
-.mega__item small { display: block; margin-top: 3px; font-size: .82rem; color: var(--muted); line-height: 1.4; }
-.mega__item .mega__go { opacity: 0; transition: opacity .14s ease, transform .14s ease; color: var(--muted); }
-.mega__item:hover .mega__go { opacity: 1; transform: translateX(3px); }
-
-.mega__icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 42px; height: 42px;
-  flex: none;
-  border-radius: 12px;
-  background: var(--bg-soft);
-  color: var(--ink);
-}
-.mega__icon--lilac { background: var(--lilac); }
-.mega__icon--lime  { background: var(--lime); }
-.mega__icon--pink  { background: var(--pink); }
-
-.tools { list-style: none; margin: 0; padding: 0; }
-.tools li { margin: 0; }
-.tools a {
-  display: flex;
-  align-items: center;
-  gap: 11px;
-  padding: 9px 10px;
-  border-radius: var(--radius-sm);
-  font-size: .9rem;
-  font-weight: 600;
-  color: var(--ink);
-  transition: background-color .14s ease;
-}
-.tools a:hover { background: var(--bg-card); color: var(--ink); }
-
-.tool__mark {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 30px; height: 30px;
-  flex: none;
-  border-radius: 9px;
-  background: var(--tint, var(--ink));
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  padding: 28px;
+  background: var(--bg-dark);
   color: #fff;
-  font-family: var(--font-base);
-  font-size: .75rem;
-  font-weight: 700;
-  letter-spacing: .01em;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 24px 60px rgba(24, 24, 24, .28);
 }
-.tool__mark--ink { background: var(--ink); }
-.tool__mark--logo { background: #fff; box-shadow: inset 0 0 0 1px var(--line); }
-.tool__mark--logo img { display: block; width: 18px; height: 18px; }
 
-.mega__foot {
-  grid-column: 1 / -1;
+.mega__side { display: flex; flex-direction: column; gap: 14px; padding-right: 28px; border-right: 1px solid rgba(255, 255, 255, .14); }
+.mega__cats { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
+.mega__cat {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
   gap: 12px;
-  padding: 14px 24px;
-  border-top: 1px solid var(--line);
-  background: var(--bg-card);
-  font-size: .85rem;
-  color: var(--muted);
+  padding: 11px 14px;
+  border-radius: 12px;
+  font-size: .95rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, .72);
+  transition: background-color .16s ease, color .16s ease;
 }
+.mega__cat svg { flex: none; color: rgba(255, 255, 255, .55); transition: color .16s ease; }
+.mega__cat.is-active, .mega__cat:hover, .mega__cat:focus-visible { background: rgba(255, 255, 255, .08); color: #fff; }
+.mega__cat--lilac.is-active svg { color: var(--lilac); }
+.mega__cat--lime.is-active svg  { color: var(--lime); }
+.mega__cat--pink.is-active svg  { color: var(--pink); }
 
-/* --- მობილური: მენიუ იშლება drawer-ის შიგნით --- */
+.mega__all {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: auto;
+  padding: 4px 14px;
+  font-size: .85rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, .55);
+}
+.mega__all svg { width: 15px; height: 15px; transition: transform .16s ease; }
+.mega__all:hover { color: #fff; }
+.mega__all:hover svg { transform: translateX(3px); }
+
+.mega__panels { position: relative; padding-left: 36px; }
+.mega__panel { display: none; }
+.mega__panel.is-active { display: block; animation: mega-in .22s ease both; }
+@keyframes mega-in { from { opacity: 0; transform: translateX(-6px); } to { opacity: 1; transform: none; } }
+.mega__panel-title { display: none; }
+.mega__panel ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
+.mega__panel ul a {
+  display: block;
+  padding: 11px 0;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #fff;
+  transition: color .16s ease, transform .16s ease;
+}
+.mega__panel ul a:hover, .mega__panel ul a:focus-visible { color: var(--lime); transform: translateX(4px); }
+
+/* --- მობილური: მენიუ იშლება drawer-ის შიგნით, ყველა კატეგორია სიად --- */
 @media (max-width: 880px) {
   .nav__item { position: static; }
   .nav__trigger { width: 100%; justify-content: space-between; padding: 15px 16px; font-size: .92rem; }
@@ -1477,21 +1434,19 @@ li { margin-bottom: .4em; }
     grid-template-rows: 0fr;
     transition: grid-template-rows .26s ease;
   }
-  .nav__item.is-open .mega { grid-template-rows: 1fr; transform: none; }
+  .mega::before { display: none; }
+  .nav__item.is-open .mega { grid-template-rows: 1fr; }
   .mega > div { overflow: hidden; }
 
-  .mega__inner {
-    grid-template-columns: 1fr;
-    border: 0;
-    border-radius: var(--radius-sm);
-    box-shadow: none;
-    background: var(--bg-soft);
-    margin: 4px 0 8px;
-  }
-  .mega__col { padding: 16px; }
-  .mega__col--tools { border-left: 0; border-top: 1px solid var(--line); background: transparent; }
-  .mega__item .mega__go { display: none; }
-  .mega__foot { padding: 14px 16px; background: transparent; }
+  .mega__inner { grid-template-columns: 1fr; padding: 18px 20px; margin: 4px 0 8px; border-radius: var(--radius-sm); box-shadow: none; }
+  .mega__side { order: 2; padding: 14px 0 0; border-right: 0; border-top: 1px solid rgba(255, 255, 255, .14); margin-top: 8px; }
+  .mega__cats { display: none; }
+  .mega__all { padding: 4px 0; }
+  .mega__panels { padding: 0; display: grid; gap: 14px; }
+  .mega__panel, .mega__panel.is-active { display: block; animation: none; }
+  .mega__panel-title { display: block; margin-bottom: 2px; font-size: .75rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: rgba(255, 255, 255, .5); }
+  .mega__panel ul a { padding: 7px 0; font-size: .95rem; }
+  .nav__links .mega li:last-child { margin-top: 0; }
 }
 
 /* --------------------------------------------------------------------------
@@ -2445,6 +2400,65 @@ a:hover .shot img,
   .svc__go { width: 44px; height: 44px; grid-column: 3; grid-row: 1; }
 }
 
+/* --- მთავარი გვერდის სერვისები: ნომრიანი ბადე თმისებრი ხაზებით --- */
+.svc-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-top: 1px solid var(--line);
+}
+.svc-cell {
+  position: relative;
+  display: grid;
+  grid-template-columns: clamp(64px, 7vw, 104px) minmax(0, 1fr);
+  gap: clamp(16px, 2vw, 28px);
+  padding: clamp(32px, 4vw, 56px) clamp(8px, 3vw, 44px) clamp(32px, 4vw, 56px) 0;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink);
+}
+.svc-cell:nth-child(even) { padding-left: clamp(20px, 3vw, 44px); border-left: 1px solid var(--line); }
+.svc-cell--lilac { --tone: var(--lilac); }
+.svc-cell--lime  { --tone: var(--lime); }
+.svc-cell--pink  { --tone: var(--pink); }
+.svc-cell--soft  { --tone: #c9c9cf; }
+.svc-cell__n {
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 2.6rem + 4vw, 7.5rem);
+  font-weight: 700;
+  line-height: .8;
+  letter-spacing: -.04em;
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--line-strong);
+  transition: color .4s ease, -webkit-text-stroke-color .4s ease;
+}
+.svc-cell__body { display: grid; align-content: start; gap: 12px; min-width: 0; }
+.svc-cell__title {
+  margin: 0;
+  font-family: var(--font-title-sm);
+  font-size: clamp(1.3rem, 1rem + 1vw, 1.85rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -.02em;
+}
+.svc-cell__desc { max-width: 46ch; color: var(--muted); font-size: 1rem; line-height: 1.65; }
+.svc-cell__go {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+  font-size: .9rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+.svc-cell__go svg { width: 16px; height: 16px; transition: transform .25s ease; }
+.svc-cell:hover .svc-cell__n, .svc-cell:focus-visible .svc-cell__n { color: var(--tone); -webkit-text-stroke-color: var(--tone); }
+.svc-cell:hover .svc-cell__go svg, .svc-cell:focus-visible .svc-cell__go svg { transform: translateX(4px); }
+.svc-cell--all { grid-template-columns: 1fr; align-content: center; }
+.svc-cell--all .svc-cell__title { font-family: var(--font-display); font-size: clamp(1.6rem, 1.1rem + 1.6vw, 2.6rem); }
+@media (max-width: 760px) {
+  .svc-grid { grid-template-columns: 1fr; }
+  .svc-cell, .svc-cell:nth-child(even) { padding: 30px 0; border-left: 0; }
+}
+
 /* --- bento ბადე მუქ სექციაში --- */
 .bento {
   display: grid;
@@ -3345,20 +3359,6 @@ a:hover .shot img,
 .svc-intro p:first-child::first-line { font-weight: 600; color: var(--ink); }
 .btn--ghost-light { background: transparent; color: #fff; border-color: rgba(255, 255, 255, .45); }
 .btn--ghost-light:hover { border-color: #fff; box-shadow: 2px 5px 0 0 var(--lime); }
-/* 7 სერვისი — მენიუში ორ სვეტად */
-@media (min-width: 881px) {
-  .nav__item { position: static; }                 /* მენიუ ნავიგაციის ზოლის შუაში */
-  .mega { width: min(1000px, calc(100vw - 32px)); top: calc(100% + 8px); }
-  .mega__inner { grid-template-columns: minmax(0, 1.75fr) minmax(0, .75fr); }
-  .mega__col:not(.mega__col--tools) {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0 6px;
-    align-content: start;
-  }
-  .mega__col:not(.mega__col--tools) .mega__label { grid-column: 1 / -1; }
-  .mega__col:not(.mega__col--tools) .mega__go { display: none; }
-}
 .article-faq { margin-top: 2.4em !important; }
 .article-faq h2 { margin-top: 0; }
 .article-faq .faq { max-width: none; }
@@ -3964,23 +3964,6 @@ h1, h2 { overflow-wrap: break-word; }
 .section-head--center + .grid--4 > .card:nth-child(4n+4) p, .section-head--center + .grid--2 > .card:nth-child(4n+4) p { color: rgba(255,255,255,.72); }
 .section-head--center + .grid--4 > .card p, .section-head--center + .grid--2 > .card p { color: var(--ink-soft); }
 .section-head--center + .grid--4 > .card:hover, .section-head--center + .grid--2 > .card:hover { transform: translateY(-4px) rotate(-.4deg); }
-
-/* სერვისების მენიუ: ფერადი ხატულები, ფერადი hover და „პოპულარული“ ნიშანი */
-.mega__icon:not([class*="mega__icon--"]) { background: var(--ink); color: var(--paper); }
-.mega__item:has(.mega__icon--lilac):hover { background: color-mix(in srgb, var(--lilac) 24%, #fff); }
-.mega__item:has(.mega__icon--lime):hover { background: color-mix(in srgb, var(--lime) 34%, #fff); }
-.mega__item:has(.mega__icon--pink):hover { background: color-mix(in srgb, var(--pink) 34%, #fff); }
-.mega__item:has(.mega__icon:not([class*="mega__icon--"])):hover { background: var(--bg-soft); }
-.mega__icon { transition: transform .35s cubic-bezier(.22,.61,.36,1); }
-.mega__item:hover .mega__icon { transform: rotate(-8deg) scale(1.06); }
-.mega__item[href="/service-web-development"] b::before,
-.mega__item[href="/service-seo"] b::before {
-  content: "ხშირად ირჩევენ";
-  display: flex; align-items: center; gap: 6px; margin-bottom: 4px;
-  font-size: .7rem; font-weight: 600; letter-spacing: .02em; color: var(--muted);
-  background: radial-gradient(circle, #7fae00 0 3px, transparent 3.5px) no-repeat left center / 8px 8px;
-  padding-left: 13px;
-}
 
 /* --------------------------------------------------------------------------
    49. პლატფორმების ზოლი ბანერის ქვეშ — მკრთალი, hover-ზე ფერადდება

@@ -375,9 +375,7 @@ export default function pageServices() {
             <span className="eyebrow eyebrow--accent">ინდივიდუალური პროექტები</span>
             <h2>რა ღირს უფრო დიდი პროექტი</h2>
             <p>
-              მცირე ბიზნესის მზა პაკეტები{" "}
-              <a href="/plans">ფასების გვერდზეა</a>
-              . აქ საორიენტაციო ფასებია ინდივიდუალური პროექტებისთვის. ზუსტ ფასს შეხვედრის შემდეგ გეტყვით.
+              აქ საორიენტაციო ფასებია ინდივიდუალური პროექტებისთვის. ზუსტ ფასს შეხვედრის შემდეგ გეტყვით.
             </p>
           </div>
           <div className="grid grid--3">
@@ -437,7 +435,7 @@ export default function pageServices() {
           </div>
           <p className="text-center muted" style={{ marginTop: "28px", fontSize: ".92rem" }}>{" "}ფასები მითითებულია დღგ-ს გარეშე. სარეკლამო ბიუჯეტი პაკეტში არ შედის.{" "}</p>
           <p className="text-center" style={{ marginTop: "12px" }}>
-            <a className="link-arrow" href="/plans">მცირე ბიზნესისთვის: მზა პაკეტები თვიური გადახდით</a>
+            <a className="link-arrow" href="/start">მცირე ბიზნესისთვის: მზა პაკეტები თვიური გადახდით</a>
           </p>
         </div>
       </section>

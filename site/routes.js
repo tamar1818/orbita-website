@@ -5,7 +5,6 @@
 import home from './home';
 import { work, project } from './work';
 import { blogIndex, post } from './blog';
-import plans from './plans';
 import start from './start';
 import legal from './legal';
 import niche from './niche';
@@ -34,7 +33,6 @@ export function resolve(p, search = new URLSearchParams(), lang = 'ka') {
     case 'home': return home();
     case 'work': return work();
     case 'blog': return blogIndex();
-    case 'plans': return plans();
     case 'start': return start(search);
     case 'static': return STATIC[arg]();
     case 'project': return project(arg);

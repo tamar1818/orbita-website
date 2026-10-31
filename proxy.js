@@ -21,6 +21,9 @@ export function proxy(request) {
   const m = p.match(/^\/(.+?)\.(html|php)$/i);
   if (m) return go(local(m[1]));
   if (p.length > 1 && p.endsWith('/')) return go(local(p.replace(/\/+$/, '')));
+  // ფასების გვერდი წაიშალა (2026-10-31) — პაკეტები /start-ზეა
+  if (p === '/plans') return go(local('start'));
+  if (p === '/en/pricing') return go(local('en/start'));
   // ფაილები (favicon.ico, robots.txt, sitemap.xml) — როგორც არის
   if (/\.[a-z0-9]+$/i.test(p)) return next();
   // გვერდი, რომელიც არ არსებობს → Next-ის 404 მარშრუტი (app/not-found.jsx, სტატუსი 404).

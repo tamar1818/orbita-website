@@ -37,7 +37,7 @@ export default function niche(slug) {
         <p>{n.lead}</p>
         <div className="btn-row">
           <a className="btn btn--primary" href={start}>უფასო ნიმუში 24 საათში</a>{' '}
-          <a className="btn btn--ghost" href="/plans">ფასები</a>
+          <a className="btn btn--ghost" href="/work">ნამუშევრები</a>
         </div>
         <ul className="hero__perks plans-perks">
           <li>გაშვება 7 დღეში</li>
