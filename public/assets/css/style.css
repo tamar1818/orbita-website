@@ -3974,9 +3974,9 @@ h1, h2 { overflow-wrap: break-word; }
 .stack__track li {
   display: inline-flex; align-items: center; gap: 10px; flex: none;
   font-family: var(--font-title-sm); font-size: 1.12rem; font-weight: 700; letter-spacing: -.01em; color: var(--ink);
-  opacity: .38; filter: grayscale(1); transition: opacity .3s ease, filter .3s ease;
+  transition: transform .4s cubic-bezier(.22, .61, .36, 1);
 }
-.stack__track li:hover { opacity: 1; filter: none; }
+.stack__track li:hover { transform: translateY(-2px); }
 .stack__track img { width: 24px; height: 24px; object-fit: contain; }
 .stack__mark { display: grid; place-items: center; width: 24px; height: 24px; border-radius: 7px; background: #2f6bff; color: #fff; font: 700 .95rem/1 var(--font-title-sm); font-style: normal; }
 @keyframes stack-move { to { transform: translateX(-100%); } }

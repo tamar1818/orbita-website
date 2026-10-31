@@ -683,7 +683,6 @@
  "გუნდი": "The team",
  "ადამიანები, ვისთანაც იმუშავებთ: პირველი ზარიდან გაშვებამდე და შემდეგაც.": "The people you'll work with: from the first call to launch and beyond.",
  "თამარ გელიაშვილი": "Tamar Geliashvili",
- "დამფუძნებელი, CEO და ტექნიკური ხელმძღვანელი": "Founder, CEO and technical lead",
  "კესარია კობიძე": "Kesaria Kobidze",
  "გაყიდვების ხელმძღვანელი": "Head of Sales",
  "DevOps და ინფრასტრუქტურის ინჟინერი": "DevOps and infrastructure engineer",
@@ -1774,5 +1773,6 @@
  "ვებ-დიზაინი": "Web design",
  "შეფუთვის დიზაინი": "Packaging design",
  "რებრენდინგი": "Rebranding",
- "შეკვეთის გაკეთებით ან გადახდით ადასტურებთ, რომ გაეცანით და ეთანხმებით ამ პირობებს, ასევე <a href=\"/privacy\">კონფიდენციალურობის პოლიტიკას</a>. თუ კონკრეტულ პროექტზე ცალკე წერილობითი ხელშეკრულება გაფორმდა, მისი პირობები უპირატესია.": "By placing an order or paying, you confirm that you have read and agree to these Terms, as well as the <a href=\"/privacy\">privacy policy</a>. If a separate written contract is signed for a specific project, its terms take precedence."
+ "შეკვეთის გაკეთებით ან გადახდით ადასტურებთ, რომ გაეცანით და ეთანხმებით ამ პირობებს, ასევე <a href=\"/privacy\">კონფიდენციალურობის პოლიტიკას</a>. თუ კონკრეტულ პროექტზე ცალკე წერილობითი ხელშეკრულება გაფორმდა, მისი პირობები უპირატესია.": "By placing an order or paying, you confirm that you have read and agree to these Terms, as well as the <a href=\"/privacy\">privacy policy</a>. If a separate written contract is signed for a specific project, its terms take precedence.",
+ "CEO - ტექნიკური ხელმძღვანელი": "CEO - Technical Lead"
 }
