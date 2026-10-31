@@ -1,5 +1,36 @@
 /** /about — სტატიკური გვერდი (გადმოტანილია views/static/about.html-დან) */
 import { JsonLd, TeamSection } from '@/components/blocks';
+import { showcase } from '@/lib/projects';
+
+
+/** ორბიტაზე მბრუნავი მიმართულებები */
+const RING = ['ბრენდინგი', 'UI/UX დიზაინი', 'ვებსაიტები', 'ონლაინ მაღაზიები', 'SEO', 'მარკეტინგი', 'გადახდები', 'AI კონტენტი', 'DevOps', 'მხარდაჭერა'];
+
+/** მიმართულებები: [ტონი, ბმული, სათაური, ტექსტი, ქვესერვისები, აიკონი] */
+const CAPS = [
+  ['pink', '/service-branding', 'დიზაინი და ბრენდინგი', 'ლოგო, ბრენდბუქი, შეფუთვა და ინტერფეისები, რომლებიც ბრენდს ცნობადს ხდის.',
+    ['ბრენდინგი', 'UI/UX', 'შეფუთვა'], <><polygon points="12 2 2 7 12 12 22 7 12 2" /><polyline points="2 17 12 22 22 17" /><polyline points="2 12 12 17 22 12" /></>],
+  ['lilac', '/service-web-development', 'დეველოპმენტი', 'კორპორატიული საიტები, ონლაინ მაღაზიები, ვებ-აპლიკაციები და პლატფორმები.',
+    ['Next.js', 'WordPress', 'Shopify'], <><polyline points="16 18 22 12 16 6" /><polyline points="8 6 2 12 8 18" /><line x1="13" y1="4" x2="11" y2="20" /></>],
+  ['lime', '/service-seo', 'ზრდა და მარკეტინგი', 'SEO, რეკლამა Google-ში და სოციალურ ქსელებში, AI კონტენტი და ანალიტიკა.',
+    ['SEO', 'Google Ads', 'AI კონტენტი'], <><polyline points="23 6 13.5 15.5 8.5 10.5 1 18" /><polyline points="17 6 23 6 23 12" /></>],
+  ['lilac', '/service-payments', 'გადახდები და ინტეგრაციები', 'ბარათით, Apple Pay-ით და განვადებით გადახდა, CRM და სხვა სისტემების დაკავშირება.',
+    ['Flitt', 'UniPAY', 'BOG / TBC'], <><rect x="1" y="4" width="22" height="16" rx="2" /><line x1="1" y1="10" x2="23" y2="10" /></>],
+  ['pink', '/service-devops', 'ინფრასტრუქტურა და მხარდაჭერა', 'ღრუბელი, CI/CD, მონიტორინგი, უსაფრთხოება და ყოველთვიური ტექნიკური მხარდაჭერა.',
+    ['DevOps', 'Kubernetes', 'მხარდაჭერა'], <><rect x="2" y="3" width="20" height="7" rx="1.5" /><rect x="2" y="14" width="20" height="7" rx="1.5" /><line x1="6" y1="6.5" x2="6.01" y2="6.5" /><line x1="6" y1="17.5" x2="6.01" y2="17.5" /></>],
+];
+
+const VALUES = [
+  ['შედეგზე ორიენტაცია', 'პროექტი მაშინ გამოგვივიდა, როცა თქვენი ბიზნესი იზრდება. გაშვება მხოლოდ დასაწყისია.',
+    <><polyline points="23 6 13.5 15.5 8.5 10.5 1 18" /><polyline points="17 6 23 6 23 12" /></>],
+  ['გამჭვირვალობა', 'ხედავთ, რაში იხარჯება ყოველი ლარი. ანგარიშები, დაფები და ვადები ყოველთვის ხელმისაწვდომია.',
+    <><circle cx="11" cy="11" r="7" /><line x1="21" y1="21" x2="16.7" y2="16.7" /></>],
+  ['სისწრაფე', 'წერილზე პასუხს ერთ სამუშაო დღეში იღებთ, გადაუდებელ საკითხს კი იმავე დღეს ვწყვეტთ.',
+    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />],
+  ['პარტნიორობა', 'არ ვართ „გარე შემსრულებელი“. ვმუშაობთ ისე, როგორც თქვენი გუნდის ნაწილი.',
+    <><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></>],
+];
+
 
 const LD = [
   {
@@ -23,7 +54,7 @@ const LD = [
 
 export const meta = {
   "title": "ჩვენ შესახებ | Webico",
-  "desc": "Webico დიზაინისა და დეველოპმენტის სტუდიაა თბილისში. გაიცანით გუნდი და როგორ ვმუშაობთ.",
+  "desc": "Webico ციფრული სააგენტოა თბილისში: დიზაინი და ბრენდინგი, დეველოპმენტი, SEO და მარკეტინგი, გადახდები, AI კონტენტი და DevOps ერთ გუნდში.",
   "url": "/about",
   "imageAlt": "ვებიკო — ციფრული სააგენტო"
 };
@@ -32,98 +63,76 @@ export default function pageAbout() {
   const body = (
     <>
       {LD.map((d, i) => <JsonLd data={d} key={i} />)}
-      <section className="page-hero pattern-grid">
+      <section className="wk-hero ab-hero" data-wk-stage-wrap="">
         <div className="container">
-          <div className="page-hero__inner">
-            <ol className="breadcrumb">
-              <li>
-                <a href="/">მთავარი</a>
-              </li>
-              <li>
-                <span aria-current="page">ჩვენ შესახებ</span>
-              </li>
-            </ol>
-            <span className="eyebrow">ჩვენ შესახებ</span>
-            <h1>ვაკეთებთ საიტებს, რომლებიც კლიენტს მოიყვანს</h1>
-            <p>Webico დიზაინისა და დეველოპმენტის სტუდიაა თბილისში. პატარა გუნდი ვართ და ყველა პროექტზე ერთად ვმუშაობთ: სტრატეგიიდან და დიზაინიდან კოდამდე, სერვერამდე და მარკეტინგამდე.</p>
-          </div>
-        </div>
-      </section>
-      <section className="section">
-        <div className="container">
-          <div className="feature-row">
-            <div className="feature-row__body" data-reveal="">
-              <h2>რატომ არ მუშაობს ბევრი ლამაზი საიტი?</h2>
-              <p>ხშირად საიტი კარგად გამოიყურება, მაგრამ არც ვიზიტორს იზიდავს და არც გაყიდვებს ზრდის. მიზეზი მარტივია: დიზაინს, კოდს და მარკეტინგს სხვადასხვა ადამიანი აკეთებს, ერთმანეთისგან დამოუკიდებლად.</p>
-              <p>ჩვენთან ერთი გუნდი მუშაობს. ვინც საიტს ხატავს, ის ესაუბრება მას, ვინც აწყობს და ვინც მერე რეკლამას უშვებს. ასე საიტი თავიდანვე იმისთვის კეთდება, რომ კლიენტი მოიყვანოს.</p>
+          <div className="wk-hero__grid">
+            <div className="wk-hero__text">
+              <ol className="breadcrumb breadcrumb--light">
+                <li><a href="/">მთავარი</a></li>
+                <li><span aria-current="page">ჩვენ შესახებ</span></li>
+              </ol>
+              <h1>ბრენდი, ტექნოლოგია და ზრდა ერთ გუნდში</h1>
+              <p>Webico ციფრული სააგენტოა თბილისში. ვქმნით ბრენდს და დიზაინს, ვაწყობთ საიტებს, მაღაზიებს და პლატფორმებს, ვაერთებთ გადახდებს, ვზრდით გაყიდვებს SEO-თი, მარკეტინგით და AI კონტენტით, და ვუვლით ინფრასტრუქტურას.</p>
+              <dl className="wk-hero__stats">
+                <div><dt>დასრულებული პროექტი</dt><dd>{showcase().length}</dd></div>
+                <div><dt>მიმართულება ერთ გუნდში</dt><dd>{RING.length}</dd></div>
+                <div><dt>სამუშაო დღე პასუხამდე</dt><dd>1</dd></div>
+              </dl>
             </div>
-            <div className="feature-row__media" data-reveal="" data-reveal-delay="100">
-              <div className="panel panel--brand">
-                <h3>რას აკეთებს გუნდი</h3>
-                <ul className="checklist">
-                  <li>სტრატეგია, UI/UX დიზაინი და ბრენდინგი</li>
-                  <li>ვებსაიტები, ონლაინ მაღაზიები და ვებ-აპლიკაციები</li>
-                  <li>სერვერი, უსაფრთხოება და ყოველდღიური ასლები</li>
-                  <li>სოციალური მედია, რეკლამა და SEO</li>
-                  <li>გაყიდვები და კლიენტთან ურთიერთობა</li>
-                </ul>
+            <div className="ab-orbit" aria-hidden="true">
+              <div className="ab-orbit__scene" data-wk-stage="">
+                <span className="ab-orbit__core"><b>W</b></span>
+                <div className="ab-orbit__ring">
+                  {RING.map((t, i) => (
+                    <span className={'ab-orbit__chip ab-orbit__chip--' + ['lilac', 'lime', 'pink'][i % 3]} style={{ '--i': i, '--n': RING.length }} key={t}>{t}</span>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
+
       <section className="section">
         <div className="container">
-          <div className="section-head section-head--center" data-reveal="">
-            <span className="eyebrow">ღირებულებები</span>
-            <h2>როგორ ვმუშაობთ</h2>
+          <div className="section-head section-head--split" data-reveal="">
+            <div><span className="eyebrow">რას ვაკეთებთ</span><h2>ერთი პარტნიორი ყველაფრისთვის, რაც ციფრულ ბიზნესს სჭირდება</h2></div>
+            <a className="btn btn--ghost" href="/services">ყველა სერვისი</a>
           </div>
-          <div className="grid grid--4">
-            <article className="card" data-reveal="" data-reveal-delay="0">
-              <span className="card__icon">
-                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                  <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
-                  <polyline points="17 6 23 6 23 12" />
-                </svg>
-              </span>
-              <h3>შედეგზე ორიენტაცია</h3>
-              <p>პროექტი მაშინ გამოგვივიდა, როცა თქვენი გაყიდვები იზრდება. საიტის გაშვება ჯერ მხოლოდ დასაწყისია.</p>
-            </article>
-            <article className="card" data-reveal="" data-reveal-delay="70">
-              <span className="card__icon card__icon--accent">
-                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                  <circle cx="11" cy="11" r="7" />
-                  <line x1="21" y1="21" x2="16.7" y2="16.7" />
-                  <line x1="8.5" y1="12.5" x2="8.5" y2="9.5" />
-                  <line x1="11" y1="12.5" x2="11" y2="7.5" />
-                  <line x1="13.5" y1="12.5" x2="13.5" y2="10.5" />
-                </svg>
-              </span>
-              <h3>გამჭვირვალობა</h3>
-              <p>ხედავთ, რაში იხარჯება ყოველი ლარი. ანგარიშები, დაფები და ვადები ყოველთვის ხელმისაწვდომია.</p>
-            </article>
-            <article className="card" data-reveal="" data-reveal-delay="140">
-              <span className="card__icon">
-                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                  <polyline points="16 18 22 12 16 6" />
-                  <polyline points="8 6 2 12 8 18" />
-                  <line x1="13" y1="4" x2="11" y2="20" />
-                </svg>
-              </span>
-              <h3>სისწრაფე</h3>
-              <p>წერილზე პასუხს ერთ სამუშაო დღეში იღებთ, გადაუდებელ საკითხს კი იმავე დღეს ვწყვეტთ.</p>
-            </article>
-            <article className="card" data-reveal="" data-reveal-delay="210">
-              <span className="card__icon card__icon--accent">
-                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                  <polygon points="12 2 2 7 12 12 22 7 12 2" />
-                  <polyline points="2 17 12 22 22 17" />
-                  <polyline points="2 12 12 17 22 12" />
-                </svg>
-              </span>
-              <h3>პარტნიორობა</h3>
-              <p>არ ვართ „გარე შემსრულებელი“. ვმუშაობთ ისე, როგორც თქვენი გუნდის ნაწილი.</p>
-            </article>
+          <div className="ab-caps">
+            {CAPS.map(([tone, href, title, text, items, icon], i) => (
+              <a className={'ab-cap ab-cap--' + tone} href={href} data-reveal="" data-reveal-delay={i * 60} key={href}>
+                <span className="ab-cap__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{icon}</svg></span>
+                <h3>{title}</h3>
+                <p>{text}</p>
+                <ul>{items.map((t) => <li key={t}>{t}</li>)}</ul>
+                <span className="ab-cap__go" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" /></svg></span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section ab-why">
+        <div className="container">
+          <div className="ab-why__grid">
+            <div data-reveal="">
+              <span className="eyebrow">რატომ ერთი გუნდი</span>
+              <h2>როცა დიზაინი, კოდი და მარკეტინგი ერთმანეთს ესაუბრება</h2>
+            </div>
+            <div className="ab-why__text" data-reveal="" data-reveal-delay="90">
+              <p>ხშირად ბრენდს ერთი სტუდია ხატავს, საიტს მეორე აწყობს, რეკლამას მესამე უშვებს, სერვერს კი ვიღაც მეოთხე უვლის. შედეგად ყველა თავის ნაწილზე პასუხობს და არავინ მთლიან შედეგზე.</p>
+              <p>ჩვენთან ერთი გუნდი მუშაობს თავიდან ბოლომდე. ვინც ბრენდს ქმნის, ის ესაუბრება დეველოპერს, მარკეტოლოგს და DevOps ინჟინერს. ასე პროექტი თავიდანვე იმისთვის კეთდება, რომ ბიზნესი გაიზარდოს.</p>
+            </div>
+          </div>
+          <div className="grid grid--4 ab-values">
+            {VALUES.map(([title, text, icon], i) => (
+              <article className="ab-value" data-reveal="" data-reveal-delay={i * 70} key={title}>
+                <span className="ab-value__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{icon}</svg></span>
+                <h3>{title}</h3>
+                <p>{text}</p>
+              </article>
+            ))}
           </div>
         </div>
       </section>
