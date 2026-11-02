@@ -4518,3 +4518,9 @@ h4, h5, h6 { font-size: 1.02rem; line-height: 1.35; letter-spacing: 0; }
   .faq__a p { padding: 0 16px 18px; }
   .faq__icon { width: 30px; height: 30px; }
 }
+
+/* სტატიის CTA: .prose a-ს ხაზგასმა და მუქი ფერი ღილაკებზე არ უნდა გადავიდეს */
+.prose .article-cta .btn, .article-cta .btn { text-decoration: none; }
+.prose .article-cta .btn--primary, .article-cta .btn--primary { color: var(--ink); }
+.prose .article-cta .btn--ghost-light, .article-cta .btn--ghost-light { color: #fff; }
+.prose .article-cta .btn--ghost-light:hover, .article-cta .btn--ghost-light:hover { color: #fff; }
