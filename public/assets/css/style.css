@@ -4423,3 +4423,98 @@ h4, h5, h6 { font-size: 1.02rem; line-height: 1.35; letter-spacing: 0; }
 }
 @media (max-width: 380px) { .ab-orbit__chip { --r: 112px; } }
 @media (max-width: 620px) { .ab-orbit__core { transform: rotateX(42deg); } }
+
+/* ==========================================================================
+   2026-11-02 — დიზაინის დახვეწა (About hero, სერვისების კარუსელი, მინიმალისტური
+   CTA, ფუტერი, პროექტების ბარათები, ბლოგი, FAQ)
+   ========================================================================== */
+
+/* About hero: სათაური უფრო ფართო (ნაკლები სტრიქონი), ორბიტა ცენტრალური ბირთვის გარეშე */
+.ab-hero .wk-hero__grid { grid-template-columns: minmax(0, 1.2fr) minmax(0, .9fr); }
+.ab-hero h1 { max-width: 24ch; }
+.ab-hero .wk-hero__text > p { max-width: 54ch; }
+@media (max-width: 900px) { .ab-hero .wk-hero__grid { grid-template-columns: 1fr; } }
+
+/* სერვისების კარუსელი ისრებით */
+.ab-carousel .section-head { max-width: none; align-items: flex-end; }
+.ab-carousel__nav { display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
+.ab-carousel .carousel__controls { margin: 0; gap: 10px; }
+.ab-carousel .carousel__btn { width: 48px; height: 48px; background: var(--paper); }
+.ab-carousel .carousel__btn:hover:not(:disabled) { transform: none; box-shadow: none; }
+.ab-carousel .ab-caps { display: flex; grid-template-columns: none; gap: 22px; }
+.ab-carousel .carousel__slide { flex-basis: calc((100% - 44px) / 3); }
+.ab-carousel .ab-cap, .ab-carousel .ab-cap:nth-child(n+4), .ab-carousel .ab-cap:last-child { grid-column: auto; height: 100%; min-height: 280px; }
+.ab-carousel .ab-cap:hover { transform: none; }
+@media (max-width: 1040px) { .ab-carousel .carousel__slide { flex-basis: calc((100% - 22px) / 2); } }
+@media (max-width: 760px) {
+  .ab-carousel .section-head { flex-direction: column; align-items: flex-start; gap: 18px; }
+  .ab-carousel__nav { width: 100%; justify-content: space-between; }
+  .ab-carousel .ab-caps { gap: 14px; }
+  .ab-carousel .carousel__slide { flex-basis: 86%; }
+  .ab-carousel .ab-cap { min-height: 0; }
+}
+
+/* CTA ზოლი: ლილისფერი ფონის ნაცვლად მშვიდი ნეიტრალური, ფორმა ჩრდილის გარეშე */
+.cta { background: var(--bg-soft); }
+.cta p { color: var(--muted); }
+.cta .lead-form { box-shadow: none; border: 1px solid var(--line); background: var(--paper); }
+.cta .btn--white, .cta .btn--light { background: transparent; border: 1px solid var(--line-strong); box-shadow: none; color: var(--ink); }
+.cta .btn--white::after, .cta .btn--light::after { background: var(--ink); }
+.cta .btn--white:hover, .cta .btn--light:hover { color: var(--paper); border-color: var(--ink); }
+.cta .lead-form .field input, .cta .lead-form .field textarea, .cta .lead-form .field select { background: var(--bg-soft); border-color: transparent; }
+.cta .lead-form .field input:focus, .cta .lead-form .field textarea:focus, .cta .lead-form .field select:focus { background: var(--paper); border-color: var(--ink); }
+
+/* ფორმის შენიშვნა: uppercase ქართულს მთავრულად აქცევდა */
+.form-note { text-transform: none; letter-spacing: 0; font-weight: 500; }
+
+/* ფუტერი: სლოგანი სათაურების შრიფტით, სვეტების სათაურები მთავრულის გარეშე */
+.foot__claim { font-family: var(--font-title); font-weight: 400; font-synthesis: none; letter-spacing: .01em; line-height: 1.15; font-size: clamp(1.2rem, 1rem + .7vw, 1.6rem); max-width: 13ch; }
+.foot h4 { text-transform: none; letter-spacing: 0; font-size: .8rem; font-weight: 600; }
+.foot__pills a, .foot__contact a, .foot__contact span { font-weight: 400; }
+/* მობილური: „კომპაქტური ფუტერის“ წესი მედია-ქვერებს ფარავდა და სვეტები ერთმანეთზე ედებოდა */
+@media (max-width: 1000px) {
+  .foot__top { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 28px 24px; }
+  .foot__claim { grid-column: 1 / -1; max-width: 20ch; }
+  .foot__contact { grid-column: 1 / -1; }
+}
+@media (max-width: 560px) {
+  .foot__box { padding: 26px 20px 18px; }
+  .foot__curl { width: 130px; right: -40px; top: -40px; }
+  .foot__mark img { height: 48px; }
+  .foot__bottom { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .foot__bottom .foot__pills { margin-left: 0; }
+}
+
+/* პროექტების ბარათები: მკვეთრი ფერების ნაცვლად ნეიტრალური ფონი */
+.wk-card__media, .wk-card--lime .wk-card__media, .wk-card--pink .wk-card__media, .wk-card--soft .wk-card__media { --bgc: var(--bg-soft); }
+.wk-card__media::before { display: none; }
+.wk-card__frame { box-shadow: 0 0 0 1px #18181812, 0 24px 48px -30px #18181855; }
+.wk-card:hover .wk-card__frame { box-shadow: 0 0 0 1px #18181812, 0 34px 60px -30px #18181866; }
+.wk-card__media { transition: background-color .4s ease; }
+.wk-card:hover .wk-card__media { background: #ececee; }
+
+/* ბლოგი: ბარათების სათაურები უფრო პატარა */
+.post-card__title, .post-card:not(.post-card--big) .post-card__title { font-size: clamp(1rem, .95rem + .25vw, 1.15rem); line-height: 1.35; }
+.post-card:not(.post-card--big) .post-card__title { min-height: calc(2 * 1.35em); }
+.post-card--big .post-card__title { font-size: clamp(1.35rem, 1.1rem + 1vw, 1.9rem); }
+
+/* FAQ: ცალკეული მომრგვალებული ბარათები, მსუბუქი კითხვები */
+.faq { border-top: 0; display: grid; gap: 10px; }
+.faq__item { border: 0; border-radius: var(--radius-sm); background: var(--bg-soft); transition: background-color .25s ease; }
+.section--soft .faq__item, .faq-split .section--soft .faq__item { background: var(--paper); }
+.faq__q { align-items: center; padding: 20px 22px; font-family: var(--font-base); font-size: clamp(1rem, .96rem + .2vw, 1.1rem); font-weight: 600; letter-spacing: 0; line-height: 1.4; }
+.faq__q:hover { color: var(--ink); }
+.faq__icon { width: 34px; height: 34px; margin: 0; border: 0; background: var(--paper); transition: background-color .2s ease, transform .3s ease; }
+.section--soft .faq__icon { background: var(--bg-soft); }
+.faq__icon::before, .faq__icon::after { width: 12px; height: 1.6px; }
+.faq__q:hover .faq__icon { background: var(--ink); }
+.faq__q:hover .faq__icon::before, .faq__q:hover .faq__icon::after { background: var(--paper); }
+.faq__q[aria-expanded="true"] .faq__icon { background: var(--ink); transform: rotate(180deg); }
+.faq__q[aria-expanded="true"] .faq__icon::before { background: var(--paper); }
+.faq__a p { padding: 0 64px 22px 22px; font-size: .97rem; line-height: 1.65; }
+.article-faq .faq__q { font-size: 1rem; padding: 18px 20px; }
+@media (max-width: 560px) {
+  .faq__q { padding: 16px 16px; gap: 12px; }
+  .faq__a p { padding: 0 16px 18px; }
+  .faq__icon { width: 30px; height: 30px; }
+}

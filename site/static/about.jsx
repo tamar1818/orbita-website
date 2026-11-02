@@ -81,7 +81,6 @@ export default function pageAbout() {
             </div>
             <div className="ab-orbit" aria-hidden="true">
               <div className="ab-orbit__scene" data-wk-stage="">
-                <span className="ab-orbit__core"><b>W</b></span>
                 <div className="ab-orbit__ring">
                   {RING.map((t, i) => (
                     <span className={'ab-orbit__chip ab-orbit__chip--' + ['lilac', 'lime', 'pink'][i % 3]} style={{ '--i': i, '--n': RING.length }} key={t}>{t}</span>
@@ -94,20 +93,28 @@ export default function pageAbout() {
       </section>
 
       <section className="section">
-        <div className="container">
+        <div className="container ab-carousel carousel" data-carousel="">
           <div className="section-head section-head--split" data-reveal="">
             <div><span className="eyebrow">რას ვაკეთებთ</span><h2>ერთი პარტნიორი ყველაფრისთვის, რაც ციფრულ ბიზნესს სჭირდება</h2></div>
-            <a className="btn btn--ghost" href="/services">ყველა სერვისი</a>
+            <div className="ab-carousel__nav">
+              <a className="btn btn--ghost" href="/services">ყველა სერვისი</a>
+              <div className="carousel__controls">
+                <button className="carousel__btn" type="button" data-carousel-prev="" aria-label="წინა"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12" /><polyline points="12 19 5 12 12 5" /></svg></button>
+                <button className="carousel__btn" type="button" data-carousel-next="" aria-label="შემდეგი"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg></button>
+              </div>
+            </div>
           </div>
-          <div className="ab-caps">
+          <div className="ab-caps carousel__viewport" data-carousel-track="">
             {CAPS.map(([tone, href, title, text, items, icon], i) => (
-              <a className={'ab-cap ab-cap--' + tone} href={href} data-reveal="" data-reveal-delay={i * 60} key={href}>
+              <div className="carousel__slide" key={href}>
+              <a className={'ab-cap ab-cap--' + tone} href={href}>
                 <span className="ab-cap__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{icon}</svg></span>
                 <h3>{title}</h3>
                 <p>{text}</p>
                 <ul>{items.map((t) => <li key={t}>{t}</li>)}</ul>
                 <span className="ab-cap__go" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" /></svg></span>
               </a>
+              </div>
             ))}
           </div>
         </div>
