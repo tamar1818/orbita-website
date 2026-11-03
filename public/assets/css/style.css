@@ -18,6 +18,19 @@
   font-style: normal; font-display: swap;
 }
 
+@font-face {
+  font-family: "Gilroy GEO";
+  src: url("../fonts/gilroy-geo-heavy.woff2") format("woff2"),
+       url("../fonts/gilroy-geo-heavy.woff") format("woff");
+  font-weight: 100 900; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "BPG LE Studio 02 Caps";
+  src: url("../fonts/bpg-le-studio-02-caps.woff2") format("woff2"),
+       url("../fonts/bpg-le-studio-02-caps.woff") format("woff");
+  font-weight: 100 900; font-style: normal; font-display: swap;
+}
+
 /* --------------------------------------------------------------------------
    2. ტოკენები
    -------------------------------------------------------------------------- */
@@ -25,7 +38,7 @@
 :root {
   /* ტიპოგრაფია: display — მხოლოდ სათაურები, base — ყველა დანარჩენი */
   /* Dachi The Lynx — მხოლოდ h1 და h2 (გვერდისა და სექციის სათაურები); დანარჩენი — Noto Sans Georgian */
-  --font-title: "Dachi The Lynx", "Noto Sans Georgian", "BPG Arial", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-title: "Gilroy GEO", "Dachi The Lynx", "Noto Sans Georgian", "BPG Arial", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-display: "Noto Sans Georgian", "BPG Arial", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-title-sm: var(--font-display);
   --font-base: "Noto Sans Georgian", "BPG Arial", system-ui, -apple-system,
@@ -4524,3 +4537,10 @@ h4, h5, h6 { font-size: 1.02rem; line-height: 1.35; letter-spacing: 0; }
 .prose .article-cta .btn--primary, .article-cta .btn--primary { color: var(--ink); }
 .prose .article-cta .btn--ghost-light, .article-cta .btn--ghost-light { color: #fff; }
 .prose .article-cta .btn--ghost-light:hover, .article-cta .btn--ghost-light:hover { color: #fff; }
+
+/* 2026-11-03 — შრიფტები: Gilroy GEO Heavy — h1/h2 და ფუტერის სლოგანი (--font-title),
+   BPG LE Studio 02 Caps — h3/h4 ქვესათაურები და eyebrow-ები. ტექსტი, მენიუ, ღილაკები — Noto Sans Georgian.
+   ორივეს ერთი წონა აქვს, ამიტომ ყალბ bold-ს ვთიშავთ. */
+:root { --font-sub: "BPG LE Studio 02 Caps", "Noto Sans Georgian", "BPG Arial", system-ui, sans-serif; }
+h1, h2 { letter-spacing: 0; word-spacing: .14em; }
+h3, h4:not(.foot h4), .eyebrow { font-family: var(--font-sub); font-weight: 400; font-synthesis: none; letter-spacing: .01em; }

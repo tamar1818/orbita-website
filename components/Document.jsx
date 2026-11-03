@@ -17,7 +17,7 @@ export default function Document({ lang, children }) {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         {/* სათაურების შრიფტი წინასწარ, რომ სათაური სარეზერვო შრიფტით არ „აციმციმდეს“ */}
-        <link rel="preload" href="/assets/fonts/dachi-the-lynx.woff2" as="font" type="font/woff2" crossOrigin="" />
+        <link rel="preload" href="/assets/fonts/gilroy-geo-heavy.woff2" as="font" type="font/woff2" crossOrigin="" />
         {/* ტექსტის შრიფტი */}
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;500;600;700&display=swap" />
         <link rel="stylesheet" href={'/assets/css/style.css?v=' + CSS_V} />
