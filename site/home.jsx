@@ -7,34 +7,25 @@ import { HeroWall, StackStrip, CtaGrow, JsonLd } from '@/components/blocks';
 import { WorkBento } from '@/components/work';
 import { PostCard } from '@/components/posts';
 import { ArrowRight } from '@/components/icons';
+import { CATALOG } from '@/lib/catalog';
 
-/** სრული სერვის პაკეტი — მთავარი გვერდის კარუსელი: [ტონი, id, ბმული, სათაური, ტექსტი, თეგები, აიკონი] */
-const SERVICES = [
-  ['lilac', 'software', '/service-web-development', 'პროგრამული ინჟინერია', 'ვებ და მობილური აპლიკაციები, პლატფორმები და CMS სისტემები თქვენი ბიზნესის საჭიროებებზე.',
-    ['აპლიკაციები', 'პლატფორმები', 'CMS'], <><polyline points="16 18 22 12 16 6" /><polyline points="8 6 2 12 8 18" /><line x1="13" y1="4" x2="11" y2="20" /></>],
-  ['pink', 'ecommerce', '/service-ecommerce', 'ელექტრონული კომერცია', 'ონლაინ მაღაზიები Shopify-ზე და WooCommerce-ზე, გადახდებით Flitt-ით, Plug and Pay-ით და ქართული ბანკებით.',
-    ['Shopify', 'WooCommerce', 'Flitt'], <><circle cx="9" cy="21" r="1" /><circle cx="20" cy="21" r="1" /><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6" /></>],
-  ['lime', 'content', '/service-marketing', 'კონტენტ სტრატეგია', 'ვგეგმავთ, რა ვთქვათ, სად და როდის: თემები, კონტენტ კალენდარი და ტონი, რომელიც ბრენდს შეეფერება.',
-    ['კალენდარი', 'ტონი', 'თემები'], <><rect x="3" y="4" width="18" height="18" rx="2" /><line x1="16" y1="2" x2="16" y2="6" /><line x1="8" y1="2" x2="8" y2="6" /><line x1="3" y1="10" x2="21" y2="10" /></>],
-  ['lilac', 'seo', '/service-seo', 'SEO', 'ტექნიკური, on-page და off-page SEO, საძიებო სიტყვების კვლევა და ყოველთვიური ანგარიშები Semrush-ით.',
-    ['ტექნიკური SEO', 'On/Off-page', 'Semrush'], <><circle cx="11" cy="11" r="7" /><line x1="21" y1="21" x2="16.7" y2="16.7" /></>],
-  ['pink', 'copywriting', '/service-marketing', 'ქოფირაითინგი', 'ტექსტები საიტისთვის, რეკლამისთვის და სოციალური ქსელებისთვის, რომლებიც იკითხება და ყიდის.',
-    ['საიტი', 'რეკლამა', 'სოციალური ქსელები'], <><path d="M12 20h9" /><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z" /></>],
-  ['lime', 'graphic', '/service-branding', 'გრაფიკული დიზაინი', 'სოციალური ქსელის პოსტები, ბანერები, პრეზენტაციები და ბეჭდური მასალა ერთ სტილში.',
-    ['პოსტები', 'ბანერები', 'ბეჭდვა'], <><circle cx="13.5" cy="6.5" r="1.5" /><circle cx="17.5" cy="10.5" r="1.5" /><circle cx="8.5" cy="7.5" r="1.5" /><circle cx="6.5" cy="12.5" r="1.5" /><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.9 0 1.6-.7 1.6-1.6 0-.4-.2-.8-.4-1.1-.3-.3-.4-.7-.4-1.1 0-.9.7-1.6 1.6-1.6H16c3.3 0 6-2.7 6-6 0-4.9-4.5-8.6-10-8.6z" /></>],
-  ['lilac', 'advertising', '/service-marketing', 'ციფრული რეკლამა', 'კამპანიები Facebook-ზე, Instagram-ზე და Google-ში, Ads Manager-ის სრული მართვით და ანგარიშებით.',
-    ['Meta Ads', 'Google Ads', 'ანალიტიკა'], <><polyline points="23 6 13.5 15.5 8.5 10.5 1 18" /><polyline points="17 6 23 6 23 12" /></>],
-  ['pink', 'production', '/contact', 'პროდაქშენი', 'ვიდეო და ფოტო გადაღება, სარეკლამო რგოლები და პროდუქტის ფოტოები თქვენი ბრენდისთვის.',
-    ['ვიდეო', 'ფოტო', 'სარეკლამო გადაღება'], <><path d="M23 7l-7 5 7 5V7z" /><rect x="1" y="5" width="15" height="14" rx="2" /></>],
-  ['lime', 'ai', '/service-ai', 'AI კონტენტის შექმნა', 'AI კამპანიები, ბრენდისა და პროდუქტის ვიზუალები, პერსონალური AI სურათები, ვიდეოები და ავატარები.',
-    ['კამპანიები', 'პროდუქტის ფოტო', 'AI ვიდეო'], <><path d="M12 3l1.9 4.6L18.5 9.5l-4.6 1.9L12 16l-1.9-4.6L5.5 9.5l4.6-1.9z" /><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z" /></>],
-  ['lilac', 'web', '/service-web-development', 'ვებ დეველოპმენტი', 'კორპორატიული საიტები და ლენდინგები: სწრაფი, მობილურზე მოხერხებული და SEO-სთვის მომზადებული.',
-    ['Next.js', 'WordPress', 'ლენდინგი'], <><rect x="2" y="3" width="20" height="14" rx="2" /><line x1="8" y1="21" x2="16" y2="21" /><line x1="12" y1="17" x2="12" y2="21" /></>],
-  ['pink', 'branding', '/service-branding', 'ბრენდინგი', 'ბრენდის იდენტობა და ლოგო, სოციალური ქსელის პოსტები და ბადეები, შეფუთვის დიზაინი.',
-    ['იდენტობა', 'სოც. ბადეები', 'შეფუთვა'], <><polygon points="12 2 2 7 12 12 22 7 12 2" /><polyline points="2 17 12 22 22 17" /><polyline points="2 12 12 17 22 12" /></>],
-  ['lime', 'devops', '/service-devops', 'DevOps სერვისები', 'ღრუბლოვანი ინფრასტრუქტურა, CI/CD, Docker და Kubernetes, მონიტორინგი და უსაფრთხოება. iGaming DevOps პარტნიორ RealOps-თან ერთად.',
-    ['CI/CD', 'Kubernetes', 'მონიტორინგი'], <><rect x="2" y="3" width="20" height="7" rx="1.5" /><rect x="2" y="14" width="20" height="7" rx="1.5" /><line x1="6" y1="6.5" x2="6.01" y2="6.5" /><line x1="6" y1="17.5" x2="6.01" y2="17.5" /></>],
-];
+/** სრული სერვის პაკეტი (lib/catalog.js) + აიკონები: [ტონი, id, ბმული, სათაური, ტექსტი, თეგები, აიკონი] */
+const ICONS = {
+  software: <><polyline points="16 18 22 12 16 6" /><polyline points="8 6 2 12 8 18" /><line x1="13" y1="4" x2="11" y2="20" /></>,
+  ecommerce: <><circle cx="9" cy="21" r="1" /><circle cx="20" cy="21" r="1" /><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6" /></>,
+  content: <><rect x="3" y="4" width="18" height="18" rx="2" /><line x1="16" y1="2" x2="16" y2="6" /><line x1="8" y1="2" x2="8" y2="6" /><line x1="3" y1="10" x2="21" y2="10" /></>,
+  seo: <><circle cx="11" cy="11" r="7" /><line x1="21" y1="21" x2="16.7" y2="16.7" /></>,
+  copywriting: <><path d="M12 20h9" /><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z" /></>,
+  graphic: <><circle cx="13.5" cy="6.5" r="1.5" /><circle cx="17.5" cy="10.5" r="1.5" /><circle cx="8.5" cy="7.5" r="1.5" /><circle cx="6.5" cy="12.5" r="1.5" /><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.9 0 1.6-.7 1.6-1.6 0-.4-.2-.8-.4-1.1-.3-.3-.4-.7-.4-1.1 0-.9.7-1.6 1.6-1.6H16c3.3 0 6-2.7 6-6 0-4.9-4.5-8.6-10-8.6z" /></>,
+  advertising: <><polyline points="23 6 13.5 15.5 8.5 10.5 1 18" /><polyline points="17 6 23 6 23 12" /></>,
+  production: <><path d="M23 7l-7 5 7 5V7z" /><rect x="1" y="5" width="15" height="14" rx="2" /></>,
+  ai: <><path d="M12 3l1.9 4.6L18.5 9.5l-4.6 1.9L12 16l-1.9-4.6L5.5 9.5l4.6-1.9z" /><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z" /></>,
+  web: <><rect x="2" y="3" width="20" height="14" rx="2" /><line x1="8" y1="21" x2="16" y2="21" /><line x1="12" y1="17" x2="12" y2="21" /></>,
+  branding: <><polygon points="12 2 2 7 12 12 22 7 12 2" /><polyline points="2 17 12 22 22 17" /><polyline points="2 12 12 17 22 12" /></>,
+  devops: <><rect x="2" y="3" width="20" height="7" rx="1.5" /><rect x="2" y="14" width="20" height="7" rx="1.5" /><line x1="6" y1="6.5" x2="6.01" y2="6.5" /><line x1="6" y1="17.5" x2="6.01" y2="17.5" /></>,
+};
+const SERVICES = CATALOG.map((c) => [c.tone, c.id, c.href, c.title, c.desc, c.tags, ICONS[c.id]]);
+
 
 const STEPS = [
   ['გაცნობა', 'გესაუბრებით ბიზნესზე, კლიენტებზე და კონკურენტებზე. ვუყურებთ, რა გაქვთ ახლა.'],
@@ -45,20 +36,29 @@ const STEPS = [
 
 function ld() {
   const email = opt('email', 'hello@webico.io');
+  const phone = opt('phone', '+995 557 64 32 25').replace(/[^\d+]/g, '');
+  const names = CATALOG.map((c) => c.title);
   return {
     '@context': 'https://schema.org',
     '@graph': [
       { '@type': 'Organization', '@id': 'https://webico.io/#org', name: 'Webico', alternateName: 'ვებიკო', url: 'https://webico.io/',
-        logo: 'https://webico.io/assets/img/apple-touch-icon.png', email, sameAs: [SOCIAL.instagram, SOCIAL.facebook] },
+        logo: 'https://webico.io/assets/img/apple-touch-icon.png',
+        description: 'Webico ციფრული სააგენტოა თბილისში: პროგრამული ინჟინერია, ვებ დეველოპმენტი, ელექტრონული კომერცია, SEO, ციფრული რეკლამა, კონტენტი, ბრენდინგი, პროდაქშენი, AI კონტენტი და DevOps ერთ გუნდში.',
+        email, telephone: phone, foundingLocation: { '@type': 'Place', name: 'თბილისი, საქართველო' },
+        address: { '@type': 'PostalAddress', addressLocality: 'თბილისი', addressCountry: 'GE' },
+        contactPoint: { '@type': 'ContactPoint', contactType: 'customer service', email, telephone: phone, availableLanguage: ['ka', 'en'] },
+        knowsAbout: names, sameAs: [SOCIAL.instagram, SOCIAL.facebook] },
       { '@type': 'WebSite', '@id': 'https://webico.io/#website', url: 'https://webico.io/', name: 'Webico', inLanguage: 'ka',
         publisher: { '@id': 'https://webico.io/#org' } },
       { '@type': 'ProfessionalService', '@id': 'https://webico.io/#service', name: 'Webico', url: 'https://webico.io/',
-        description: 'Webico — ვებსაიტები, ონლაინ მაღაზიები და ციფრული პროდუქტები: საიტის დამზადება, WordPress და WooCommerce დეველოპმენტი, ონლაინ მაღაზიები, UI/UX დიზაინი, SEO და ტექნიკური მხარდაჭერა.',
-        image: 'https://webico.io/assets/img/og-webico-3.jpg', email,
+        description: 'Webico — სრული ციფრული სერვისი ერთ გუნდში: საიტები და აპლიკაციები, ონლაინ მაღაზიები და გადახდები, SEO და რეკლამა, კონტენტი და ქოფირაითინგი, ბრენდინგი და გრაფიკული დიზაინი, ფოტო-ვიდეო პროდაქშენი, AI კონტენტი და DevOps.',
+        image: 'https://webico.io/assets/img/og-webico-3.jpg', email, telephone: phone,
         address: { '@type': 'PostalAddress', addressLocality: 'თბილისი', addressCountry: 'GE' },
-        areaServed: { '@type': 'Country', name: 'Georgia' },
+        areaServed: [{ '@type': 'Country', name: 'Georgia' }, { '@type': 'Place', name: 'Worldwide' }],
         parentOrganization: { '@id': 'https://webico.io/#org' },
-        knowsAbout: ['ვებ დეველოპმენტი', 'WordPress', 'WooCommerce', 'UI/UX დიზაინი', 'SEO', 'ონლაინ მაღაზია'] },
+        knowsAbout: names,
+        hasOfferCatalog: { '@type': 'OfferCatalog', name: 'სრული ციფრული სერვისი ერთ გუნდში',
+          itemListElement: CATALOG.map((c) => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name: c.title, description: c.desc, url: 'https://webico.io' + c.href, provider: { '@id': 'https://webico.io/#org' } } })) } },
     ],
   };
 }

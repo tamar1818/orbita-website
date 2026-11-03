@@ -35,6 +35,15 @@ const VALUES = [
 const LD = [
   {
     "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "ჩვენ შესახებ | Webico",
+    "url": "https://webico.io/about",
+    "inLanguage": "ka",
+    "description": "Webico ციფრული სააგენტოა თბილისში: დიზაინი და ბრენდინგი, დეველოპმენტი, SEO და მარკეტინგი, გადახდები, AI კონტენტი და DevOps ერთ გუნდში.",
+    "about": { "@id": "https://webico.io/#org" }
+  },
+  {
+    "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": [
       {

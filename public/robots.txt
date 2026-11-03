@@ -9,3 +9,5 @@ Disallow: /content/
 Disallow: /inc/
 
 Sitemap: https://webico.io/sitemap.xml
+
+# AI საძიებოებისთვის: https://webico.io/llms.txt

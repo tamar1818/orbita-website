@@ -4558,3 +4558,16 @@ h3, h4:not(.foot h4), .eyebrow { font-family: var(--font-sub); font-weight: 400;
 .ab-carousel .carousel__viewport { padding-bottom: 20px; margin-bottom: -12px; }
 .section:has(> .ab-carousel) { padding-bottom: clamp(16px, 2vw, 32px); }
 .foot__curl { display: none; }
+/* ფუტერის ლოგო — ნავის მსგავსად იისფერი წერტილით */
+.foot__mark { display: inline-flex; align-items: flex-end; }
+.foot__dot { flex: none; width: clamp(12px, 1.47vw, 22px); aspect-ratio: 1; margin: 0 0 clamp(13px, 1.7vw, 25px) clamp(5px, .63vw, 9px); border-radius: 50%; background: #7b5cf5; }
+@media (max-width: 560px) { .foot__dot { width: 10px; margin: 0 0 11px 4px; } }
+/* კომპაქტური სერვისების მენიუ: 3 ჯგუფი × 4 სერვისი, ლეპტოპზე ეკრანში ეტევა */
+.mega__inner { padding: 22px; }
+.mega__panel ul { gap: 0; }
+.mega__panel ul a { padding: 9px 12px; margin-inline: -12px; border-radius: 12px; }
+.mega__panel ul a b { display: block; font-weight: 600; font-size: .96rem; }
+.mega__panel ul a small { display: block; margin-top: 2px; font-size: .8rem; font-weight: 400; color: rgba(255, 255, 255, .55); }
+.mega__panel ul a:hover, .mega__panel ul a:focus-visible { background: rgba(255, 255, 255, .06); transform: none; }
+.mega__panel-title { text-transform: none; letter-spacing: 0; }
+@media (max-width: 880px) { .mega__panel ul a { margin-inline: 0; padding: 7px 0; } .mega__panel ul a small { display: none; } }

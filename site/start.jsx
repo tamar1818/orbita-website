@@ -1,7 +1,7 @@
 /** /start — უფასო ნიმუშის მოთხოვნა: ბიზნესი → პაკეტი → დამატებები → დიზაინი → კონტაქტი */
 import * as P from '@/lib/pricing';
 import D from '@/data/start.json';
-import { PageHero } from '@/components/blocks';
+import { PageHero, JsonLd } from '@/components/blocks';
 
 const { fmt } = P;
 const has = (o, k) => Object.prototype.hasOwnProperty.call(o, k);
@@ -28,6 +28,11 @@ export default function start(search) {
 
   const body = (
     <>
+      <JsonLd data={{ '@context': 'https://schema.org', '@type': 'WebPage', name: meta.title, description: meta.desc, url: 'https://webico.io/start', inLanguage: 'ka',
+        isPartOf: { '@id': 'https://webico.io/#website' }, publisher: { '@id': 'https://webico.io/#org' } }} />
+      <JsonLd data={{ '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'მთავარი', item: 'https://webico.io/' },
+        { '@type': 'ListItem', position: 2, name: 'უფასო ნიმუში' } ] }} />
       <PageHero compact crumbs={[[null, 'უფასო ნიმუში']]} eyebrow="უფასოდ, ვალდებულების გარეშე" title="ნახეთ თქვენი საიტი 24 საათში">
         <p>ოთხ მარტივ კითხვას უპასუხეთ და ჩვენ მოვამზადებთ ნიმუშს თქვენი სახელით. თუ მოგეწონებათ, საიტი 7 დღეში გაეშვება.</p>
       </PageHero>

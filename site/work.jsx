@@ -184,7 +184,12 @@ export function project(rawSlug) {
   const body = (
     <>
       <JsonLd data={{ '@context': 'https://schema.org', '@type': 'CreativeWork', name, url: 'https://webico.io/work-' + slug,
-        creator: { '@type': 'Organization', name: 'Webico', url: 'https://webico.io/' } }} />
+        description: desc, ...(image ? { image: 'https://webico.io' + ogRel } : {}), inLanguage: 'ka',
+        creator: { '@type': 'Organization', '@id': 'https://webico.io/#org', name: 'Webico', url: 'https://webico.io/' } }} />
+      <JsonLd data={{ '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'მთავარი', item: 'https://webico.io/' },
+        { '@type': 'ListItem', position: 2, name: 'ნამუშევრები', item: 'https://webico.io/work' },
+        { '@type': 'ListItem', position: 3, name } ] }} />
       <PageHero crumbs={[['/work', 'ნამუშევრები'], [null, name]]} eyebrow="პროექტი">
         {!empty(p.partner) ? <span className="partner-badge">{p.partner}-თან ერთად</span> : null}
         <h1>{name}</h1>

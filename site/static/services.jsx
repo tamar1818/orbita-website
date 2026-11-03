@@ -1,5 +1,6 @@
 /** /services — სტატიკური გვერდი (გადმოტანილია views/static/services.html-დან) */
 import { JsonLd } from '@/components/blocks';
+import { CATALOG } from '@/lib/catalog';
 
 const LD = [
   {
@@ -78,6 +79,9 @@ export default function pageServices() {
   const body = (
     <>
       {LD.map((d, i) => <JsonLd data={d} key={i} />)}
+      <JsonLd data={{ '@context': 'https://schema.org', '@type': 'ItemList', name: 'სრული ციფრული სერვისი ერთ გუნდში',
+        itemListElement: CATALOG.map((c, i) => ({ '@type': 'ListItem', position: i + 1,
+          item: { '@type': 'Service', name: c.title, description: c.desc, url: 'https://webico.io' + c.href, provider: { '@id': 'https://webico.io/#org' } } })) }} />
       <section className="page-hero pattern-grid">
         <div className="container">
           <div className="page-hero__inner">
