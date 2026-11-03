@@ -4536,7 +4536,16 @@ h4, h5, h6 { font-size: 1.02rem; line-height: 1.35; letter-spacing: 0; }
 h1, h2 { letter-spacing: 0; word-spacing: .14em; }
 h3, h4:not(.foot h4), .eyebrow { font-family: var(--font-sub); font-weight: 400; font-synthesis: none; letter-spacing: .01em; }
 
-/* 2026-11-03 — ახალი ლოგო ნავიგაციაში (Webico + იისფერი წერტილი, გამჭვირვალე PNG) */
-.brand__logo { width: 140px; height: auto; }
-@media (max-width: 1040px) and (min-width: 881px) { .brand__logo { width: 110px; } }
-@media (max-width: 560px) { .brand__logo { width: 112px; } }
+/* 2026-11-03 — ნავიგაცია Goga-ს რეფერენსით: „W webico.“ ლოგო იისფერი წერტილით, ჩარჩოს გარეშე ზოლი,
+   „დაგვიკავშირდით ↗“ ღილაკი */
+.brand { align-items: flex-end; gap: 0; }
+.brand__logo { width: 132px; }
+.brand__dot { width: 7px; height: 7px; margin: 0 0 8px 3px; border-radius: 50%; background: #7b5cf5; flex: none; }
+.nav { border-color: transparent; box-shadow: none; background: rgba(255, 255, 255, .9); }
+.site-header.is-stuck .nav { border-color: rgba(24, 24, 24, .06); }
+.nav__btn { display: inline-flex; align-items: center; gap: 8px; }
+.nav__btn svg { transition: transform .3s ease; }
+.nav__btn:hover svg { transform: rotate(45deg); }
+@media (max-width: 1040px) and (min-width: 881px) { .brand__dot { width: 6px; height: 6px; margin-bottom: 6px; } .brand { margin-right: 10px; } }
+@media (max-width: 560px) { .brand__logo { width: 112px; } .brand__dot { width: 6px; height: 6px; margin-bottom: 7px; } }
+.nav__links > li:has(.lang-switch) { margin-left: 14px; }

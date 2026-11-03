@@ -70,7 +70,7 @@ function Header({ lang, kaPath }) {
       <div className="container">
         <nav className="nav" aria-label="მთავარი ნავიგაცია">
           <a className="brand" href="/">
-            <img className="brand__logo" src="/assets/img/logo/webico-logo-nav.png" alt="Webico" width="613" height="120" />
+            <img className="brand__logo" src="/assets/img/logo/webico-horizontal-ink.svg" alt="Webico" width="152" height="38" /><span className="brand__dot" aria-hidden="true" />
           </a>
           <ul className="nav__links" id="nav-links">
             <li><a href="/about">ჩვენ შესახებ</a></li>
@@ -105,10 +105,10 @@ function Header({ lang, kaPath }) {
             </li>
             {NAV_AFTER.map(([href, label]) => <li key={href}><a href={href}>{label}</a></li>)}
             <li><LangSwitch lang={lang} kaPath={kaPath} /></li>
-            <li><a className="btn btn--primary btn--sm" href="/contact#booking">დაიწყეთ პროექტი</a></li>
+            <li><a className="btn btn--primary btn--sm nav__btn" href="/contact#booking">დაგვიკავშირდით <ArrowUpRight size={16} width="2.2" /></a></li>
           </ul>
           <div className="nav__cta">
-            <a className="btn btn--primary btn--sm" href="/contact#booking">დაიწყეთ პროექტი</a>{' '}
+            <a className="btn btn--primary btn--sm nav__btn" href="/contact#booking">დაგვიკავშირდით <ArrowUpRight size={16} width="2.2" /></a>{' '}
             <button className="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="მენიუს გახსნა"><span /></button>
           </div>
         </nav>
