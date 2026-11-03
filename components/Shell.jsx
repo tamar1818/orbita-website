@@ -70,7 +70,7 @@ function Header({ lang, kaPath }) {
       <div className="container">
         <nav className="nav" aria-label="მთავარი ნავიგაცია">
           <a className="brand" href="/">
-            <img className="brand__logo" src="/assets/img/logo/webico-horizontal-ink.svg" alt="Webico" width="152" height="38" />
+            <img className="brand__logo" src="/assets/img/logo/webico-logo-nav.png" alt="Webico" width="613" height="120" />
           </a>
           <ul className="nav__links" id="nav-links">
             <li><a href="/about">ჩვენ შესახებ</a></li>

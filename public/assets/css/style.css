@@ -4535,3 +4535,8 @@ h4, h5, h6 { font-size: 1.02rem; line-height: 1.35; letter-spacing: 0; }
 :root { --font-sub: "BPG LE Studio 02 Caps", "Noto Sans Georgian", "BPG Arial", system-ui, sans-serif; }
 h1, h2 { letter-spacing: 0; word-spacing: .14em; }
 h3, h4:not(.foot h4), .eyebrow { font-family: var(--font-sub); font-weight: 400; font-synthesis: none; letter-spacing: .01em; }
+
+/* 2026-11-03 — ახალი ლოგო ნავიგაციაში (Webico + იისფერი წერტილი, გამჭვირვალე PNG) */
+.brand__logo { width: 140px; height: auto; }
+@media (max-width: 1040px) and (min-width: 881px) { .brand__logo { width: 110px; } }
+@media (max-width: 560px) { .brand__logo { width: 112px; } }
