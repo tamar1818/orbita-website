@@ -138,7 +138,6 @@ function Footer({ lang, kaPath }) {
     <footer className="site-footer foot">
       <div className="container">
         <div className="foot__box">
-          <svg className="foot__curl" viewBox="0 0 400 400" aria-hidden="true"><path d="M420 60 C 300 40, 250 160, 320 210 C 380 255, 420 170, 350 150 C 260 125, 200 300, 300 420" fill="none" stroke="currentColor" strokeWidth="34" strokeLinecap="round" /></svg>
           <div className="foot__top">
             <p className="foot__claim">ვებსაიტები, რომლებიც ბრენდს ზრდის.</p>
             <div className="foot__col">
