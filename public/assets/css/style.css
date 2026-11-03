@@ -4548,4 +4548,12 @@ h3, h4:not(.foot h4), .eyebrow { font-family: var(--font-sub); font-weight: 400;
 .nav__btn:hover svg { transform: rotate(45deg); }
 @media (max-width: 1040px) and (min-width: 881px) { .brand__dot { width: 6px; height: 6px; margin-bottom: 6px; } .brand { margin-right: 10px; } }
 @media (max-width: 560px) { .brand__logo { width: 112px; } .brand__dot { width: 6px; height: 6px; margin-bottom: 7px; } }
-.nav__links > li:has(.lang-switch) { margin-left: 14px; }
+/* ენის გადამრთველი დესკტოპზე ღილაკის გვერდით; მობილურ მენიუში — სიაში */
+.nav__lang { display: inline-flex; }
+@media (min-width: 881px) { .nav__lang-li { display: none !important; } }
+@media (max-width: 880px) { .nav__lang { display: none; } }
+/* მობილური მენიუს ღილაკი — .nav__links > li > a სტილი მას ფონს უკარგავდა */
+.nav__links > li > a.btn--primary { background: var(--ink); color: #fff; justify-content: center; border-color: var(--ink); }
+/* სერვისების კარუსელის ქვემოთ ზედმეტი სივრცე */
+.ab-carousel .carousel__viewport { padding-bottom: 20px; margin-bottom: -12px; }
+.section:has(> .ab-carousel) { padding-bottom: clamp(16px, 2vw, 32px); }

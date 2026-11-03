@@ -32,6 +32,8 @@ const SERVICES = [
     ['Next.js', 'WordPress', 'ლენდინგი'], <><rect x="2" y="3" width="20" height="14" rx="2" /><line x1="8" y1="21" x2="16" y2="21" /><line x1="12" y1="17" x2="12" y2="21" /></>],
   ['pink', 'branding', '/service-branding', 'ბრენდინგი', 'ბრენდის იდენტობა და ლოგო, სოციალური ქსელის პოსტები და ბადეები, შეფუთვის დიზაინი.',
     ['იდენტობა', 'სოც. ბადეები', 'შეფუთვა'], <><polygon points="12 2 2 7 12 12 22 7 12 2" /><polyline points="2 17 12 22 22 17" /><polyline points="2 12 12 17 22 12" /></>],
+  ['lime', 'devops', '/service-devops', 'DevOps სერვისები', 'ღრუბლოვანი ინფრასტრუქტურა, CI/CD, Docker და Kubernetes, მონიტორინგი და უსაფრთხოება. iGaming DevOps პარტნიორ RealOps-თან ერთად.',
+    ['CI/CD', 'Kubernetes', 'მონიტორინგი'], <><rect x="2" y="3" width="20" height="7" rx="1.5" /><rect x="2" y="14" width="20" height="7" rx="1.5" /><line x1="6" y1="6.5" x2="6.01" y2="6.5" /><line x1="6" y1="17.5" x2="6.01" y2="17.5" /></>],
 ];
 
 const STEPS = [
