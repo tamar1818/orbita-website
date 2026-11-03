@@ -70,4 +70,4 @@ public/              CSS, ფოტოები, ლოგოები, favicon,
 
 ## შრიფტები
 
-სათაურები: Dachi The Lynx (`public/assets/fonts/`), ტექსტი: Noto Sans Georgian. იხ. [`public/assets/fonts/README.md`](public/assets/fonts/README.md).
+სათაურები: Gilroy GEO Heavy და BPG LE Studio 02 Caps (`public/assets/fonts/`), ტექსტი: Noto Sans Georgian. იხ. [`public/assets/fonts/README.md`](public/assets/fonts/README.md).

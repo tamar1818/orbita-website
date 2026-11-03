@@ -4,19 +4,10 @@
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
-   1. შრიფტები — Dachi The Lynx (სათაურები, მენიუ, სერვისები, ღილაკები)
+   1. შრიფტები — Gilroy GEO Heavy (h1/h2), BPG LE Studio 02 Caps (h3/h4), Noto Sans Georgian (ტექსტი)
    ფაილები განათავსეთ assets/fonts/ — იხ. assets/fonts/README.md
    -------------------------------------------------------------------------- */
 
-/* ფაილი საიტზევეა (public/assets/fonts), ამიტომ ყველა მოწყობილობაზე ერთნაირად ჩანს —
-   Mac-ზე და iPhone-ზეც, სადაც შრიფტი დაინსტალირებული არ არის. მხოლოდ ერთი წონა აქვს (400). */
-@font-face {
-  font-family: "Dachi The Lynx";
-  src: url("../fonts/dachi-the-lynx.woff2") format("woff2"),
-       url("../fonts/dachi-the-lynx.woff") format("woff");
-  font-weight: 100 900;   /* ერთი ფაილი ყველა წონისთვის — ყალბი bold-ის გარეშე */
-  font-style: normal; font-display: swap;
-}
 
 @font-face {
   font-family: "Gilroy GEO";
@@ -37,8 +28,8 @@
 
 :root {
   /* ტიპოგრაფია: display — მხოლოდ სათაურები, base — ყველა დანარჩენი */
-  /* Dachi The Lynx — მხოლოდ h1 და h2 (გვერდისა და სექციის სათაურები); დანარჩენი — Noto Sans Georgian */
-  --font-title: "Gilroy GEO", "Dachi The Lynx", "Noto Sans Georgian", "BPG Arial", system-ui, -apple-system, "Segoe UI", sans-serif;
+  /* Gilroy GEO Heavy — h1/h2; BPG LE Studio 02 Caps — h3/h4; დანარჩენი — Noto Sans Georgian */
+  --font-title: "Gilroy GEO", "Noto Sans Georgian", "BPG Arial", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-display: "Noto Sans Georgian", "BPG Arial", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-title-sm: var(--font-display);
   --font-base: "Noto Sans Georgian", "BPG Arial", system-ui, -apple-system,
@@ -4206,7 +4197,7 @@ h1, h2 { overflow-wrap: break-word; }
 :lang(en) .grow__card h2 { max-width: none; font-size: clamp(1.75rem, 1.1rem + 1.5vw, 2.6rem); line-height: 1.08; }
 
 /* --------------------------------------------------------------------------
-   Dachi The Lynx — მხოლოდ h1 და h2. დიდი ასოებით წერს და მძიმეა, ამიტომ ზომები ზომიერია.
+   სათაურების შრიფტი (Gilroy GEO Heavy) — მხოლოდ h1 და h2, ზომიერი ზომებით.
    შრიფტს ერთი წონა აქვს — ბრაუზერმა „ყალბი bold“ არ უნდა დახატოს (Safari-ზე ბუნდოვანია).
    -------------------------------------------------------------------------- */
 h1, h2 {

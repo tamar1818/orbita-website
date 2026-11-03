@@ -8,25 +8,30 @@ import { WorkBento } from '@/components/work';
 import { PostCard } from '@/components/posts';
 import { ArrowRight } from '@/components/icons';
 
+/** სრული სერვის პაკეტი — მთავარი გვერდის კარუსელი: [ტონი, id, ბმული, სათაური, ტექსტი, თეგები, აიკონი] */
 const SERVICES = [
-  ['lilac', '/service-web-development', 'ვებსაიტის დამზადება', 'კომპანიის საიტი, ლენდინგი ან ვებ-აპლიკაცია. სწრაფი, მობილურზე მოხერხებული და გასაგები.',
-    <><polyline points="16 18 22 12 16 6" /><polyline points="8 6 2 12 8 18" /><line x1="13" y1="4" x2="11" y2="20" /></>],
-  ['pink', '/service-ecommerce', 'ონლაინ მაღაზიის შექმნა', 'WooCommerce ან Shopify, ბარათით გადახდით და მიწოდების პირობებით.',
-    <><circle cx="9" cy="21" r="1" /><circle cx="20" cy="21" r="1" /><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6" /></>],
-  ['soft', '/service-branding', 'UI/UX დიზაინი და ბრენდინგი', 'ინტერფეისის დიზაინი Figma-ში, ლოგო და ბრენდბუქი.',
-    <><polygon points="12 2 2 7 12 12 22 7 12 2" /><polyline points="2 17 12 22 22 17" /><polyline points="2 12 12 17 22 12" /></>],
-  ['lilac', '/service-seo', 'SEO ოპტიმიზაცია', 'ტექნიკური SEO, საძიებო სიტყვები და ქართული ტექსტები, რომ Google-ში გიპოვონ.',
-    <><circle cx="11" cy="11" r="7" /><line x1="21" y1="21" x2="16.7" y2="16.7" /></>],
-  ['lime', '/service-maintenance', 'საიტის ტექნიკური მხარდაჭერა', 'განახლებები, უსაფრთხოება, ასლები და მცირე ცვლილებები ყოველთვე.',
-    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.8-3.8a6 6 0 0 1-7.9 7.9l-6.9 6.9a2.1 2.1 0 0 1-3-3l6.9-6.9a6 6 0 0 1 7.9-7.9z" />],
-  ['pink', '/service-marketing', 'ციფრული მარკეტინგი', 'რეკლამა Google-ში, Facebook-ზე, Instagram-ზე და TikTok-ზე. ხედავთ, რა მოიტანა თითოეულმა ლარმა.',
-    <><polyline points="23 6 13.5 15.5 8.5 10.5 1 18" /><polyline points="17 6 23 6 23 12" /></>],
-  ['lilac', '/service-payments', 'ონლაინ გადახდების ინტეგრაცია', 'Flitt, UniPAY, საქართველოს ბანკი, TBC, Apple Pay და Stripe საიტზე ან აპლიკაციაში.',
-    <><rect x="1" y="4" width="22" height="16" rx="2" /><line x1="1" y1="10" x2="23" y2="10" /><line x1="5" y1="15" x2="9" y2="15" /></>],
-  ['lime', '/service-ai', 'AI კონტენტის შექმნა', 'ტექსტები, პროდუქტის ფოტოები და ვიდეოები საიტისთვის, მაღაზიისთვის და კამპანიებისთვის.',
-    <><path d="M12 3l1.9 4.6L18.5 9.5l-4.6 1.9L12 16l-1.9-4.6L5.5 9.5l4.6-1.9z" /><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z" /></>],
-  ['soft', '/service-devops', 'DevOps სერვისები', 'ღრუბელი, CI/CD, Kubernetes და მონიტორინგი. iGaming DevOps პარტნიორ RealOps-თან ერთად.',
-    <><rect x="2" y="3" width="20" height="7" rx="1.5" /><rect x="2" y="14" width="20" height="7" rx="1.5" /><line x1="6" y1="6.5" x2="6.01" y2="6.5" /><line x1="6" y1="17.5" x2="6.01" y2="17.5" /></>],
+  ['lilac', 'software', '/service-web-development', 'პროგრამული ინჟინერია', 'ვებ და მობილური აპლიკაციები, პლატფორმები და CMS სისტემები თქვენი ბიზნესის საჭიროებებზე.',
+    ['აპლიკაციები', 'პლატფორმები', 'CMS'], <><polyline points="16 18 22 12 16 6" /><polyline points="8 6 2 12 8 18" /><line x1="13" y1="4" x2="11" y2="20" /></>],
+  ['pink', 'ecommerce', '/service-ecommerce', 'ელექტრონული კომერცია', 'ონლაინ მაღაზიები Shopify-ზე და WooCommerce-ზე, გადახდებით Flitt-ით, Plug and Pay-ით და ქართული ბანკებით.',
+    ['Shopify', 'WooCommerce', 'Flitt'], <><circle cx="9" cy="21" r="1" /><circle cx="20" cy="21" r="1" /><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6" /></>],
+  ['lime', 'content', '/service-marketing', 'კონტენტ სტრატეგია', 'ვგეგმავთ, რა ვთქვათ, სად და როდის: თემები, კონტენტ კალენდარი და ტონი, რომელიც ბრენდს შეეფერება.',
+    ['კალენდარი', 'ტონი', 'თემები'], <><rect x="3" y="4" width="18" height="18" rx="2" /><line x1="16" y1="2" x2="16" y2="6" /><line x1="8" y1="2" x2="8" y2="6" /><line x1="3" y1="10" x2="21" y2="10" /></>],
+  ['lilac', 'seo', '/service-seo', 'SEO', 'ტექნიკური, on-page და off-page SEO, საძიებო სიტყვების კვლევა და ყოველთვიური ანგარიშები Semrush-ით.',
+    ['ტექნიკური SEO', 'On/Off-page', 'Semrush'], <><circle cx="11" cy="11" r="7" /><line x1="21" y1="21" x2="16.7" y2="16.7" /></>],
+  ['pink', 'copywriting', '/service-marketing', 'ქოფირაითინგი', 'ტექსტები საიტისთვის, რეკლამისთვის და სოციალური ქსელებისთვის, რომლებიც იკითხება და ყიდის.',
+    ['საიტი', 'რეკლამა', 'სოციალური ქსელები'], <><path d="M12 20h9" /><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z" /></>],
+  ['lime', 'graphic', '/service-branding', 'გრაფიკული დიზაინი', 'სოციალური ქსელის პოსტები, ბანერები, პრეზენტაციები და ბეჭდური მასალა ერთ სტილში.',
+    ['პოსტები', 'ბანერები', 'ბეჭდვა'], <><circle cx="13.5" cy="6.5" r="1.5" /><circle cx="17.5" cy="10.5" r="1.5" /><circle cx="8.5" cy="7.5" r="1.5" /><circle cx="6.5" cy="12.5" r="1.5" /><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.9 0 1.6-.7 1.6-1.6 0-.4-.2-.8-.4-1.1-.3-.3-.4-.7-.4-1.1 0-.9.7-1.6 1.6-1.6H16c3.3 0 6-2.7 6-6 0-4.9-4.5-8.6-10-8.6z" /></>],
+  ['lilac', 'advertising', '/service-marketing', 'ციფრული რეკლამა', 'კამპანიები Facebook-ზე, Instagram-ზე და Google-ში, Ads Manager-ის სრული მართვით და ანგარიშებით.',
+    ['Meta Ads', 'Google Ads', 'ანალიტიკა'], <><polyline points="23 6 13.5 15.5 8.5 10.5 1 18" /><polyline points="17 6 23 6 23 12" /></>],
+  ['pink', 'production', '/contact', 'პროდაქშენი', 'ვიდეო და ფოტო გადაღება, სარეკლამო რგოლები და პროდუქტის ფოტოები თქვენი ბრენდისთვის.',
+    ['ვიდეო', 'ფოტო', 'სარეკლამო გადაღება'], <><path d="M23 7l-7 5 7 5V7z" /><rect x="1" y="5" width="15" height="14" rx="2" /></>],
+  ['lime', 'ai', '/service-ai', 'AI კონტენტის შექმნა', 'AI კამპანიები, ბრენდისა და პროდუქტის ვიზუალები, პერსონალური AI სურათები, ვიდეოები და ავატარები.',
+    ['კამპანიები', 'პროდუქტის ფოტო', 'AI ვიდეო'], <><path d="M12 3l1.9 4.6L18.5 9.5l-4.6 1.9L12 16l-1.9-4.6L5.5 9.5l4.6-1.9z" /><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z" /></>],
+  ['lilac', 'web', '/service-web-development', 'ვებ დეველოპმენტი', 'კორპორატიული საიტები და ლენდინგები: სწრაფი, მობილურზე მოხერხებული და SEO-სთვის მომზადებული.',
+    ['Next.js', 'WordPress', 'ლენდინგი'], <><rect x="2" y="3" width="20" height="14" rx="2" /><line x1="8" y1="21" x2="16" y2="21" /><line x1="12" y1="17" x2="12" y2="21" /></>],
+  ['pink', 'branding', '/service-branding', 'ბრენდინგი', 'ბრენდის იდენტობა და ლოგო, სოციალური ქსელის პოსტები და ბადეები, შეფუთვის დიზაინი.',
+    ['იდენტობა', 'სოც. ბადეები', 'შეფუთვა'], <><polygon points="12 2 2 7 12 12 22 7 12 2" /><polyline points="2 17 12 22 22 17" /><polyline points="2 12 12 17 22 12" /></>],
 ];
 
 const STEPS = [
@@ -80,26 +85,29 @@ export default function home() {
       <StackStrip label="პლატფორმები, რომლებზეც ვმუშაობთ" />
 
       <section className="section" id="services">
-        <div className="container">
-          <div className="svc-grid" data-reveal="">
-            {SERVICES.map(([tone, href, title, desc, icon]) => (
-              <a className={'svc-cell svc-cell--' + tone} href={href} key={href}>
-                <span className="svc-cell__body">
-                  <span className="svc-cell__icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">{icon}</svg>
-                  </span>
-                  <h3 className="svc-cell__title">{title}</h3>
-                  <span className="svc-cell__desc">{desc}</span>
-                  <span className="svc-cell__go">დეტალურად <ArrowRight /></span>
-                </span>
-              </a>
+        <div className="container ab-carousel carousel" data-carousel="">
+          <div className="section-head section-head--split" data-reveal="">
+            <div><span className="eyebrow">სერვისები</span><h2>სრული ციფრული სერვისი ერთ გუნდში</h2></div>
+            <div className="ab-carousel__nav">
+              <a className="btn btn--ghost" href="/services">ყველა სერვისი</a>
+              <div className="carousel__controls">
+                <button className="carousel__btn" type="button" data-carousel-prev="" aria-label="წინა"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12" /><polyline points="12 19 5 12 12 5" /></svg></button>
+                <button className="carousel__btn" type="button" data-carousel-next="" aria-label="შემდეგი"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg></button>
+              </div>
+            </div>
+          </div>
+          <div className="ab-caps carousel__viewport" data-carousel-track="">
+            {SERVICES.map(([tone, id, href, title, desc, items, icon]) => (
+              <div className="carousel__slide" key={id}>
+                <a className={'ab-cap ab-cap--' + tone} href={href}>
+                  <span className="ab-cap__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{icon}</svg></span>
+                  <h3>{title}</h3>
+                  <p>{desc}</p>
+                  <ul>{items.map((t) => <li key={t}>{t}</li>)}</ul>
+                  <span className="ab-cap__go" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" /></svg></span>
+                </a>
+              </div>
             ))}
-            <a className="svc-cell svc-cell--all" href="/services">
-              <span className="svc-cell__body">
-                <span className="svc-cell__title">ყველა სერვისი</span>
-                <span className="svc-cell__go">დეტალურად <ArrowRight /></span>
-              </span>
-            </a>
           </div>
         </div>
       </section>
@@ -176,7 +184,7 @@ export default function home() {
                     <label htmlFor="home-service">რომელი სერვისი გაინტერესებთ?</label>
                     <select id="home-service" name="service" defaultValue="">
                       <option value="">აირჩიეთ სერვისი</option>
-                      {SERVICES.map(([, href, title]) => <option value={href.replace('/service-', '')} key={href}>{title}</option>)}
+                      {SERVICES.map(([, id, , title]) => <option value={id} key={id}>{title}</option>)}
                       <option value="other">სხვა / ჯერ არ ვიცი</option>
                     </select>
                     <span className="field__error" />
