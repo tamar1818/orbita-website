@@ -81,8 +81,8 @@ const LD = [
 ];
 
 export const meta = {
-  "title": "ციფრული მარკეტინგი — Google Ads და Facebook რეკლამა | Webico",
-  "desc": "ვმართავთ სარეკლამო კამპანიებს Google-ში, Meta-სა და TikTok-ზე. ვზომავთ ყოველ ლარს და ვამუშავებთ ბიუჯეტს იქ, სადაც ის რეალურ განაცხადებს იძლევა.",
+  "title": "ციფრული მარკეტინგი: Facebook, Instagram და Google რეკლამა | Webico",
+  "desc": "ციფრული მარკეტინგის სააგენტო თბილისში: Facebook და Instagram რეკლამა, Google Ads, TikTok, SMM, კონტენტი და კოპირაიტინგი. ვზომავთ ყოველ ლარს და ბიუჯეტს იქ ვხარჯავთ, სადაც განაცხადები მოდის.",
   "url": "/service-marketing",
   "imageAlt": "ვებიკო — ციფრული სააგენტო"
 };
@@ -105,9 +105,9 @@ export default function pageServiceMarketing() {
                 <span aria-current="page">ციფრული მარკეტინგი</span>
               </li>
             </ol>
-            <span className="eyebrow">ციფრული მარკეტინგი</span>
-            <h1>რეკლამა Google-ში და სოციალურ ქსელებში</h1>
-            <p>ვმართავთ სარეკლამო კამპანიებს Google-ში, Meta-სა და TikTok-ზე. ვზომავთ ყოველ ლარს და ვამუშავებთ ბიუჯეტს იქ, სადაც ის რეალურ განაცხადებს იძლევა.</p>
+            <span className="eyebrow">ციფრული მარკეტინგის სააგენტო</span>
+            <h1>ციფრული მარკეტინგი და რეკლამა</h1>
+            <p>ვმართავთ Facebook და Instagram რეკლამას, Google Ads-სა და TikTok-ის კამპანიებს, ვწერთ კონტენტს და ვუძღვებით სოციალურ ქსელებს. ვზომავთ ყოველ ლარს და ვამუშავებთ ბიუჯეტს იქ, სადაც ის რეალურ განაცხადებს იძლევა.</p>
             <div className="btn-row">
               <a className="btn btn--primary" href="#request">
                 განაცხადის გაგზავნა{" "}
@@ -148,7 +148,7 @@ export default function pageServiceMarketing() {
         <div className="container">
           <div className="section-head section-head--center" data-reveal="">
             <span className="eyebrow">რას მოიცავს</span>
-            <h2>რა შედის</h2>
+            <h2>რა შედის ციფრულ მარკეტინგში</h2>
             <p>ყველა პროექტი განსხვავებულია. აქ ჩამოვთვალეთ, რასაც ყველაზე ხშირად ვაკეთებთ.</p>
           </div>
           <div className="grid grid--3">
@@ -175,6 +175,18 @@ export default function pageServiceMarketing() {
             <article className="card" data-reveal="" data-reveal-delay="300">
               <h3>ანალიტიკა და CRO</h3>
               <p>მოვლენების აწყობა, კონვერსიის თვალყური და სადესანტო გვერდების ტესტირება.</p>
+            </article>
+            <article className="card" data-reveal="" data-reveal-delay="360">
+              <h3>კონტენტ სტრატეგია</h3>
+              <p>თემები, კონტენტ კალენდარი და ბრენდის ტონი: რა ვთქვათ, სად და როდის.</p>
+            </article>
+            <article className="card" data-reveal="" data-reveal-delay="420">
+              <h3>ქოფირაითინგი</h3>
+              <p>კოპირაიტინგი <a href="/service-seo">SEO-ს</a> გათვალისწინებით საიტისთვის, რეკლამისთვის და პოსტებისთვის: ტექსტები, რომლებიც იკითხება და ყიდის.</p>
+            </article>
+            <article className="card" data-reveal="" data-reveal-delay="480">
+              <h3>ფოტო და ვიდეო პროდაქშენი</h3>
+              <p>სარეკლამო რგოლები, პროდუქტის ფოტოგადაღება და მოკლე ვიდეოები სოციალური ქსელებისთვის.</p>
             </article>
           </div>
         </div>
@@ -244,7 +256,7 @@ export default function pageServiceMarketing() {
           <div className="contact-grid">
             <div data-reveal="">
               <span className="eyebrow">დაგვიკავშირდით</span>
-              <h2>რა ეღირება თქვენი პროექტი?</h2>
+              <h2>რა ღირს რეკლამის მართვა?</h2>
               <p className="lead">შეავსეთ ფორმა და ერთ სამუშაო დღეში მიიღებთ საორიენტაციო ღირებულებას, ვადებსა და სამოქმედო გეგმას.</p>
               <ul className="checklist">
                 <li>უფასო კონსულტაცია და აუდიტი</li>

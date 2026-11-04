@@ -1,6 +1,6 @@
 {
   "path": "/service-payments",
-  "title": "ონლაინ გადახდების ინტეგრაცია საიტზე: Flitt, UniPAY, BOG, TBC, Stripe | Webico",
+  "title": "ონლაინ გადახდის ინტეგრაცია საიტზე: BOG, TBC, Flitt, UniPAY | Webico",
   "desc": "ვაერთებთ ონლაინ გადახდებს საიტზე, ონლაინ მაღაზიასა და ციფრულ პლატფორმაზე: Flitt, UniPAY, საქართველოს ბანკი, TBC, Apple Pay, Google Pay, განვადება, Stripe და PayPal.",
   "crumb": "გადახდების ინტეგრაცია",
   "eyebrow": "ონლაინ გადახდები",

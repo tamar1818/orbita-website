@@ -81,8 +81,8 @@ const LD = [
 ];
 
 export const meta = {
-  "title": "ვებსაიტის დამზადება და დიზაინი | Webico",
-  "desc": "საიტის დამზადება თბილისში: კორპორატიული საიტები, ლენდინგები და ვებ-აპლიკაციები. Webico ქმნის სწრაფ, ადაპტირებულ და SEO-ზე მორგებულ ვებსაიტებს თქვენი ბიზნესისთვის.",
+  "title": "საიტის დამზადება თბილისში: ვებ გვერდი 1 900 ₾-დან | Webico",
+  "desc": "ვებ გვერდის დამზადება და ვებ დიზაინი: კორპორატიული საიტები, ლენდინგები და ვებ-აპლიკაციები 3–8 კვირაში. სწრაფი, მობილურზე მორგებული და Google-ისთვის მომზადებული საიტი. უფასო კონსულტაცია.",
   "url": "/service-web-development",
   "imageAlt": "ვებიკო — ციფრული სააგენტო"
 };
@@ -105,9 +105,9 @@ export default function pageServiceWebDevelopment() {
                 <span aria-current="page">ვებსაიტების დიზაინი და შექმნა</span>
               </li>
             </ol>
-            <span className="eyebrow">ვებსაიტების დიზაინი და შექმნა</span>
-            <h1>ვებსაიტის დამზადება</h1>
-            <p>საიტს ნულიდან ვაწყობთ: ჯერ ვგეგმავთ, მერე ვხატავთ და ვწერთ კოდს. ყოველი პროექტი იწყება კითხვით: რა მოქმედება უნდა შეასრულოს ვიზიტორმა და რა უშლის მას ხელს?</p>
+            <span className="eyebrow">ვებ გვერდის დამზადება თბილისში</span>
+            <h1>საიტის დამზადება და ვებ დიზაინი</h1>
+            <p>ვებ გვერდს ნულიდან ვაწყობთ: ჯერ ვგეგმავთ, მერე ვხატავთ და ვწერთ კოდს. ყოველი პროექტი იწყება კითხვით: რა მოქმედება უნდა შეასრულოს ვიზიტორმა და რა უშლის მას ხელს?</p>
             <div className="btn-row">
               <a className="btn btn--primary" href="#request">
                 განაცხადის გაგზავნა{" "}
@@ -148,7 +148,7 @@ export default function pageServiceWebDevelopment() {
         <div className="container">
           <div className="section-head section-head--center" data-reveal="">
             <span className="eyebrow">რას მოიცავს</span>
-            <h2>რა შედის</h2>
+            <h2>რა შედის საიტის დამზადებაში</h2>
             <p>ყველა პროექტი განსხვავებულია. აქ ჩამოვთვალეთ, რასაც ყველაზე ხშირად ვაკეთებთ.</p>
           </div>
           <div className="grid grid--3">
@@ -158,7 +158,7 @@ export default function pageServiceWebDevelopment() {
             </article>
             <article className="card" data-reveal="" data-reveal-delay="60">
               <h3>ონლაინ მაღაზიები</h3>
-              <p>სრულფასოვანი E-commerce: კალათა, ონლაინ გადახდა, მიწოდება და საწყობის მართვა.</p>
+              <p>სრულფასოვანი <a href="/service-ecommerce">ონლაინ მაღაზიის შექმნა</a>: კალათა, ონლაინ გადახდა, მიწოდება და საწყობის მართვა.</p>
             </article>
             <article className="card" data-reveal="" data-reveal-delay="120">
               <h3>სადესანტო გვერდები</h3>
@@ -170,7 +170,7 @@ export default function pageServiceWebDevelopment() {
             </article>
             <article className="card" data-reveal="" data-reveal-delay="240">
               <h3>ინტეგრაციები</h3>
-              <p>CRM, ერთიანი ბუღალტერია, გადახდის სისტემები (TBC, BOG), SMS და ელფოსტის სერვისები.</p>
+              <p>CRM, ერთიანი ბუღალტერია, <a href="/service-payments">ონლაინ გადახდის სისტემები</a> (TBC, BOG), SMS და ელფოსტის სერვისები.</p>
             </article>
             <article className="card" data-reveal="" data-reveal-delay="300">
               <h3>სისწრაფე და უსაფრთხოება</h3>
@@ -246,7 +246,7 @@ export default function pageServiceWebDevelopment() {
           <div className="contact-grid">
             <div data-reveal="">
               <span className="eyebrow">დაგვიკავშირდით</span>
-              <h2>რა ეღირება თქვენი პროექტი?</h2>
+              <h2>რა ღირს საიტის დამზადება?</h2>
               <p className="lead">შეავსეთ ფორმა და ერთ სამუშაო დღეში მიიღებთ საორიენტაციო ღირებულებას, ვადებსა და სამოქმედო გეგმას.</p>
               <ul className="checklist">
                 <li>უფასო კონსულტაცია და აუდიტი</li>

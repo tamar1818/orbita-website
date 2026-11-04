@@ -67,8 +67,8 @@ export default function home() {
   const shots = showcase().filter((x) => String(x.shot ?? '').trim() !== '');
   const posts = allPosts().slice(0, 3);
   const meta = {
-    title: 'Webico — ვებსაიტები, ონლაინ მაღაზიები და ციფრული პროდუქტები',
-    desc: 'Webico — ვებსაიტები, ონლაინ მაღაზიები და ციფრული პროდუქტები. ვქმნით საიტებს, WordPress და WooCommerce პროექტებს, ონლაინ მაღაზიებს, UI/UX დიზაინს და ვაკეთებთ SEO-ს. ნახეთ ნამუშევრები და დაჯავშნეთ უფასო კონსულტაცია.',
+    title: 'საიტის დამზადება, SEO და ციფრული მარკეტინგი თბილისში | Webico',
+    desc: 'Webico ციფრული სააგენტოა თბილისში: ვებ გვერდის დამზადება, ონლაინ მაღაზიები, SEO ოპტიმიზაცია, Facebook და Google რეკლამა, ლოგო და ბრენდინგი. ნახეთ ნამუშევრები და დაჯავშნეთ უფასო კონსულტაცია.',
     url: '/',
     imageAlt: 'ვებიკო — ციფრული სააგენტო',
   };
@@ -89,7 +89,7 @@ export default function home() {
       <section className="section" id="services">
         <div className="container ab-carousel carousel" data-carousel="">
           <div className="section-head section-head--split" data-reveal="">
-            <div><span className="eyebrow">სერვისები</span><h2>სრული ციფრული სერვისი ერთ გუნდში</h2></div>
+            <div><span className="eyebrow">სერვისები</span><h2>საიტი, SEO, რეკლამა და დიზაინი ერთ გუნდში</h2></div>
             <div className="ab-carousel__nav">
               <a className="btn btn--ghost" href="/services">ყველა სერვისი</a>
               <div className="carousel__controls">

@@ -81,8 +81,8 @@ const LD = [
 ];
 
 export const meta = {
-  "title": "SEO ოპტიმიზაცია და ტექნიკური SEO | Webico",
-  "desc": "საიტის SEO ოპტიმიზაცია: ტექნიკური აუდიტი, საკვანძო სიტყვების კვლევა, ინდექსაცია, სტრუქტურირებული მონაცემები, Core Web Vitals და ქართულენოვანი კონტენტი. Webico, თბილისი.",
+  "title": "SEO ოპტიმიზაცია: საიტის დაწინაურება Google-ში | Webico",
+  "desc": "SEO ოპტიმიზაცია და საიტის დაწინაურება Google-ში: ტექნიკური აუდიტი, საკვანძო სიტყვების კვლევა Semrush-ით, ქართულენოვანი კონტენტი, ლოკალური SEO და ყოველთვიური ანგარიში. Webico, თბილისი.",
   "url": "/service-seo",
   "imageAlt": "ვებიკო — ციფრული სააგენტო"
 };
@@ -105,9 +105,9 @@ export default function pageServiceSeo() {
                 <span aria-current="page">SEO ოპტიმიზაცია</span>
               </li>
             </ol>
-            <span className="eyebrow">SEO ოპტიმიზაცია</span>
-            <h1>SEO: გამოჩნდით Google-ში</h1>
-            <p>ვმუშაობთ იმაზე, რომ თქვენი პოტენციური კლიენტი Google-ში სწორედ თქვენ გიპოვოთ, რეკლამის გარეშე. ტექნიკიდან კონტენტამდე, ყოველი ნაბიჯი მონაცემებით მტკიცდება.</p>
+            <span className="eyebrow">SEO სერვისი თბილისში</span>
+            <h1>SEO ოპტიმიზაცია: გამოჩნდით Google-ში</h1>
+            <p>საიტის დაწინაურებაზე ისე ვმუშაობთ, რომ თქვენი პოტენციური კლიენტი Google-ში სწორედ თქვენ გიპოვოთ, რეკლამის გარეშე. ტექნიკიდან კონტენტამდე, ყოველი ნაბიჯი მონაცემებით მტკიცდება.</p>
             <div className="btn-row">
               <a className="btn btn--primary" href="#request">
                 განაცხადის გაგზავნა{" "}
@@ -148,7 +148,7 @@ export default function pageServiceSeo() {
         <div className="container">
           <div className="section-head section-head--center" data-reveal="">
             <span className="eyebrow">რას მოიცავს</span>
-            <h2>რა შედის</h2>
+            <h2>რა შედის SEO მომსახურებაში</h2>
             <p>ყველა პროექტი განსხვავებულია. აქ ჩამოვთვალეთ, რასაც ყველაზე ხშირად ვაკეთებთ.</p>
           </div>
           <div className="grid grid--3">
@@ -244,7 +244,7 @@ export default function pageServiceSeo() {
           <div className="contact-grid">
             <div data-reveal="">
               <span className="eyebrow">დაგვიკავშირდით</span>
-              <h2>რა ეღირება თქვენი პროექტი?</h2>
+              <h2>რა ღირს SEO ოპტიმიზაცია?</h2>
               <p className="lead">შეავსეთ ფორმა და ერთ სამუშაო დღეში მიიღებთ საორიენტაციო ღირებულებას, ვადებსა და სამოქმედო გეგმას.</p>
               <ul className="checklist">
                 <li>უფასო კონსულტაცია და აუდიტი</li>

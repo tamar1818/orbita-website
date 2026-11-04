@@ -81,8 +81,8 @@ const LD = [
 ];
 
 export const meta = {
-  "title": "UI/UX დიზაინი და ბრენდინგი | Webico",
-  "desc": "UI/UX და ვებ დიზაინი Figma-ში, ლოგო და ბრენდბუქი. Webico ქმნის ინტერფეისებს, რომლებიც მარტივი გამოსაყენებელია და ბრენდს ნდობას მატებს.",
+  "title": "ლოგოს დამზადება, ბრენდინგი და UI/UX დიზაინი | Webico",
+  "desc": "ლოგოს დამზადება, ბრენდბუქი და ბრენდინგი, გრაფიკული დიზაინი და UI/UX ვებ დიზაინი Figma-ში. ვიზუალური იდენტობა, რომელიც ბიზნესს დასამახსოვრებელს ხდის და ნდობას მატებს.",
   "url": "/service-branding",
   "imageAlt": "ვებიკო — ციფრული სააგენტო"
 };
@@ -105,8 +105,8 @@ export default function pageServiceBranding() {
                 <span aria-current="page">ბრენდის ვიზუალური იდენტობა</span>
               </li>
             </ol>
-            <span className="eyebrow">ბრენდის ვიზუალური იდენტობა</span>
-            <h1>ლოგო, ბრენდბუქი და UI/UX დიზაინი</h1>
+            <span className="eyebrow">ბრენდინგი და გრაფიკული დიზაინი</span>
+            <h1>ლოგოს დამზადება, ბრენდბუქი და UI/UX დიზაინი</h1>
             <p>ვქმნით ვიზუალურ ენას, რომელიც თქვენს ბიზნესს დასამახსოვრებელს ხდის, ლოგოდან ინტერფეისის უკანასკნელ ღილაკამდე.</p>
             <div className="btn-row">
               <a className="btn btn--primary" href="#request">
@@ -148,7 +148,7 @@ export default function pageServiceBranding() {
         <div className="container">
           <div className="section-head section-head--center" data-reveal="">
             <span className="eyebrow">რას მოიცავს</span>
-            <h2>რა შედის</h2>
+            <h2>რა შედის ბრენდინგში</h2>
             <p>ყველა პროექტი განსხვავებულია. აქ ჩამოვთვალეთ, რასაც ყველაზე ხშირად ვაკეთებთ.</p>
           </div>
           <div className="grid grid--3">
@@ -162,14 +162,14 @@ export default function pageServiceBranding() {
             </article>
             <article className="card" data-reveal="" data-reveal-delay="120">
               <h3>UI/UX დიზაინი</h3>
-              <p>ვიზიტორის გზის დაგეგმვა, პროტოტიპი და ინტერფეისის დეტალური მაკეტი.</p>
+              <p>ვიზიტორის გზის დაგეგმვა, პროტოტიპი და ინტერფეისის დეტალური მაკეტი <a href="/service-web-development">საიტის დამზადებისთვის</a>.</p>
             </article>
             <article className="card" data-reveal="" data-reveal-delay="180">
               <h3>დიზაინ-სისტემა</h3>
               <p>კომპონენტების ბიბლიოთეკა, რომელიც დეველოპმენტს აჩქარებს.</p>
             </article>
             <article className="card" data-reveal="" data-reveal-delay="240">
-              <h3>სარეკლამო მასალები</h3>
+              <h3>გრაფიკული დიზაინი</h3>
               <p>ბანერები, სოციალური ქსელის შაბლონები და პრეზენტაციები.</p>
             </article>
             <article className="card" data-reveal="" data-reveal-delay="300">
@@ -243,7 +243,7 @@ export default function pageServiceBranding() {
           <div className="contact-grid">
             <div data-reveal="">
               <span className="eyebrow">დაგვიკავშირდით</span>
-              <h2>რა ეღირება თქვენი პროექტი?</h2>
+              <h2>რა ღირს ლოგო და ბრენდინგი?</h2>
               <p className="lead">შეავსეთ ფორმა და ერთ სამუშაო დღეში მიიღებთ საორიენტაციო ღირებულებას, ვადებსა და სამოქმედო გეგმას.</p>
               <ul className="checklist">
                 <li>უფასო კონსულტაცია და აუდიტი</li>
