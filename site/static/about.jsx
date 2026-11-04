@@ -1,5 +1,5 @@
 /** /about — სტატიკური გვერდი (გადმოტანილია views/static/about.html-დან) */
-import { JsonLd, TeamSection } from '@/components/blocks';
+import { JsonLd } from '@/components/blocks';
 import { showcase } from '@/lib/projects';
 
 
@@ -152,7 +152,6 @@ export default function pageAbout() {
           </div>
         </div>
       </section>
-      <TeamSection />
       <section className="section">
         <div className="container">
           <div className="section-head section-head--center" data-reveal="">

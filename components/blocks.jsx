@@ -1,6 +1,5 @@
-/** საერთო ბლოკები: ბანერი, პლატფორმების ზოლი, გუნდი, „ვიზრდებით ერთად“, FAQ, JSON-LD */
+/** საერთო ბლოკები: ბანერი, პლატფორმების ზოლი, „ვიზრდებით ერთად“, FAQ, JSON-LD */
 import { url } from '@/lib/core';
-import { TEAM, ver } from '@/lib/team';
 import { ArrowUpRight } from './icons';
 
 /** JSON-LD სქემა (</script>-ისგან დაცული) */
@@ -75,53 +74,6 @@ export function StackStrip({ label }) {
       <div className="stack__viewport">
         <ul className="stack__track">{items}</ul>
         <ul className="stack__track" aria-hidden="true">{items}</ul>
-      </div>
-    </section>
-  );
-}
-
-/** გუნდის ფოტოები ჰორიზონტალურ ზოლში */
-export function TeamStrip() {
-  return (
-    <section className="team-strip" aria-label="გუნდი">
-      <div className="container">
-        <div className="team-strip__row">
-          {TEAM.map((m, i) => (
-            <a className={'team-strip__item team-strip__item--' + (i + 1)} href="/about#team" key={m.slug}>
-              <img src={`/assets/img/team/${m.slug}-sm.webp`} alt={m.ka[0]} width="560" height="700" loading="lazy" decoding="async" />
-              <span className="team-strip__cap"><b>{m.ka[0]}</b><small>{m.ka[1]}</small></span>
-            </a>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/** გუნდის სექცია (ჩვენ შესახებ) */
-export function TeamSection() {
-  return (
-    <section className="section team" id="team">
-      <div className="container">
-        <div className="section-head section-head--center" data-reveal="">
-          <h2>გუნდი</h2>
-          <p>ადამიანები, ვისთანაც იმუშავებთ: პირველი ზარიდან გაშვებამდე და შემდეგაც.</p>
-        </div>
-        <div className="team-grid">
-          {TEAM.map((m, i) => {
-            const big = `/assets/img/team/${m.slug}.webp` + ver(`assets/img/team/${m.slug}.webp`);
-            const sm = `/assets/img/team/${m.slug}-sm.webp` + ver(`assets/img/team/${m.slug}-sm.webp`);
-            return (
-              <figure className="person" data-reveal="" data-reveal-delay={i * 70} key={m.slug}>
-                <div className="person__photo">
-                  <img src={big} srcSet={`${sm} 560w, ${big} 1100w`} sizes={`(max-width: 700px) ${i ? '50vw' : '100vw'}, (max-width: 1100px) 33vw, 260px`}
-                    alt={m.ka[0]} width="1100" height="1375" loading="lazy" decoding="async" />
-                </div>
-                <figcaption><b>{m.ka[0]}</b><span>{m.ka[1]}</span></figcaption>
-              </figure>
-            );
-          })}
-        </div>
       </div>
     </section>
   );
